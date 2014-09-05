@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="27">
+
+        <createTable  tableName="ESTORNO">
+            <column autoIncrement="true" name="ID_ESTORNO" type="BIGINT"><constraints nullable="false" primaryKey="true"/></column>
+            <column name="ID_MOVIMENTO_FINANCEIRO" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="ID_CONTA" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="TS_DATA_CADASTRO" type="${TIMESTAMP}"/>
+            <column name="ID_CLIENTE_LAAS" type="BIGINT"><constraints nullable="false"/></column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="ID_CONTA" baseTableName="ESTORNO"  constraintName="ID_CONTA_ESTORNO" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_CONTA" referencedTableName="CONTA" />
+        <addForeignKeyConstraint baseColumnNames="ID_MOVIMENTO_FINANCEIRO" baseTableName="ESTORNO"  constraintName="ID_MOVIMENTO_FINANCEIRO_ESTORNO" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_MOVIMENTO_FINANCEIRO" referencedTableName="MOVIMENTO_FINANCEIRO" />
+
+        <addColumn tableName="MOVIMENTO_FINANCEIRO">
+            <column name="ID_ESTORNO" type="BIGINT"/>
+        </addColumn>
+
+        <addForeignKeyConstraint baseTableName="MOVIMENTO_FINANCEIRO" baseColumnNames="ID_ESTORNO" constraintName="MOVIMENTO_FINANCEIRO_ID_ESTORNO" referencedTableName="ESTORNO"
+                                 referencedColumnNames="ID_ESTORNO" />
+
+        <!-- Conta A Pagar-->
+        <insert tableName="TIPO_CADASTRO">    <!-- ID = 30 -->
+            <column name="TX_NOME_TIPO_CADASTRO" value="Estorno"/>
+            <column name="TX_NOME_CLASSE" value="Estorno"/>
+        </insert>
+
+
+    </changeSet>
+</databaseChangeLog>
+

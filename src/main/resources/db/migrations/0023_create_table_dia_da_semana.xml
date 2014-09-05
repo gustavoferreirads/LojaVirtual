@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="23">
+        <createTable  tableName="DIA_DA_SEMANA">
+            <column autoIncrement="true" name="ID_DIA_DA_SEMANA" type="BIGINT"><constraints nullable="false" primaryKey="true"/></column>
+            <column name="TX_DIA" type="VARCHAR(20)"><constraints nullable="false"/></column>
+        </createTable>
+
+        <insert tableName="DIA_DA_SEMANA">
+            <column name="TX_DIA" value="Segunda"/>
+        </insert>
+        <insert tableName="DIA_DA_SEMANA">
+            <column name="TX_DIA" value="Terça"/>
+        </insert>
+        <insert tableName="DIA_DA_SEMANA">
+            <column name="TX_DIA" value="Quarta"/>
+        </insert>
+        <insert tableName="DIA_DA_SEMANA">
+            <column name="TX_DIA" value="Quinta"/>
+        </insert>
+        <insert tableName="DIA_DA_SEMANA">
+            <column name="TX_DIA" value="Sexta"/>
+        </insert>
+        <insert tableName="DIA_DA_SEMANA">
+            <column name="TX_DIA" value="Sábado"/>
+        </insert>
+        <insert tableName="DIA_DA_SEMANA">
+            <column name="TX_DIA" value="Domingo"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW()" dbms="mysql" />
+
+
+    <changeSet author="laas" id="41">
+        <createTable  tableName="CONFIGURACAO_DE_CORRECAO">
+            <column autoIncrement="true" name="ID_CONFIGURACAO_DE_CORRECAO" type="BIGINT"><constraints nullable="false" primaryKey="true"/></column>
+            <column name="ID_INDICE" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="NF_PERCENTUAL_JUROS" type="NUMERIC(12,2)"/>
+            <column name="NF_PERCENTUAL_MULTA" type="NUMERIC(12,2)"/>
+            <column name="NI_TIPO_JUROS" type="SMALLINT"><constraints nullable="false"/></column>
+            <column name="ID_CLIENTE_LAAS" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="TS_DATA_CADASTRO" type="${TIMESTAMP}" defaultValueComputed="${CURRENT_TIMESTAMP}">     <constraints nullable="false"/></column>
+            <column name="TS_ULT_MODIFICACAO" type="${TIMESTAMP}">   <constraints nullable="false"/></column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="ID_CLIENTE_LAAS" baseTableName="CONFIGURACAO_DE_CORRECAO"  constraintName="FK_CONFIGURACAO_DE_CORRECAO_CLIENTE_LAAS" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_CLIENTE_LAAS" referencedTableName="CLIENTE_LAAS" />
+    </changeSet>
+
+</databaseChangeLog>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+
+    <changeSet author="laas" id="16">
+        <addColumn tableName="MOVIMENTO_GARANTIA">
+            <column name="TX_ANOTACOES" type="${LONG.VARCHAR}"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

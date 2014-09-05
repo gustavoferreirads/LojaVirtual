@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="46">
+        <dropForeignKeyConstraint baseTableName="PESSOA" constraintName="SQL130905170145476" />
+        <dropForeignKeyConstraint baseTableName="PESSOA" constraintName="SQL130905170145475" />
+        <dropColumn tableName="PESSOA" columnName="TX_LOGRADOURO_RES" />
+        <dropColumn tableName="PESSOA" columnName="TX_LOGRADOURO_COM" />
+        <dropColumn tableName="PESSOA" columnName="TX_COMPLEMENTO_RES" />
+        <dropColumn tableName="PESSOA" columnName="TX_COMPLEMENTO_COM" />
+        <dropColumn tableName="PESSOA" columnName="TX_BAIRRO_RES" />
+        <dropColumn tableName="PESSOA" columnName="TX_BAIRRO_COM" />
+        <dropColumn tableName="PESSOA" columnName="TX_CEP_RES" />
+        <dropColumn tableName="PESSOA" columnName="TX_CEP_COM" />
+        <dropColumn tableName="PESSOA" columnName="ID_MUNICIPIO_COMARCA_RES" />
+        <dropColumn tableName="PESSOA" columnName="ID_MUNICIPIO_COMARCA_COM" />
+
+        <createTable tableName="ENDERECO">
+            <column name="ID_ENDERECO" type="BIGINT" autoIncrement="true" >
+                <constraints primaryKey="true" />
+            </column>
+            <column name="TX_LOGRADOURO" type="VARCHAR(40)" />
+            <column name="TX_COMPLEMENTO" type="VARCHAR(30)" />
+            <column name="TX_BAIRRO" type="VARCHAR(30)" />
+            <column name="TX_CEP" type="CHAR(9)" />
+            <column name="ID_MUNICIPIO_COMARCA" type="BIGINT" />
+        </createTable>
+
+        <addColumn tableName="PESSOA">
+            <column name="ID_ENDERECO_RES" type="BIGINT" />
+            <column name="ID_ENDERECO_COM" type="BIGINT"/>
+            <column name="ID_ENDERECO_PADRAO" type="BIGINT"/>
+        </addColumn>
+
+        <addForeignKeyConstraint baseTableName="PESSOA" baseColumnNames="ID_ENDERECO_RES" constraintName="FK_PESSOA_ID_ENDERECO_RES" referencedTableName="ENDERECO"
+                                 referencedColumnNames="ID_ENDERECO" />
+        <addForeignKeyConstraint baseTableName="PESSOA" baseColumnNames="ID_ENDERECO_COM" constraintName="FK_PESSOA_ID_ENDERECO_COM" referencedTableName="ENDERECO"
+                                 referencedColumnNames="ID_ENDERECO" />
+        <addForeignKeyConstraint baseTableName="PESSOA" baseColumnNames="ID_ENDERECO_PADRAO" constraintName="FK_PESSOA_ID_ENDERECO_PADRAO" referencedTableName="ENDERECO"
+                                 referencedColumnNames="ID_ENDERECO" />
+
+    </changeSet>
+
+</databaseChangeLog>
+

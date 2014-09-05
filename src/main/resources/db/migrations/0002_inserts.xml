@@ -1,0 +1,5508 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+<property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+<property name="CURRENT_TIMESTAMP" value="NOW" dbms="hsqldb" />
+<property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+<property name="CURRENT_DATE" value="CURRENT_DATE" dbms="derby" />
+<property name="CURRENT_DATE" value="now()" dbms="mysql" />
+
+<changeSet author="laas" id="2">
+
+<insert tableName="CLIENTE_LAAS">
+
+<column name="TX_NOME_CLIENTE" value="ALKASOFT"/>
+
+<column name="TX_EMAIL" value="alkasoft@alkasoft.com.br"/>
+
+<column name="NI_CATEGORIA_CLIENTE" valueNumeric="0"/>
+
+<column name="NI_TIPO_SERVICO" valueNumeric="0"/>
+
+<column name="NI_SITUACAO_CLIENTE" valueNumeric="0"/>
+
+<column name="NI_TIPO_PESSOA" valueNumeric="2"/>
+
+<column name="TS_CADASTRO_CLIENTE_LAAS" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CLIENTE_LAAS">
+
+<column name="TX_NOME_CLIENTE" value="ALKASOFT_TESTE"/>
+
+<column name="TX_EMAIL" value="alkasoft.teste@alkasoft.com.br"/>
+
+<column name="NI_CATEGORIA_CLIENTE" valueNumeric="0"/>
+
+<column name="NI_TIPO_SERVICO" valueNumeric="0"/>
+
+<column name="NI_SITUACAO_CLIENTE" valueNumeric="0"/>
+
+<column name="NI_TIPO_PESSOA" valueNumeric="2"/>
+
+<column name="TS_CADASTRO_CLIENTE_LAAS" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OPERACAO">
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="TX_DESCRICAO_OPERACAO" value="Incluir"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OPERACAO">
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="TX_DESCRICAO_OPERACAO" value="Alterar"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OPERACAO">
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="TX_DESCRICAO_OPERACAO" value="Excluir"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OPERACAO">
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="TX_DESCRICAO_OPERACAO" value="Consultar"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OPERACAO">
+
+<column name="ID_OPERACAO" value="X"/>
+
+<column name="TX_DESCRICAO_OPERACAO" value="Executar"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OPERACAO">
+
+<column name="ID_OPERACAO" value="P"/>
+
+<column name="TX_DESCRICAO_OPERACAO" value="Imprimir"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="UF">
+
+<column name="TX_UF" value="AC"/>
+
+<column name="TX_DESCRICAO_UF" value="Acre"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="1"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Rio Branco"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="1"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Xapuri"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="UF">
+
+<column name="TX_UF" value="MG"/>
+
+<column name="TX_DESCRICAO_UF" value="Minas Gerais"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="2"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Belo Horizonte"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="2"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Ouro Preto"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="UF">
+
+<column name="TX_UF" value="PR"/>
+
+<column name="TX_DESCRICAO_UF" value="Parana"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="3"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Curitiba"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="3"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Pato Branco"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="UF">
+
+<column name="TX_UF" value="RS"/>
+
+<column name="TX_DESCRICAO_UF" value="Rio Grande do Sul"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="4"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Alegrete"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="4"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Porto Alegre"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="4"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Torres"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="UF">
+
+<column name="TX_UF" value="SC"/>
+
+<column name="TX_DESCRICAO_UF" value="Santa Catarina"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="5"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Camboriú"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="5"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Florianópolis"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="5"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Itajaí"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="5"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="São Francisco"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="5"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Xanxerê"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="UF">
+
+<column name="TX_UF" value="SP"/>
+
+<column name="TX_DESCRICAO_UF" value="São Paulo"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="6"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Barueri"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="6"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="São Paulo"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="6"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Santos"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="6"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Ortolândia"/>
+
+<column name="FG_COMARCA" valueNumeric="0"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="MUNICIPIO_COMARCA">
+
+<column name="ID_UF" valueNumeric="6"/>
+
+<column name="TX_MUNICIPIO_COMARCA" value="Comarca de teste"/>
+
+<column name="FG_COMARCA" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TRIBUNAL">
+
+<column name="ID_MUNICIPIO_COMARCA" valueNumeric="1"/>
+
+<column name="TX_NOME_TRIBUNAL" value="TJSC - 1o. GRAU"/>
+
+<column name="TX_DESCR_ENDERECO" value="Rua Joaquim sn"/>
+
+<column name="TX_TELEFONE" value="4834484878"/>
+
+<column name="NI_ORGAO_JUSTICA" valueNumeric="4"/>
+
+<column name="NI_CAPTURA_AUTOMATICA" valueNumeric="1"/>
+
+<column name="NI_COD_TRIBUNAL" valueNumeric="22"/>
+
+<column name="TS_CADASTRO_TRIBUNAL" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TRIBUNAL">
+
+<column name="ID_MUNICIPIO_COMARCA" valueNumeric="2"/>
+
+<column name="TX_NOME_TRIBUNAL" value="TJRS - 3o. GRAU"/>
+
+<column name="TX_DESCR_ENDERECO" value="Rua Protasio n 1000"/>
+
+<column name="TX_TELEFONE" value="5134484878"/>
+
+<column name="NI_ORGAO_JUSTICA" valueNumeric="3"/>
+
+<column name="NI_CAPTURA_AUTOMATICA" valueNumeric="2"/>
+
+<column name="NI_COD_TRIBUNAL" valueNumeric="20"/>
+
+<column name="TS_CADASTRO_TRIBUNAL" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Profissão"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="1"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Analista de Sistemas"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="1"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Advogado"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="1"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Dentista"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="1"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Professor"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="1"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Médico"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Nacionalidade"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="2"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Alemanha"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="2"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Argentina"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="2"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Brasil"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="2"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="E.U.A."/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="2"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Finlândia"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="2"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Itália"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="2"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Zaire"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Tratamento"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="3"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Dr"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="3"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Drª"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="3"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Sr"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="3"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Srª"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Papel da Parte"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="4"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Advogado contrário"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="FG_FIXO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="4"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Advogado da causa"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="FG_FIXO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="4"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Autor principal"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="FG_FIXO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="4"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Juiz"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="FG_FIXO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="4"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Parte"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="FG_FIXO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="4"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Perito"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="FG_FIXO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="4"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Réu principal"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="FG_FIXO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="4"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Testemunha"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="FG_FIXO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Pasta"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Área"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Sub-Área"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Decisão Final"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Situação Atual"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Previsão Decisão"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Área de Atuação"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="11"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Civil"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="11"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Criminal"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="11"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Trabalhista"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Assunto"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Decisão da fase"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Local do evento"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIGURACAO_CLIENTE">
+
+<column name="TX_ITEM_CONFIGURACAO_CLIENTE" value="Campos Obrigatórios"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIGURACAO_CLIENTE">
+
+<column name="TX_ITEM_CONFIGURACAO_CLIENTE" value="Campos Únicos"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIGURACAO_USUARIO">
+
+<column name="TX_ITEM_CONFIGURACAO_USUARIO" value="Filtrar"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIGURACAO_USUARIO">
+
+<column name="TX_ITEM_CONFIGURACAO_USUARIO" value="Visualizar"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIGURACAO_USUARIO">
+
+<column name="TX_ITEM_CONFIGURACAO_USUARIO" value="Identificação"/>
+
+</insert>
+
+
+
+<insert tableName="ITEM_CONFIGURACAO_USUARIO">
+
+<column name="TX_ITEM_CONFIGURACAO_USUARIO" value="Resumo"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Pessoa Física"/>
+
+<column name="TX_NOME_CLASSE" value="PessoaFisica"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="TX_FUNCIONALIDADE" value="Atendimento"/>
+
+<column name="TX_NOME_CLASSE" value="Atendimento"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="TX_FUNCIONALIDADE" value="Cadastro de Pessoa Física"/>
+
+<column name="TX_NOME_CLASSE" value="PessoaFisica"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Processo"/>
+
+<column name="TX_NOME_CLASSE" value="Processo"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="TX_FUNCIONALIDADE" value="Cadastro de Processo"/>
+
+<column name="TX_NOME_CLASSE" value="Processo"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="TX_FUNCIONALIDADE" value="Partes do Processo"/>
+
+<column name="TX_NOME_CLASSE" value="Processo"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Advogado"/>
+
+<column name="TX_NOME_CLASSE" value="Advogado"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="TX_FUNCIONALIDADE" value="Cadastro de Advogado"/>
+
+<column name="TX_NOME_CLASSE" value="Advogado"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Pessoa Jurídica"/>
+
+<column name="TX_NOME_CLASSE" value="PessoaJuridica"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="TX_FUNCIONALIDADE" value="Atendimento"/>
+
+<column name="TX_NOME_CLASSE" value="Atendimento"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="TX_FUNCIONALIDADE" value="Contatos Profissionais"/>
+
+<column name="TX_NOME_CLASSE" value="ContatoPessoa"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="TX_FUNCIONALIDADE" value="Cadastro de Pessoa Jurídica"/>
+
+<column name="TX_NOME_CLASSE" value="PessoaJuridica"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Atendimento"/>
+
+<column name="TX_NOME_CLASSE" value="Atendimento"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Contato da Pessoa"/>
+
+<column name="TX_NOME_CLASSE" value="ContatoPessoa"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Usuário"/>
+
+<column name="TX_NOME_CLASSE" value="Usuario"/>
+
+<column name="NI_NIVEL_ACESSO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="TX_FUNCIONALIDADE" value="Cadastro de Usuário"/>
+
+<column name="TX_NOME_CLASSE" value="Usuario"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Grupo de Usuário"/>
+
+<column name="TX_NOME_CLASSE" value="Grupo"/>
+
+<column name="NI_NIVEL_ACESSO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="TX_FUNCIONALIDADE" value="Grupo de Usuário"/>
+
+<column name="TX_NOME_CLASSE" value="Grupo"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Tribunal"/>
+
+<column name="TX_NOME_CLASSE" value="Tribunal"/>
+
+<column name="NI_NIVEL_ACESSO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="TX_FUNCIONALIDADE" value="Consulta de Tribunais"/>
+
+<column name="TX_NOME_CLASSE" value="Tribunal"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="11"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="11"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="11"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="11"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Unidade Judicial"/>
+
+<column name="TX_NOME_CLASSE" value="UnidadeJudicial"/>
+
+<column name="NI_NIVEL_ACESSO" valueNumeric="2"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="10"/>
+
+<column name="TX_FUNCIONALIDADE" value="Unidade Judicial"/>
+
+<column name="TX_NOME_CLASSE" value="UnidadeJudicial"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="10"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="12"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="10"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="12"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="10"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="12"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="10"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="12"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Partes do processo"/>
+
+<column name="TX_NOME_CLASSE" value="ParteDoProcesso"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="TX_FUNCIONALIDADE" value="Fases Processuais"/>
+
+<column name="TX_NOME_CLASSE" value="FaseProcessual"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="13"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="13"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="13"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="13"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Fases do processo"/>
+
+<column name="TX_NOME_CLASSE" value="FaseProcessual"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Fase Administrativa"/>
+
+<column name="TX_NOME_CLASSE" value="FaseAdministrativa"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Fase Amigável"/>
+
+<column name="TX_NOME_CLASSE" value="FaseAmigavel"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Fase Grau Primário"/>
+
+<column name="TX_NOME_CLASSE" value="FaseGrauPrimario"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Fase Grau Superior de Origem"/>
+
+<column name="TX_NOME_CLASSE" value="FaseGrauSuperiorOrigem"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Fase Grau Superior de Recurso"/>
+
+<column name="TX_NOME_CLASSE" value="FaseGrauSuperiorRecurso"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Fase Liquidação/Execução"/>
+
+<column name="TX_NOME_CLASSE" value="FaseLiquidacaoExecucao"/>
+
+<column name="FG_FUNCIONALIDADE" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Cliente"/>
+
+<column name="TX_NOME_CLASSE" value="Cliente"/>
+
+<column name="NI_NIVEL_ACESSO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="TX_FUNCIONALIDADE" value="Cadastro de Cliente"/>
+
+<column name="TX_NOME_CLASSE" value="Cliente"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="14"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="14"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="14"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="14"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="USUARIO_OU_GRUPO">
+
+<column name="TX_LOGIN" value="admin@alkasoft.com.br"/>
+
+<column name="TX_NOME" value="Alkasoft Admin"/>
+
+<column name="TX_SENHA" value="21232f297a57a5a743894a0e4a801fc3"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_CADASTRO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="NI_TIPO_USUARIO" valueNumeric="2"/>
+
+<column name="NI_SITUACAO_USUARIO" valueNumeric="0"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="11"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="11"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="11"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="9"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="11"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="14"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="14"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="14"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="19"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="14"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="USUARIO_OU_GRUPO">
+
+<column name="TX_LOGIN" value="master.teste@alkasoft.com.br"/>
+
+<column name="TX_NOME" value="Alkasoft Teste"/>
+
+<column name="TX_SENHA" value="21232f297a57a5a743894a0e4a801fc3"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_CADASTRO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="NI_TIPO_USUARIO" valueNumeric="1"/>
+
+<column name="NI_SITUACAO_USUARIO" valueNumeric="0"/>
+
+<column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="1"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="2"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="3"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="4"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="3"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="5"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="6"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="7"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="4"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="8"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="7"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="9"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="8"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="10"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="nome"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="numeroPasta"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="pasta"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="numeroUnicoDoProcesso"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="12"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="numeroOriginal"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="12"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="nome"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="numeroPasta"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="pasta"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="1"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="3"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+<column name="TX_SEPARADOR_CAMPO" value=""/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="2"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="2"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+<column name="TX_SEPARADOR_CAMPO" value=""/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="3"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="3"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+<column name="TX_SEPARADOR_CAMPO" value=""/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="4"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="3"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+<column name="TX_SEPARADOR_CAMPO" value=""/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="5"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="2"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+<column name="TX_SEPARADOR_CAMPO" value=""/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TRIBUNAL">
+
+<column name="ID_MUNICIPIO_COMARCA" valueNumeric="1"/>
+
+<column name="TX_NOME_TRIBUNAL" value="TR do Selenium"/>
+
+<column name="TX_DESCR_ENDERECO" value="Rua Selenia"/>
+
+<column name="TX_TELEFONE" value="4834484878"/>
+
+<column name="NI_ORGAO_JUSTICA" valueNumeric="5"/>
+
+<column name="NI_CAPTURA_AUTOMATICA" valueNumeric="45"/>
+
+<column name="NI_COD_TRIBUNAL" valueNumeric="2"/>
+
+<column name="TS_CADASTRO_TRIBUNAL" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="UNIDADE_JUDICIAL">
+
+<column name="ID_TRIBUNAL" valueNumeric="3"/>
+
+<column name="TX_NOME_UNIDADE_JUDICIAL" value="Teste do Selenium"/>
+
+<column name="NI_COD_UNIDADE_JUDICIAL" valueNumeric="447"/>
+
+<column name="TS_CADASTRO_UNIDADE_JUDICIAL" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONJ_VALORES">
+
+<column name="ID_CONJ_VALORES" valueNumeric="5"/>
+
+<column name="TX_DESCRICAO_ITEM_CONJ_VALORES" value="Pasta do Selenium"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+
+<column name="FG_ATIVO" valueNumeric="1"/>
+
+</insert>
+
+
+<insert tableName="PROCESSO">
+
+<column name="TX_DESCRICAO_ACAO" value="Processo 1"/>
+
+<column name="TS_DATA_CADASTRO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="CX_PASTA" valueNumeric="1"/>
+
+</insert>
+
+
+<insert tableName="NUMERO_PASTA">
+    <column name="DT_NUMERO_PASTA" valueNumeric="${CURRENT_DATE}"/>
+    <column name="NI_NUMERO_PASTA" valueNumeric="123"/>
+    <column name="ID_PROCESSO" valueNumeric="1"/>
+</insert>
+
+
+<insert tableName="PROCESSO">
+
+<column name="TX_DESCRICAO_ACAO" value="Processo 2"/>
+
+<column name="TS_DATA_CADASTRO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="CX_PASTA" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="1"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="0"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="1"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="1"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="1"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="3"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="1"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="4"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="2"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="0"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="2"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="2"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="2"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="3"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="VALORES">
+
+<column name="ID_PROCESSO" valueNumeric="2"/>
+
+<column name="TS_DATA_INICIAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="TS_DATA_FINAL" valueNumeric="${CURRENT_DATE}"/>
+
+<column name="NI_TIPO" valueNumeric="4"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="6"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="1"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="7"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="1"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="8"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="1"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FASE_PROCESSUAL">
+
+<column name="TX_NUM_UNICO_PROCESSO" value="0000160-17.2010.5.02.0447"/>
+
+<column name="TS_DATA_CADASTRO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="ID_PROCESSO" valueNumeric="1"/>
+
+<column name="ID_UNIDADE_JUDICIAL" valueNumeric="1"/>
+
+<column name="NI_TIPO_FASE" valueNumeric="3"/>
+
+<column name="FG_ORIGEM" valueNumeric="1"/>
+
+<column name="FG_ATUAL" valueNumeric="1"/>
+
+<column name="FG_LIMINAR_CASSADA" valueNumeric="0"/>
+
+<column name="FG_FASE_ATIVA" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OCORRENCIA">
+
+<column name="ID_FASE" valueNumeric="1"/>
+
+<column name="NI_ORIGEM_OCORRENCIA" valueNumeric="1"/>
+
+<column name="FG_PRIVADA" valueNumeric="0"/>
+
+<column name="TX_ANOTACOES_OCORRENCIA" value="teste"/>
+
+<column name="TX_PROVIDENCIAS" value="teste"/>
+
+<column name="TS_DATA_CADASTRO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Ocorrência"/>
+
+<column name="TX_NOME_CLASSE" value="Ocorrencia"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Origem da Ocorrência"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="TX_FUNCIONALIDADE" value="Ocorrencia"/>
+
+<column name="TX_NOME_CLASSE" value="Ocorrencia"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="15"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="codigoDaOcorrencia"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="anotacoesOcorrencia"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="20"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="ITEM_CONFIG_CAMPO_USUARIO">
+
+<column name="ID_CAMPO" valueNumeric="9"/>
+
+<column name="ID_ITEM_CONFIGURACAO_USUARIO" valueNumeric="2"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+<column name="TX_SEPARADOR_CAMPO" value=""/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PESSOA">
+
+<column name="TX_NOME_PESSOA" value="pessoa fisica"/>
+
+<column name="TX_CPF" value="111.111.111-11"/>
+
+<column name="TX_NUMERO_PIS" value="123121231"/>
+
+<column name="TX_RG" value="123121231"/>
+
+<column name="TX_NOME_CONJUGE" value="awe"/>
+
+<column name="TX_NOME_MAE" value="awa"/>
+
+<column name="TX_NOME_PAI" value="awo"/>
+
+<column name="TX_LOCAL_TRABALHO" value="wiiiiiiiiii"/>
+
+<column name="NI_TIPO_PESSOA" valueNumeric="0"/>
+
+<column name="TX_BAIRRO_RES" value="Costeira"/>
+
+<column name="TX_CEP_RES" value="88015-611"/>
+
+<column name="TX_LOGRADOURO_RES" value="Rua XV"/>
+
+<column name="TX_COMPLEMENTO_RES" value="no. 30"/>
+
+<column name="TX_BAIRRO_COM" value="Costeira"/>
+
+<column name="TX_CEP_COM" value="88015-611"/>
+
+<column name="TX_LOGRADOURO_COM" value="Rua XV"/>
+
+<column name="TX_COMPLEMENTO_COM" value="no. 30"/>
+
+<column name="FG_ADVOGADO_CONTRARIO" valueNumeric="1"/>
+
+<column name="FG_CLIENTE" valueNumeric="0"/>
+
+<column name="NI_COD_SEXO" valueNumeric="0"/>
+
+<column name="NI_ESTADO_CIVIL" valueNumeric="2"/>
+
+<column name="NI_GRAU_ESCOLARIDADE" valueNumeric="5"/>
+
+<column name="TX_ENDERECO_WEB" value="foo@teste.com.br"/>
+
+<column name="TS_CADASTRO_PESSOA" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PESSOA">
+
+<column name="TX_NOME_PESSOA" value="advogado contrario teste selenium"/>
+
+<column name="TX_NUMERO_PIS" value="123121231"/>
+
+<column name="TX_RG" value="123121231"/>
+
+<column name="NI_TIPO_PESSOA" valueNumeric="2"/>
+
+<column name="TX_NOME_CONJUGE" value="awe"/>
+
+<column name="TX_NOME_MAE" value="awa"/>
+
+<column name="TX_NOME_PAI" value="awo"/>
+
+<column name="TX_CPF" value="111.111.111-11"/>
+
+<column name="TX_BAIRRO_RES" value="Costeira"/>
+
+<column name="TX_CEP_RES" value="88015-611"/>
+
+<column name="TX_LOGRADOURO_RES" value="Rua XV"/>
+
+<column name="TX_COMPLEMENTO_RES" value="no. 30"/>
+
+<column name="TX_LOCAL_TRABALHO" value="wiiiiiiiiii"/>
+
+<column name="TX_BAIRRO_COM" value="Costeira"/>
+
+<column name="TX_CEP_COM" value="88015-611"/>
+
+<column name="TX_LOGRADOURO_COM" value="Rua XV"/>
+
+<column name="TX_COMPLEMENTO_COM" value="no. 30"/>
+
+<column name="TX_NUMERO_OAB" value="sa123123"/>
+
+<column name="FG_ADVOGADO_CONTRARIO" valueNumeric="1"/>
+
+<column name="FG_CLIENTE" valueNumeric="0"/>
+
+<column name="NI_COD_SEXO" valueNumeric="0"/>
+
+<column name="NI_ESTADO_CIVIL" valueNumeric="2"/>
+
+<column name="NI_GRAU_ESCOLARIDADE" valueNumeric="5"/>
+
+<column name="TX_ENDERECO_WEB" value="foo@teste.com.br"/>
+
+<column name="TS_CADASTRO_PESSOA" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PESSOA">
+
+<column name="TX_NOME_PESSOA" value="Empresa Fulano de Tal"/>
+
+<column name="NI_TIPO_PESSOA" valueNumeric="1"/>
+
+<column name="TX_BAIRRO_COM" value="Centro"/>
+
+<column name="TX_CEP_COM" value="88888-000"/>
+
+<column name="TX_LOGRADOURO_COM" value="Rua Tal"/>
+
+<column name="TX_COMPLEMENTO_COM" value="no. 45"/>
+
+<column name="FG_ADVOGADO_CONTRARIO" valueNumeric="1"/>
+
+<column name="FG_CLIENTE" valueNumeric="0"/>
+
+<column name="NI_COD_SEXO" valueNumeric="0"/>
+
+<column name="NI_ESTADO_CIVIL" valueNumeric="2"/>
+
+<column name="NI_GRAU_ESCOLARIDADE" valueNumeric="5"/>
+
+<column name="TX_ENDERECO_WEB" value="www.fulanodetal.com.br"/>
+
+<column name="TS_CADASTRO_PESSOA" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PESSOA">
+
+<column name="TX_NOME_PESSOA" value="pessoa fisica"/>
+
+<column name="TX_CPF" value="111.111.111-11"/>
+
+<column name="TX_NUMERO_PIS" value="123121231"/>
+
+<column name="TX_RG" value="123121231"/>
+
+<column name="TX_NOME_CONJUGE" value="awe"/>
+
+<column name="TX_NOME_MAE" value="awa"/>
+
+<column name="TX_NOME_PAI" value="awo"/>
+
+<column name="TX_LOCAL_TRABALHO" value="wiiiiiiiiii"/>
+
+<column name="NI_TIPO_PESSOA" valueNumeric="0"/>
+
+<column name="TX_BAIRRO_RES" value="Costeira"/>
+
+<column name="TX_CEP_RES" value="88015-611"/>
+
+<column name="TX_LOGRADOURO_RES" value="Rua XV"/>
+
+<column name="TX_COMPLEMENTO_RES" value="no. 30"/>
+
+<column name="TX_BAIRRO_COM" value="Costeira"/>
+
+<column name="TX_CEP_COM" value="88015-611"/>
+
+<column name="TX_LOGRADOURO_COM" value="Rua XV"/>
+
+<column name="TX_COMPLEMENTO_COM" value="no. 30"/>
+
+<column name="FG_ADVOGADO_CONTRARIO" valueNumeric="1"/>
+
+<column name="FG_CLIENTE" valueNumeric="0"/>
+
+<column name="NI_COD_SEXO" valueNumeric="0"/>
+
+<column name="NI_ESTADO_CIVIL" valueNumeric="2"/>
+
+<column name="NI_GRAU_ESCOLARIDADE" valueNumeric="5"/>
+
+<column name="TX_ENDERECO_WEB" value="foo@teste.com.br"/>
+
+<column name="TS_CADASTRO_PESSOA" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Objeto da Ação"/>
+
+<column name="TX_NOME_CLASSE" value="ObjetoDaAcao"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Descrição do Objeto"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CONJ_VALORES">
+
+<column name="TX_DESCRICAO_CONJ_VALORES" value="Decisão do Objeto"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="TX_FUNCIONALIDADE" value="Objeto da Ação"/>
+
+<column name="TX_NOME_CLASSE" value="ObjetoDaAcao"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="16"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="dataCadastro"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="CAMPO">
+
+<column name="TX_NOME_CAMPO" value="anotacaoObjeto"/>
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="21"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OPCAO_CLIENTE">
+
+<column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="NI_LIMITE_ARMAZENAMENTO" valueNumeric="1073741824"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="OPCAO_CLIENTE">
+
+<column name="ID_CLIENTE_LAAS" valueNumeric="2"/>
+
+<column name="TS_ULT_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+<column name="NI_LIMITE_ARMAZENAMENTO" valueNumeric="1073741824"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPO_CADASTRO">
+
+<column name="TX_NOME_TIPO_CADASTRO" value="Evento"/>
+
+<column name="TX_NOME_CLASSE" value="Evento"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="TX_FUNCIONALIDADE" value="Cadastro de evento"/>
+
+<column name="TX_NOME_CLASSE" value="Evento"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="FUNCIONALIDADE_OPERACAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+
+<column name="ID_OPERACAO" value="I"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+
+<column name="ID_OPERACAO" value="A"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+
+<column name="ID_OPERACAO" value="C"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="PERMISSAO">
+
+<column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+
+<column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+
+<column name="ID_OPERACAO" value="E"/>
+
+<column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPOS_DO_EVENTO">
+
+<column name="TX_NOME" value="Outros"/>
+
+<column name="TX_COR" value="#FF3300"/>
+
+<column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+
+<column name="TS_ULTIMA_MODIFICACAO" valueComputed="${CURRENT_TIMESTAMP}"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPOS_DE_EVENTOS_VISIVEIS_DO_USUARIO">
+
+<column name="ID_USUARIO" valueNumeric="1"/>
+
+<column name="ID_TIPO_DO_EVENTO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPOS_DE_WIDGETS">
+
+<column name="TX_NOME" value="Processos favoritos"/>
+
+<column name="TX_DESCRICAO" value="Visualize seus processos favoritos."/>
+
+</insert>
+
+
+
+
+
+<insert tableName="TIPOS_DE_WIDGETS">
+
+<column name="TX_NOME" value="Processos acessados recentemente"/>
+
+<column name="TX_DESCRICAO" value="Todos os processos acessados recentemente."/>
+
+</insert>
+
+
+
+
+
+<insert tableName="DASHBOARDS">
+
+<column name="FG_DEFAULT" valueNumeric="1"/>
+
+<column name="TX_NOME" value="Meu dashboard"/>
+
+<column name="ID_USUARIO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="WIDGETS">
+
+<column name="NI_POSICAO" valueNumeric="0"/>
+
+<column name="NI_LARGURA" valueNumeric="350"/>
+
+<column name="NI_ALTURA" valueNumeric="200"/>
+
+<column name="ID_DASHBOARD" valueNumeric="1"/>
+
+<column name="ID_TIPO_DE_WIDGET" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="WIDGETS">
+
+<column name="NI_POSICAO" valueNumeric="1"/>
+
+<column name="NI_LARGURA" valueNumeric="350"/>
+
+<column name="NI_ALTURA" valueNumeric="200"/>
+
+<column name="ID_DASHBOARD" valueNumeric="1"/>
+
+<column name="ID_TIPO_DE_WIDGET" valueNumeric="2"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="DASHBOARDS">
+
+<column name="FG_DEFAULT" valueNumeric="0"/>
+
+<column name="TX_NOME" value="Dashboard 2"/>
+
+<column name="ID_USUARIO" valueNumeric="1"/>
+
+</insert>
+
+
+
+
+
+<insert tableName="WIDGETS">
+
+<column name="NI_POSICAO" valueNumeric="0"/>
+
+<column name="NI_LARGURA" valueNumeric="350"/>
+
+<column name="NI_ALTURA" valueNumeric="200"/>
+
+<column name="ID_DASHBOARD" valueNumeric="2"/>
+
+<column name="ID_TIPO_DE_WIDGET" valueNumeric="1"/>
+
+</insert>
+
+    <insert tableName="OPCAO_USUARIO">
+
+        <column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+    </insert>
+
+
+</changeSet>
+
+</databaseChangeLog>

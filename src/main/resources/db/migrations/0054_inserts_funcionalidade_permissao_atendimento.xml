@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="54">
+        <insert tableName="OPERACAO">
+            <column name="ID_OPERACAO" value="Z"/>
+            <column name="TX_DESCRICAO_OPERACAO" value="Atendimento"/>
+        </insert>
+
+        <insert tableName="FUNCIONALIDADE_OPERACAO">
+            <column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+            <column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+            <column name="ID_OPERACAO" value="Z"/>
+        </insert>
+
+        <insert tableName="PERMISSAO">
+            <column name="ID_TIPO_CADASTRO" valueNumeric="22"/>
+            <column name="ID_FUNCIONALIDADE" valueNumeric="17"/>
+            <column name="ID_OPERACAO" value="Z"/>
+            <column name="ID_USUARIO_OU_GRUPO" valueNumeric="1"/>
+
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
+

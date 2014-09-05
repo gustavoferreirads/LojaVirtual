@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="58">
+        <addColumn tableName="CLIENTE_LAAS">
+            <column name="TX_UUID" type="VARCHAR(100)" defaultValue=""><constraints nullable="false"/></column>
+        </addColumn>
+        <update  tableName="CLIENTE_LAAS">
+            <column name="TX_UUID" value="1"/>
+            <where>ID_CLIENTE_LAAS = 1 </where>
+        </update>
+    </changeSet>
+</databaseChangeLog>
+

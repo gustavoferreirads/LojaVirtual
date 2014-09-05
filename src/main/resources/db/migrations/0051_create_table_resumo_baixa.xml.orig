@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(8)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="now()" dbms="mysql" />
+
+
+    <changeSet author="laas" id="51">
+
+        <createTable  tableName="RESUMO_BAIXA">
+            <column autoIncrement="true" name="ID_RESUMO_BAIXA" type="BIGINT"><constraints nullable="false" primaryKey="true"/></column>
+            <column name="ID_CONVENIO" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="ID_BANCO" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="ID_CONTA_BANCARIA" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="NI_REGISTROS" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="NI_REGISTROS_DUPLICADOS" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="NI_REGISTROS_NAO_ENCONTRADOS" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="TX_NOME_ARQUIVO" type="VARCHAR(200)"><constraints nullable="false"/></column>
+            <column name="NI_TAMANHO" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="NI_PAGOS" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="ID_USUARIO" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="TS_DATA_CADASTRO" type="${TIMESTAMP}" defaultValueNumeric="${CURRENT_TIMESTAMP}">     <constraints nullable="false"/></column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="RESUMO_BAIXA" baseColumnNames="ID_CONVENIO" constraintName="FK_BAIXA_CONVENIO" referencedTableName="CONVENIO" referencedColumnNames="ID_CONVENIO" />
+        <addForeignKeyConstraint baseTableName="RESUMO_BAIXA" baseColumnNames="ID_CONTA_BANCARIA" constraintName="FK_BAIXA_CONTA_BANCARIA" referencedTableName="CONTA_BANCARIA" referencedColumnNames="ID_CONTA_BANCARIA" />
+        <addForeignKeyConstraint baseTableName="RESUMO_BAIXA" baseColumnNames="ID_BANCO" constraintName="FK_BAIXA_CONTA" referencedTableName="BANCO" referencedColumnNames="ID_BANCO" />
+        <addForeignKeyConstraint baseTableName="RESUMO_BAIXA" baseColumnNames="ID_USUARIO" constraintName="FK_BAIXA_USUARIO" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_USUARIO_OU_GRUPO" referencedTableName="USUARIO_OU_GRUPO" />
+    </changeSet>
+</databaseChangeLog>
+

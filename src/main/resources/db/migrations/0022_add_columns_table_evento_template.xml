@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="laas" id="22">
+        <addColumn tableName="EVENTO_TEMPLATE">
+            <column name="NI_DIAS" type="BIGINT"/>
+            <column name="NI_DIA_MES" type="BIGINT"/>
+            <column name="TX_MES" type="VARCHAR(20)"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

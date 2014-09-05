@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="50">
+
+        <createTable tableName="LOG_DE_BAIXA">
+            <column name="ID_LOG_DE_BAIXA" type="BIGINT" autoIncrement="true" >
+                <constraints primaryKey="true" />
+            </column>
+            <column name="ID_USUARIO" type="BIGINT" />
+            <column name="ID_BOLETO" type="BIGINT" />
+            <column name="ID_MOVIMENTO_FINANCEIRO" type="BIGINT" />
+            <column name="TS_DATA_BAIXA" type="${TIMESTAMP}" />
+            <column name="NI_STATUS" type="INTEGER" />
+        </createTable>
+
+
+        <addForeignKeyConstraint baseTableName="LOG_DE_BAIXA" baseColumnNames="ID_USUARIO" constraintName="FK_LOG_DE_BAIXA_ID_USUARIO"
+                                 referencedTableName="USUARIO_OU_GRUPO" referencedColumnNames="ID_USUARIO_OU_GRUPO" />
+
+        <addForeignKeyConstraint baseTableName="LOG_DE_BAIXA" baseColumnNames="ID_BOLETO" constraintName="FK_LOG_DE_BAIXA_ID_BOLETO"
+                                 referencedTableName="BOLETO" referencedColumnNames="ID_BOLETO" />
+
+        <addForeignKeyConstraint baseTableName="LOG_DE_BAIXA" baseColumnNames="ID_MOVIMENTO_FINANCEIRO" constraintName="FK_LOG_DE_BAIXA_ID_MOVIMENTO_FINANCEIRO"
+                                 referencedTableName="MOVIMENTO_FINANCEIRO" referencedColumnNames="ID_MOVIMENTO_FINANCEIRO" />
+
+    </changeSet>
+
+</databaseChangeLog>
+

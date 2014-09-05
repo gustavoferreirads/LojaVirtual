@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="laas" id="24">
+        <createTable  tableName="EVENTO_TEMPLATE_DIA_DA_SEMANA">
+            <column name="ID_EVENTO_TEMPLATE" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_DIA_DA_SEMANA" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="ID_EVENTO_TEMPLATE" baseTableName="EVENTO_TEMPLATE_DIA_DA_SEMANA"  constraintName="FK_EVENTO_TEMPLATE_DIA_DA_SEMANA_EVENTO_TEMPLATE" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_EVENTO_TEMPLATE" referencedTableName="EVENTO_TEMPLATE" />
+        <addForeignKeyConstraint baseColumnNames="ID_DIA_DA_SEMANA" baseTableName="EVENTO_TEMPLATE_DIA_DA_SEMANA"  constraintName="FK_EVENTO_TEMPLATE_DIA_DA_SEMANA_DIA_DA_SEMANA" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_DIA_DA_SEMANA" referencedTableName="DIA_DA_SEMANA" />
+    </changeSet>
+
+</databaseChangeLog>

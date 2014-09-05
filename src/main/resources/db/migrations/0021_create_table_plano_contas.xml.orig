@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW()" dbms="mysql" />
+
+
+    <changeSet author="laas" id="21">
+        <createTable  tableName="PLANO_CONTAS">
+            <column autoIncrement="true" name="ID_PLANO_CONTA" type="BIGINT"><constraints nullable="false" primaryKey="true"/></column>
+            <column name="TX_DESCRICAO" type="VARCHAR(150)"><constraints nullable="false"/></column>
+            <column name="TX_ANOTACOES" type="${LONG.VARCHAR}"/>
+            <column name="NI_TIPO" type="SMALLINT"/>
+            <column name="ID_PLANO_CONTA_PAI" type="BIGINT"/>
+            <column name="ID_CLIENTE_LAAS" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="TS_DATA_CADASTRO" type="${TIMESTAMP}" defaultValueComputed="${CURRENT_TIMESTAMP}">     <constraints nullable="false"/></column>
+            <column name="TS_ULT_MODIFICACAO" type="${TIMESTAMP}">   <constraints nullable="false"/></column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="ID_PLANO_CONTA_PAI" baseTableName="PLANO_CONTAS"  constraintName="FK_PLANO_CONTA" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_PLANO_CONTA" referencedTableName="PLANO_CONTAS" />
+        <addForeignKeyConstraint baseColumnNames="ID_CLIENTE_LAAS" baseTableName="PLANO_CONTAS"  constraintName="FK_PLANO_CONTAS_CLIENTE_LAAS" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_CLIENTE_LAAS" referencedTableName="CLIENTE_LAAS" />
+
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Ativo"/>
+            <column name="NI_TIPO" valueNumeric="1"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Passivo"/>
+            <column name="NI_TIPO" valueNumeric="0"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Patrimônio líquido"/>
+            <column name="NI_TIPO" valueNumeric="0"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Receitas"/>
+            <column name="NI_TIPO" valueNumeric="0"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Custos"/>
+            <column name="NI_TIPO" valueNumeric="1"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Despesas e outros resultados"/>
+            <column name="NI_TIPO" valueNumeric="1"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Despesas e pré-operacionais"/>
+            <column name="NI_TIPO" valueNumeric="1"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Contas de filiais"/>
+            <column name="NI_TIPO" valueNumeric="1"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+        <insert tableName="PLANO_CONTAS">
+            <column name="TX_DESCRICAO" value="Outras contas de controle e análise"/>
+            <column name="NI_TIPO" valueNumeric="1"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1"/>
+            <column name="TS_DATA_CADASTRO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+            <column name="TS_ULT_MODIFICACAO" valueNumeric="${CURRENT_TIMESTAMP}"/>
+        </insert>
+</changeSet>
+
+</databaseChangeLog>

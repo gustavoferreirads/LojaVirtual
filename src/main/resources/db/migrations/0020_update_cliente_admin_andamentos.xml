@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="laas" id="20">
+        <update tableName="OPCAO_USUARIO" >
+            <column name="NI_EXIBIR_NUMERO_ANDAMENTOS" valueNumeric="5"/>
+            <where>ID_USUARIO_OU_GRUPO = 1</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

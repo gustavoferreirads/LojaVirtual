@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+    <property name="boolean.false" value="0" dbms="derby" />
+    <property name="boolean.false" value="false" dbms="mysql" />
+    <property name="boolean.type" value="SMALLINT" dbms="derby" />
+    <property name="boolean.type" value="BOOLEAN" dbms="mysql" />
+
+
+    <changeSet author="laas" id="38">
+
+        <dropForeignKeyConstraint baseTableName="MOVIMENTO_FINANCEIRO" constraintName="MOVIMENTO_FINANCEIRO_ID_ESTORNO" />
+        <dropForeignKeyConstraint baseTableName="TRANSFERENCIA_BANCARIA" constraintName="ID_MOVIMENTO_FINANCEIRO_TRANSFERENCIA_BANCARIA" />
+
+        <dropColumn columnName="ID_MOVIMENTO_FINANCEIRO"
+                    tableName="TRANSFERENCIA_BANCARIA"/>
+
+        <dropTable cascadeConstraints="true"
+                   tableName="ESTORNO"/>
+
+
+        <dropForeignKeyConstraint baseTableName="CONTA" constraintName="ID_MOVIMENTO_FINANCEIRO_CONTA" />
+        <dropForeignKeyConstraint baseTableName="MOVIMENTO_FINANCEIRO" constraintName="FK_MOVIMENTO_FINANCEIRO_CLIENTE_LAAS" />
+
+        <dropColumn columnName="ID_MOVIMENTO_FINANCEIRO"
+                    tableName="CONTA"/>
+
+        <dropColumn columnName="ID_CLIENTE_LAAS"
+                    tableName="MOVIMENTO_FINANCEIRO"/>
+
+        <addColumn tableName="MOVIMENTO_FINANCEIRO">
+            <column name="FG_ESTORNO" type="${boolean.type}" defaultValueComputed="${boolean.false}">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
+

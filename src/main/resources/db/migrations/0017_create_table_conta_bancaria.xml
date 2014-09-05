@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="17">
+        <createTable  tableName="BANCO">
+            <column autoIncrement="true" name="ID_BANCO" type="BIGINT"><constraints nullable="false" primaryKey="true"/></column>
+            <column name="TX_CODIGO_BANCO" type="VARCHAR(3)"><constraints nullable="false"/></column>
+            <column name="TX_NOME_BANCO" type="VARCHAR(50)"><constraints nullable="false"/></column>
+            <column name="TX_DV_CODIGO_BANCO" type="CHAR(1)"><constraints nullable="false"/></column>
+        </createTable>
+        <createTable  tableName="CONTA_BANCARIA">
+            <column autoIncrement="true" name="ID_CONTA_BANCARIA" type="BIGINT"><constraints nullable="false" primaryKey="true"/></column>
+            <column name="TX_IDENTIFICACAO_CONTA" type="VARCHAR(50)"/>
+            <column name="NI_AGENCIA" type="INTEGER"/>
+            <column name="NI_NUMERO_CONTA_CORRENTE" type="INTEGER"/>
+            <column name="NF_SALDO_ATUALIZADO" type="NUMERIC(11,2)"/>
+            <column name="TX_ANOTACOES" type="${LONG.VARCHAR}"/>
+            <column name="FG_DESATIVADA" type="BOOLEAN" defaultValueBoolean="false"><constraints nullable="false"/></column>
+            <column name="ID_GESTOR" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="ID_BANCO" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="ID_USUARIO" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="ID_CLIENTE_LAAS" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="TS_DATA_CADASTRO" type="${TIMESTAMP}" defaultValueComputed="${CURRENT_TIMESTAMP}">     <constraints nullable="false"/></column>
+            <column name="TS_ULT_MODIFICACAO" type="${TIMESTAMP}">   <constraints nullable="false"/></column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="ID_BANCO" baseTableName="CONTA_BANCARIA"  constraintName="FK_CONTA_BANCARIA_BANCO" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_BANCO" referencedTableName="BANCO" />
+        <addForeignKeyConstraint baseColumnNames="ID_GESTOR" baseTableName="CONTA_BANCARIA"  constraintName="FK_CONTA_BANCARIA_GESTOR" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_USUARIO_OU_GRUPO" referencedTableName="USUARIO_OU_GRUPO" />
+        <addForeignKeyConstraint baseColumnNames="ID_USUARIO" baseTableName="CONTA_BANCARIA"  constraintName="FK_CONTA_BANCARIA_USUARIO" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_USUARIO_OU_GRUPO" referencedTableName="USUARIO_OU_GRUPO" />
+        <addForeignKeyConstraint baseColumnNames="ID_CLIENTE_LAAS" baseTableName="CONTA_BANCARIA"  constraintName="FK_CONTA_BANCARIA_CLIENTE_LAAS" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID_CLIENTE_LAAS" referencedTableName="CLIENTE_LAAS" />
+
+        <insert tableName="BANCO">
+
+            <column name="TX_CODIGO_BANCO" value="001"/>
+
+            <column name="TX_NOME_BANCO" value="Banco do Brasil S.A."/>
+
+            <column name="TX_DV_CODIGO_BANCO" value="9"/>
+
+        </insert>
+        <insert tableName="BANCO">
+
+            <column name="TX_CODIGO_BANCO" value="237"/>
+
+            <column name="TX_NOME_BANCO" value="Banco Bradesco S.A."/>
+
+            <column name="TX_DV_CODIGO_BANCO" value="2"/>
+
+        </insert>
+        <insert tableName="BANCO">
+
+            <column name="TX_CODIGO_BANCO" value="033"/>
+
+            <column name="TX_NOME_BANCO" value="Banco Santander (Brasil) S.A."/>
+
+            <column name="TX_DV_CODIGO_BANCO" value="7"/>
+
+        </insert>
+        <insert tableName="BANCO">
+
+            <column name="TX_CODIGO_BANCO" value="104"/>
+
+            <column name="TX_NOME_BANCO" value="Caixa Econômica Federal"/>
+
+            <column name="TX_DV_CODIGO_BANCO" value="0"/>
+
+        </insert>
+        <insert tableName="BANCO">
+
+            <column name="TX_CODIGO_BANCO" value="399"/>
+
+            <column name="TX_NOME_BANCO" value="HSBC Bank Brasil S.A. - Banco Múltiplo"/>
+
+            <column name="TX_DV_CODIGO_BANCO" value="9"/>
+
+        </insert>
+        <insert tableName="BANCO">
+
+            <column name="TX_CODIGO_BANCO" value="341"/>
+
+            <column name="TX_NOME_BANCO" value="Banco Itaú S.A."/>
+
+            <column name="TX_DV_CODIGO_BANCO" value="7"/>
+
+        </insert>
+        <insert tableName="TIPO_CADASTRO">    <!-- ID= 24 -->
+            <column name="TX_NOME_TIPO_CADASTRO" value="Conta bancária"/>
+            <column name="TX_NOME_CLASSE" value="ContaBancaria"/>
+        </insert>
+</changeSet>
+
+</databaseChangeLog>

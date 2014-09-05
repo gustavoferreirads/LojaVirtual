@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="NOW" dbms="hsqldb" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+
+    <changeSet author="laas" id="9">
+        <addColumn tableName="TIPOS_DO_EVENTO">
+            <column name="FG_FIXO" type="BOOLEAN" defaultValueBoolean="false"/>
+        </addColumn>
+        <insert tableName="TIPOS_DO_EVENTO">
+            <column name="TX_NOME" value="Atendimento" />
+            <column name="TX_COR" value="#2A17B1" />
+            <column name="FG_FIXO" type="BOOLEAN" valueBoolean="true"/>
+            <column name="ID_CLIENTE_LAAS" valueNumeric="1" />
+            <column name="TS_ULTIMA_MODIFICACAO" valueDate="${CURRENT_TIMESTAMP}" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

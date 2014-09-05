@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="63">
+
+        <createTable tableName="MODELO_DE_EXPORTACAO">
+            <column name="ID_MODELO_DE_EXPORTACAO" type="BIGINT" autoIncrement="true" >
+                <constraints primaryKey="true" />
+            </column>
+            <column name="TX_DESCRICAO_MODELO" type="VARCHAR(100)" />
+            <column name="TS_ULT_MODIFICACAO" type="${TIMESTAMP}" />
+            <column name="TS_DATA_CADASTRO" type="${TIMESTAMP}" />
+            <column name="ID_TIPO_CADASTRO" type="BIGINT" />
+            <column name="ID_CLIENTE_LAAS" type="BIGINT" />
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="MODELO_DE_EXPORTACAO" baseColumnNames="ID_TIPO_CADASTRO" constraintName="FK_MODELO_DE_EXPORTACAO_ID_TIPO_CADASTRO"
+                                 referencedTableName="TIPO_CADASTRO" referencedColumnNames="ID_TIPO_CADASTRO" />
+
+        <addForeignKeyConstraint baseTableName="MODELO_DE_EXPORTACAO" baseColumnNames="ID_CLIENTE_LAAS" constraintName="FK_MODELO_DE_EXPORTACAO_ID_CLIENTE_LAAS"
+                                 referencedTableName="CLIENTE_LAAS" referencedColumnNames="ID_CLIENTE_LAAS" />
+
+
+        <createTable tableName="CAMPO_DE_MODELO_EXPORTACAO">
+            <column name="ID_CAMPO_DE_MODELO_EXPORTACAO" type="BIGINT" autoIncrement="true" >
+                <constraints primaryKey="true" />
+            </column>
+            <column name="TX_DESCRICAO_CAMPO" type="VARCHAR(100)"/>
+            <column name="TX_VALOR_CAMPO" type="VARCHAR(100)" />
+            <column name="TS_ULT_MODIFICACAO" type="${TIMESTAMP}" />
+            <column name="TS_DATA_CADASTRO" type="${TIMESTAMP}" />
+        </createTable>
+
+        <createTable tableName="CAMPO_E_MODELO_EXPORTACAO">
+            <column name="ID_CAMPO_DE_MODELO_EXPORTACAO" type="BIGINT" ><constraints nullable="false"/></column>
+            <column name="ID_MODELO_DE_EXPORTACAO" type="BIGINT" ><constraints nullable="false"/></column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="CAMPO_E_MODELO_EXPORTACAO" baseColumnNames="ID_CAMPO_DE_MODELO_EXPORTACAO" constraintName="FK_CAMPO_E_MODELO_EXPORTACAO_ID_CAMPO_DE_MODELO_EXPORTACAO"
+                                 referencedTableName="CAMPO_DE_MODELO_EXPORTACAO" referencedColumnNames="ID_CAMPO_DE_MODELO_EXPORTACAO" />
+
+        <addForeignKeyConstraint baseTableName="CAMPO_E_MODELO_EXPORTACAO" baseColumnNames="ID_MODELO_DE_EXPORTACAO" constraintName="FK_CAMPO_E_MODELO_EXPORTACAO_ID_MODELO_DE_EXPORTACAO"
+                                 referencedTableName="MODELO_DE_EXPORTACAO" referencedColumnNames="ID_MODELO_DE_EXPORTACAO" />
+
+    </changeSet>
+
+</databaseChangeLog>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="mysql" />
+    <property name="LONG.VARCHAR" value="LONGVARCHAR" dbms="hsqldb" />
+    <property name="LONG.VARCHAR" value="LONG VARCHAR" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP" dbms="derby" />
+    <property name="TIMESTAMP" value="TIMESTAMP(3)" dbms="mysql" />
+    <property name="CURRENT_TIMESTAMP" value="CURRENT_TIMESTAMP" dbms="derby" />
+    <property name="CURRENT_TIMESTAMP" value="NOW(3)" dbms="mysql" />
+
+
+    <changeSet author="laas" id="68">
+
+        <createTable tableName="MODELO_PRONTO">
+            <column name="ID_MODELO_PRONTO" type="BIGINT" autoIncrement="true" >
+                <constraints primaryKey="true" />
+            </column>
+            <column name="TX_DESCRICAO" type="VARCHAR(100)" />
+            <column name="TX_PAGINA" type="VARCHAR(100)" />
+            <column name="TX_NOME_ARQUIVO" type="VARCHAR(100)" />
+            <column name="TX_NOME_JRXML" type="VARCHAR(100)" />
+            <column name="ID_TIPO_CADASTRO" type="BIGINT" />
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="MODELO_PRONTO" baseColumnNames="ID_TIPO_CADASTRO" constraintName="FK_MODELO_PRONTO_ID_TIPO_CADASTRO"
+                                 referencedTableName="TIPO_CADASTRO" referencedColumnNames="ID_TIPO_CADASTRO" />
+
+    </changeSet>
+
+</databaseChangeLog>
+
