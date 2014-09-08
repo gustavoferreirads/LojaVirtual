@@ -15,8 +15,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-@Entity
-@Table(name="UF")
+//@Entity
+//@Table(name="UF")
 public class Uf extends Entidade implements Serializable {
 	
 	private static final long serialVersionUID = -1680226833022296643L;

@@ -10,19 +10,16 @@ import java.sql.Timestamp;
  * The persistent class for the MUNICIPIO_COMARCA database table.
  * 
  */
-@Entity
-@Table(name="MUNICIPIO_COMARCA")
-public class MunicipioComarca extends Entidade implements Serializable {
+//@Entity
+//@Table(name="MUNICIPIO")
+public class Municipio extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_MUNICIPIO_COMARCA")
+	@Column(name="ID_MUNICIPIO")
 	private Long id;
 
-	@Column(name="FG_COMARCA")
-	private Boolean comarca;
-	
 	@ManyToOne()
 	@JoinColumn(name="ID_UF")
 	private Uf uf;
@@ -31,19 +28,15 @@ public class MunicipioComarca extends Entidade implements Serializable {
 	@Column(name="TS_ULT_MODIFICACAO")
 	private Timestamp ultimaModificacao;
 
-	@Column(name="TX_MUNICIPIO_COMARCA")
+	@Column(name="TX_MUNICIPIO")
 	private String descricao;
 
-    public MunicipioComarca() {
+    public Municipio() {
     }
 
 	@SuppressWarnings("unchecked")
 	public Long getId() {
 		return this.id;
-	}
-
-	public Boolean getComarca() {
-		return this.comarca;
 	}
 
 	public Timestamp getUltimaModificacao() {
@@ -82,7 +75,7 @@ public class MunicipioComarca extends Entidade implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MunicipioComarca other = (MunicipioComarca) obj;
+		Municipio other = (Municipio) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

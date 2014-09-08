@@ -30,9 +30,9 @@ import br.com.lojavirtual.validacao.Email;
 import br.com.lojavirtual.validacao.ValidaCPF;
 
 @SuppressWarnings("unchecked")
-@Entity
-@Table(name="CLIENTE_LOJA")
-@Auditoria
+//@Entity
+//@Table(name="CLIENTE_LOJA")
+//@Auditoria
 public class Cliente extends Entidade implements Serializable {
 
 
@@ -77,7 +77,7 @@ public class Cliente extends Entidade implements Serializable {
 
     @JoinColumn(name = "ID_MUNICIPIO_COMARCA")
     @ManyToOne
-    private MunicipioComarca municipioComarca;
+    private Municipio municipioComarca;
 
 
     @Enumerated(EnumType.ORDINAL)
@@ -161,11 +161,11 @@ public class Cliente extends Entidade implements Serializable {
 	@Column(name = "TX_FUSO_HORARIO")
 	private String TimezoneId = "America/Sao_Paulo";
 	
-    public MunicipioComarca getMunicipioComarca() {
+    public Municipio getMunicipioComarca() {
         return municipioComarca;
     }
 
-    public void setMunicipioComarca(MunicipioComarca municipioComarca) {
+    public void setMunicipioComarca(Municipio municipioComarca) {
         this.municipioComarca = municipioComarca;
     }
 
