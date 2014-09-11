@@ -6,6 +6,7 @@ import java.util.List;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Instance;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
@@ -19,17 +20,20 @@ import br.com.lojavirtual.api.servico.IEntidadeDao;
 public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>, Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private EntityManager entityManager;
+	
+	@PersistenceContext 
+	EntityManager entityManager;
+	
 	private Class<?> clazz;
 
 	private Instance<Cliente> clienteInstance;
 
 	protected EntidadeDao() {
 	}
-
-	public EntidadeDao(EntityManager entityManager, Class<?> clazz, Instance<Cliente> clienteInstance) {
+	
+	
+	public EntidadeDao(Class<?> clazz, Instance<Cliente> clienteInstance) {
 		this.clienteInstance = clienteInstance;
-		this.entityManager = entityManager;
 		this.clazz = clazz;
 	}
 
