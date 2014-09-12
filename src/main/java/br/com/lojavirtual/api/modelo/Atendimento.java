@@ -1,7 +1,11 @@
 package br.com.lojavirtual.api.modelo;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,32 +14,38 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Atendimento.findAll", query="SELECT a FROM Atendimento a")
-public class Atendimento implements Serializable {
+@Table(name="Atendimento")
+public class Atendimento  extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="id_atendimento")
-	private int idAtendimento;
+	private Long id;
 
-	//bi-directional many-to-one association to Chamado
 	@ManyToOne
 	@JoinColumn(name="id_chamado")
 	private Chamado chamado;
 
-	//bi-directional many-to-one association to Comentario
 	@OneToMany(mappedBy="atendimento")
 	private List<Comentario> comentarios;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_cadastro")
+	private Date dataCadastro;
+	
+	@Version
+	@Column(name="ultimaModificacao")
+	private Timestamp ultimaModificacao;
+	
 	public Atendimento() {
 	}
 
-	public int getIdAtendimento() {
-		return this.idAtendimento;
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setIdAtendimento(int idAtendimento) {
-		this.idAtendimento = idAtendimento;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Chamado getChamado() {
@@ -57,15 +67,27 @@ public class Atendimento implements Serializable {
 	public Comentario addComentario(Comentario comentario) {
 		getComentarios().add(comentario);
 		comentario.setAtendimento(this);
-
 		return comentario;
 	}
 
 	public Comentario removeComentario(Comentario comentario) {
 		getComentarios().remove(comentario);
 		comentario.setAtendimento(null);
-
 		return comentario;
 	}
+
+	public Timestamp getUltimaModificacao() {
+		return this.ultimaModificacao;
+	}
+
+	public void setUltimaModificacao(Timestamp ultimaModificacao) {
+		this.ultimaModificacao = ultimaModificacao;
+	}
+
+
+    @PrePersist
+    public void prePersist() {
+        this.dataCadastro = new Timestamp(System.currentTimeMillis());
+    }
 
 }

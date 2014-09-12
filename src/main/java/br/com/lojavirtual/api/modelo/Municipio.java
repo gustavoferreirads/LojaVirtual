@@ -10,8 +10,8 @@ import java.sql.Timestamp;
  * The persistent class for the MUNICIPIO_COMARCA database table.
  * 
  */
-//@Entity
-//@Table(name="MUNICIPIO")
+@Entity
+@Table(name="MUNICIPIO")
 public class Municipio extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,10 +25,10 @@ public class Municipio extends Entidade implements Serializable {
 	private Uf uf;
 
 	@Version
-	@Column(name="TS_ULT_MODIFICACAO")
+	@Column(name="ultimaModificacao")
 	private Timestamp ultimaModificacao;
 
-	@Column(name="TX_MUNICIPIO")
+	@Column(name="descricao")
 	private String descricao;
 
     public Municipio() {

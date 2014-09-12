@@ -1,7 +1,11 @@
 package br.com.lojavirtual.api.modelo;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,46 +14,58 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Endereco.findAll", query="SELECT e FROM Endereco e")
-public class Endereco implements Serializable {
+@Table(name="Endereco")
+public class Endereco extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="id_entrega")
-	private int idEntrega;
+	private Long id;
 
+	@Column(name="cep")
 	private String cep;
 
+	@Column(name="complemento")
 	private String complemento;
 
+	@Column(name="endereco")
 	private String endereco;
 
+	@Column(name="logradouro")
 	private String logradouro;
 
+	@Column(name="numero")
 	private String numero;
 
-	//bi-directional many-to-one association to Cliente
 	@OneToMany(mappedBy="endereco")
 	private List<Cliente> clientes;
 
-	//bi-directional many-to-one association to Municipio
 	@ManyToOne
 	@JoinColumn(name="id_municipio")
 	private Municipio municipio;
 
-	//bi-directional many-to-one association to Venda
 	@OneToMany(mappedBy="endereco")
 	private List<Venda> vendas;
+	
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_cadastro")
+	private Date dataCadastro;
+	
+	@Version
+	@Column(name="ultimaModificacao")
+	private Timestamp ultimaModificacao;
 
 	public Endereco() {
 	}
 
-	public int getIdEntrega() {
-		return this.idEntrega;
+	@Override
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setIdEntrega(int idEntrega) {
-		this.idEntrega = idEntrega;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCep() {
@@ -143,5 +159,16 @@ public class Endereco implements Serializable {
 
 		return venda;
 	}
+
+	@Override
+	public Timestamp getUltimaModificacao() {
+		return ultimaModificacao;
+	}
+	
+	@PrePersist
+	public void prePersist() {
+		this.dataCadastro = new Timestamp(System.currentTimeMillis());
+	}
+
 
 }

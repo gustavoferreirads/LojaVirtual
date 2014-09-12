@@ -3,6 +3,7 @@ package br.com.lojavirtual.api.modelo;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -30,6 +31,10 @@ public class Promocao implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ultimaModificacao;
+
+	//bi-directional many-to-one association to Produto
+	@OneToMany(mappedBy="promocao")
+	private List<Produto> produtos;
 
 	public Promocao() {
 	}
@@ -72,6 +77,28 @@ public class Promocao implements Serializable {
 
 	public void setUltimaModificacao(Date ultimaModificacao) {
 		this.ultimaModificacao = ultimaModificacao;
+	}
+
+	public List<Produto> getProdutos() {
+		return this.produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public Produto addProduto(Produto produto) {
+		getProdutos().add(produto);
+		produto.setPromocao(this);
+
+		return produto;
+	}
+
+	public Produto removeProduto(Produto produto) {
+		getProdutos().remove(produto);
+		produto.setPromocao(null);
+
+		return produto;
 	}
 
 }

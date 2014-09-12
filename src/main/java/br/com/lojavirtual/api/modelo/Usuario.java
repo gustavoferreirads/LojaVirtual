@@ -3,6 +3,7 @@ package br.com.lojavirtual.api.modelo;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -14,12 +15,15 @@ import java.util.Date;
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private UsuarioPK id;
+	@Id
+	@Column(name="id_usuario")
+	private int idUsuario;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_cadastro")
 	private Date dataCadastro;
+
+	private String login;
 
 	private String nome;
 
@@ -27,6 +31,22 @@ public class Usuario implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ultimaModificacao;
+
+	//bi-directional many-to-one association to Categoria
+	@OneToMany(mappedBy="usuario")
+	private List<Categoria> categorias;
+
+	//bi-directional many-to-one association to Chamado
+	@OneToMany(mappedBy="usuario")
+	private List<Chamado> chamados;
+
+	//bi-directional many-to-one association to Permissao
+	@OneToMany(mappedBy="usuario")
+	private List<Permissao> permissaos;
+
+	//bi-directional many-to-one association to Produto
+	@OneToMany(mappedBy="usuario")
+	private List<Produto> produtos;
 
 	//bi-directional many-to-one association to Grupo
 	@ManyToOne
@@ -36,12 +56,12 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public UsuarioPK getId() {
-		return this.id;
+	public int getIdUsuario() {
+		return this.idUsuario;
 	}
 
-	public void setId(UsuarioPK id) {
-		this.id = id;
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public Date getDataCadastro() {
@@ -50,6 +70,14 @@ public class Usuario implements Serializable {
 
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
+	}
+
+	public String getLogin() {
+		return this.login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getNome() {
@@ -74,6 +102,94 @@ public class Usuario implements Serializable {
 
 	public void setUltimaModificacao(Date ultimaModificacao) {
 		this.ultimaModificacao = ultimaModificacao;
+	}
+
+	public List<Categoria> getCategorias() {
+		return this.categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	public Categoria addCategoria(Categoria categoria) {
+		getCategorias().add(categoria);
+		categoria.setUsuario(this);
+
+		return categoria;
+	}
+
+	public Categoria removeCategoria(Categoria categoria) {
+		getCategorias().remove(categoria);
+		categoria.setUsuario(null);
+
+		return categoria;
+	}
+
+	public List<Chamado> getChamados() {
+		return this.chamados;
+	}
+
+	public void setChamados(List<Chamado> chamados) {
+		this.chamados = chamados;
+	}
+
+	public Chamado addChamado(Chamado chamado) {
+		getChamados().add(chamado);
+		chamado.setUsuario(this);
+
+		return chamado;
+	}
+
+	public Chamado removeChamado(Chamado chamado) {
+		getChamados().remove(chamado);
+		chamado.setUsuario(null);
+
+		return chamado;
+	}
+
+	public List<Permissao> getPermissaos() {
+		return this.permissaos;
+	}
+
+	public void setPermissaos(List<Permissao> permissaos) {
+		this.permissaos = permissaos;
+	}
+
+	public Permissao addPermissao(Permissao permissao) {
+		getPermissaos().add(permissao);
+		permissao.setUsuario(this);
+
+		return permissao;
+	}
+
+	public Permissao removePermissao(Permissao permissao) {
+		getPermissaos().remove(permissao);
+		permissao.setUsuario(null);
+
+		return permissao;
+	}
+
+	public List<Produto> getProdutos() {
+		return this.produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public Produto addProduto(Produto produto) {
+		getProdutos().add(produto);
+		produto.setUsuario(this);
+
+		return produto;
+	}
+
+	public Produto removeProduto(Produto produto) {
+		getProdutos().remove(produto);
+		produto.setUsuario(null);
+
+		return produto;
 	}
 
 	public Grupo getGrupo() {

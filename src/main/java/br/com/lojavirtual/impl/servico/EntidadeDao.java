@@ -11,7 +11,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
-import br.com.lojavirtual.api.modelo.Cliente;
+import br.com.lojavirtual.api.modelo.Cliente_BKP;
 import br.com.lojavirtual.api.modelo.Entidade;
 import br.com.lojavirtual.api.modelo.EntidadeCliente;
 import br.com.lojavirtual.api.servico.IEntidadeDao;
@@ -26,13 +26,13 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
 	
 	private Class<?> clazz;
 
-	private Instance<Cliente> clienteInstance;
+	private Instance<Cliente_BKP> clienteInstance;
 
 	protected EntidadeDao() {
 	}
 	
 	
-	public EntidadeDao(Class<?> clazz, Instance<Cliente> clienteInstance) {
+	public EntidadeDao(Class<?> clazz, Instance<Cliente_BKP> clienteInstance) {
 		this.clienteInstance = clienteInstance;
 		this.clazz = clazz;
 	}
@@ -105,7 +105,7 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
 		if (clienteInstance == null) {
 			return queryBuilder.toString();
 		}
-		Cliente cliente = clienteInstance.get();
+		Cliente_BKP cliente = clienteInstance.get();
 		
 			if(cliente.getId() != null && !cliente.isLojaCliente() && instanceEntidadeCliente(clazz)){
 				String queryLowerCase = query.toLowerCase();
@@ -140,7 +140,7 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
 		}
 	}
 
-	protected Cliente getCliente() {
+	protected Cliente_BKP getCliente() {
 		return clienteInstance.get();
 	}
 

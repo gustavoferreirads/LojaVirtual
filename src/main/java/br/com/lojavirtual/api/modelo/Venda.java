@@ -3,6 +3,7 @@ package br.com.lojavirtual.api.modelo;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -32,6 +33,10 @@ public class Venda implements Serializable {
 
 	@Column(name="valor_total")
 	private float valorTotal;
+
+	//bi-directional many-to-one association to ItemVenda
+	@OneToMany(mappedBy="venda")
+	private List<ItemVenda> itemVendas;
 
 	//bi-directional many-to-one association to Cliente
 	@ManyToOne
@@ -92,6 +97,28 @@ public class Venda implements Serializable {
 
 	public void setValorTotal(float valorTotal) {
 		this.valorTotal = valorTotal;
+	}
+
+	public List<ItemVenda> getItemVendas() {
+		return this.itemVendas;
+	}
+
+	public void setItemVendas(List<ItemVenda> itemVendas) {
+		this.itemVendas = itemVendas;
+	}
+
+	public ItemVenda addItemVenda(ItemVenda itemVenda) {
+		getItemVendas().add(itemVenda);
+		itemVenda.setVenda(this);
+
+		return itemVenda;
+	}
+
+	public ItemVenda removeItemVenda(ItemVenda itemVenda) {
+		getItemVendas().remove(itemVenda);
+		itemVenda.setVenda(null);
+
+		return itemVenda;
 	}
 
 	public Cliente getCliente() {

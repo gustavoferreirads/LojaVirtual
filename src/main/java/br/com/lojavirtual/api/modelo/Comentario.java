@@ -1,6 +1,9 @@
 package br.com.lojavirtual.api.modelo;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.*;
 
 
@@ -9,33 +12,40 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Comentario.findAll", query="SELECT c FROM Comentario c")
-public class Comentario implements Serializable {
+@Table(name="Comentario")
+public class Comentario extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="id_comentario")
-	private int idComentario;
+	private Long id;
 
-	@Lob
-	private String comentario;
-
+	@Column(name="titulo")
 	private String titulo;
+	
+	@Column(name="comentario")
+	private String comentario;
+	
 
-	//bi-directional many-to-one association to Atendimento
 	@ManyToOne
 	@JoinColumn(name="id_atendimento")
 	private Atendimento atendimento;
 
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_cadastro")
+	private Date dataCadastro;
+	
+		
 	public Comentario() {
 	}
 
-	public int getIdComentario() {
-		return this.idComentario;
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setIdComentario(int idComentario) {
-		this.idComentario = idComentario;
+	public void setId(Long idComentario) {
+		this.id = idComentario;
 	}
 
 	public String getComentario() {
@@ -61,5 +71,14 @@ public class Comentario implements Serializable {
 	public void setAtendimento(Atendimento atendimento) {
 		this.atendimento = atendimento;
 	}
+	
+	@PrePersist
+	public void prePersist() {
+		this.dataCadastro = new Timestamp(System.currentTimeMillis());
+	}
 
+	@Override
+	public Timestamp getUltimaModificacao() {
+		return null;
+	}
 }

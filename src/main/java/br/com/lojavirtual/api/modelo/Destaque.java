@@ -1,8 +1,12 @@
 package br.com.lojavirtual.api.modelo;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -10,32 +14,37 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Destaque.findAll", query="SELECT d FROM Destaque d")
-public class Destaque implements Serializable {
+@Table(name="Destaque")
+public class Destaque extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="id_destaque")
-	private int idDestaque;
+	private Long id;
 
+	@Column(name="descricao")
+	private String descricao;
+	
+	@OneToMany(mappedBy="destaque")
+	private List<Produto> produtos;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_destaque")
 	private Date dataDestaque;
 
-	private String descricao;
-
+	@Version
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date ultimaModificacao;
+	private Timestamp ultimaModificacao;
 
 	public Destaque() {
 	}
 
-	public int getIdDestaque() {
-		return this.idDestaque;
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setIdDestaque(int idDestaque) {
-		this.idDestaque = idDestaque;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Date getDataDestaque() {
@@ -54,12 +63,34 @@ public class Destaque implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Date getUltimaModificacao() {
+	public Timestamp getUltimaModificacao() {
 		return this.ultimaModificacao;
 	}
 
-	public void setUltimaModificacao(Date ultimaModificacao) {
+	public void setUltimaModificacao(Timestamp ultimaModificacao) {
 		this.ultimaModificacao = ultimaModificacao;
+	}
+
+	public List<Produto> getProdutos() {
+		return this.produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public Produto addProduto(Produto produto) {
+		getProdutos().add(produto);
+		produto.setDestaque(this);
+
+		return produto;
+	}
+
+	public Produto removeProduto(Produto produto) {
+		getProdutos().remove(produto);
+		produto.setDestaque(null);
+
+		return produto;
 	}
 
 }

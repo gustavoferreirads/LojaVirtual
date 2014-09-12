@@ -1,7 +1,10 @@
 package br.com.lojavirtual.api.modelo;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -10,26 +13,28 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Item.findAll", query="SELECT i FROM Item i")
-public class Item implements Serializable {
+
+@Table(name="item")
+public class Item extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="id_item")
-	private int idItem;
+	private Long id;
+
+	@Column(name="nome")
+	private String nome;
+
+	@Column(name="path")
+	private String path;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_cadastro")
 	private Date dataCadastro;
-
-	private String nome;
-
-	private String path;
-
+	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date ultimaModificacao;
+	private Timestamp ultimaModificacao;
 
-	//bi-directional many-to-one association to Subcategoria
 	@ManyToOne
 	@JoinColumn(name="id_subcategoria")
 	private Subcategoria subcategoria;
@@ -37,12 +42,12 @@ public class Item implements Serializable {
 	public Item() {
 	}
 
-	public int getIdItem() {
-		return this.idItem;
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setIdItem(int idItem) {
-		this.idItem = idItem;
+	public void setIdItem(Long id) {
+		this.id= id;
 	}
 
 	public Date getDataCadastro() {
@@ -69,11 +74,11 @@ public class Item implements Serializable {
 		this.path = path;
 	}
 
-	public Date getUltimaModificacao() {
+	public Timestamp getUltimaModificacao() {
 		return this.ultimaModificacao;
 	}
 
-	public void setUltimaModificacao(Date ultimaModificacao) {
+	public void setUltimaModificacao(Timestamp ultimaModificacao) {
 		this.ultimaModificacao = ultimaModificacao;
 	}
 
@@ -83,6 +88,11 @@ public class Item implements Serializable {
 
 	public void setSubcategoria(Subcategoria subcategoria) {
 		this.subcategoria = subcategoria;
+	}
+
+	@PrePersist
+	public void prePersist() {
+		this.dataCadastro = new Timestamp(System.currentTimeMillis());
 	}
 
 }

@@ -30,11 +30,11 @@ public class Uf extends Entidade implements Serializable {
 	@Column(name="ID_UF")
 	private Long id;
 	
-	@Column(name="TX_UF")
+	@Column(name="nome")
 	private String descricao;
 	
 	@Version
-	@Column(name="TS_ULT_MODIFICACAO")
+	@Column(name="ultimaModificacao")
 	private Timestamp ultimaModificacao;
 	
 	

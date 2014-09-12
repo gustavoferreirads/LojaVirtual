@@ -1,7 +1,10 @@
 package br.com.lojavirtual.api.modelo;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -11,36 +14,39 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Grupo.findAll", query="SELECT g FROM Grupo g")
-public class Grupo implements Serializable {
+@Table(name="Grupo")
+public class Grupo extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="id_grupo")
-	private int idGrupo;
+	private Long id;
 
+	private String nome;
+
+	@OneToMany(mappedBy="grupo")
+	private List<Produto> produtos;
+
+	@OneToMany(mappedBy="grupo")
+	private List<Usuario> usuarios;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_cadastro")
 	private Date dataCadastro;
 
-	private String nome;
-
+	@Version
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date ultimaModificacao;
-
-	//bi-directional many-to-one association to Usuario
-	@OneToMany(mappedBy="grupo")
-	private List<Usuario> usuarios;
+	private Timestamp ultimaModificacao;
 
 	public Grupo() {
 	}
 
-	public int getIdGrupo() {
-		return this.idGrupo;
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setIdGrupo(int idGrupo) {
-		this.idGrupo = idGrupo;
+	public void setId(Long id) {
+		this.id= id;
 	}
 
 	public Date getDataCadastro() {
@@ -59,12 +65,34 @@ public class Grupo implements Serializable {
 		this.nome = nome;
 	}
 
-	public Date getUltimaModificacao() {
+	public Timestamp getUltimaModificacao() {
 		return this.ultimaModificacao;
 	}
 
-	public void setUltimaModificacao(Date ultimaModificacao) {
+	public void setUltimaModificacao(Timestamp ultimaModificacao) {
 		this.ultimaModificacao = ultimaModificacao;
+	}
+
+	public List<Produto> getProdutos() {
+		return this.produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public Produto addProduto(Produto produto) {
+		getProdutos().add(produto);
+		produto.setGrupo(this);
+
+		return produto;
+	}
+
+	public Produto removeProduto(Produto produto) {
+		getProdutos().remove(produto);
+		produto.setGrupo(null);
+
+		return produto;
 	}
 
 	public List<Usuario> getUsuarios() {
@@ -88,5 +116,11 @@ public class Grupo implements Serializable {
 
 		return usuario;
 	}
+	
+	@PrePersist
+	public void prePersist() {
+		this.dataCadastro = new Timestamp(System.currentTimeMillis());
+	}
+
 
 }
