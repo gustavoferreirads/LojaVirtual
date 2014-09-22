@@ -19,6 +19,7 @@ public class Strings {
     public static Object fromXML(String xml) {
         return X_STREAM.fromXML(xml);
     }
+
     public static String toXML(Object object) {
         return X_STREAM.toXML(object);
     }
@@ -44,58 +45,58 @@ public class Strings {
         return join("", stringsToBeJoined);
     }
 
-	public static String join(List<String> stringsToBeJoined) {
+    public static String join(List<String> stringsToBeJoined) {
         return join("", stringsToBeJoined.toArray(new String[stringsToBeJoined.size()]));
     }
 
-	public static String join(String joinChar, List<String> stringsToBeJoined) {
+    public static String join(String joinChar, List<String> stringsToBeJoined) {
         return join(joinChar, stringsToBeJoined.toArray(new String[stringsToBeJoined.size()]));
     }
 
-    public static  String capitalize(String name) {
+    public static String capitalize(String name) {
         return String.valueOf(name.charAt(0)).toUpperCase() + name.substring(1).toLowerCase();
     }
 
     public static String firstLetterToUpperCase(String name) {
         return String.valueOf(name.charAt(0)).toUpperCase() + name.substring(1);
     }
-    
-	public static String convertToStringRepresentation(Long value){
-		final long K = 1024, M = K * K, G = M * K, T = G * K;
-	    final long[] dividers = new long[] { T, G, M, K, 1 };
-	    final String[] units = new String[] { "TB", "GB", "MB", "KB", "B" };
-	    String result = "";
-	    if(value !=null){
-		    if(value < 1)
-		        throw new IllegalArgumentException("Tamano de arquivo inválido: " + value);
-		    
-		    for(int i = 0; i < dividers.length; i++){
-		        final long divider = dividers[i];
-		        if(value >= divider){
-		            result = format(value, divider, units[i]);
-		            break;
-		        }
-		    }
-		}
-	    return result;
-	}
 
-	private static String format(final long value,final long divider,final String unit){
-	    final double result =
-	        divider > 1 ? (double) value / (double) divider : (double) value;
-	    return String.format("%.1f %s", Double.valueOf(result), unit);
-	}
+    public static String convertToStringRepresentation(Long value) {
+        final long K = 1024, M = K * K, G = M * K, T = G * K;
+        final long[] dividers = new long[]{T, G, M, K, 1};
+        final String[] units = new String[]{"TB", "GB", "MB", "KB", "B"};
+        String result = "";
+        if (value != null) {
+            if (value < 1)
+                throw new IllegalArgumentException("Tamano de arquivo inválido: " + value);
 
-	public static String removeAccentAndReplaceBlankWithTraceFrom(String string) {
-		      return replaceBlankWithTraceFrom(removeAccentFrom(string));
-	}
+            for (int i = 0; i < dividers.length; i++) {
+                final long divider = dividers[i];
+                if (value >= divider) {
+                    result = format(value, divider, units[i]);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 
-	public static String removeAccentFrom(String string) {
-	    return Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-	}
+    private static String format(final long value, final long divider, final String unit) {
+        final double result =
+                divider > 1 ? (double) value / (double) divider : (double) value;
+        return String.format("%.1f %s", Double.valueOf(result), unit);
+    }
 
-	public static String replaceBlankWithTraceFrom(String string) {
-	    return string.replaceAll("\\s+", "-");
-	}
+    public static String removeAccentAndReplaceBlankWithTraceFrom(String string) {
+        return replaceBlankWithTraceFrom(removeAccentFrom(string));
+    }
+
+    public static String removeAccentFrom(String string) {
+        return Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+    }
+
+    public static String replaceBlankWithTraceFrom(String string) {
+        return string.replaceAll("\\s+", "-");
+    }
 
 }

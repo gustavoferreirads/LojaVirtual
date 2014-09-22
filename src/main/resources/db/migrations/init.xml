@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-1">
+        <createTable tableName="atendimento">
+            <column autoIncrement="true" name="id_atendimento" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="id_chamado" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-2">
+        <createTable tableName="categoria">
+            <column autoIncrement="true" name="id_categoria" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="path" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_usuario" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-3">
+        <createTable tableName="chamado">
+            <column autoIncrement="true" name="id_chamado" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="assunto" type="VARCHAR(200)"/>
+            <column name="descricao" type="VARCHAR(900)"/>
+            <column name="status" type="SMALLINT(5)"/>
+            <column name="id_usuario" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_cliente" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-4">
+        <createTable tableName="cliente">
+            <column autoIncrement="true" name="id_cliente" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone_celular" type="VARCHAR(45)"/>
+            <column name="telefone_residencial" type="VARCHAR(45)"/>
+            <column name="telefone_comercial" type="VARCHAR(45)"/>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_endereco" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-5">
+        <createTable tableName="comentario">
+            <column autoIncrement="true" name="id_comentario" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="titulo" type="VARCHAR(45)"/>
+            <column name="comentario" type="TEXT"/>
+            <column name="id_atendimento" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-6">
+        <createTable tableName="destaque">
+            <column autoIncrement="true" name="id_destaque" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="descricao" type="VARCHAR(200)"/>
+            <column name="data_destaque" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-7">
+        <createTable tableName="endereco">
+            <column autoIncrement="true" name="id_entrega" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="endereco" type="VARCHAR(200)"/>
+            <column name="logradouro" type="VARCHAR(45)"/>
+            <column name="complemento" type="VARCHAR(45)"/>
+            <column name="numero" type="VARCHAR(45)"/>
+            <column name="cep" type="VARCHAR(20)"/>
+            <column name="id_municipio" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-8">
+        <createTable tableName="funcionalidade">
+            <column autoIncrement="true" name="id_funcionalidade" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="id_tipo_de_cadastro" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(45)"/>
+            <column name="classe" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-9">
+        <createTable tableName="funcionalidade_operacao">
+            <column name="id_funcionalidade" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_tipo_de_cadastro" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_operacao" type="CHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-10">
+        <createTable tableName="grupo">
+            <column autoIncrement="true" name="id_grupo" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)"/>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-11">
+        <createTable tableName="imagem">
+            <column autoIncrement="true" name="id_imagem" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="caminho" type="VARCHAR(500)"/>
+            <column name="descricao" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-12">
+        <createTable tableName="item">
+            <column autoIncrement="true" name="id_item" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="path" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_cadastro" type="date"/>
+            <column name="ultimaModificacao" type="datetime"/>
+            <column name="id_subcategoria" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-13">
+        <createTable tableName="item_venda">
+            <column autoIncrement="true" name="id_item_venda" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="quantidade" type="INT(10)"/>
+            <column name="valor_total" type="FLOAT(12)"/>
+            <column name="id_produto" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_venda" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-14">
+        <createTable tableName="limite_estoque">
+            <column name="id_limite_estoque" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(600)"/>
+            <column name="quantiade_minima" type="BIGINT(19)"/>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_produto" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-15">
+        <createTable tableName="municipio">
+            <column autoIncrement="true" name="id_municipio" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="descricao" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime"/>
+            <column name="id_uf" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-16">
+        <createTable tableName="operacao">
+            <column name="id_operacao" type="CHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(200)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-17">
+        <createTable tableName="permissao">
+            <column name="id_usuario" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_operacao" type="CHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_funcionalidade" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_tipo_de_cadastro" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-18">
+        <createTable tableName="produto">
+            <column autoIncrement="true" name="id_produto" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(900)"/>
+            <column name="valor_liquido" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor_venda" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lucro" type="INT(10)"/>
+            <column name="quantidade" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantidade_acesso" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parcelamento" type="VARCHAR(100)"/>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_promocao" type="BIGINT(19)"/>
+            <column name="id_usuario" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_grupo" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_destaque" type="BIGINT(19)"/>
+            <column name="caminhoImagem" type="VARCHAR(500)"/>
+            <column name="id_imagem" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-19">
+        <createTable tableName="promocao">
+            <column autoIncrement="true" name="id_promocao" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="descricao" type="VARCHAR(200)"/>
+            <column name="data_promocao" type="date"/>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-20">
+        <createTable tableName="resposta">
+            <column autoIncrement="true" name="id_resposta" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="resposta" type="TEXT"/>
+            <column name="id_comentario" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_sub_resposta" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-21">
+        <createTable tableName="subcategoria">
+            <column autoIncrement="true" name="id_subcategoria" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="path" type="VARCHAR(100)"/>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_categoria" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-22">
+        <createTable tableName="tipo_de_cadastro">
+            <column autoIncrement="true" name="id_tipo_de_cadastro" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="classe" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ni_nivel_acesso" type="SMALLINT(5)"/>
+            <column name="fg_funcionalidade" type="SMALLINT(5)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-23">
+        <createTable tableName="uf">
+            <column autoIncrement="true" name="id_uf" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-24">
+        <createTable tableName="usuario">
+            <column autoIncrement="true" name="id_usuario" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="id_grupo" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)"/>
+            <column name="login" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="senha" type="VARCHAR(45)"/>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ultimaModificacao" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-25">
+        <createTable tableName="venda">
+            <column autoIncrement="true" name="id_venda" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="id_cliente" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor_total" type="FLOAT(12)"/>
+            <column name="desconto" type="FLOAT(12)"/>
+            <column name="tipo_operacao" type="SMALLINT(5)"/>
+            <column name="ultimaModificacao" type="datetime"/>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_entrega" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-26">
+        <addPrimaryKey columnNames="id_limite_estoque" constraintName="PRIMARY" tableName="limite_estoque"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-27">
+        <addPrimaryKey columnNames="id_operacao" constraintName="PRIMARY" tableName="operacao"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-28">
+        <addUniqueConstraint columnNames="login" constraintName="login_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="usuario"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-29">
+        <addForeignKeyConstraint baseColumnNames="id_chamado" baseTableName="atendimento" constraintName="fk_atendimento_chamado1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_chamado" referencedTableName="chamado"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-30">
+        <addForeignKeyConstraint baseColumnNames="id_usuario" baseTableName="categoria" constraintName="fk_categoria_usuario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_usuario" referencedTableName="usuario"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-31">
+        <addForeignKeyConstraint baseColumnNames="id_cliente" baseTableName="chamado" constraintName="fk_chamado_cliente1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_cliente" referencedTableName="cliente"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-32">
+        <addForeignKeyConstraint baseColumnNames="id_usuario" baseTableName="chamado" constraintName="fk_chamado_usuario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_usuario" referencedTableName="usuario"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-33">
+        <addForeignKeyConstraint baseColumnNames="id_endereco" baseTableName="cliente" constraintName="fk_cliente_endereco1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_entrega" referencedTableName="endereco"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-34">
+        <addForeignKeyConstraint baseColumnNames="id_atendimento" baseTableName="comentario" constraintName="fk_comentario_atendimento1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_atendimento" referencedTableName="atendimento"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-35">
+        <addForeignKeyConstraint baseColumnNames="id_municipio" baseTableName="endereco" constraintName="fk_endereco_municipio1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_municipio" referencedTableName="municipio"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-36">
+        <addForeignKeyConstraint baseColumnNames="id_funcionalidade" baseTableName="funcionalidade_operacao" constraintName="fk_funcionalidade_operacao_funcionalidade1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_funcionalidade" referencedTableName="funcionalidade"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-37">
+        <addForeignKeyConstraint baseColumnNames="id_operacao" baseTableName="funcionalidade_operacao" constraintName="fk_funcionalidade_operacao_operacao1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_operacao" referencedTableName="operacao"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-38">
+        <addForeignKeyConstraint baseColumnNames="id_tipo_de_cadastro" baseTableName="funcionalidade_operacao" constraintName="fk_funcionalidade_operacao_tipo_de_cadastro1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_tipo_de_cadastro" referencedTableName="tipo_de_cadastro"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-39">
+        <addForeignKeyConstraint baseColumnNames="id_tipo_de_cadastro" baseTableName="funcionalidade" constraintName="fk_funcionalidade_tipo_de_cadastro1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_tipo_de_cadastro" referencedTableName="tipo_de_cadastro"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-40">
+        <addForeignKeyConstraint baseColumnNames="id_subcategoria" baseTableName="item" constraintName="fk_item_subcategoria1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_subcategoria" referencedTableName="subcategoria"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-41">
+        <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="item_venda" constraintName="fk_item_venda_produto" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_produto" referencedTableName="produto"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-42">
+        <addForeignKeyConstraint baseColumnNames="id_venda" baseTableName="item_venda" constraintName="fk_item_venda_venda1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_venda" referencedTableName="venda"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-43">
+        <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="limite_estoque" constraintName="fk_limite_estoque_produto1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_produto" referencedTableName="produto"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-44">
+        <addForeignKeyConstraint baseColumnNames="id_uf" baseTableName="municipio" constraintName="fk_municipio_uf1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_uf" referencedTableName="uf"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-45">
+        <addForeignKeyConstraint baseColumnNames="id_funcionalidade" baseTableName="permissao" constraintName="fk_permissao_funcionalidade1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_funcionalidade" referencedTableName="funcionalidade"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-46">
+        <addForeignKeyConstraint baseColumnNames="id_operacao" baseTableName="permissao" constraintName="fk_permissao_operacao1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_operacao" referencedTableName="operacao"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-47">
+        <addForeignKeyConstraint baseColumnNames="id_tipo_de_cadastro" baseTableName="permissao" constraintName="fk_permissao_tipo_de_cadastro1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_tipo_de_cadastro" referencedTableName="tipo_de_cadastro"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-48">
+        <addForeignKeyConstraint baseColumnNames="id_usuario" baseTableName="permissao" constraintName="fk_permissao_usuario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_usuario" referencedTableName="usuario"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-49">
+        <addForeignKeyConstraint baseColumnNames="id_destaque" baseTableName="produto" constraintName="fk_produto_destaque1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_destaque" referencedTableName="destaque"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-50">
+        <addForeignKeyConstraint baseColumnNames="id_grupo" baseTableName="produto" constraintName="fk_produto_grupo1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_grupo" referencedTableName="grupo"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-51">
+        <addForeignKeyConstraint baseColumnNames="id_imagem" baseTableName="produto" constraintName="fk_produto_imagem1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_imagem" referencedTableName="imagem"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-52">
+        <addForeignKeyConstraint baseColumnNames="id_promocao" baseTableName="produto" constraintName="fk_produto_promocao1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_promocao" referencedTableName="promocao"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-53">
+        <addForeignKeyConstraint baseColumnNames="id_usuario" baseTableName="produto" constraintName="fk_produto_usuario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_usuario" referencedTableName="usuario"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-54">
+        <addForeignKeyConstraint baseColumnNames="id_comentario" baseTableName="resposta" constraintName="fk_resposta_comentario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_comentario" referencedTableName="comentario"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-55">
+        <addForeignKeyConstraint baseColumnNames="id_sub_resposta" baseTableName="resposta" constraintName="fk_resposta_resposta1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_resposta" referencedTableName="resposta"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-56">
+        <addForeignKeyConstraint baseColumnNames="id_categoria" baseTableName="subcategoria" constraintName="fk_subcategoria_categoria1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_categoria" referencedTableName="categoria"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-57">
+        <addForeignKeyConstraint baseColumnNames="id_grupo" baseTableName="usuario" constraintName="fk_usuario_grupo1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_grupo" referencedTableName="grupo"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-58">
+        <addForeignKeyConstraint baseColumnNames="id_cliente" baseTableName="venda" constraintName="fk_venda_cliente1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_cliente" referencedTableName="cliente"/>
+    </changeSet>
+    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-59">
+        <addForeignKeyConstraint baseColumnNames="id_entrega" baseTableName="venda" constraintName="fk_venda_entrega1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_entrega" referencedTableName="endereco"/>
+    </changeSet>
+</databaseChangeLog>

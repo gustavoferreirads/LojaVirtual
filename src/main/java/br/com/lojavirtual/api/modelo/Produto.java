@@ -10,232 +10,242 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="Produto")
+@Table(name = "Produto")
 public class Produto implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_produto")
-	private Long id;
+    @Id
+    @Column(name = "id_produto")
+    private Long id;
 
-	@Column(name="descricao")
-	private String descricao;
+    @Column(name = "descricao")
+    private String descricao;
 
-	@Column(name="lucro")
-	private Integer lucro;
+    @Column(name = "lucro")
+    private Integer lucro;
 
-	@Column(name="nome")
-	private String nome;
+    @Column(name = "nome")
+    private String nome;
 
-	@Column(name="parcelamento")
-	private String parcelamento;
+    @Column(name = "parcelamento")
+    private String parcelamento;
 
-	@Column(name="quantidade")
-	private Integer quantidade;
+    @Column(name = "quantidade")
+    private Integer quantidade;
 
-	@Column(name="quantidade_acesso")
-	private Integer quantidadeAcesso;
+    @Column(name = "quantidade_acesso")
+    private Integer quantidadeAcesso;
 
-	@Column(name="valor_liquido")
-	private Float valorLiquido;
+    @Column(name = "valor_liquido")
+    private Float valorLiquido;
 
-	@Column(name="valor_venda")
-	private Float valorVenda;
+    @Column(name = "valor_venda")
+    private Float valorVenda;
 
-	@OneToMany(mappedBy="produto")
-	private List<ItemVenda> itemVendas;
+    @OneToMany(mappedBy = "produto")
+    private List<ItemVenda> itemVendas;
 
-	@OneToMany(mappedBy="produto")
-	private List<LimiteEstoque> limiteEstoques;
+    @OneToMany(mappedBy = "produto")
+    private List<LimiteEstoque> limiteEstoques;
 
-	@ManyToOne
-	@JoinColumn(name="id_promocao")
-	private Promocao promocao;
+    @ManyToOne
+    @JoinColumn(name = "id_promocao")
+    private Promocao promocao;
 
-	@ManyToOne
-	@JoinColumn(name="id_usuario")
-	private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
-	@ManyToOne
-	@JoinColumn(name="id_grupo")
-	private Grupo grupo;
+    @ManyToOne
+    @JoinColumn(name = "id_grupo")
+    private Grupo grupo;
 
-	@ManyToOne
-	@JoinColumn(name="id_destaque")
-	private Destaque destaque;
+    @ManyToOne
+    @JoinColumn(name = "id_destaque")
+    private Destaque destaque;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp ultimaModificacao;
-	
-	public Produto() {
-	}
+    @ManyToOne
+    @JoinColumn(name = "id_imagem")
+    private Imagem imagem;
 
-	public Long getId() {
-		return this.id;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	public void setIdProduto(Long id) {
-		this.id = id;
-	}
+    private Timestamp ultimaModificacao;
 
-	public Date getDataCadastro() {
-		return this.dataCadastro;
-	}
+    public Produto() {
+    }
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public String getDescricao() {
-		return this.descricao;
-	}
+    public void setIdProduto(Long id) {
+        this.id = id;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public Date getDataCadastro() {
+        return this.dataCadastro;
+    }
 
-	public int getLucro() {
-		return this.lucro;
-	}
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
-	public void setLucro(Integer lucro) {
-		this.lucro = lucro;
-	}
+    public String getDescricao() {
+        return this.descricao;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public int getLucro() {
+        return this.lucro;
+    }
 
-	public String getParcelamento() {
-		return this.parcelamento;
-	}
+    public void setLucro(Integer lucro) {
+        this.lucro = lucro;
+    }
 
-	public void setParcelamento(String parcelamento) {
-		this.parcelamento = parcelamento;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public int getQuantidade() {
-		return this.quantidade;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
+    public String getParcelamento() {
+        return this.parcelamento;
+    }
 
-	public int getQuantidadeAcesso() {
-		return this.quantidadeAcesso;
-	}
+    public void setParcelamento(String parcelamento) {
+        this.parcelamento = parcelamento;
+    }
 
-	public void setQuantidadeAcesso(int quantidadeAcesso) {
-		this.quantidadeAcesso = quantidadeAcesso;
-	}
+    public int getQuantidade() {
+        return this.quantidade;
+    }
 
-	public Date getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
-	public void setUltimaModificacao(Timestamp ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public int getQuantidadeAcesso() {
+        return this.quantidadeAcesso;
+    }
 
-	public float getValorLiquido() {
-		return this.valorLiquido;
-	}
+    public void setQuantidadeAcesso(int quantidadeAcesso) {
+        this.quantidadeAcesso = quantidadeAcesso;
+    }
 
-	public void setValorLiquido(Float valorLiquido) {
-		this.valorLiquido = valorLiquido;
-	}
+    public Date getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
 
-	public float getValorVenda() {
-		return this.valorVenda;
-	}
+    public void setUltimaModificacao(Timestamp ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
-	public void setValorVenda(Float valorVenda) {
-		this.valorVenda = valorVenda;
-	}
+    public float getValorLiquido() {
+        return this.valorLiquido;
+    }
 
-	public List<ItemVenda> getItemVendas() {
-		return this.itemVendas;
-	}
+    public void setValorLiquido(Float valorLiquido) {
+        this.valorLiquido = valorLiquido;
+    }
 
-	public void setItemVendas(List<ItemVenda> itemVendas) {
-		this.itemVendas = itemVendas;
-	}
+    public float getValorVenda() {
+        return this.valorVenda;
+    }
 
-	public ItemVenda addItemVenda(ItemVenda itemVenda) {
-		getItemVendas().add(itemVenda);
-		itemVenda.setProduto(this);
+    public void setValorVenda(Float valorVenda) {
+        this.valorVenda = valorVenda;
+    }
 
-		return itemVenda;
-	}
+    public List<ItemVenda> getItemVendas() {
+        return this.itemVendas;
+    }
 
-	public ItemVenda removeItemVenda(ItemVenda itemVenda) {
-		getItemVendas().remove(itemVenda);
-		itemVenda.setProduto(null);
+    public void setItemVendas(List<ItemVenda> itemVendas) {
+        this.itemVendas = itemVendas;
+    }
 
-		return itemVenda;
-	}
+    public ItemVenda addItemVenda(ItemVenda itemVenda) {
+        getItemVendas().add(itemVenda);
+        itemVenda.setProduto(this);
 
-	public List<LimiteEstoque> getLimiteEstoques() {
-		return this.limiteEstoques;
-	}
+        return itemVenda;
+    }
 
-	public void setLimiteEstoques(List<LimiteEstoque> limiteEstoques) {
-		this.limiteEstoques = limiteEstoques;
-	}
+    public ItemVenda removeItemVenda(ItemVenda itemVenda) {
+        getItemVendas().remove(itemVenda);
+        itemVenda.setProduto(null);
 
-	public LimiteEstoque addLimiteEstoque(LimiteEstoque limiteEstoque) {
-		getLimiteEstoques().add(limiteEstoque);
-		limiteEstoque.setProduto(this);
+        return itemVenda;
+    }
 
-		return limiteEstoque;
-	}
+    public List<LimiteEstoque> getLimiteEstoques() {
+        return this.limiteEstoques;
+    }
 
-	public LimiteEstoque removeLimiteEstoque(LimiteEstoque limiteEstoque) {
-		getLimiteEstoques().remove(limiteEstoque);
-		limiteEstoque.setProduto(null);
+    public void setLimiteEstoques(List<LimiteEstoque> limiteEstoques) {
+        this.limiteEstoques = limiteEstoques;
+    }
 
-		return limiteEstoque;
-	}
+    public LimiteEstoque addLimiteEstoque(LimiteEstoque limiteEstoque) {
+        getLimiteEstoques().add(limiteEstoque);
+        limiteEstoque.setProduto(this);
 
-	public Promocao getPromocao() {
-		return this.promocao;
-	}
+        return limiteEstoque;
+    }
 
-	public void setPromocao(Promocao promocao) {
-		this.promocao = promocao;
-	}
+    public LimiteEstoque removeLimiteEstoque(LimiteEstoque limiteEstoque) {
+        getLimiteEstoques().remove(limiteEstoque);
+        limiteEstoque.setProduto(null);
 
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
+        return limiteEstoque;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public Promocao getPromocao() {
+        return this.promocao;
+    }
 
-	public Grupo getGrupo() {
-		return this.grupo;
-	}
+    public void setPromocao(Promocao promocao) {
+        this.promocao = promocao;
+    }
 
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
 
-	public Destaque getDestaque() {
-		return this.destaque;
-	}
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-	public void setDestaque(Destaque destaque) {
-		this.destaque = destaque;
-	}
+    public Grupo getGrupo() {
+        return this.grupo;
+    }
 
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    public Destaque getDestaque() {
+        return this.destaque;
+    }
+
+    public void setDestaque(Destaque destaque) {
+        this.destaque = destaque;
+    }
+
+    public Imagem getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(Imagem imagem) {
+        this.imagem = imagem;
+    }
 }

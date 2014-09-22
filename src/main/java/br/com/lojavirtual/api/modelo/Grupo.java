@@ -11,116 +11,114 @@ import java.util.List;
 
 /**
  * The persistent class for the grupo database table.
- * 
  */
 @Entity
-@Table(name="Grupo")
+@Table(name = "Grupo")
 public class Grupo extends Entidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_grupo")
-	private Long id;
+    @Id
+    @Column(name = "id_grupo")
+    private Long id;
 
-	private String nome;
+    private String nome;
 
-	@OneToMany(mappedBy="grupo")
-	private List<Produto> produtos;
+    @OneToMany(mappedBy = "grupo")
+    private List<Produto> produtos;
 
-	@OneToMany(mappedBy="grupo")
-	private List<Usuario> usuarios;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
+    @OneToMany(mappedBy = "grupo")
+    private List<Usuario> usuarios;
 
-	@Version
-	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp ultimaModificacao;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	public Grupo() {
-	}
+    @Version
+    private Timestamp ultimaModificacao;
 
-	public Long getId() {
-		return this.id;
-	}
+    public Grupo() {
+    }
 
-	public void setId(Long id) {
-		this.id= id;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public Date getDataCadastro() {
-		return this.dataCadastro;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
+    public Date getDataCadastro() {
+        return this.dataCadastro;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public Timestamp getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setUltimaModificacao(Timestamp ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public Timestamp getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
 
-	public List<Produto> getProdutos() {
-		return this.produtos;
-	}
+    public void setUltimaModificacao(Timestamp ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
+    public List<Produto> getProdutos() {
+        return this.produtos;
+    }
 
-	public Produto addProduto(Produto produto) {
-		getProdutos().add(produto);
-		produto.setGrupo(this);
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
 
-		return produto;
-	}
+    public Produto addProduto(Produto produto) {
+        getProdutos().add(produto);
+        produto.setGrupo(this);
 
-	public Produto removeProduto(Produto produto) {
-		getProdutos().remove(produto);
-		produto.setGrupo(null);
+        return produto;
+    }
 
-		return produto;
-	}
+    public Produto removeProduto(Produto produto) {
+        getProdutos().remove(produto);
+        produto.setGrupo(null);
 
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
+        return produto;
+    }
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
+    public List<Usuario> getUsuarios() {
+        return this.usuarios;
+    }
 
-	public Usuario addUsuario(Usuario usuario) {
-		getUsuarios().add(usuario);
-		usuario.setGrupo(this);
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 
-		return usuario;
-	}
+    public Usuario addUsuario(Usuario usuario) {
+        getUsuarios().add(usuario);
+        usuario.setGrupo(this);
 
-	public Usuario removeUsuario(Usuario usuario) {
-		getUsuarios().remove(usuario);
-		usuario.setGrupo(null);
+        return usuario;
+    }
 
-		return usuario;
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		this.dataCadastro = new Timestamp(System.currentTimeMillis());
-	}
+    public Usuario removeUsuario(Usuario usuario) {
+        getUsuarios().remove(usuario);
+        usuario.setGrupo(null);
+
+        return usuario;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.dataCadastro = new Timestamp(System.currentTimeMillis());
+    }
 
 
 }

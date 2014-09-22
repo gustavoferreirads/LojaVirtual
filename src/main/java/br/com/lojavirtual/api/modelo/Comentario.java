@@ -9,76 +9,75 @@ import javax.persistence.*;
 
 /**
  * The persistent class for the comentario database table.
- * 
  */
 @Entity
-@Table(name="Comentario")
+@Table(name = "Comentario")
 public class Comentario extends Entidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_comentario")
-	private Long id;
+    @Id
+    @Column(name = "id_comentario")
+    private Long id;
 
-	@Column(name="titulo")
-	private String titulo;
-	
-	@Column(name="comentario")
-	private String comentario;
-	
+    @Column(name = "titulo")
+    private String titulo;
 
-	@ManyToOne
-	@JoinColumn(name="id_atendimento")
-	private Atendimento atendimento;
+    @Column(name = "comentario")
+    private String comentario;
 
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
-	
-		
-	public Comentario() {
-	}
 
-	public Long getId() {
-		return this.id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "id_atendimento")
+    private Atendimento atendimento;
 
-	public void setId(Long idComentario) {
-		this.id = idComentario;
-	}
 
-	public String getComentario() {
-		return this.comentario;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
-	}
 
-	public String getTitulo() {
-		return this.titulo;
-	}
+    public Comentario() {
+    }
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public Atendimento getAtendimento() {
-		return this.atendimento;
-	}
+    public void setId(Long idComentario) {
+        this.id = idComentario;
+    }
 
-	public void setAtendimento(Atendimento atendimento) {
-		this.atendimento = atendimento;
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		this.dataCadastro = new Timestamp(System.currentTimeMillis());
-	}
+    public String getComentario() {
+        return this.comentario;
+    }
 
-	@Override
-	public Timestamp getUltimaModificacao() {
-		return null;
-	}
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getTitulo() {
+        return this.titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Atendimento getAtendimento() {
+        return this.atendimento;
+    }
+
+    public void setAtendimento(Atendimento atendimento) {
+        this.atendimento = atendimento;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.dataCadastro = new Timestamp(System.currentTimeMillis());
+    }
+
+    @Override
+    public Timestamp getUltimaModificacao() {
+        return null;
+    }
 }

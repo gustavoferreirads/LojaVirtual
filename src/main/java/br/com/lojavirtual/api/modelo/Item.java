@@ -10,89 +10,87 @@ import java.util.Date;
 
 /**
  * The persistent class for the item database table.
- * 
  */
 @Entity
 
-@Table(name="item")
+@Table(name = "item")
 public class Item extends Entidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_item")
-	private Long id;
+    @Id
+    @Column(name = "id_item")
+    private Long id;
 
-	@Column(name="nome")
-	private String nome;
+    @Column(name = "nome")
+    private String nome;
 
-	@Column(name="path")
-	private String path;
+    @Column(name = "path")
+    private String path;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp ultimaModificacao;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	@ManyToOne
-	@JoinColumn(name="id_subcategoria")
-	private Subcategoria subcategoria;
+    private Timestamp ultimaModificacao;
 
-	public Item() {
-	}
+    @ManyToOne
+    @JoinColumn(name = "id_subcategoria")
+    private Subcategoria subcategoria;
 
-	public Long getId() {
-		return this.id;
-	}
+    public Item() {
+    }
 
-	public void setIdItem(Long id) {
-		this.id= id;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public Date getDataCadastro() {
-		return this.dataCadastro;
-	}
+    public void setIdItem(Long id) {
+        this.id = id;
+    }
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
+    public Date getDataCadastro() {
+        return this.dataCadastro;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public String getPath() {
-		return this.path;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setPath(String path) {
-		this.path = path;
-	}
+    public String getPath() {
+        return this.path;
+    }
 
-	public Timestamp getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public void setPath(String path) {
+        this.path = path;
+    }
 
-	public void setUltimaModificacao(Timestamp ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public Timestamp getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
 
-	public Subcategoria getSubcategoria() {
-		return this.subcategoria;
-	}
+    public void setUltimaModificacao(Timestamp ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
-	public void setSubcategoria(Subcategoria subcategoria) {
-		this.subcategoria = subcategoria;
-	}
+    public Subcategoria getSubcategoria() {
+        return this.subcategoria;
+    }
 
-	@PrePersist
-	public void prePersist() {
-		this.dataCadastro = new Timestamp(System.currentTimeMillis());
-	}
+    public void setSubcategoria(Subcategoria subcategoria) {
+        this.subcategoria = subcategoria;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.dataCadastro = new Timestamp(System.currentTimeMillis());
+    }
 
 }

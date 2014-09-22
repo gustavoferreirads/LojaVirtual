@@ -11,78 +11,77 @@ import java.util.List;
 
 /**
  * The persistent class for the atendimento database table.
- * 
  */
 @Entity
-@Table(name="Atendimento")
-public class Atendimento  extends Entidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "Atendimento")
+public class Atendimento extends Entidade implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_atendimento")
-	private Long id;
+    @Id
+    @Column(name = "id_atendimento")
+    private Long id;
 
-	@ManyToOne
-	@JoinColumn(name="id_chamado")
-	private Chamado chamado;
+    @ManyToOne
+    @JoinColumn(name = "id_chamado")
+    private Chamado chamado;
 
-	@OneToMany(mappedBy="atendimento")
-	private List<Comentario> comentarios;
+    @OneToMany(mappedBy = "atendimento")
+    private List<Comentario> comentarios;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
-	
-	@Version
-	@Column(name="ultimaModificacao")
-	private Timestamp ultimaModificacao;
-	
-	public Atendimento() {
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	public Long getId() {
-		return this.id;
-	}
+    @Version
+    @Column(name = "ultimaModificacao")
+    private Timestamp ultimaModificacao;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Atendimento() {
+    }
 
-	public Chamado getChamado() {
-		return this.chamado;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public void setChamado(Chamado chamado) {
-		this.chamado = chamado;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public List<Comentario> getComentarios() {
-		return this.comentarios;
-	}
+    public Chamado getChamado() {
+        return this.chamado;
+    }
 
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
-	}
+    public void setChamado(Chamado chamado) {
+        this.chamado = chamado;
+    }
 
-	public Comentario addComentario(Comentario comentario) {
-		getComentarios().add(comentario);
-		comentario.setAtendimento(this);
-		return comentario;
-	}
+    public List<Comentario> getComentarios() {
+        return this.comentarios;
+    }
 
-	public Comentario removeComentario(Comentario comentario) {
-		getComentarios().remove(comentario);
-		comentario.setAtendimento(null);
-		return comentario;
-	}
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 
-	public Timestamp getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public Comentario addComentario(Comentario comentario) {
+        getComentarios().add(comentario);
+        comentario.setAtendimento(this);
+        return comentario;
+    }
 
-	public void setUltimaModificacao(Timestamp ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public Comentario removeComentario(Comentario comentario) {
+        getComentarios().remove(comentario);
+        comentario.setAtendimento(null);
+        return comentario;
+    }
+
+    public Timestamp getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
+
+    public void setUltimaModificacao(Timestamp ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
 
     @PrePersist

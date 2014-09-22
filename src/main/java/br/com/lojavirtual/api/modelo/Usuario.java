@@ -1,203 +1,204 @@
 package br.com.lojavirtual.api.modelo;
 
+import br.com.lojavirtual.util.Strings;
+
 import java.io.Serializable;
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
 
 /**
  * The persistent class for the usuario database table.
- * 
  */
 @Entity
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
-public class Usuario implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Usuario extends Entidade implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_usuario")
-	private int idUsuario;
+    @Id
+    @Column(name = "id_usuario")
+    private Long id;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
+    private String login;
 
-	private String login;
+    private String nome;
 
-	private String nome;
+    private String senha;
 
-	private String senha;
+    //bi-directional many-to-one association to Categoria
+    @OneToMany(mappedBy = "usuario")
+    private List<Categoria> categorias;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date ultimaModificacao;
+    //bi-directional many-to-one association to Chamado
+    @OneToMany(mappedBy = "usuario")
+    private List<Chamado> chamados;
 
-	//bi-directional many-to-one association to Categoria
-	@OneToMany(mappedBy="usuario")
-	private List<Categoria> categorias;
+    //bi-directional many-to-one association to Permissao
+    @OneToMany(mappedBy = "usuario")
+    private List<Permissao> permissaos;
 
-	//bi-directional many-to-one association to Chamado
-	@OneToMany(mappedBy="usuario")
-	private List<Chamado> chamados;
+    //bi-directional many-to-one association to Produto
+    @OneToMany(mappedBy = "usuario")
+    private List<Produto> produtos;
 
-	//bi-directional many-to-one association to Permissao
-	@OneToMany(mappedBy="usuario")
-	private List<Permissao> permissaos;
+    //bi-directional many-to-one association to Grupo
+    @ManyToOne
+    @JoinColumn(name = "id_grupo")
+    private Grupo grupo;
 
-	//bi-directional many-to-one association to Produto
-	@OneToMany(mappedBy="usuario")
-	private List<Produto> produtos;
+    @Version
+    private Timestamp ultimaModificacao;
 
-	//bi-directional many-to-one association to Grupo
-	@ManyToOne
-	@JoinColumn(name="id_grupo")
-	private Grupo grupo;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro = new Date();
 
-	public Usuario() {
-	}
+    public Usuario() {
+    }
 
-	public int getIdUsuario() {
-		return this.idUsuario;
-	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
+    public Date getDataCadastro() {
+        return this.dataCadastro;
+    }
 
-	public Date getDataCadastro() {
-		return this.dataCadastro;
-	}
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
+    public String getLogin() {
+        return this.login;
+    }
 
-	public String getLogin() {
-		return this.login;
-	}
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getSenha() {
+        return this.senha;
+    }
 
-	public String getSenha() {
-		return this.senha;
-	}
+    public void setSenha(String senha) {
+        this.senha = Strings.hashMD5(senha);
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public Timestamp getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
 
-	public Date getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public void setUltimaModificacao(Timestamp ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
-	public void setUltimaModificacao(Date ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public List<Categoria> getCategorias() {
+        return this.categorias;
+    }
 
-	public List<Categoria> getCategorias() {
-		return this.categorias;
-	}
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
+    }
 
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
-	}
+    public Categoria addCategoria(Categoria categoria) {
+        getCategorias().add(categoria);
+        categoria.setUsuario(this);
 
-	public Categoria addCategoria(Categoria categoria) {
-		getCategorias().add(categoria);
-		categoria.setUsuario(this);
+        return categoria;
+    }
 
-		return categoria;
-	}
+    public Categoria removeCategoria(Categoria categoria) {
+        getCategorias().remove(categoria);
+        categoria.setUsuario(null);
 
-	public Categoria removeCategoria(Categoria categoria) {
-		getCategorias().remove(categoria);
-		categoria.setUsuario(null);
+        return categoria;
+    }
 
-		return categoria;
-	}
+    public List<Chamado> getChamados() {
+        return this.chamados;
+    }
 
-	public List<Chamado> getChamados() {
-		return this.chamados;
-	}
+    public void setChamados(List<Chamado> chamados) {
+        this.chamados = chamados;
+    }
 
-	public void setChamados(List<Chamado> chamados) {
-		this.chamados = chamados;
-	}
+    public Chamado addChamado(Chamado chamado) {
+        getChamados().add(chamado);
+        chamado.setUsuario(this);
 
-	public Chamado addChamado(Chamado chamado) {
-		getChamados().add(chamado);
-		chamado.setUsuario(this);
+        return chamado;
+    }
 
-		return chamado;
-	}
+    public Chamado removeChamado(Chamado chamado) {
+        getChamados().remove(chamado);
+        chamado.setUsuario(null);
 
-	public Chamado removeChamado(Chamado chamado) {
-		getChamados().remove(chamado);
-		chamado.setUsuario(null);
+        return chamado;
+    }
 
-		return chamado;
-	}
+    public List<Permissao> getPermissaos() {
+        return this.permissaos;
+    }
 
-	public List<Permissao> getPermissaos() {
-		return this.permissaos;
-	}
+    public void setPermissaos(List<Permissao> permissaos) {
+        this.permissaos = permissaos;
+    }
 
-	public void setPermissaos(List<Permissao> permissaos) {
-		this.permissaos = permissaos;
-	}
+    public Permissao addPermissao(Permissao permissao) {
+        getPermissaos().add(permissao);
+        permissao.setUsuario(this);
 
-	public Permissao addPermissao(Permissao permissao) {
-		getPermissaos().add(permissao);
-		permissao.setUsuario(this);
+        return permissao;
+    }
 
-		return permissao;
-	}
+    public Permissao removePermissao(Permissao permissao) {
+        getPermissaos().remove(permissao);
+        permissao.setUsuario(null);
 
-	public Permissao removePermissao(Permissao permissao) {
-		getPermissaos().remove(permissao);
-		permissao.setUsuario(null);
+        return permissao;
+    }
 
-		return permissao;
-	}
+    public List<Produto> getProdutos() {
+        return this.produtos;
+    }
 
-	public List<Produto> getProdutos() {
-		return this.produtos;
-	}
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
+    public Produto addProduto(Produto produto) {
+        getProdutos().add(produto);
+        produto.setUsuario(this);
 
-	public Produto addProduto(Produto produto) {
-		getProdutos().add(produto);
-		produto.setUsuario(this);
+        return produto;
+    }
 
-		return produto;
-	}
+    public Produto removeProduto(Produto produto) {
+        getProdutos().remove(produto);
+        produto.setUsuario(null);
 
-	public Produto removeProduto(Produto produto) {
-		getProdutos().remove(produto);
-		produto.setUsuario(null);
+        return produto;
+    }
 
-		return produto;
-	}
+    public Grupo getGrupo() {
+        return this.grupo;
+    }
 
-	public Grupo getGrupo() {
-		return this.grupo;
-	}
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
 
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

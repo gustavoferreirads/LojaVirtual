@@ -11,86 +11,84 @@ import java.util.List;
 
 /**
  * The persistent class for the destaque database table.
- * 
  */
 @Entity
-@Table(name="Destaque")
+@Table(name = "Destaque")
 public class Destaque extends Entidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_destaque")
-	private Long id;
+    @Id
+    @Column(name = "id_destaque")
+    private Long id;
 
-	@Column(name="descricao")
-	private String descricao;
-	
-	@OneToMany(mappedBy="destaque")
-	private List<Produto> produtos;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_destaque")
-	private Date dataDestaque;
+    @Column(name = "descricao")
+    private String descricao;
 
-	@Version
-	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp ultimaModificacao;
+    @OneToMany(mappedBy = "destaque")
+    private List<Produto> produtos;
 
-	public Destaque() {
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_destaque")
+    private Date dataDestaque;
 
-	public Long getId() {
-		return this.id;
-	}
+    @Version
+    private Timestamp ultimaModificacao;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Destaque() {
+    }
 
-	public Date getDataDestaque() {
-		return this.dataDestaque;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public void setDataDestaque(Date dataDestaque) {
-		this.dataDestaque = dataDestaque;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getDescricao() {
-		return this.descricao;
-	}
+    public Date getDataDestaque() {
+        return this.dataDestaque;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public void setDataDestaque(Date dataDestaque) {
+        this.dataDestaque = dataDestaque;
+    }
 
-	public Timestamp getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public String getDescricao() {
+        return this.descricao;
+    }
 
-	public void setUltimaModificacao(Timestamp ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public List<Produto> getProdutos() {
-		return this.produtos;
-	}
+    public Timestamp getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
+    public void setUltimaModificacao(Timestamp ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
-	public Produto addProduto(Produto produto) {
-		getProdutos().add(produto);
-		produto.setDestaque(this);
+    public List<Produto> getProdutos() {
+        return this.produtos;
+    }
 
-		return produto;
-	}
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
 
-	public Produto removeProduto(Produto produto) {
-		getProdutos().remove(produto);
-		produto.setDestaque(null);
+    public Produto addProduto(Produto produto) {
+        getProdutos().add(produto);
+        produto.setDestaque(this);
 
-		return produto;
-	}
+        return produto;
+    }
+
+    public Produto removeProduto(Produto produto) {
+        getProdutos().remove(produto);
+        produto.setDestaque(null);
+
+        return produto;
+    }
 
 }

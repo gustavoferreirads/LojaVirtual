@@ -8,97 +8,96 @@ import java.util.List;
 
 /**
  * The persistent class for the promocao database table.
- * 
  */
 @Entity
-@NamedQuery(name="Promocao.findAll", query="SELECT p FROM Promocao p")
+@NamedQuery(name = "Promocao.findAll", query = "SELECT p FROM Promocao p")
 public class Promocao implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_promocao")
-	private int idPromocao;
+    @Id
+    @Column(name = "id_promocao")
+    private int idPromocao;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_promocao")
-	private Date dataPromocao;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_promocao")
+    private Date dataPromocao;
 
-	private String descricao;
+    private String descricao;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date ultimaModificacao;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date ultimaModificacao;
 
-	//bi-directional many-to-one association to Produto
-	@OneToMany(mappedBy="promocao")
-	private List<Produto> produtos;
+    //bi-directional many-to-one association to Produto
+    @OneToMany(mappedBy = "promocao")
+    private List<Produto> produtos;
 
-	public Promocao() {
-	}
+    public Promocao() {
+    }
 
-	public int getIdPromocao() {
-		return this.idPromocao;
-	}
+    public int getIdPromocao() {
+        return this.idPromocao;
+    }
 
-	public void setIdPromocao(int idPromocao) {
-		this.idPromocao = idPromocao;
-	}
+    public void setIdPromocao(int idPromocao) {
+        this.idPromocao = idPromocao;
+    }
 
-	public Date getDataCadastro() {
-		return this.dataCadastro;
-	}
+    public Date getDataCadastro() {
+        return this.dataCadastro;
+    }
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
-	public Date getDataPromocao() {
-		return this.dataPromocao;
-	}
+    public Date getDataPromocao() {
+        return this.dataPromocao;
+    }
 
-	public void setDataPromocao(Date dataPromocao) {
-		this.dataPromocao = dataPromocao;
-	}
+    public void setDataPromocao(Date dataPromocao) {
+        this.dataPromocao = dataPromocao;
+    }
 
-	public String getDescricao() {
-		return this.descricao;
-	}
+    public String getDescricao() {
+        return this.descricao;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public Date getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public Date getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
 
-	public void setUltimaModificacao(Date ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public void setUltimaModificacao(Date ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
-	public List<Produto> getProdutos() {
-		return this.produtos;
-	}
+    public List<Produto> getProdutos() {
+        return this.produtos;
+    }
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
 
-	public Produto addProduto(Produto produto) {
-		getProdutos().add(produto);
-		produto.setPromocao(this);
+    public Produto addProduto(Produto produto) {
+        getProdutos().add(produto);
+        produto.setPromocao(this);
 
-		return produto;
-	}
+        return produto;
+    }
 
-	public Produto removeProduto(Produto produto) {
-		getProdutos().remove(produto);
-		produto.setPromocao(null);
+    public Produto removeProduto(Produto produto) {
+        getProdutos().remove(produto);
+        produto.setPromocao(null);
 
-		return produto;
-	}
+        return produto;
+    }
 
 }

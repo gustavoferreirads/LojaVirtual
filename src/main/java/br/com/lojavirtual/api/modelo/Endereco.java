@@ -11,164 +11,163 @@ import java.util.List;
 
 /**
  * The persistent class for the endereco database table.
- * 
  */
 @Entity
-@Table(name="Endereco")
+@Table(name = "Endereco")
 public class Endereco extends Entidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_entrega")
-	private Long id;
+    @Id
+    @Column(name = "id_entrega")
+    private Long id;
 
-	@Column(name="cep")
-	private String cep;
+    @Column(name = "cep")
+    private String cep;
 
-	@Column(name="complemento")
-	private String complemento;
+    @Column(name = "complemento")
+    private String complemento;
 
-	@Column(name="endereco")
-	private String endereco;
+    @Column(name = "endereco")
+    private String endereco;
 
-	@Column(name="logradouro")
-	private String logradouro;
+    @Column(name = "logradouro")
+    private String logradouro;
 
-	@Column(name="numero")
-	private String numero;
+    @Column(name = "numero")
+    private String numero;
 
-	@OneToMany(mappedBy="endereco")
-	private List<Cliente> clientes;
+    @OneToMany(mappedBy = "endereco")
+    private List<Cliente> clientes;
 
-	@ManyToOne
-	@JoinColumn(name="id_municipio")
-	private Municipio municipio;
+    @ManyToOne
+    @JoinColumn(name = "id_municipio")
+    private Municipio municipio;
 
-	@OneToMany(mappedBy="endereco")
-	private List<Venda> vendas;
-	
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
-	
-	@Version
-	@Column(name="ultimaModificacao")
-	private Timestamp ultimaModificacao;
+    @OneToMany(mappedBy = "endereco")
+    private List<Venda> vendas;
 
-	public Endereco() {
-	}
 
-	@Override
-	public Long getId() {
-		return this.id;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Version
+    @Column(name = "ultimaModificacao")
+    private Timestamp ultimaModificacao;
 
-	public String getCep() {
-		return this.cep;
-	}
+    public Endereco() {
+    }
 
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
+    @Override
+    public Long getId() {
+        return this.id;
+    }
 
-	public String getComplemento() {
-		return this.complemento;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
+    public String getCep() {
+        return this.cep;
+    }
 
-	public String getEndereco() {
-		return this.endereco;
-	}
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
+    public String getComplemento() {
+        return this.complemento;
+    }
 
-	public String getLogradouro() {
-		return this.logradouro;
-	}
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
 
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
+    public String getEndereco() {
+        return this.endereco;
+    }
 
-	public String getNumero() {
-		return this.numero;
-	}
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
+    public String getLogradouro() {
+        return this.logradouro;
+    }
 
-	public List<Cliente> getClientes() {
-		return this.clientes;
-	}
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
 
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
-	}
+    public String getNumero() {
+        return this.numero;
+    }
 
-	public Cliente addCliente(Cliente cliente) {
-		getClientes().add(cliente);
-		cliente.setEndereco(this);
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 
-		return cliente;
-	}
+    public List<Cliente> getClientes() {
+        return this.clientes;
+    }
 
-	public Cliente removeCliente(Cliente cliente) {
-		getClientes().remove(cliente);
-		cliente.setEndereco(null);
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
 
-		return cliente;
-	}
+    public Cliente addCliente(Cliente cliente) {
+        getClientes().add(cliente);
+        cliente.setEndereco(this);
 
-	public Municipio getMunicipio() {
-		return this.municipio;
-	}
+        return cliente;
+    }
 
-	public void setMunicipio(Municipio municipio) {
-		this.municipio = municipio;
-	}
+    public Cliente removeCliente(Cliente cliente) {
+        getClientes().remove(cliente);
+        cliente.setEndereco(null);
 
-	public List<Venda> getVendas() {
-		return this.vendas;
-	}
+        return cliente;
+    }
 
-	public void setVendas(List<Venda> vendas) {
-		this.vendas = vendas;
-	}
+    public Municipio getMunicipio() {
+        return this.municipio;
+    }
 
-	public Venda addVenda(Venda venda) {
-		getVendas().add(venda);
-		venda.setEndereco(this);
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
 
-		return venda;
-	}
+    public List<Venda> getVendas() {
+        return this.vendas;
+    }
 
-	public Venda removeVenda(Venda venda) {
-		getVendas().remove(venda);
-		venda.setEndereco(null);
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
+    }
 
-		return venda;
-	}
+    public Venda addVenda(Venda venda) {
+        getVendas().add(venda);
+        venda.setEndereco(this);
 
-	@Override
-	public Timestamp getUltimaModificacao() {
-		return ultimaModificacao;
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		this.dataCadastro = new Timestamp(System.currentTimeMillis());
-	}
+        return venda;
+    }
+
+    public Venda removeVenda(Venda venda) {
+        getVendas().remove(venda);
+        venda.setEndereco(null);
+
+        return venda;
+    }
+
+    @Override
+    public Timestamp getUltimaModificacao() {
+        return ultimaModificacao;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.dataCadastro = new Timestamp(System.currentTimeMillis());
+    }
 
 
 }

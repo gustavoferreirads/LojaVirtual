@@ -5,34 +5,33 @@ import java.util.List;
 
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Instance;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.naming.NamingException;
+import javax.persistence.*;
 import javax.transaction.Transactional;
 
-import br.com.lojavirtual.api.modelo.Cliente_BKP;
+import br.com.lojavirtual.api.modelo.Cliente;
 import br.com.lojavirtual.api.modelo.Entidade;
 import br.com.lojavirtual.api.modelo.EntidadeCliente;
 import br.com.lojavirtual.api.servico.IEntidadeDao;
+import org.springframework.jndi.JndiTemplate;
+import org.springframework.stereotype.Repository;
 
-@Dependent
 public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@PersistenceContext 
-	EntityManager entityManager;
+	@PersistenceContext
+	protected  EntityManager entityManager;
 	
 	private Class<?> clazz;
 
-	private Instance<Cliente_BKP> clienteInstance;
+	private Instance<Cliente> clienteInstance;
 
 	protected EntidadeDao() {
 	}
 	
 	
-	public EntidadeDao(Class<?> clazz, Instance<Cliente_BKP> clienteInstance) {
+	public EntidadeDao(Class<?> clazz, Instance<Cliente> clienteInstance) {
 		this.clienteInstance = clienteInstance;
 		this.clazz = clazz;
 	}
@@ -47,6 +46,7 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
 	}
 
 	@SuppressWarnings("unchecked")
+    @Transactional
 	public TypedQuery<T> createTypedQuery(String query) {
 		return (TypedQuery<T>) getEntityManager().createQuery(montaQueryCliente(query), clazz);
 	}
@@ -105,7 +105,7 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
 		if (clienteInstance == null) {
 			return queryBuilder.toString();
 		}
-		Cliente_BKP cliente = clienteInstance.get();
+		Cliente cliente = clienteInstance.get();
 		
 			if(cliente.getId() != null && !cliente.isLojaCliente() && instanceEntidadeCliente(clazz)){
 				String queryLowerCase = query.toLowerCase();
@@ -140,7 +140,7 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
 		}
 	}
 
-	protected Cliente_BKP getCliente() {
+	protected Cliente getCliente() {
 		return clienteInstance.get();
 	}
 

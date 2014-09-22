@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
-
-Toppp
+<h2>Olá mundo com Spring MVC!</h2>
+<%
+    response.sendRedirect(session.getServletContext().getContextPath()+"/login");
+%>
 </body>
 </html>

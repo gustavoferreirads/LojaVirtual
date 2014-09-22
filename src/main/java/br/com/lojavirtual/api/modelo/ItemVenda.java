@@ -8,71 +8,70 @@ import javax.persistence.*;
 
 /**
  * The persistent class for the item_venda database table.
- * 
  */
 @Entity
-@Table(name="item_venda")
+@Table(name = "item_venda")
 public class ItemVenda implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_item_venda")
-	private Long id;
+    @Id
+    @Column(name = "id_item_venda")
+    private Long id;
 
-	private Integer quantidade;
+    private Integer quantidade;
 
-	@Column(name="valor_total")
-	private Float valorTotal;
+    @Column(name = "valor_total")
+    private Float valorTotal;
 
-	@ManyToOne
-	@JoinColumn(name="id_produto")
-	private Produto produto;
+    @ManyToOne
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
 
-	@ManyToOne
-	@JoinColumn(name="id_venda")
-	private Venda venda;
+    @ManyToOne
+    @JoinColumn(name = "id_venda")
+    private Venda venda;
 
-	public ItemVenda() {
-	}
+    public ItemVenda() {
+    }
 
-	public Long getId() {
-		return this.id;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public void setIdItemVenda(Long id) {
-		this.id = id;
-	}
+    public void setIdItemVenda(Long id) {
+        this.id = id;
+    }
 
-	public int getQuantidade() {
-		return this.quantidade;
-	}
+    public int getQuantidade() {
+        return this.quantidade;
+    }
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
-	public float getValorTotal() {
-		return this.valorTotal;
-	}
+    public float getValorTotal() {
+        return this.valorTotal;
+    }
 
-	public void setValorTotal(float valorTotal) {
-		this.valorTotal = valorTotal;
-	}
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 
-	public Produto getProduto() {
-		return this.produto;
-	}
+    public Produto getProduto() {
+        return this.produto;
+    }
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 
-	public Venda getVenda() {
-		return this.venda;
-	}
+    public Venda getVenda() {
+        return this.venda;
+    }
 
-	public void setVenda(Venda venda) {
-		this.venda = venda;
-	}
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
 
 }

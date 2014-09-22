@@ -11,119 +11,117 @@ import java.util.List;
 
 /**
  * The persistent class for the categoria database table.
- * 
  */
 @Entity
-@Table(name="Categoria")
+@Table(name = "Categoria")
 public class Categoria extends Entidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_categoria")
-	private Long id;
+    @Id
+    @Column(name = "id_categoria")
+    private Long id;
 
-	@Column(name="nome")
-	private String nome;
+    @Column(name = "nome")
+    private String nome;
 
-	@Column(name="path")
-	private String path;
+    @Column(name = "path")
+    private String path;
 
-	@ManyToOne
-	@JoinColumn(name="id_usuario")
-	private Usuario usuario;
-
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_cadastro")
-	private Date dataCadastro;
-	
-	@Version
-	@Column(name="ultimaModificacao")
-	private Timestamp ultimaModificacao;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
 
-	@OneToMany(mappedBy="categoria")
-	private List<Subcategoria> subcategorias;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	public Categoria() {
-	}
+    @Version
+    @Column(name = "ultimaModificacao")
+    private Timestamp ultimaModificacao;
 
-	
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Subcategoria> subcategorias;
+
+    public Categoria() {
+    }
+
+
     @PrePersist
     public void prePersist() {
         this.dataCadastro = new Timestamp(System.currentTimeMillis());
     }
-    
-	public Long getId() {
-		return this.id;
-	}
 
-	public void setIdCategoria(Long idCategoria) {
-		this.id = id;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public Date getDataCadastro() {
-		return this.dataCadastro;
-	}
+    public void setIdCategoria(Long idCategoria) {
+        this.id = id;
+    }
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
+    public Date getDataCadastro() {
+        return this.dataCadastro;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public String getPath() {
-		return this.path;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setPath(String path) {
-		this.path = path;
-	}
+    public String getPath() {
+        return this.path;
+    }
 
-	public Timestamp getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public void setPath(String path) {
+        this.path = path;
+    }
 
-	public void setUltimaModificacao(Timestamp ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public Timestamp getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
 
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
+    public void setUltimaModificacao(Timestamp ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
 
-	public List<Subcategoria> getSubcategorias() {
-		return this.subcategorias;
-	}
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-	public void setSubcategorias(List<Subcategoria> subcategorias) {
-		this.subcategorias = subcategorias;
-	}
+    public List<Subcategoria> getSubcategorias() {
+        return this.subcategorias;
+    }
 
-	public Subcategoria addSubcategoria(Subcategoria subcategoria) {
-		getSubcategorias().add(subcategoria);
-		subcategoria.setCategoria(this);
+    public void setSubcategorias(List<Subcategoria> subcategorias) {
+        this.subcategorias = subcategorias;
+    }
 
-		return subcategoria;
-	}
+    public Subcategoria addSubcategoria(Subcategoria subcategoria) {
+        getSubcategorias().add(subcategoria);
+        subcategoria.setCategoria(this);
 
-	public Subcategoria removeSubcategoria(Subcategoria subcategoria) {
-		getSubcategorias().remove(subcategoria);
-		subcategoria.setCategoria(null);
+        return subcategoria;
+    }
 
-		return subcategoria;
-	}
+    public Subcategoria removeSubcategoria(Subcategoria subcategoria) {
+        getSubcategorias().remove(subcategoria);
+        subcategoria.setCategoria(null);
 
+        return subcategoria;
+    }
 
 
 }

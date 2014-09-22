@@ -7,147 +7,146 @@ import java.util.List;
 
 /**
  * The persistent class for the tipo_de_cadastro database table.
- * 
  */
 @Entity
-@Table(name="tipo_de_cadastro")
-@NamedQuery(name="TipoDeCadastro.findAll", query="SELECT t FROM TipoDeCadastro t")
+@Table(name = "tipo_de_cadastro")
+@NamedQuery(name = "TipoDeCadastro.findAll", query = "SELECT t FROM TipoDeCadastro t")
 public class TipoDeCadastro implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id_tipo_de_cadastro")
-	private int idTipoDeCadastro;
+    @Id
+    @Column(name = "id_tipo_de_cadastro")
+    private int idTipoDeCadastro;
 
-	private String classe;
+    private String classe;
 
-	@Column(name="fg_funcionalidade")
-	private short fgFuncionalidade;
+    @Column(name = "fg_funcionalidade")
+    private short fgFuncionalidade;
 
-	@Column(name="ni_nivel_acesso")
-	private short niNivelAcesso;
+    @Column(name = "ni_nivel_acesso")
+    private short niNivelAcesso;
 
-	private String nome;
+    private String nome;
 
-	//bi-directional many-to-one association to Funcionalidade
-	@OneToMany(mappedBy="tipoDeCadastro")
-	private List<Funcionalidade> funcionalidades;
+    //bi-directional many-to-one association to Funcionalidade
+    @OneToMany(mappedBy = "tipoDeCadastro")
+    private List<Funcionalidade> funcionalidades;
 
-	//bi-directional many-to-one association to FuncionalidadeOperacao
-	@OneToMany(mappedBy="tipoDeCadastro")
-	private List<FuncionalidadeOperacao> funcionalidadeOperacaos;
+    //bi-directional many-to-one association to FuncionalidadeOperacao
+    @OneToMany(mappedBy = "tipoDeCadastro")
+    private List<FuncionalidadeOperacao> funcionalidadeOperacaos;
 
-	//bi-directional many-to-one association to Permissao
-	@OneToMany(mappedBy="tipoDeCadastro")
-	private List<Permissao> permissaos;
+    //bi-directional many-to-one association to Permissao
+    @OneToMany(mappedBy = "tipoDeCadastro")
+    private List<Permissao> permissaos;
 
-	public TipoDeCadastro() {
-	}
+    public TipoDeCadastro() {
+    }
 
-	public int getIdTipoDeCadastro() {
-		return this.idTipoDeCadastro;
-	}
+    public int getIdTipoDeCadastro() {
+        return this.idTipoDeCadastro;
+    }
 
-	public void setIdTipoDeCadastro(int idTipoDeCadastro) {
-		this.idTipoDeCadastro = idTipoDeCadastro;
-	}
+    public void setIdTipoDeCadastro(int idTipoDeCadastro) {
+        this.idTipoDeCadastro = idTipoDeCadastro;
+    }
 
-	public String getClasse() {
-		return this.classe;
-	}
+    public String getClasse() {
+        return this.classe;
+    }
 
-	public void setClasse(String classe) {
-		this.classe = classe;
-	}
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
 
-	public short getFgFuncionalidade() {
-		return this.fgFuncionalidade;
-	}
+    public short getFgFuncionalidade() {
+        return this.fgFuncionalidade;
+    }
 
-	public void setFgFuncionalidade(short fgFuncionalidade) {
-		this.fgFuncionalidade = fgFuncionalidade;
-	}
+    public void setFgFuncionalidade(short fgFuncionalidade) {
+        this.fgFuncionalidade = fgFuncionalidade;
+    }
 
-	public short getNiNivelAcesso() {
-		return this.niNivelAcesso;
-	}
+    public short getNiNivelAcesso() {
+        return this.niNivelAcesso;
+    }
 
-	public void setNiNivelAcesso(short niNivelAcesso) {
-		this.niNivelAcesso = niNivelAcesso;
-	}
+    public void setNiNivelAcesso(short niNivelAcesso) {
+        this.niNivelAcesso = niNivelAcesso;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public List<Funcionalidade> getFuncionalidades() {
-		return this.funcionalidades;
-	}
+    public List<Funcionalidade> getFuncionalidades() {
+        return this.funcionalidades;
+    }
 
-	public void setFuncionalidades(List<Funcionalidade> funcionalidades) {
-		this.funcionalidades = funcionalidades;
-	}
+    public void setFuncionalidades(List<Funcionalidade> funcionalidades) {
+        this.funcionalidades = funcionalidades;
+    }
 
-	public Funcionalidade addFuncionalidade(Funcionalidade funcionalidade) {
-		getFuncionalidades().add(funcionalidade);
-		funcionalidade.setTipoDeCadastro(this);
+    public Funcionalidade addFuncionalidade(Funcionalidade funcionalidade) {
+        getFuncionalidades().add(funcionalidade);
+        funcionalidade.setTipoDeCadastro(this);
 
-		return funcionalidade;
-	}
+        return funcionalidade;
+    }
 
-	public Funcionalidade removeFuncionalidade(Funcionalidade funcionalidade) {
-		getFuncionalidades().remove(funcionalidade);
-		funcionalidade.setTipoDeCadastro(null);
+    public Funcionalidade removeFuncionalidade(Funcionalidade funcionalidade) {
+        getFuncionalidades().remove(funcionalidade);
+        funcionalidade.setTipoDeCadastro(null);
 
-		return funcionalidade;
-	}
+        return funcionalidade;
+    }
 
-	public List<FuncionalidadeOperacao> getFuncionalidadeOperacaos() {
-		return this.funcionalidadeOperacaos;
-	}
+    public List<FuncionalidadeOperacao> getFuncionalidadeOperacaos() {
+        return this.funcionalidadeOperacaos;
+    }
 
-	public void setFuncionalidadeOperacaos(List<FuncionalidadeOperacao> funcionalidadeOperacaos) {
-		this.funcionalidadeOperacaos = funcionalidadeOperacaos;
-	}
+    public void setFuncionalidadeOperacaos(List<FuncionalidadeOperacao> funcionalidadeOperacaos) {
+        this.funcionalidadeOperacaos = funcionalidadeOperacaos;
+    }
 
-	public FuncionalidadeOperacao addFuncionalidadeOperacao(FuncionalidadeOperacao funcionalidadeOperacao) {
-		getFuncionalidadeOperacaos().add(funcionalidadeOperacao);
-		funcionalidadeOperacao.setTipoDeCadastro(this);
+    public FuncionalidadeOperacao addFuncionalidadeOperacao(FuncionalidadeOperacao funcionalidadeOperacao) {
+        getFuncionalidadeOperacaos().add(funcionalidadeOperacao);
+        funcionalidadeOperacao.setTipoDeCadastro(this);
 
-		return funcionalidadeOperacao;
-	}
+        return funcionalidadeOperacao;
+    }
 
-	public FuncionalidadeOperacao removeFuncionalidadeOperacao(FuncionalidadeOperacao funcionalidadeOperacao) {
-		getFuncionalidadeOperacaos().remove(funcionalidadeOperacao);
-		funcionalidadeOperacao.setTipoDeCadastro(null);
+    public FuncionalidadeOperacao removeFuncionalidadeOperacao(FuncionalidadeOperacao funcionalidadeOperacao) {
+        getFuncionalidadeOperacaos().remove(funcionalidadeOperacao);
+        funcionalidadeOperacao.setTipoDeCadastro(null);
 
-		return funcionalidadeOperacao;
-	}
+        return funcionalidadeOperacao;
+    }
 
-	public List<Permissao> getPermissaos() {
-		return this.permissaos;
-	}
+    public List<Permissao> getPermissaos() {
+        return this.permissaos;
+    }
 
-	public void setPermissaos(List<Permissao> permissaos) {
-		this.permissaos = permissaos;
-	}
+    public void setPermissaos(List<Permissao> permissaos) {
+        this.permissaos = permissaos;
+    }
 
-	public Permissao addPermissao(Permissao permissao) {
-		getPermissaos().add(permissao);
-		permissao.setTipoDeCadastro(this);
+    public Permissao addPermissao(Permissao permissao) {
+        getPermissaos().add(permissao);
+        permissao.setTipoDeCadastro(this);
 
-		return permissao;
-	}
+        return permissao;
+    }
 
-	public Permissao removePermissao(Permissao permissao) {
-		getPermissaos().remove(permissao);
-		permissao.setTipoDeCadastro(null);
+    public Permissao removePermissao(Permissao permissao) {
+        getPermissaos().remove(permissao);
+        permissao.setTipoDeCadastro(null);
 
-		return permissao;
-	}
+        return permissao;
+    }
 
 }

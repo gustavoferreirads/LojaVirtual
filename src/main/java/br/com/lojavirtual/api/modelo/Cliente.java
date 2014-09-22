@@ -10,158 +10,160 @@ import java.util.List;
 
 /**
  * The persistent class for the cliente database table.
- * 
  */
 @Entity
-@Table(name="Cliente")
+@Table(name = "Cliente")
 public class Cliente extends Entidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "id_cliente")
-	private Long id;
+    @Id
+    @Column(name = "id_cliente")
+    private Long id;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "data_cadastro")
-	private Date dataCadastro;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_cadastro")
+    private Date dataCadastro;
 
-	private String nome;
+    private String nome;
 
-	@Column(name = "telefone_celular")
-	private String telefoneCelular;
+    @Column(name = "telefone_celular")
+    private String telefoneCelular;
 
-	@Column(name = "telefone_comercial")
-	private String telefoneComercial;
+    @Column(name = "telefone_comercial")
+    private String telefoneComercial;
 
-	@Column(name = "telefone_residencial")
-	private String telefoneResidencial;
+    @Column(name = "telefone_residencial")
+    private String telefoneResidencial;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp ultimaModificacao;
+    private Timestamp ultimaModificacao;
 
-	@OneToMany(mappedBy = "cliente")
-	private List<Chamado> chamados;
+    @OneToMany(mappedBy = "cliente")
+    private List<Chamado> chamados;
 
-	@ManyToOne
-	@JoinColumn(name = "id_endereco")
-	private Endereco endereco;
+    @ManyToOne
+    @JoinColumn(name = "id_endereco")
+    private Endereco endereco;
 
-	@OneToMany(mappedBy = "cliente")
-	private List<Venda> vendas;
+    @OneToMany(mappedBy = "cliente")
+    private List<Venda> vendas;
 
-	public Cliente() {
-	}
+    public Cliente() {
+    }
 
-	public Long getId(){
-		return this.id;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Date getDataCadastro() {
-		return this.dataCadastro;
-	}
+    public Date getDataCadastro() {
+        return this.dataCadastro;
+    }
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public String getTelefoneCelular() {
-		return this.telefoneCelular;
-	}
+    public String getTelefoneCelular() {
+        return this.telefoneCelular;
+    }
 
-	public void setTelefoneCelular(String telefoneCelular) {
-		this.telefoneCelular = telefoneCelular;
-	}
+    public void setTelefoneCelular(String telefoneCelular) {
+        this.telefoneCelular = telefoneCelular;
+    }
 
-	public String getTelefoneComercial() {
-		return this.telefoneComercial;
-	}
+    public String getTelefoneComercial() {
+        return this.telefoneComercial;
+    }
 
-	public void setTelefoneComercial(String telefoneComercial) {
-		this.telefoneComercial = telefoneComercial;
-	}
+    public void setTelefoneComercial(String telefoneComercial) {
+        this.telefoneComercial = telefoneComercial;
+    }
 
-	public String getTelefoneResidencial() {
-		return this.telefoneResidencial;
-	}
+    public String getTelefoneResidencial() {
+        return this.telefoneResidencial;
+    }
 
-	public void setTelefoneResidencial(String telefoneResidencial) {
-		this.telefoneResidencial = telefoneResidencial;
-	}
+    public void setTelefoneResidencial(String telefoneResidencial) {
+        this.telefoneResidencial = telefoneResidencial;
+    }
 
-	public Timestamp getUltimaModificacao() {
-		return this.ultimaModificacao;
-	}
+    public Timestamp getUltimaModificacao() {
+        return this.ultimaModificacao;
+    }
 
-	public void setUltimaModificacao(Timestamp ultimaModificacao) {
-		this.ultimaModificacao = ultimaModificacao;
-	}
+    public void setUltimaModificacao(Timestamp ultimaModificacao) {
+        this.ultimaModificacao = ultimaModificacao;
+    }
 
-	public List<Chamado> getChamados() {
-		return this.chamados;
-	}
+    public List<Chamado> getChamados() {
+        return this.chamados;
+    }
 
-	public void setChamados(List<Chamado> chamados) {
-		this.chamados = chamados;
-	}
+    public void setChamados(List<Chamado> chamados) {
+        this.chamados = chamados;
+    }
 
-	public Chamado addChamado(Chamado chamado) {
-		getChamados().add(chamado);
-		chamado.setCliente(this);
+    public Chamado addChamado(Chamado chamado) {
+        getChamados().add(chamado);
+        chamado.setCliente(this);
 
-		return chamado;
-	}
+        return chamado;
+    }
 
-	public Chamado removeChamado(Chamado chamado) {
-		getChamados().remove(chamado);
-		chamado.setCliente(null);
+    public Chamado removeChamado(Chamado chamado) {
+        getChamados().remove(chamado);
+        chamado.setCliente(null);
 
-		return chamado;
-	}
+        return chamado;
+    }
 
-	public Endereco getEndereco() {
-		return this.endereco;
-	}
+    public Endereco getEndereco() {
+        return this.endereco;
+    }
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
-	public List<Venda> getVendas() {
-		return this.vendas;
-	}
+    public List<Venda> getVendas() {
+        return this.vendas;
+    }
 
-	public void setVendas(List<Venda> vendas) {
-		this.vendas = vendas;
-	}
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
+    }
 
-	public Venda addVenda(Venda venda) {
-		getVendas().add(venda);
-		venda.setCliente(this);
-		return venda;
-	}
+    public Venda addVenda(Venda venda) {
+        getVendas().add(venda);
+        venda.setCliente(this);
+        return venda;
+    }
 
-	public Venda removeVenda(Venda venda) {
-		getVendas().remove(venda);
-		venda.setCliente(null);
-		return venda;
-	}
+    public Venda removeVenda(Venda venda) {
+        getVendas().remove(venda);
+        venda.setCliente(null);
+        return venda;
+    }
 
-	@PrePersist
-	public void prePersist() {
-		this.dataCadastro = new Timestamp(System.currentTimeMillis());
-	}
+    public Boolean isLojaCliente() {
+        return true;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.dataCadastro = new Timestamp(System.currentTimeMillis());
+    }
 
 
 }

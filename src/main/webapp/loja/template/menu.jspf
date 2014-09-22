@@ -1,0 +1,7 @@
+<div id="menu">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="login.jsp">Login</a></li>
+        <li><a href="usuario/cadastrar.jsp">Cadastrar Usuário</a></li>
+    </ul>
+</div>
