@@ -15,7 +15,12 @@
     <mvc:annotation-driven />
     <mvc:default-servlet-handler/>
 
+    <mvc:interceptors>
+        <bean class="br.com.lojavirtual.interceptors.AutorizadorInterceptor" />
+    </mvc:interceptors>
+
     <bean id="usuarioDAO" class="br.com.lojavirtual.impl.servico.UsuarioDao"/>
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

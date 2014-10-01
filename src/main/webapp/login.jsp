@@ -9,7 +9,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%@taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -24,15 +24,10 @@
 <%@ include file="portal/template/menu.jsp" %>
 
 <form action="logar" method="post">
-    <!--<div style="display:none; ">-->
-
-
-
-
     <%@ include file="portal/template/message.jsp" %>
 
-    Login: <br/> <input type="text" name="login"/><br/>
-    Senha: <br/> <input type="password" name="senha"/><br/>
+    <loja:inputText id="login" label="labelLogin" type="text"/>
+    <loja:inputText id="senha" label="labelSenha" type="password"/>
     <input type="submit" value="Login">
 </form>
 

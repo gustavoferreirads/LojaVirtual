@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Gustavo Ferreira on 19/09/2014.
@@ -34,10 +35,11 @@ public class UsuarioController {
     }
 
     @RequestMapping("/logar")
-    public String logar(Usuario usuario,HttpServletRequest request,HttpServletResponse response) {
+    public String logar(Usuario usuario,HttpServletRequest request, HttpSession session) {
         usuario = usuarioDao.busqueUsuarioPorLoginESenha(usuario);
 
         if (usuario != null) {
+            session.setAttribute("usuarioLogado", usuario);
             return "portal/index";
         }
 
