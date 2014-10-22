@@ -1,8 +1,6 @@
 package br.com.lojavirtual.util;
 
 import com.google.common.base.Joiner;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.StaxDriver;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.text.Normalizer;
@@ -10,19 +8,10 @@ import java.util.List;
 
 public class Strings {
 
-    private static final XStream X_STREAM = new XStream(new StaxDriver());
-
     public static Boolean isNullOrEmpty(String string) {
         return string == null || string.isEmpty();
     }
 
-    public static Object fromXML(String xml) {
-        return X_STREAM.fromXML(xml);
-    }
-
-    public static String toXML(Object object) {
-        return X_STREAM.toXML(object);
-    }
 
     public static String padRight(String string, Integer tamanhoMinimo, char padChar) {
         return com.google.common.base.Strings.padEnd(string, tamanhoMinimo, padChar);

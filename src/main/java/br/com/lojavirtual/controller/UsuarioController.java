@@ -31,7 +31,7 @@ public class UsuarioController {
     @RequestMapping("/login")
     public String execute() {
         System.out.println("Executando a lógica com Spring MVC");
-        return "login";
+        return "portal/login";
     }
 
     @RequestMapping("/logar")
