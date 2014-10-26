@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: Gustavo Ferreira
-  Date: 20/09/2014
+  Date: 20/09/2014\t
   Time: 12:16
   To change this template use File | Settings | File Templates.
 --%>
@@ -15,6 +15,7 @@
 
 <div class="" style="">
     <div class="">
+
         <h1>Bem Vindo</h1>
         <p>Aqui você pode gerenciar e administrar sua loja virtual.</p>
         <p><a class="btn btn-primary btn-lg" role="button">Leia mais »</a></p>

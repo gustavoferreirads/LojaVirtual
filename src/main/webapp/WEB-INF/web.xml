@@ -19,7 +19,9 @@
             <include-coda>/portal/template/footer.jsp</include-coda>
         </jsp-property-group>
     </jsp-config>-->
-
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
 
     <servlet>
         <servlet-name>springmvc</servlet-name>

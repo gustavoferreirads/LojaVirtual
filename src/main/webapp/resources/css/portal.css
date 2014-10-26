@@ -1,0 +1,29 @@
+.icon-menu{
+    width: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.portal-color-white{
+    color: #ffffff; !important;
+}
+
+.portal-color-primary{
+    color: #222 !important;
+}
+
+.portal-color-secundary{
+    color: #BDF008 !important;
+}
+
+
+.a-menu-portal:hover{
+    color: #BDF008 !important;
+}
+
+.teste{
+    content: "\e137"
+}
+.portal-sair{
+    margin-top: 15px
+}

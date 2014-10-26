@@ -1,24 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-inner"  style="color: #ffffff;">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar">e</span>
-                    <span class="icon-bar">eqweqwe</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand brand"  style="color: #ffffff;" href="#">Minha Loja Virtual</a>
-                <p class="navbar-text pull-right" style="color: #ffffff;">
-                    Olá ${usuarioLogado.nome}
+                <a class="navbar-brand brand portal-color-white"  href="#">
+                    Minha Loja
+                    <span class="portal-color-secundary">Virtual</span>
+                </a>
+                <p class="pull-right portal-sair" >
+                    <a class="btn btn-danger btn-xs" role="button" href="logout">Sair</a>
+                </p>
+                <p class="navbar-text pull-right portal-color-white" >
+                    <span class="portal-color-secundary">Olá</span>  ${usuarioLogado.nome}!
                 </p>
             </div>
             <div class="navbar-collapse collapse " >
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a class="a-menu-portal portal-color-white" href="#">Home</a></li>
+                    <li><a class="a-menu-portal portal-color-white" href="#about">Sobre</a></li>
+                    <li><a class="a-menu-portal portal-color-white" href="#contact">Contato</a></li>
                 </ul>
                 <form class="navbar-form navbar-right" role="form" action="logar" method="post">
                 </form>
@@ -28,66 +34,60 @@
 <div id="accordian">
     <ul>
         <li class="active">
-            <h3><span class="icon-dashboard"></span>Catálago</h3>
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/catalago.png"/>Catálago</h3>
             <ul>
-                <li><a href="#">Reports</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Graphs</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#">Produtos</a></li>
             </ul>
         </li>
         <li >
-            <h3><span class="icon-tasks"></span>Conteúdo</h3>
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/catalaco.png"/>Conteúdo</h3>
             <ul>
-                <li><a href="#">Today's tasks</a></li>
-                <li><a href="#">Urgent</a></li>
-                <li><a href="#">Overdues</a></li>
-                <li><a href="#">Recurring</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#">Categoria</a></li>
+                <li><a href="#">Sub Categoria</a></li>
             </ul>
         </li>
         <li >
-            <h3><span class="icon-tasks"></span>Vendas</h3>
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/marketing2.png"/>Marketing</h3>
             <ul>
-                <li><a href="#">Today's tasks</a></li>
-                <li><a href="#">Urgent</a></li>
-                <li><a href="#">Overdues</a></li>
-                <li><a href="#">Recurring</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#">Banner</a></li>
+                <li><a href="#">Destaque</a></li>
+                <li><a href="#">Promoção</a></li>
+                <li><a href="#">Cupom de Desconto</a></li>
+            </ul>
+        </li>
+        <li >
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/financeiro.png"/>Financeiro</h3>
+            <ul>
+                <li><a href="#">Vendas</a></li>
+                <li><a href="#">Pedidos</a></li>
+                <li><a href="#">Clientes</a></li>
             </ul>
         </li>
         <!-- we will keep this LI open by default -->
         <li class="active">
-            <h3><span class="icon-tasks"></span>Relatório</h3>
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/relatorio.png"/>Relatório</h3>
             <ul>
-                <li><a href="#">Today's tasks</a></li>
-                <li><a href="#">Urgent</a></li>
-                <li><a href="#">Overdues</a></li>
-                <li><a href="#">Recurring</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#">Faturamento</a></li>
+                <li><a href="#">Estoque</a></li>
+                <li><a href="#">Cliente</a></li>
+                <li><a href="#">Produtos</a></li>
             </ul>
         </li>
         <li>
-            <h3><span class="icon-calendar"></span>Segurança</h3>
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/seguranca.png"/>Segurança</h3>
             <ul>
-                <li><a href="#">Current Month</a></li>
-                <li><a href="#">Current Week</a></li>
-                <li><a href="#">Previous Month</a></li>
-                <li><a href="#">Previous Week</a></li>
-                <li><a href="#">Next Month</a></li>
-                <li><a href="#">Next Week</a></li>
-                <li><a href="#">Team Calendar</a></li>
-                <li><a href="#">Private Calendar</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#">Usuários</a></li>
+                <li><a href="#">Grupos</a></li>
+                <li><a href="#">Permissões</a></li>
             </ul>
         </li>
         <li>
-            <h3><span class="icon-heart"></span>Configurações</h3>
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/configuracao1.png"/>Configurações</h3>
             <ul>
-                <li><a href="#">Global favs</a></li>
-                <li><a href="#">My favs</a></li>
-                <li><a href="#">Team favs</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logo</a></li>
+                <li><a href="#">Cores</a></li>
+                <li><a href="#">Layout</a></li>
+                <li><a href="#">Endereco</a></li>
             </ul>
         </li>
     </ul>

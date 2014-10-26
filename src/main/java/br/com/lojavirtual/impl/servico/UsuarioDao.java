@@ -16,9 +16,6 @@ import java.io.Serializable;
 @Repository
 public class UsuarioDao extends EntidadeDao<Usuario> implements IUsuarioDao, Serializable {
 
-    @PersistenceContext
-    protected EntityManager entityManager;
-
     public UsuarioDao() {
         super(Usuario.class);
     }
