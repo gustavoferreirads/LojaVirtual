@@ -1,5 +1,8 @@
 package br.com.lojavirtual.api.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -12,18 +15,32 @@ import javax.persistence.*;
 public class Permissao implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Getter
+    @Setter
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
+    @Getter
+    @Setter
     @ManyToOne
     @JoinColumn(name = "id_operacao")
     private Operacao operacao;
 
+    @Getter
+    @Setter
+    @ManyToOne
+    @Column(name="id_grupo")
+    private Grupo grupo;
+
+    @Getter
+    @Setter
     @ManyToOne
     @JoinColumn(name = "id_funcionalidade")
     private Funcionalidade funcionalidade;
 
+    @Getter
+    @Setter
     @ManyToOne
     @JoinColumn(name = "id_tipo_de_cadastro")
     private TipoDeCadastro tipoDeCadastro;
@@ -31,37 +48,7 @@ public class Permissao implements Serializable {
     public Permissao() {
     }
 
-    public Usuario getUsuario() {
-        return this.usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Operacao getOperacao() {
-        return this.operacao;
-    }
-
-    public void setOperacao(Operacao operacao) {
-        this.operacao = operacao;
-    }
-
-    public Funcionalidade getFuncionalidade() {
-        return this.funcionalidade;
-    }
-
-    public void setFuncionalidade(Funcionalidade funcionalidade) {
-        this.funcionalidade = funcionalidade;
-    }
-
-    public TipoDeCadastro getTipoDeCadastro() {
-        return this.tipoDeCadastro;
-    }
-
-    public void setTipoDeCadastro(TipoDeCadastro tipoDeCadastro) {
-        this.tipoDeCadastro = tipoDeCadastro;
-    }
 
     @Id
     private String id;
