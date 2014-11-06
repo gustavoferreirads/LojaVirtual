@@ -24,9 +24,6 @@ public class Grupo extends Entidade implements Serializable {
     private String nome;
 
     @OneToMany(mappedBy = "grupo")
-    private List<Produto> produtos;
-
-    @OneToMany(mappedBy = "grupo")
     private List<Usuario> usuarios;
 
     @Temporal(TemporalType.DATE)
@@ -71,27 +68,6 @@ public class Grupo extends Entidade implements Serializable {
         this.ultimaModificacao = ultimaModificacao;
     }
 
-    public List<Produto> getProdutos() {
-        return this.produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
-    public Produto addProduto(Produto produto) {
-        getProdutos().add(produto);
-        produto.setGrupo(this);
-
-        return produto;
-    }
-
-    public Produto removeProduto(Produto produto) {
-        getProdutos().remove(produto);
-        produto.setGrupo(null);
-
-        return produto;
-    }
 
     public List<Usuario> getUsuarios() {
         return this.usuarios;

@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
-            <div class="navbar-inner"  style="color: #ffffff;">
+            <div class="navbar-inner"  >
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -22,12 +22,10 @@
             </div>
             <div class="navbar-collapse collapse " >
                 <ul class="nav navbar-nav">
-                    <li><a class="a-menu-portal portal-color-white" href="#">Home</a></li>
+                    <li><a class="a-menu-portal portal-color-white" href="home">Home</a></li>
                     <li><a class="a-menu-portal portal-color-white" href="#about">Sobre</a></li>
                     <li><a class="a-menu-portal portal-color-white" href="#contact">Contato</a></li>
                 </ul>
-                <form class="navbar-form navbar-right" role="form" action="logar" method="post">
-                </form>
             </div><!--/.navbar-collapse -->
         </div>
     </div>
@@ -39,14 +37,14 @@
                 <li><a href="#">Produtos</a></li>
             </ul>
         </li>
-        <li >
+        <li class="active">
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/catalaco.png"/>Conteúdo</h3>
             <ul>
                 <li><a href="#">Categoria</a></li>
                 <li><a href="#">Sub Categoria</a></li>
             </ul>
         </li>
-        <li >
+        <li class="active">
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/marketing2.png"/>Marketing</h3>
             <ul>
                 <li><a href="#">Banner</a></li>
@@ -63,8 +61,7 @@
                 <li><a href="#">Clientes</a></li>
             </ul>
         </li>
-        <!-- we will keep this LI open by default -->
-        <li class="active">
+        <li>
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/relatorio.png"/>Relatório</h3>
             <ul>
                 <li><a href="#">Faturamento</a></li>
@@ -76,7 +73,7 @@
         <li>
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/seguranca.png"/>Segurança</h3>
             <ul>
-                <li><a href="#">Usuários</a></li>
+                <li><a href="cadastroDeUsuario">Usuários</a></li>
                 <li><a href="#">Grupos</a></li>
                 <li><a href="#">Permissões</a></li>
             </ul>
@@ -84,7 +81,7 @@
         <li>
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/configuracao1.png"/>Configurações</h3>
             <ul>
-                <li><a href="#">Logo</a></li>
+                <li class="active"><a href="#">Logo</a></li>
                 <li><a href="#">Cores</a></li>
                 <li><a href="#">Layout</a></li>
                 <li><a href="#">Endereco</a></li>

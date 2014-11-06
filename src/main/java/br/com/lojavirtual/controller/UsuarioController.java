@@ -26,20 +26,24 @@ public class UsuarioController {
 
     @RequestMapping("/login")
     public String execute() {
-        System.out.println("Executando a lógica com Spring MVC");
         return "portal/login";
     }
 
+    @RequestMapping("/cadastroDeUsuario")
+    public String executeCadastro() {
+        return "portal/usuario/cadastro";
+    }
+
     @RequestMapping("/logar")
-    public String logar(Usuario usuario,HttpServletRequest request, HttpSession session) {
+    public String logar(Usuario usuario, HttpServletRequest request) {
         usuario = usuarioDao.busqueUsuarioPorLoginESenha(usuario);
 
         if (usuario != null) {
-            session.setAttribute("usuarioLogado", usuario);
+            request.getSession().setAttribute("usuarioLogado", usuario);
             return "portal/index";
         }
 
-        request.setAttribute("error","usuario_nao_encontrado");
+        request.setAttribute("error", "usuario_nao_encontrado");
         return "forward:login";
     }
 

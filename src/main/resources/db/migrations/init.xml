@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-1">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-1">
         <createTable tableName="atendimento">
             <column autoIncrement="true" name="id_atendimento" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -10,7 +10,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-2">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-2">
         <createTable tableName="categoria">
             <column autoIncrement="true" name="id_categoria" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -32,7 +32,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-3">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-3">
         <createTable tableName="chamado">
             <column autoIncrement="true" name="id_chamado" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -48,7 +48,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-4">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-4">
         <createTable tableName="cliente">
             <column autoIncrement="true" name="id_cliente" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -70,7 +70,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-5">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-5">
         <createTable tableName="comentario">
             <column autoIncrement="true" name="id_comentario" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -82,7 +82,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-6">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-6">
         <createTable tableName="destaque">
             <column autoIncrement="true" name="id_destaque" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -96,7 +96,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-7">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-7">
         <createTable tableName="endereco">
             <column autoIncrement="true" name="id_entrega" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -117,7 +117,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-8">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-8">
         <createTable tableName="funcionalidade">
             <column autoIncrement="true" name="id_funcionalidade" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -129,7 +129,7 @@
             <column name="classe" type="VARCHAR(45)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-9">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-9">
         <createTable tableName="funcionalidade_operacao">
             <column name="id_funcionalidade" type="BIGINT(19)">
                 <constraints nullable="false"/>
@@ -142,7 +142,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-10">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-10">
         <createTable tableName="grupo">
             <column autoIncrement="true" name="id_grupo" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -156,7 +156,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-11">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-11">
         <createTable tableName="imagem">
             <column autoIncrement="true" name="id_imagem" type="INT(10)">
                 <constraints primaryKey="true"/>
@@ -165,7 +165,7 @@
             <column name="descricao" type="TEXT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-12">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-12">
         <createTable tableName="item">
             <column autoIncrement="true" name="id_item" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -183,7 +183,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-13">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-13">
         <createTable tableName="item_venda">
             <column autoIncrement="true" name="id_item_venda" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -198,7 +198,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-14">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-14">
         <createTable tableName="limite_estoque">
             <column name="id_limite_estoque" type="BIGINT(19)">
                 <constraints nullable="false"/>
@@ -213,7 +213,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-15">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-15">
         <createTable tableName="municipio">
             <column autoIncrement="true" name="id_municipio" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -227,7 +227,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-16">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-16">
         <createTable tableName="operacao">
             <column name="id_operacao" type="CHAR(1)">
                 <constraints nullable="false"/>
@@ -235,7 +235,7 @@
             <column name="descricao" type="VARCHAR(200)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-17">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-17">
         <createTable tableName="permissao">
             <column name="id_usuario" type="BIGINT(19)">
                 <constraints nullable="false"/>
@@ -249,9 +249,12 @@
             <column name="id_tipo_de_cadastro" type="BIGINT(19)">
                 <constraints nullable="false"/>
             </column>
+            <column name="id_grupo" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-18">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-18">
         <createTable tableName="produto">
             <column autoIncrement="true" name="id_produto" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -284,9 +287,6 @@
             <column name="id_usuario" type="BIGINT(19)">
                 <constraints nullable="false"/>
             </column>
-            <column name="id_grupo" type="BIGINT(19)">
-                <constraints nullable="false"/>
-            </column>
             <column name="id_destaque" type="BIGINT(19)"/>
             <column name="caminhoImagem" type="VARCHAR(500)"/>
             <column name="id_imagem" type="INT(10)">
@@ -294,7 +294,37 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-19">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-19">
+        <createTable tableName="produto_categoria">
+            <column name="id_produto" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_categoria" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-20">
+        <createTable tableName="produto_item">
+            <column name="id_produto" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_item" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-21">
+        <createTable tableName="produto_subcategoria">
+            <column name="id_produto" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_subcategoria" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-22">
         <createTable tableName="promocao">
             <column autoIncrement="true" name="id_promocao" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -309,7 +339,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-20">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-23">
         <createTable tableName="resposta">
             <column autoIncrement="true" name="id_resposta" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -323,7 +353,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-21">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-24">
         <createTable tableName="subcategoria">
             <column autoIncrement="true" name="id_subcategoria" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -343,7 +373,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-22">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-25">
         <createTable tableName="tipo_de_cadastro">
             <column autoIncrement="true" name="id_tipo_de_cadastro" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -358,7 +388,7 @@
             <column name="fg_funcionalidade" type="SMALLINT(5)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-23">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-26">
         <createTable tableName="uf">
             <column autoIncrement="true" name="id_uf" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -369,13 +399,10 @@
             <column name="ultimaModificacao" type="datetime"/>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-24">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-27">
         <createTable tableName="usuario">
             <column autoIncrement="true" name="id_usuario" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
-            </column>
-            <column name="id_grupo" type="BIGINT(19)">
-                <constraints nullable="false"/>
             </column>
             <column name="nome" type="VARCHAR(100)"/>
             <column name="login" type="VARCHAR(200)">
@@ -390,7 +417,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-25">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-28">
         <createTable tableName="venda">
             <column autoIncrement="true" name="id_venda" type="BIGINT(19)">
                 <constraints primaryKey="true"/>
@@ -410,106 +437,130 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-26">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-29">
         <addPrimaryKey columnNames="id_limite_estoque" constraintName="PRIMARY" tableName="limite_estoque"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-27">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-30">
         <addPrimaryKey columnNames="id_operacao" constraintName="PRIMARY" tableName="operacao"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-28">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-31">
+        <addPrimaryKey columnNames="id_produto, id_categoria" constraintName="PRIMARY" tableName="produto_categoria"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-32">
+        <addPrimaryKey columnNames="id_produto, id_item" constraintName="PRIMARY" tableName="produto_item"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-33">
+        <addPrimaryKey columnNames="id_produto, id_subcategoria" constraintName="PRIMARY" tableName="produto_subcategoria"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-34">
         <addUniqueConstraint columnNames="login" constraintName="login_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="usuario"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-29">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-35">
         <addForeignKeyConstraint baseColumnNames="id_chamado" baseTableName="atendimento" constraintName="fk_atendimento_chamado1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_chamado" referencedTableName="chamado"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-30">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-36">
         <addForeignKeyConstraint baseColumnNames="id_usuario" baseTableName="categoria" constraintName="fk_categoria_usuario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_usuario" referencedTableName="usuario"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-31">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-37">
         <addForeignKeyConstraint baseColumnNames="id_cliente" baseTableName="chamado" constraintName="fk_chamado_cliente1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_cliente" referencedTableName="cliente"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-32">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-38">
         <addForeignKeyConstraint baseColumnNames="id_usuario" baseTableName="chamado" constraintName="fk_chamado_usuario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_usuario" referencedTableName="usuario"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-33">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-39">
         <addForeignKeyConstraint baseColumnNames="id_endereco" baseTableName="cliente" constraintName="fk_cliente_endereco1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_entrega" referencedTableName="endereco"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-34">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-40">
         <addForeignKeyConstraint baseColumnNames="id_atendimento" baseTableName="comentario" constraintName="fk_comentario_atendimento1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_atendimento" referencedTableName="atendimento"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-35">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-41">
         <addForeignKeyConstraint baseColumnNames="id_municipio" baseTableName="endereco" constraintName="fk_endereco_municipio1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_municipio" referencedTableName="municipio"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-36">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-42">
         <addForeignKeyConstraint baseColumnNames="id_funcionalidade" baseTableName="funcionalidade_operacao" constraintName="fk_funcionalidade_operacao_funcionalidade1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_funcionalidade" referencedTableName="funcionalidade"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-37">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-43">
         <addForeignKeyConstraint baseColumnNames="id_operacao" baseTableName="funcionalidade_operacao" constraintName="fk_funcionalidade_operacao_operacao1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_operacao" referencedTableName="operacao"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-38">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-44">
         <addForeignKeyConstraint baseColumnNames="id_tipo_de_cadastro" baseTableName="funcionalidade_operacao" constraintName="fk_funcionalidade_operacao_tipo_de_cadastro1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_tipo_de_cadastro" referencedTableName="tipo_de_cadastro"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-39">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-45">
         <addForeignKeyConstraint baseColumnNames="id_tipo_de_cadastro" baseTableName="funcionalidade" constraintName="fk_funcionalidade_tipo_de_cadastro1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_tipo_de_cadastro" referencedTableName="tipo_de_cadastro"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-40">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-46">
         <addForeignKeyConstraint baseColumnNames="id_subcategoria" baseTableName="item" constraintName="fk_item_subcategoria1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_subcategoria" referencedTableName="subcategoria"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-41">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-47">
         <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="item_venda" constraintName="fk_item_venda_produto" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_produto" referencedTableName="produto"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-42">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-48">
         <addForeignKeyConstraint baseColumnNames="id_venda" baseTableName="item_venda" constraintName="fk_item_venda_venda1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_venda" referencedTableName="venda"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-43">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-49">
         <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="limite_estoque" constraintName="fk_limite_estoque_produto1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_produto" referencedTableName="produto"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-44">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-50">
         <addForeignKeyConstraint baseColumnNames="id_uf" baseTableName="municipio" constraintName="fk_municipio_uf1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_uf" referencedTableName="uf"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-45">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-51">
         <addForeignKeyConstraint baseColumnNames="id_funcionalidade" baseTableName="permissao" constraintName="fk_permissao_funcionalidade1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_funcionalidade" referencedTableName="funcionalidade"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-46">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-52">
+        <addForeignKeyConstraint baseColumnNames="id_grupo" baseTableName="permissao" constraintName="fk_permissao_grupo1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_grupo" referencedTableName="grupo"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-53">
         <addForeignKeyConstraint baseColumnNames="id_operacao" baseTableName="permissao" constraintName="fk_permissao_operacao1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_operacao" referencedTableName="operacao"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-47">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-54">
         <addForeignKeyConstraint baseColumnNames="id_tipo_de_cadastro" baseTableName="permissao" constraintName="fk_permissao_tipo_de_cadastro1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_tipo_de_cadastro" referencedTableName="tipo_de_cadastro"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-48">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-55">
         <addForeignKeyConstraint baseColumnNames="id_usuario" baseTableName="permissao" constraintName="fk_permissao_usuario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_usuario" referencedTableName="usuario"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-49">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-56">
         <addForeignKeyConstraint baseColumnNames="id_destaque" baseTableName="produto" constraintName="fk_produto_destaque1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_destaque" referencedTableName="destaque"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-50">
-        <addForeignKeyConstraint baseColumnNames="id_grupo" baseTableName="produto" constraintName="fk_produto_grupo1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_grupo" referencedTableName="grupo"/>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-57">
+        <addForeignKeyConstraint baseColumnNames="id_categoria" baseTableName="produto_categoria" constraintName="fk_produto_has_categoria_categoria1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_categoria" referencedTableName="categoria"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-51">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-58">
+        <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="produto_categoria" constraintName="fk_produto_has_categoria_produto1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_produto" referencedTableName="produto"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-59">
+        <addForeignKeyConstraint baseColumnNames="id_item" baseTableName="produto_item" constraintName="fk_produto_has_item_item1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_item" referencedTableName="item"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-60">
+        <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="produto_item" constraintName="fk_produto_has_item_produto1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_produto" referencedTableName="produto"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-61">
+        <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="produto_subcategoria" constraintName="fk_produto_has_subcategoria_produto1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_produto" referencedTableName="produto"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-62">
+        <addForeignKeyConstraint baseColumnNames="id_subcategoria" baseTableName="produto_subcategoria" constraintName="fk_produto_has_subcategoria_subcategoria1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_subcategoria" referencedTableName="subcategoria"/>
+    </changeSet>
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-63">
         <addForeignKeyConstraint baseColumnNames="id_imagem" baseTableName="produto" constraintName="fk_produto_imagem1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_imagem" referencedTableName="imagem"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-52">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-64">
         <addForeignKeyConstraint baseColumnNames="id_promocao" baseTableName="produto" constraintName="fk_produto_promocao1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_promocao" referencedTableName="promocao"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-53">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-65">
         <addForeignKeyConstraint baseColumnNames="id_usuario" baseTableName="produto" constraintName="fk_produto_usuario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_usuario" referencedTableName="usuario"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-54">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-66">
         <addForeignKeyConstraint baseColumnNames="id_comentario" baseTableName="resposta" constraintName="fk_resposta_comentario1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_comentario" referencedTableName="comentario"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-55">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-67">
         <addForeignKeyConstraint baseColumnNames="id_sub_resposta" baseTableName="resposta" constraintName="fk_resposta_resposta1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_resposta" referencedTableName="resposta"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-56">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-68">
         <addForeignKeyConstraint baseColumnNames="id_categoria" baseTableName="subcategoria" constraintName="fk_subcategoria_categoria1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_categoria" referencedTableName="categoria"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-57">
-        <addForeignKeyConstraint baseColumnNames="id_grupo" baseTableName="usuario" constraintName="fk_usuario_grupo1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_grupo" referencedTableName="grupo"/>
-    </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-58">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-69">
         <addForeignKeyConstraint baseColumnNames="id_cliente" baseTableName="venda" constraintName="fk_venda_cliente1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_cliente" referencedTableName="cliente"/>
     </changeSet>
-    <changeSet author="Gustavo Ferreira (generated)" id="1411172672097-59">
+    <changeSet author="JoãoGustavo (generated)" id="1415293971940-70">
         <addForeignKeyConstraint baseColumnNames="id_entrega" baseTableName="venda" constraintName="fk_venda_entrega1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_entrega" referencedTableName="endereco"/>
     </changeSet>
 </databaseChangeLog>

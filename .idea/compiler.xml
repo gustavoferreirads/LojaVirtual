@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="$project.name$" />
+        <module name="LojaVirtual" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="$project.name$" target="1.7" />
+      <module name="LojaVirtual" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -30,7 +30,7 @@ public class Permissao implements Serializable {
     @Getter
     @Setter
     @ManyToOne
-    @Column(name="id_grupo")
+    @JoinColumn(name="id_grupo")
     private Grupo grupo;
 
     @Getter
