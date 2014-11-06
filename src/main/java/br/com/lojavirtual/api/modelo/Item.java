@@ -1,11 +1,16 @@
 package br.com.lojavirtual.api.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -36,6 +41,14 @@ public class Item extends Entidade implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_subcategoria")
     private Subcategoria subcategoria;
+
+    @Getter
+    @Setter
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "PRODUTO_ITEM",
+            joinColumns = @JoinColumn(name = "ID_ITEM"),
+            inverseJoinColumns = @JoinColumn(name = "ID_PRODUTO"))
+    private List<Produto> produtos = new ArrayList<Produto>();
 
     public Item() {
     }

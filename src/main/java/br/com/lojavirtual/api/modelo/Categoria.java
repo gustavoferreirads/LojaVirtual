@@ -1,10 +1,14 @@
 package br.com.lojavirtual.api.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +35,6 @@ public class Categoria extends Entidade implements Serializable {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-
     @Temporal(TemporalType.DATE)
     @Column(name = "data_cadastro")
     private Date dataCadastro;
@@ -40,9 +43,17 @@ public class Categoria extends Entidade implements Serializable {
     @Column(name = "ultimaModificacao")
     private Timestamp ultimaModificacao;
 
-
     @OneToMany(mappedBy = "categoria")
     private List<Subcategoria> subcategorias;
+
+
+    @Getter
+    @Setter
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "PRODUTO_CATEGORIA",
+            joinColumns = @JoinColumn(name = "ID_CATEGORIA"),
+            inverseJoinColumns = @JoinColumn(name = "ID_PRODUTO"))
+    private List<Produto> produtos = new ArrayList<Produto>();
 
     public Categoria() {
     }
@@ -53,13 +64,11 @@ public class Categoria extends Entidade implements Serializable {
         this.dataCadastro = new Timestamp(System.currentTimeMillis());
     }
 
+    @Override
     public Long getId() {
         return this.id;
     }
 
-    public void setIdCategoria(Long idCategoria) {
-        this.id = id;
-    }
 
     public Date getDataCadastro() {
         return this.dataCadastro;

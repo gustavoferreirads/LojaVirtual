@@ -1,8 +1,11 @@
 package br.com.lojavirtual.util;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
+import com.google.common.io.Resources;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.net.URL;
 import java.text.Normalizer;
 import java.util.List;
 
@@ -86,6 +89,15 @@ public class Strings {
 
     public static String replaceBlankWithTraceFrom(String string) {
         return string.replaceAll("\\s+", "-");
+    }
+
+    public static String toString(String path) {
+        try {
+            URL url = Resources.getResource(path);
+            return Resources.toString(url, Charsets.UTF_8);
+        } catch (Exception ex) {
+            throw new IllegalStateException(ex);
+        }
     }
 
 }

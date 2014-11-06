@@ -19,7 +19,7 @@ public class ConnectionProducer {
 	@Produces
 	@br.com.lojavirtual.producers.Connection
 	public java.sql.Connection getConnection() throws NamingException, SQLException {
-		DataSource dataSource = (DataSource) initialContext.lookup("java:/comp/env/jdbc/laas");
+		DataSource dataSource = (DataSource) initialContext.lookup("java:/comp/env/jdbc/loja");
 		return dataSource.getConnection();
 	}
 
