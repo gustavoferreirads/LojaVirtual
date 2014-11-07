@@ -16,6 +16,7 @@
     <!-- Bootstrap -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/signin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/portal.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,7 +31,7 @@
 <div class="container">
 
     <form class="form-signin" role="form" action="logar" method="post">
-        <h2 class="form-signin-heading" style="color: #ffffff;">Loja Virtual</h2>
+        <h2 class="form-signin-heading portal-color-white">Loja Virtual</h2>
         <input type="email" name="login" placeholder="Email" class="form-control" required="required" autofocus="true">
         <input type="password" name="senha" placeholder="Senha" class="form-control" required="required" >
         <button class="btn btn-lg btn-success btn-block" type="submit">Logar</button>

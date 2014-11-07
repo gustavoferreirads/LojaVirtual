@@ -10,8 +10,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ include file="../template/header.jsp" %>
-<%@ include file="../template/menu.jsp" %>
 
 <div class="content" >
     <h1>Cadastro de Usuário</h1>
@@ -20,23 +18,22 @@
     <form role="form">
         <div class="form-group">
             <label for="exampleInputEmail1">E-mail</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira seu email...">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Senha</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha...">
         </div>
         <div class="form-group">
             <label for="exampleInputFile">Foto</label>
             <input type="file" id="exampleInputFile">
-            <p class="help-block">Example block-level help text here.</p>
+            <p class="help-block">Escolha uma foto em seu computador.</p>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox"> Check me out
+                <input type="checkbox"> Administrador?
             </label>
         </div>
         <button type="submit" class="btn btn-success">Salvar</button>
     </form>
 </div>
-<%@ include file="../template/footer.jsp" %>

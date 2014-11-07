@@ -34,7 +34,7 @@
         <li class="active">
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/catalago.png"/>Catálago</h3>
             <ul>
-                <li><a href="#">Produtos</a></li>
+                <li><a  href="#">Produtos</a></li>
             </ul>
         </li>
         <li class="active">
@@ -73,7 +73,7 @@
         <li>
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/seguranca.png"/>Segurança</h3>
             <ul>
-                <li><a href="cadastroDeUsuario">Usuários</a></li>
+                <li><a href="#" action="cadastroDeUsuario" >Usuários</a></li>
                 <li><a href="#">Grupos</a></li>
                 <li><a href="#">Permissões</a></li>
             </ul>
@@ -81,7 +81,7 @@
         <li>
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/configuracao1.png"/>Configurações</h3>
             <ul>
-                <li class="active"><a href="#">Logo</a></li>
+                <li  class="active"><a id="menu" href="#">Logo</a></li>
                 <li><a href="#">Cores</a></li>
                 <li><a href="#">Layout</a></li>
                 <li><a href="#">Endereco</a></li>
