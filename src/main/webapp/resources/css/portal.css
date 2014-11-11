@@ -31,3 +31,5 @@
 .content{
     float: left;
 }
+
+.content h1, span, p{ content: font-weight: 600;}
