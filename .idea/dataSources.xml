@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" hash="4021612644">
-    <data-source source="LOCAL" name="Data Source" product="MySQL" version="5.6.19" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )" uuid="58a536fd-b08f-4903-ae57-bf9368c08119">
-      <extra-name-characters>#@</extra-name-characters>
-      <identifier-quote-string>`</identifier-quote-string>
-
+    <data-source source="LOCAL" name="Data Source" uuid="58a536fd-b08f-4903-ae57-bf9368c08119">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/lojavirtual</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/$project.name$</jdbc-url>
       <user-name>root</user-name>
       <user-password>dfd8dfc5dfc5dfde</user-password>
       <libraries>
@@ -18,5 +16,4 @@
     </data-source>
   </component>
 </project>
-
 
