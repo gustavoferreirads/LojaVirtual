@@ -24,7 +24,6 @@
         <setting name="provider-name" value="" />
         <datasource-mapping>
           <factory-entry name="$project.name$" />
-          <factory-entry name="LojaVirtual" />
           <factory-entry name="emf" />
           <factory-entry name="entityManagerFactory" />
         </datasource-mapping>
