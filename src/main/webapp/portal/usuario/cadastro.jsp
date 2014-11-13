@@ -11,10 +11,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<div class="content" >
-    <h1>Cadastro de Usuário</h1>
-    <p>Aqui você pode gerenciar e administrar sua loja virtual.</p>
-
+<div class="content">
+    <div class="breadCrumbs" style="width: 1024px;">
+        <div class="conteudoBreadCrumbs">
+            <div class="boxConteudo">
+				<span class=" menuBreadCrumb breadCrumbLinkValido">
+                <img src="${pageContext.request.contextPath}/resources/images/icons/home.png">
+                    <a href="home">Início</a></span>
+				<span class=" menuBreadCrumb breadCrumbLinkValido">
+                    <a href="#">Listagem de Usuários</a></span>
+				<span class=" menuBreadCrumb breadCrumbLinkInvalido breadCrumbAtual">
+                    <img src="http://www.lojavirtual.com.br/img/admin_loja/icone_editar.png">
+                                            Adicionar Usuário
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
+    <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
     <form role="form">
         <div class="form-group">
             <label for="exampleInputEmail1">E-mail</label>
@@ -27,6 +41,7 @@
         <div class="form-group">
             <label for="exampleInputFile">Foto</label>
             <input type="file" id="exampleInputFile">
+
             <p class="help-block">Escolha uma foto em seu computador.</p>
         </div>
         <div class="checkbox">
@@ -36,4 +51,5 @@
         </div>
         <button type="submit" class="btn btn-success">Salvar</button>
     </form>
+</div>
 </div>

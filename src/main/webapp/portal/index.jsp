@@ -13,7 +13,7 @@
 <%@ include file="template/header.jsp" %>
 <%@ include file="template/menu.jsp" %>
 
-<div class="content" >
+<div id="content" class="content" >
         <h1>Bem Vindo</h1>
         <p>Aqui você pode gerenciar e administrar sua loja virtual.</p>
         <p><a class="btn btn-primary btn-lg" role="button">Leia mais »</a></p>

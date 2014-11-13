@@ -1,35 +1,181 @@
-.icon-menu{
+.icon-menu {
     width: 24px;
     margin-right: 10px;
     vertical-align: middle;
 }
 
-.portal-color-white{
-    color: #ffffff; !important;
+.portal-color-white {
+    color: #ffffff;
+!important;
 }
 
-.portal-color-primary{
+.portal-color-primary {
     color: #222 !important;
 }
 
-.portal-color-secundary{
+.portal-color-secundary {
     color: #BDF008 !important;
 }
 
-
-.a-menu-portal:hover{
+.a-menu-portal:hover {
     color: #BDF008 !important;
 }
 
-.teste{
+.teste {
     content: "\e137"
 }
-.portal-sair{
+
+.portal-sair {
     margin-top: 15px
 }
 
-.content{
+.content {
     float: left;
 }
 
-.content h1, span, p{ content: font-weight: 600;}
+.content > h1 {
+    font-weight: 600;
+}
+
+.subTitulo {
+    background: #f8f9f8;
+    border: 1px solid #E5E6E3;
+    height: 38px;
+    padding: 8px 0 0 8px;
+    width: 100%;
+}
+
+.subTitulo, .subTitulo div {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.conteudoBreadCrumbs {
+    height: 40px;
+}
+
+.conteudoBreadCrumbs .btPrincipalFora {
+    display: inline-block;
+    float: right;
+    margin-top: 2px;
+    max-width: 220px;
+    min-width: 180px;
+    text-align: center;
+}
+
+.conteudoBreadCrumbs .btSecundarioFora {
+    float: right;
+    height: 31px;
+    margin: 2px 2px 0 0;
+    width: 180px;
+}
+
+.conteudoBreadCrumbs .btSecundarioDentro {
+    float: left;
+    font-size: 12px;
+    height: 30px;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+}
+
+.conteudoBreadCrumbs .btPrincipalDentro {
+    font-size: 14px;
+    padding-top: 4px;
+}
+
+.breadCrumbs {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CDCDCD;
+    border-radius: 5px;
+    margin-top: 25px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.degradeBreadCrumbs {
+    /*background: url("../../img/admin_loja/degrade_topo.png") no-repeat scroll center bottom rgba(0, 0, 0, 0);*/
+    background: #f6f6f6;
+    height: 15px;
+    margin-top: -5px;
+}
+
+.faixaTopoBreadCrumbs {
+    background: #f6f6f6;
+    height: 15px;
+    width: 100%;
+}
+
+.breadCrumbs .btPrincipalMeio, .breadCrumbs .btPrincipalDentro {
+    height: 29px;
+}
+
+.breadCrumbs .btPrincipalFora {
+    height: 31px;
+}
+
+.conteudoBreadCrumb {
+    width: 100%;
+}
+
+.conteudoBreadCrumbs .botaoAcaoTopo {
+    margin-top: 10px;
+}
+
+.breadCrumbAtual {
+    color: #333 !important;
+    font-size: 14px !important;
+    font-weight: 600;
+    letter-spacing: -1px;
+    min-width: 80px;
+    padding: 13px 0 0 10px;
+}
+
+span.breadCrumbAtual img {
+    max-height: 17px;
+}
+
+.breadCrumbSemDestaque {
+    background: url("../images/icons/divisor_min.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    color: #C9C9C9;
+    padding-left: 20px;
+    color: #c9c9c9;
+}
+
+.menuBreadCrumb img {
+    margin-top: -4px;
+    max-height: 15px;
+    margin-right: 5px;
+    max-width: 15px;
+}
+
+
+.menuBreadCrumb {
+    background: url("../images/icons/divisor_min.png") no-repeat scroll right top rgba(0, 0, 0, 0);
+    color: #7CB128;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: -7px;
+    min-width: 110px;
+    padding: 0 16px 0 15px;
+}
+
+.menuBreadCrumb a {
+    color: #7CB128;
+    text-decoration: underline;
+}
+
+.boxConteudo{
+    padding-top: 1%;
+}
+
+
+.boxConteudoBlocoPagina {
+    background: #fff;
+    border: 1px solid #E5E6E3;
+    border-top: none;
+    margin-bottom: 20px;
+    padding: 15px 8px;
+}

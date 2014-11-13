@@ -152,14 +152,12 @@ public class Usuario extends Entidade implements Serializable {
 
     public Permissao addPermissao(Permissao permissao) {
         getPermissaos().add(permissao);
-        permissao.setUsuario(this);
 
         return permissao;
     }
 
     public Permissao removePermissao(Permissao permissao) {
         getPermissaos().remove(permissao);
-        permissao.setUsuario(null);
 
         return permissao;
     }
