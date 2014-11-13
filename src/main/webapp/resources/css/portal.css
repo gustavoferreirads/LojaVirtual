@@ -39,7 +39,7 @@
 
 .subTitulo {
     background: #f8f9f8;
-    border: 1px solid #E5E6E3;
+    border: 1px solid #CDCDCD;
     height: 38px;
     padding: 8px 0 0 8px;
     width: 100%;
@@ -125,7 +125,7 @@
 
 .breadCrumbAtual {
     color: #333 !important;
-    font-size: 14px !important;
+    font-size: 15px !important;
     font-weight: 600;
     letter-spacing: -1px;
     min-width: 80px;
@@ -155,7 +155,7 @@ span.breadCrumbAtual img {
     background: url("../images/icons/divisor_min.png") no-repeat scroll right top rgba(0, 0, 0, 0);
     color: #7CB128;
     display: inline-block;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     margin-top: -7px;
     min-width: 110px;
@@ -163,8 +163,8 @@ span.breadCrumbAtual img {
 }
 
 .menuBreadCrumb a {
-    color: #7CB128;
-    text-decoration: underline;
+    color: #419641;
+    /*text-decoration: underline;*/
 }
 
 .boxConteudo{
@@ -174,7 +174,7 @@ span.breadCrumbAtual img {
 
 .boxConteudoBlocoPagina {
     background: #fff;
-    border: 1px solid #E5E6E3;
+    border: 1px solid #CDCDCD;
     border-top: none;
     margin-bottom: 20px;
     padding: 15px 8px;
