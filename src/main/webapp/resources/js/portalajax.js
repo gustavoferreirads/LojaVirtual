@@ -9,3 +9,21 @@ $('a').each(function (index, item) {
         }
     });
 });
+
+$(":button").each(function (index, item) {
+    item.addEventListener("click", function (event) {
+        var action = $("#form").getAttribute('action');
+        if (action != null) {
+            var dados = $("#form").serialize();
+            $.ajax({
+                type: "POST",
+                url: action,
+                data: dados,
+                success: function( msg ){
+                    alert( "OIIIIII sucesso" );
+                }
+            });
+        }
+    });
+});
+

@@ -47,6 +47,12 @@ public class UsuarioController {
         return "forward:login";
     }
 
+    @RequestMapping("/teste")
+    public void teste(Usuario usuario){
+        usuario.getLogin();
+
+    }
+
     @RequestMapping("logout")
     public String logout(HttpSession session) {
         session.invalidate();

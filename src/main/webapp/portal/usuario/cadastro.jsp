@@ -29,14 +29,14 @@
     </div>
     <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
     <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
-    <form role="form">
+    <form id="form" role="form" action="teste" >
         <div class="form-group">
             <label for="exampleInputEmail1">E-mail</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira seu email...">
+            <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="Insira seu email...">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Senha</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha...">
+            <input type="password" name="senha" class="form-control" id="exampleInputPassword1" placeholder="Senha...">
         </div>
         <div class="form-group">
             <label for="exampleInputFile">Foto</label>
@@ -49,7 +49,7 @@
                 <input type="checkbox"> Administrador?
             </label>
         </div>
-        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="submit"  class="btn btn-success">Salvar</button>
     </form>
 </div>
 </div>
