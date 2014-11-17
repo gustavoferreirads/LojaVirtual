@@ -8,7 +8,6 @@
 <%}%>
 
 <% if(request.getAttribute("sucess") != null){ %>
-
 <div class="alert alert-success" role="alert">
     <p> <fmt:message key="${sucess}"/></p>
 </div>

@@ -5,9 +5,11 @@ import br.com.lojavirtual.api.servico.IUsuarioDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -47,10 +49,17 @@ public class UsuarioController {
         return "forward:login";
     }
 
-    @RequestMapping("/teste")
-    public void teste(Usuario usuario){
-        usuario.getLogin();
+    @RequestMapping("/salvarUsuario")
+    public String salvarUsuario(Usuario usuario,Model model,  HttpServletRequest request){
+        model.addAttribute("tarefa",  usuarioDao.salve(usuario));
+        request.setAttribute("sucess", "msg_operacao_sucesso");
+        return "portal/usuario/cadastro";
+    }
 
+    @RequestMapping("listaTarefas")
+    public String lista(Model model) {
+        model.addAttribute("usuarios", usuarioDao.busqueTodos());
+        return "portal/usuario/lista";
     }
 
     @RequestMapping("logout")

@@ -10,6 +10,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 
 <div class="content">
     <div class="breadCrumbs" style="width: 1024px;">
@@ -17,39 +19,23 @@
             <div class="boxConteudo">
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
                 <img src="${pageContext.request.contextPath}/resources/images/icons/home.png">
-                    <a href="home">Início</a></span>
+                    <a href="home"><spring:message code="label_home"/></a></span>
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
-                    <a href="#">Listagem de Usuários</a></span>
+                    <a href="listarUsuario">Listagem de Usuários</a></span>
 				<span class=" menuBreadCrumb breadCrumbLinkInvalido breadCrumbAtual">
-                    <img src="http://www.lojavirtual.com.br/img/admin_loja/icone_editar.png">
-                                            Adicionar Usuário
+                    <img src="${pageContext.request.contextPath}/resources/images/icons/atual.png">
+                    Adicionar Usuário
                 </span>
             </div>
         </div>
     </div>
     <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
     <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
-    <form id="form" role="form" action="teste" >
-        <div class="form-group">
-            <label for="exampleInputEmail1">E-mail</label>
-            <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="Insira seu email...">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Senha</label>
-            <input type="password" name="senha" class="form-control" id="exampleInputPassword1" placeholder="Senha...">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputFile">Foto</label>
-            <input type="file" id="exampleInputFile">
-
-            <p class="help-block">Escolha uma foto em seu computador.</p>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> Administrador?
-            </label>
-        </div>
-        <button type="submit"  class="btn btn-success">Salvar</button>
+    <form id="form" role="form" action="salvarUsuario" >
+            <input type="hidden" name="id"/>
+            <loja:input label="label.email" type="email" name="login" classe="form-control input-large" required="required" id="email" placeholder="Insira seu email..." />
+            <loja:input label="label.senha" type="password" name="senha" classe="form-control input-large" id="senha" required="required" placeholder="Senha..."/>
+        <button type="button" onclick="submitForm();" class="btn btn-default">Salvar</button>
     </form>
 </div>
 </div>

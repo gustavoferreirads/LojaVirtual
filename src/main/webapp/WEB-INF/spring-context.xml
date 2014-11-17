@@ -43,7 +43,18 @@
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
     <bean id="messageSource" class= "org.springframework.context.support.ReloadableResourceBundleMessageSource">
-            <property name="basename" value="classpath:br/com/lojavirtual/bundle/messages_pt_BR" />
+        <property name="basename" value="classpath:bundle/messages" />
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="pt_BR"/>
+    </bean>
+
+    <bean id="localeChangeInterceptor"
+          class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="lang" />
     </bean>
 
 </beans>
