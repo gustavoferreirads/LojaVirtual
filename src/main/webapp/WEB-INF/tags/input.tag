@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <div class="form-group">
-    <label for="${id}" class="${classe}"> <fmt:message key="${label}"/>: </label>
-    <input class="$" name="${name}" required="${required}" placeholder="${placeHolder}" type="${type}"
+    <label for="${id}" class="${classeLabel}"> <fmt:message key="${label}"/>: </label>
+    <input class="${classe}" name="${name}" required="${required}" placeholder="${placeHolder}" type="${type}"
            id="${id}" name="${id}"/>
 </div>

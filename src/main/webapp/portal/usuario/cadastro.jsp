@@ -29,12 +29,13 @@
             </div>
         </div>
     </div>
+    <%@ include file="./../template/message.jsp" %>
     <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
     <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
     <form id="form" role="form" action="salvarUsuario" >
             <input type="hidden" name="id"/>
-            <loja:input label="label.email" type="email" name="login" classe="form-control input-large" required="required" id="email" placeholder="Insira seu email..." />
-            <loja:input label="label.senha" type="password" name="senha" classe="form-control input-large" id="senha" required="required" placeholder="Senha..."/>
+            <loja:input label="label.email" type="email" name="login" classe="form-control" required="required" id="email" placeholder="Insira seu email..." />
+            <loja:input label="label.senha" type="password" name="senha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
         <button type="button" onclick="submitForm();" class="btn btn-default">Salvar</button>
     </form>
 </div>

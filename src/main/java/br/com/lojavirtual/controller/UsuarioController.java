@@ -50,10 +50,14 @@ public class UsuarioController {
     }
 
     @RequestMapping("/salvarUsuario")
-    public String salvarUsuario(Usuario usuario,Model model,  HttpServletRequest request){
-        model.addAttribute("tarefa",  usuarioDao.salve(usuario));
-        request.setAttribute("sucess", "msg_operacao_sucesso");
-        return "portal/usuario/cadastro";
+    public String salvarUsuario(Usuario usuario, Model model, HttpServletRequest request) {
+        try {
+            model.addAttribute("tarefa", usuarioDao.salve(usuario));
+            request.setAttribute("sucess", "msg_operacao_sucesso");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "forward:portal/usuario/cadastro";
     }
 
     @RequestMapping("listaTarefas")

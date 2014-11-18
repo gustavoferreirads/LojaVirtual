@@ -15,10 +15,12 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name = "Subcategoria.findAll", query = "SELECT s FROM Subcategoria s")
+
 public class Subcategoria implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_subcategoria")
     private int idSubcategoria;
 

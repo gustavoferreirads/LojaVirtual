@@ -18,6 +18,7 @@ public class Grupo extends Entidade implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_grupo")
     private Long id;
 

@@ -15,6 +15,7 @@ public class TipoDeCadastro implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_de_cadastro")
     private int idTipoDeCadastro;
 
