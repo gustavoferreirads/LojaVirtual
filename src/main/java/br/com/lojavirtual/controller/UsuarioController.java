@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -57,7 +56,7 @@ public class UsuarioController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "forward:portal/usuario/cadastro";
+        return "portal/usuario/cadastro";
     }
 
     @RequestMapping("listaTarefas")

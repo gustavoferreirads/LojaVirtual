@@ -4,13 +4,13 @@ import br.com.lojavirtual.api.modelo.Cliente;
 import br.com.lojavirtual.api.modelo.Entidade;
 import br.com.lojavirtual.api.modelo.EntidadeCliente;
 import br.com.lojavirtual.api.servico.IEntidadeDao;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.enterprise.inject.Instance;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
@@ -34,10 +34,6 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
         this.clazz = clazz;
     }
 
-    public EntidadeDao(EntityManager entityManager, Class<?> clazz) {
-        this.entityManager = entityManager;
-        this.clazz = clazz;
-    }
 
     public EntidadeDao(Class<?> clazz) {
         this.clazz = clazz;
@@ -46,51 +42,47 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
     @SuppressWarnings("unchecked")
     @Transactional
     public TypedQuery<T> createTypedQuery(String query) {
-        return (TypedQuery<T>) getEntityManager().createQuery(montaQueryCliente(query), clazz);
+        return (TypedQuery<T>) entityManager.createQuery(montaQueryCliente(query), clazz);
     }
 
     public Query createQuery(String query) {
-        return getEntityManager().createQuery(montaQueryCliente(query));
+        return entityManager.createQuery(montaQueryCliente(query));
     }
 
     @Transactional
     @Override
     public T salve(T t) {
-        insereCliente(t);
-        return getEntityManager().merge(t);
+        return entityManager.merge(t);
     }
 
     @Transactional
     @Override
     public void delete(T t) {
-        t = getEntityManager().merge(t);
-        getEntityManager().remove(t);
+        t = entityManager.merge(t);
+        entityManager.remove(t);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> busqueTodos() {
         if (clienteInstance != null && !clienteInstance.get().isLojaCliente() && instanceEntidadeCliente(clazz)) {
-            return getEntityManager().createQuery("select t from " + clazz.getSimpleName() + " t where t.cliente.id = :idCliente").setParameter("idCliente", clienteInstance.get().getId()).getResultList();
+            return entityManager.createQuery("select t from " + clazz.getSimpleName() + " t where t.cliente.id = :idCliente").setParameter("idCliente", clienteInstance.get().getId()).getResultList();
         } else {
-            return getEntityManager().createQuery(" from " + clazz.getSimpleName()).getResultList();
+            return entityManager.createQuery(" from " + clazz.getSimpleName()).getResultList();
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public T carreguePorId(Object id) {
-        return (T) getEntityManager().find(clazz, id);
+        return (T) entityManager.find(clazz, id);
     }
 
     @Override
     public void clearContext() {
-        getEntityManager().clear();
+        entityManager.clear();
     }
 
-    private EntityManager getEntityManager() {
-        return entityManager;
-    }
 
     private void insereCliente(T t) {
         if (t instanceof EntidadeCliente && t.getId() == null && (((EntidadeCliente) t).getCliente()) == null) {
