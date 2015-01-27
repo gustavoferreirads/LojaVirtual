@@ -13,6 +13,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 
+
 <div class="content">
     <div class="breadCrumbs" style="width: 1024px;">
         <div class="conteudoBreadCrumbs">
@@ -33,10 +34,11 @@
     <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
     <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
     <form id="form" role="form" action="salvarUsuario" >
-            <input type="hidden" name="id"/>
-            <loja:input label="label.email" type="email" name="login" classe="form-control" required="required" id="email" placeholder="Insira seu email..." />
+            <input type="hidden" name="id" value="${usuario.id}"/>
+            <loja:input label="label.nome" type="text" name="nome" value="${usuario.nome}"  classe="form-control" required="required" id="nome" placeholder="Insira o nome do usuário..." />
+            <loja:input label="label.email" type="email" name="login" value="${usuario.login}"  classe="form-control" required="required" id="email" placeholder="Insira seu email..." />
             <loja:input label="label.senha" type="password" name="senha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
-        <button type="button" onclick="submitForm();" class="btn btn-default">Salvar</button>
+        <button type="submit" class="btn btn-default" onclick="submitForm();">Salvar</button>
     </form>
 </div>
 </div>

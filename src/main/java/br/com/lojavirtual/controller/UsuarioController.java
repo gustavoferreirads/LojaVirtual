@@ -38,25 +38,26 @@ public class UsuarioController {
     @RequestMapping("/logar")
     public String logar(Usuario usuario, HttpServletRequest request) {
         usuario = usuarioDao.busqueUsuarioPorLoginESenha(usuario);
-
         if (usuario != null) {
             request.getSession().setAttribute("usuarioLogado", usuario);
             return "portal/index";
         }
-
         request.setAttribute("error", "usuario_nao_encontrado");
+
         return "forward:login";
     }
 
     @RequestMapping("/salvarUsuario")
     public String salvarUsuario(Usuario usuario, Model model, HttpServletRequest request) {
         try {
-            model.addAttribute("tarefa", usuarioDao.salve(usuario));
+            model.addAttribute("usuario", usuarioDao.salve(usuario));
             request.setAttribute("sucess", "msg_operacao_sucesso");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            request.setAttribute("error", "msg_operacao_erro");
+        }finally {
+            return "portal/usuario/cadastro";
         }
-        return "portal/usuario/cadastro";
     }
 
     @RequestMapping("listaTarefas")

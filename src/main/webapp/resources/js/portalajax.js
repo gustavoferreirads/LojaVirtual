@@ -11,18 +11,25 @@ $('a').each(function (index, item) {
 });
 
 function submitForm() {
+    var form = $("#form");
     var action = $("#form").attr("action");
-    if (action != null) {
-        $.ajax({
-            type: "POST",
-            url: action,
-            data: $("#form").serialize(),
-            success: function( resposta ){
-                $(".content").html(resposta);
-                alert( "OIIIIII sucesso" );
-            }
-        });
-    }
+    form.on('submit', function (ev) {
+        ev.preventDefault();
+        if (action != null) {
+            $.ajax({
+                type: "POST",
+                url: action,
+                data: $("#form").serialize(),
+                success: function (resposta) {
+                    $(".content").html(resposta);
+                    //      alert( "OIIIIII sucesso" );
+                },
+                error: function (resposta) {
+                    $(".content").html(resposta);
+                }
+            });
+        }
+    });
 }
 
 //$(":button").each(function (index, item) {
@@ -47,3 +54,19 @@ function submitForm() {
 //    alert('alert');
 //});
 
+
+//$("form").submit(function(e){
+//    e.preventDefault();
+//    // do ajax submition
+//    $.ajax({
+//        url: "SomeURL",
+//        type: "POST",
+//        data: $(this).serializeArray(),
+//        success: function(data, status, xhr) {
+//            // do the success stuff
+//        },
+//        error: function(xhr, status err) {
+//        // do the error stuff
+//    }
+//});
+//});
