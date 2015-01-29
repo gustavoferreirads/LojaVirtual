@@ -74,6 +74,7 @@
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/seguranca.png"/>Segurança</h3>
             <ul>
                 <li><a href="#" action="cadastroDeUsuario" >Usuários</a></li>
+                <li><a href="#" action="consultaUsuarios"> Usuários Consulta</a></li>
                 <li><a href="#">Grupos</a></li>
                 <li><a href="#">Permissões</a></li>
             </ul>

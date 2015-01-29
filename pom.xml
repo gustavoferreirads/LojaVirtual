@@ -239,6 +239,13 @@
             <version>4.0.1.RELEASE</version>
         </dependency>
 
+        <!--Gson-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
         <!-- JUNIT -->
 
         <!--

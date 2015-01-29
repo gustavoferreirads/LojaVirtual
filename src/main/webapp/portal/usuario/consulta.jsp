@@ -19,7 +19,7 @@
         <div class="conteudoBreadCrumbs">
             <div class="boxConteudo">
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
-                    <img src="${pageContext.request.contextPath}/resources/images/icons/home.png">
+                <img src="${pageContext.request.contextPath}/resources/images/icons/home.png">
                     <a href="home"><spring:message code="label_home"/></a></span>
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
                     <a href="listarUsuario">Listagem de Usuários</a></span>
@@ -31,14 +31,21 @@
         </div>
     </div>
     <%@ include file="./../template/message.jsp" %>
-        <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
-        <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
+    <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
+    <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
         <form id="form" role="form" action="salvarUsuario" >
-                <input type="hidden" name="id" value="${usuario.id}"/>
-                <loja:input label="label.nome" type="text" name="nome" value="${usuario.nome}"  classe="form-control" required="required" id="nome" placeholder="Insira o nome do usuário..." />
-                <loja:input label="label.email" type="email" name="login" value="${usuario.login}"  classe="form-control" required="required" id="email" placeholder="Insira seu email..." />
-                <loja:input label="label.senha" type="password" name="senha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
-            <button type="submit" class="btn btn-default" onclick="submitForm();">Salvar</button>
+            <table id="grid-keep-selection" class="table table-condensed table-hover table-striped">
+                <thead>
+                <tr>
+                    <th data-column-id="nome" data-type="numeric" data-identifier="true">Nome</th>
+                    <th data-column-id="login">Login</th>
+                 <!--   <th data-column-id="received" data-order="desc">Received</th>-->
+                    <!--<th data-column-id="link" data-formatter="link" data-sortable="false">Link</th>-->
+                </tr>
+                </thead>
+            </table>
         </form>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}/resources/js/grid.js"></script>
+

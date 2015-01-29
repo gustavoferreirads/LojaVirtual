@@ -2,6 +2,7 @@ package br.com.lojavirtual.controller;
 
 import br.com.lojavirtual.api.modelo.Usuario;
 import br.com.lojavirtual.api.servico.IUsuarioDao;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by Gustavo Ferreira on 19/09/2014.
@@ -60,10 +65,33 @@ public class UsuarioController {
         }
     }
 
-    @RequestMapping("listaTarefas")
+    @RequestMapping("/consultaUsuarios")
     public String lista(Model model) {
         model.addAttribute("usuarios", usuarioDao.busqueTodos());
-        return "portal/usuario/lista";
+        return "portal/usuario/consulta";
+    }
+
+
+    @RequestMapping("/carregaUsuarios")
+    public void lista(HttpServletResponse response) {
+        try {
+            List<Usuario> usuarios = usuarioDao.busqueTodos();
+            PrintWriter writer = response.getWriter();
+            String jsonList = new Gson().toJson(usuarios);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            StringBuilder builder = new StringBuilder();
+            builder.append("{\n" +
+                    "  \"current\": 1,\n" +
+                    "  \"rowCount\": 10,\n" +
+                    "  \"rows\": ").append(jsonList).append(",\n" +
+                    "  \"total\": 1123\n" +
+                    "}");
+            writer.write(builder.toString());
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } finally {
+        }
     }
 
     @RequestMapping("logout")

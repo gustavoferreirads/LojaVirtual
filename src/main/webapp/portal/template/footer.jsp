@@ -6,13 +6,20 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/accordion.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<!-- Plugin for Menu -->
 <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
-<!-- jQuery -->
+
+<!-- Bootstrap -->
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 
+<!--Plugin for Grid-->
+<script src="${pageContext.request.contextPath}/resources/js/jquery.bootgrid.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.bootgrid.min.js"></script>
+
 <script src="${pageContext.request.contextPath}/resources/js/portalajax.js"></script>
+
 <!-- prefix free to deal with vendor prefixes -->
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
