@@ -986,7 +986,7 @@
          * @for defaults
          * @since 1.0.0
          **/
-        selection: false,
+        selection: true,
 
         /**
          * Enables multi selection (`selection` must be set to `true` as well). Default value is `false`.
@@ -997,7 +997,7 @@
          * @for defaults
          * @since 1.0.0
          **/
-        multiSelect: false,
+        multiSelect: true,
 
         /**
          * Enables entire row click selection (`selection` must be set to `true` as well). Default value is `false`.
@@ -1008,7 +1008,7 @@
          * @for defaults
          * @since 1.1.0
          **/
-        rowSelect: false,
+        rowSelect: true,
 
         /**
          * Defines whether the row selection is saved internally on filtering, paging and sorting 
@@ -1020,9 +1020,9 @@
          * @for defaults
          * @since 1.1.0
          **/
-        keepSelection: false,
+        keepSelection: true,
 
-        highlightRows: false, // highlights new rows (find the page of the first new row)
+        highlightRows: true, // highlights new rows (find the page of the first new row)
         sorting: true,
         multiSort: false,
         ajax: false, // todo: find a better name for this property to differentiate between client-side and server-side data
@@ -1185,12 +1185,12 @@
          * @for defaults
          **/
         labels: {
-            all: "All",
-            infos: "Showing {{ctx.start}} to {{ctx.end}} of {{ctx.total}} entries",
-            loading: "Loading...",
-            noResults: "No results found!",
-            refresh: "Refresh",
-            search: "Search"
+            all: "Todos",
+            infos: "Exibindo {{ctx.start}} de {{ctx.end}}, Total {{ctx.total}}",
+            loading: "Carregando...",
+            noResults: "Nenhum resultado encontrado!",
+            refresh: "Atualizar",
+            search: "Procurar"
         },
 
         /**

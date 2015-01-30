@@ -69,7 +69,17 @@
 }
 .bootgrid-table {
   table-layout: fixed;
+  width: 1008px;
+  font-size: 14px;
 }
+
+@media (min-width: px) {
+    .bootgrid-table {
+        height: auto !important;
+        overflow: visible !important;
+    }
+}
+
 .bootgrid-table a {
   outline: 0;
 }

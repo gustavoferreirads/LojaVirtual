@@ -14,7 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.List;
+
+import static java.lang.String.format;
 
 /**
  * Created by Gustavo Ferreira on 19/09/2014.
@@ -60,7 +63,7 @@ public class UsuarioController {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "msg_operacao_erro");
-        }finally {
+        } finally {
             return "portal/usuario/cadastro";
         }
     }
@@ -73,7 +76,7 @@ public class UsuarioController {
 
 
     @RequestMapping("/carregaUsuarios")
-    public void lista(HttpServletResponse response) {
+    public void lista(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<Usuario> usuarios = usuarioDao.busqueTodos();
             PrintWriter writer = response.getWriter();
@@ -81,15 +84,10 @@ public class UsuarioController {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             StringBuilder builder = new StringBuilder();
-            builder.append("{\n" +
-                    "  \"current\": 1,\n" +
-                    "  \"rowCount\": 10,\n" +
-                    "  \"rows\": ").append(jsonList).append(",\n" +
-                    "  \"total\": 1123\n" +
-                    "}");
-            writer.write(builder.toString());
+            builder.append("{ \"current\": %s, \"rowCount\": %s,\"rows\": ").append(jsonList).append(",\"total\": %s}");
+            writer.write(format(builder.toString(), request.getParameter("current"), request.getParameter("rowCount"), usuarios.size()));
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         } finally {
         }
     }

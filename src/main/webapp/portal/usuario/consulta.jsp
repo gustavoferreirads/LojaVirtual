@@ -15,7 +15,7 @@
 
 
 <div class="content">
-    <div class="breadCrumbs" style="width: 1024px;">
+    <div class="breadCrumbs" >
         <div class="conteudoBreadCrumbs">
             <div class="boxConteudo">
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
@@ -37,15 +37,17 @@
             <table id="grid-keep-selection" class="table table-condensed table-hover table-striped">
                 <thead>
                 <tr>
+                    <th data-column-id="id" data-type="numeric" data-identifier="true">ID</th>
                     <th data-column-id="nome" data-type="numeric" data-identifier="true">Nome</th>
                     <th data-column-id="login">Login</th>
-                 <!--   <th data-column-id="received" data-order="desc">Received</th>-->
+                    <!--   <th data-column-id="received" data-order="desc">Received</th>-->
                     <!--<th data-column-id="link" data-formatter="link" data-sortable="false">Link</th>-->
                 </tr>
                 </thead>
             </table>
         </form>
     </div>
+    <script src="${pageContext.request.contextPath}/resources/js/grid.js"></script>
 </div>
-<script src="${pageContext.request.contextPath}/resources/js/grid.js"></script>
+
 

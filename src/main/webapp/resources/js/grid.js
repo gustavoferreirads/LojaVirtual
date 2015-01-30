@@ -1,4 +1,5 @@
 $("#grid-keep-selection").bootgrid({
+
     ajax: true,
     post: function ()
     {
@@ -12,6 +13,9 @@ $("#grid-keep-selection").bootgrid({
     multiSelect: true,
     rowSelect: true,
     keepSelection: true,
+    rowCount: [10, 25, 50, -1],
+    navigation: 3, // it's a flag: 0 = none, 1 = top, 2 = bottom, 3 = both (top and bottom)
+    padding: 2, // page padding (pagination)
     formatters: {
         "link": function(column, row)
         {
@@ -35,3 +39,5 @@ $("#grid-keep-selection").bootgrid({
         }
         alert("Deselect: " + rowIds.join(","));
     });
+
+

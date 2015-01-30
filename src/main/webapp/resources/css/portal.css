@@ -86,12 +86,37 @@ body{
 }
 
 .breadCrumbs {
+    width: 1024px !important;
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #CDCDCD;
     border-radius: 5px;
     margin-top: 25px;
-    width: 100%;
     margin-bottom: 15px;
+}
+
+
+@media (max-width: 980px) {
+    .breadCrumbs {
+        width: 700px !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .breadCrumbs {
+        width: 500px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .breadCrumbs {
+        width: 300px !important;
+    }
+}
+
+@media (max-width: 300px) {
+    .breadCrumbs {
+        width: 200px !important;
+    }
 }
 
 .degradeBreadCrumbs {
@@ -178,4 +203,8 @@ span.breadCrumbAtual img {
     border-top: none;
     margin-bottom: 20px;
     padding: 15px 8px;
+}
+
+.actions.btn-group > .btn.btn-default{
+    height: 34px;
 }
