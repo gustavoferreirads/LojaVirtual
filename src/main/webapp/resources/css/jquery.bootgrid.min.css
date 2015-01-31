@@ -62,7 +62,8 @@
 }
 
 .bootgrid-table {
-    table-layout: fixed
+    table-layout: auto;
+    font-size: 14px;
 }
 
 .bootgrid-table a {

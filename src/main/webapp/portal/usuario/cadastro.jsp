@@ -14,8 +14,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 
 
-<div class="content">
-    <div class="breadCrumbs" style="width: 1024px;">
+    <div class="breadCrumbs" >
         <div class="conteudoBreadCrumbs">
             <div class="boxConteudo">
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
@@ -41,4 +40,3 @@
             <button type="submit" class="btn btn-default" onclick="submitForm();">Salvar</button>
         </form>
     </div>
-</div>

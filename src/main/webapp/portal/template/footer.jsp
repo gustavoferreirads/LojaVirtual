@@ -12,10 +12,8 @@
 
 <!-- Bootstrap -->
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 
 <!--Plugin for Grid-->
-<script src="${pageContext.request.contextPath}/resources/js/jquery.bootgrid.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.bootgrid.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/js/portalajax.js"></script>

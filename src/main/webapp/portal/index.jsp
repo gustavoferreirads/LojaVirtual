@@ -11,11 +11,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="template/header.jsp" %>
-<%@ include file="template/menu.jsp" %>
-
-<div id="content" class="content" >
+<%@ include file="template/menu_header.jsp" %>
+<div id="main">
+    <%@ include file="template/menu.jsp" %>
+    <div id="content" class="content">
         <h1>Bem Vindo</h1>
         <p>Aqui você pode gerenciar e administrar sua loja virtual.</p>
         <p><a class="btn btn-primary btn-lg" role="button">Leia mais »</a></p>
+    </div>
 </div>
 <%@ include file="template/footer.jsp" %>

@@ -14,7 +14,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 
 
-<div class="content">
     <div class="breadCrumbs" >
         <div class="conteudoBreadCrumbs">
             <div class="boxConteudo">
@@ -48,6 +47,5 @@
         </form>
     </div>
     <script src="${pageContext.request.contextPath}/resources/js/grid.js"></script>
-</div>
 
 
