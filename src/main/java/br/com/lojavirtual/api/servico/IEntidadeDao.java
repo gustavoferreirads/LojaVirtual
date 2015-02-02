@@ -10,6 +10,7 @@ public interface IEntidadeDao<T extends Entidade> {
 	public T salve(T t);
 	
 	public List<T> busqueTodos();
+    public List<T> busqueTodosLazy(Integer first, Integer pageSize, String orderBy);
 	
 	public T carreguePorId(Object id);
 	

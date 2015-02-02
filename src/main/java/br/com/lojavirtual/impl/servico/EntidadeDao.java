@@ -72,6 +72,18 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
         }
     }
 
+
+    public List<T> busqueTodosLazy(Integer first, Integer pageSize, String orderBy) {
+        if (clienteInstance != null && !clienteInstance.get().isLojaCliente() && instanceEntidadeCliente(clazz)) {
+            return entityManager.createQuery("select t from " + clazz.getSimpleName() + " t where t.cliente.id = :idCliente")
+                    .setParameter("idCliente", clienteInstance.get().getId())
+                    .setFirstResult(first).setMaxResults(pageSize)
+                    .getResultList();
+        } else {
+            return entityManager.createQuery(" from " + clazz.getSimpleName()).setFirstResult(first).setMaxResults(pageSize).getResultList();
+        }
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public T carreguePorId(Object id) {
