@@ -62,14 +62,20 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
         entityManager.remove(t);
     }
 
+    public Integer totalDeRegistros() {
+        if (clienteInstance != null && !clienteInstance.get().isLojaCliente() && instanceEntidadeCliente(clazz)) {
+            return (Integer) entityManager.createQuery("select count t from " + clazz.getSimpleName() + " t where t.cliente.id = :idCliente").setParameter("idCliente", clienteInstance.get().getId()).getSingleResult();
+        }
+        return (Integer) entityManager.createQuery("select count  from " + clazz.getSimpleName()).getSingleResult();
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public List<T> busqueTodos() {
         if (clienteInstance != null && !clienteInstance.get().isLojaCliente() && instanceEntidadeCliente(clazz)) {
             return entityManager.createQuery("select t from " + clazz.getSimpleName() + " t where t.cliente.id = :idCliente").setParameter("idCliente", clienteInstance.get().getId()).getResultList();
-        } else {
-            return entityManager.createQuery(" from " + clazz.getSimpleName()).getResultList();
         }
+        return entityManager.createQuery(" from " + clazz.getSimpleName()).getResultList();
     }
 
 
@@ -79,9 +85,9 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
                     .setParameter("idCliente", clienteInstance.get().getId())
                     .setFirstResult(first).setMaxResults(pageSize)
                     .getResultList();
-        } else {
-            return entityManager.createQuery(" from " + clazz.getSimpleName()).setFirstResult(first).setMaxResults(pageSize).getResultList();
         }
+
+        return entityManager.createQuery(" from " + clazz.getSimpleName()).setFirstResult(first).setMaxResults(pageSize).getResultList();
     }
 
     @SuppressWarnings("unchecked")
@@ -124,10 +130,9 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
                 Integer indexWhere = queryLowerCase.indexOf(argument);
 
                 if (indexWhere > -1) {
-                    queryBuilder.insert(indexWhere + argument.length(), alias.append("cliente.id = ").append(cliente.getId()).append(" and "));
-                } else {
-                    queryBuilder.insert(queryBuilder.length(), argument + alias.append("cliente.id = ").append(cliente.getId()));
+                    return queryBuilder.insert(indexWhere + argument.length(), alias.append("cliente.id = ").append(cliente.getId()).append(" and ")).toString();
                 }
+                return queryBuilder.insert(queryBuilder.length(), argument + alias.append("cliente.id = ").append(cliente.getId())).toString();
             }
         }
 
