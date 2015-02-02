@@ -32,6 +32,31 @@ function submitForm() {
     });
 }
 
+
+//if ($("#submit").length) {
+//    $("#submit").click(function () {
+//        $("#form").on('submit', function (ev) {
+//            var action = $("#form").attr("action");
+//            ev.preventDefault();
+//            if (action != null) {
+//                $.ajax({
+//                    type: "POST",
+//                    url: action,
+//                    data: $("#form").serialize(),
+//                    success: function (resposta) {
+//                        $(".content").html(resposta);
+//                    },
+//                    error: function (resposta) {
+//                        $(".content").html(resposta);
+//                    }
+//                });
+//            }
+//        });
+//        $("#form").submit();
+//    })
+//}
+
+
 //$(":button").each(function (index, item) {
 //    item.addEventListener("click", function (event) {
 //        var action = $("#form").getAttribute('action');

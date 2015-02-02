@@ -2,27 +2,20 @@ package br.com.lojavirtual.controller;
 
 import br.com.lojavirtual.api.modelo.Usuario;
 import br.com.lojavirtual.api.servico.IUsuarioDao;
-import br.com.lojavirtual.util.GridList;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
 import java.util.List;
 
 import static br.com.lojavirtual.util.GridList.formatJsonList;
-import static java.lang.String.format;
 
 /**
  * Created by Gustavo Ferreira on 19/09/2014.
@@ -80,10 +73,11 @@ public class UsuarioController {
     }
 
     @RequestMapping("/carregaUsuarios")
-    public void lista(HttpServletResponse response, @PathParam("current") String current, @PathParam("rowCount") String rowCount) {
+    public void lista(HttpServletResponse response, @PathParam("current") Integer current, @PathParam("rowCount") Integer rowCount) {
         try {
-            List<Usuario> usuarios = usuarioDao.busqueTodosLazy(new Integer(current), new Integer(rowCount), "");
-            String jsonReturn = formatJsonList(response, usuarios, current, rowCount);
+
+            List<Usuario> usuarios = usuarioDao.busqueTodosLazy((current - 1) * rowCount, rowCount, "");
+            String jsonReturn = formatJsonList(response, usuarios, current, rowCount, String.valueOf(usuarioDao.busqueTodos().size()));
             response.getWriter().write(jsonReturn);
         } catch (IOException e) {
             e.printStackTrace();
