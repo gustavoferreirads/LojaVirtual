@@ -69,10 +69,11 @@ public class UsuarioController extends ControllerAction {
             return "portal/usuario/cadastro";
         }
     }
+
     @RequestMapping("/salvarUsuarioNovo")
     public String salvarENovoUsuario(Usuario usuario, Model model, HttpServletRequest request) {
-        String retorno = salvarUsuario(usuario,model,request);
-        model.addAttribute("usuario",new Usuario());
+        String retorno = salvarUsuario(usuario, model, request);
+        model.addAttribute("usuario", new Usuario());
         return retorno;
     }
 
