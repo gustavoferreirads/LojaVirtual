@@ -23,7 +23,7 @@ function goBack(action){
 
 
 function newForm() {
-    var urlNew = $("#grid-keep-selection").attr("actionEdit");
+    var urlNew = $("#grid-keep-selection").attr("actionNew");
     $.get(urlNew, function (resposta) {
         $(".content").html(resposta);
     });

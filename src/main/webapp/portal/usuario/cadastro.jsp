@@ -41,7 +41,7 @@
                 <div class="form-inline">
                     <loja:input label="label.email" type="email" name="login" value="${usuario.login}" classForm="margin-right-small" classe="form-control" required="required" id="email" placeholder="Insira seu email..." />
                     <loja:input label="label.senha" type="password" name="senha" classe="form-control" classForm="margin-right-small" id="senha" required="required" placeholder="Senha..."/>
-                    <loja:input label="label_confirma_senha" type="password" name="confirmSenha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
+                    <loja:input label="label.confirma_senha" type="password" name="confirmSenha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
                 </div>
                <loja:botoesDeAcao disabledRemove="${usuario.id != null}"/>
         </form>

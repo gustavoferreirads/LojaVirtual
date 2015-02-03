@@ -39,7 +39,12 @@ public class UsuarioController extends ControllerAction {
     }
 
     @RequestMapping("/cadastroDeUsuario")
-    public String executeCadastro(Model model, @PathParam("id") Integer id) {
+    public String abrirCadastro() {
+        return "portal/usuario/cadastro";
+    }
+
+    @RequestMapping("/carregaUsuario")
+    public String carregaUsuario(Long id,Model model) {
         model.addAttribute("usuario", usuarioDao.carreguePorId(id));
         return "portal/usuario/cadastro";
     }
@@ -79,12 +84,11 @@ public class UsuarioController extends ControllerAction {
     }
 
     @RequestMapping("/consultaUsuarios")
-    public String lista(Model model) {
-        model.addAttribute("usuarios", usuarioDao.busqueTodos());
+    public String lista() {
         return "portal/usuario/consulta";
     }
 
-    @RequestMapping("/carregaUsuarios")
+    @RequestMapping("/listaUsuarios")
     public void lista(HttpServletResponse response, @PathParam("current") Integer current, @PathParam("rowCount") Integer rowCount) {
         try {
             List<Usuario> usuarios = usuarioDao.busqueTodosLazy(((current - 1) * rowCount), rowCount, "");

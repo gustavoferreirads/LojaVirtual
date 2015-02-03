@@ -1,5 +1,5 @@
+var action = $("#grid-keep-selection").attr("action");
 $("#grid-keep-selection").bootgrid({
-
     ajax: true,
     post: function () {
         /* To accumulate custom parameter with the request object */
@@ -7,7 +7,7 @@ $("#grid-keep-selection").bootgrid({
             id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
         };
     },
-    url: this.attr("action"),
+    url: action,
     selection: true,
     multiSelect: false,
     rowSelect: true,
