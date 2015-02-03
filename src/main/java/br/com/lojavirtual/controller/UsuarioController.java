@@ -44,7 +44,7 @@ public class UsuarioController extends ControllerAction {
     }
 
     @RequestMapping("/carregaUsuario")
-    public String carregaUsuario(Long id,Model model) {
+    public String carregaUsuario(Long id, Model model) {
         model.addAttribute("usuario", usuarioDao.carreguePorId(id));
         return "portal/usuario/cadastro";
     }
@@ -97,6 +97,21 @@ public class UsuarioController extends ControllerAction {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @RequestMapping("/removeUsuarioId")
+    public String removeUsuarioId(Long id, HttpServletRequest request) {
+//        model.addAttribute("usuario", usuarioDao.carreguePorId(id));
+        addSucessMessage(request);
+        return "portal/usuario/consulta";
+    }
+
+
+    @RequestMapping("/removeUsuario")
+    public String removeUsuario(Long id, Model model, HttpServletRequest request) {
+        model.addAttribute("usuario", usuarioDao.carreguePorId(id));
+        addSucessMessage(request);
+        return "portal/usuario/consulta";
     }
 
     @RequestMapping("logout")
