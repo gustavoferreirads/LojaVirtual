@@ -1,6 +1,8 @@
 package br.com.lojavirtual.api.modelo;
 
 import br.com.lojavirtual.util.Strings;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,6 +27,10 @@ public class Usuario extends Entidade implements Serializable {
     private String nome;
 
     private String senha;
+
+    @Getter
+    @Setter
+    private String confirmSenha;
 
 //    //bi-directional many-to-one association to Categoria
 //    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
@@ -87,7 +93,7 @@ public class Usuario extends Entidade implements Serializable {
     }
 
     public void setSenha(String senha) {
-        this.senha = Strings.hashMD5(senha);
+            this.senha = Strings.hashMD5(senha);
     }
 
     public Timestamp getUltimaModificacao() {
@@ -198,5 +204,13 @@ public class Usuario extends Entidade implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getConfirmSenha() {
+        return confirmSenha;
+    }
+
+    public void setConfirmSenha(String confirmSenha) {
+        this.confirmSenha = Strings.hashMD5(confirmSenha);
     }
 }

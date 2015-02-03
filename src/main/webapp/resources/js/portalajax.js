@@ -1,3 +1,6 @@
+var actionComplement = "Novo"
+var urlNewForm="";
+
 // jQuery para o menu
 $('a').each(function (index, item) {
     item.addEventListener("click", function (event) {
@@ -12,7 +15,18 @@ $('a').each(function (index, item) {
 
 function submitForm() {
     var form = $("#form");
-    var action = $("#form").attr("action");
+    var action = form.attr("action");
+    submit(form,action)
+}
+
+function submitNewForm() {
+    var form = $("#form");
+    var action = form.attr("action") + actionComplement;
+    submit(form,action)
+
+}
+
+function submit(form, action){
     form.on('submit', function (ev) {
         ev.preventDefault();
         if (action != null) {
@@ -22,7 +36,6 @@ function submitForm() {
                 data: $("#form").serialize(),
                 success: function (resposta) {
                     $(".content").html(resposta);
-                    //      alert( "OIIIIII sucesso" );
                 },
                 error: function (resposta) {
                     $(".content").html(resposta);

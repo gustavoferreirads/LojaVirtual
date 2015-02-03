@@ -33,7 +33,7 @@
     <form class="form-signin" role="form" action="logar" method="post">
         <h2 class="form-signin-heading portal-color-white">Loja Virtual</h2>
         <input type="email" name="login" placeholder="Email" class="form-control" required="required" autofocus="true">
-        <input type="password" name="senha" placeholder="Senha" class="form-control" required="required" >
+        <input type="password" name="senha" placeholder="Senha" class="form-control " required="required" >
         <button class="btn btn-lg btn-success btn-block" type="submit">Logar</button>
         <%@ include file="template/message.jsp" %>
     </form>

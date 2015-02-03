@@ -35,8 +35,15 @@
         <form id="form" role="form" action="salvarUsuario" >
                 <input type="hidden" name="id" value="${usuario.id}"/>
                 <loja:input label="label.nome" type="text" name="nome" value="${usuario.nome}"  classe="form-control" required="required" id="nome" placeholder="Insira o nome do usuário..." />
-                <loja:input label="label.email" type="email" name="login" value="${usuario.login}"  classe="form-control" required="required" id="email" placeholder="Insira seu email..." />
-                <loja:input label="label.senha" type="password" name="senha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
-            <button type="submit" class="btn btn-default" onclick="submitForm();">Salvar</button>
+                <div class="form-inline">
+                    <loja:input label="label.email" type="email" name="login" value="${usuario.login}" classForm="margin-right-small" classe="form-control" required="required" id="email" placeholder="Insira seu email..." />
+                    <loja:input label="label.senha" type="password" name="senha" classe="form-control" classForm="margin-right-small" id="senha" required="required" placeholder="Senha..."/>
+                    <loja:input label="label_confirma_senha" type="password" name="confirmSenha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
+                </div>
+            <div class="form-actions-button">
+                <button type="submit" class="btn btn-default" onclick="submitForm();">Salvar</button>
+                <button type="submit" class="btn btn-primary" onclick="submitNewForm();">Salvar e Novo</button>
+
+            </div>
         </form>
     </div>

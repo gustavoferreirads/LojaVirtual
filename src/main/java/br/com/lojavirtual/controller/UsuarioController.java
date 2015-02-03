@@ -1,5 +1,6 @@
 package br.com.lojavirtual.controller;
 
+import br.com.lojavirtual.api.exception.ValidationException;
 import br.com.lojavirtual.api.modelo.Usuario;
 import br.com.lojavirtual.api.servico.IUsuarioDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.List;
 
+import static br.com.lojavirtual.business.UsuarioBusiness.validate;
 import static br.com.lojavirtual.util.GridList.formatJsonList;
 
 /**
@@ -22,7 +24,7 @@ import static br.com.lojavirtual.util.GridList.formatJsonList;
  */
 
 @Controller
-public class UsuarioController {
+public class UsuarioController extends ControllerAction {
 
     @Autowired
     @Qualifier("usuarioDAO")
@@ -48,22 +50,30 @@ public class UsuarioController {
             request.getSession().setAttribute("usuarioLogado", usuario);
             return "portal/index";
         }
-        request.setAttribute("error", "usuario_nao_encontrado");
-
+        addErrorMessage(request, "usuario_nao_encontrado");
         return "forward:login";
     }
 
     @RequestMapping("/salvarUsuario")
     public String salvarUsuario(Usuario usuario, Model model, HttpServletRequest request) {
         try {
+            validate(usuario);
             model.addAttribute("usuario", usuarioDao.salve(usuario));
-            request.setAttribute("sucess", "msg_operacao_sucesso");
+            addSucessMessage(request);
+        } catch (ValidationException e) {
+            addErrorMessage(request, e.getMessage());
         } catch (Exception e) {
+            addErrorMessage(request);
             e.printStackTrace();
-            request.setAttribute("error", "msg_operacao_erro");
         } finally {
             return "portal/usuario/cadastro";
         }
+    }
+    @RequestMapping("/salvarUsuarioNovo")
+    public String salvarENovoUsuario(Usuario usuario, Model model, HttpServletRequest request) {
+        String retorno = salvarUsuario(usuario,model,request);
+        model.addAttribute("usuario",new Usuario());
+        return retorno;
     }
 
     @RequestMapping("/consultaUsuarios")
@@ -75,8 +85,7 @@ public class UsuarioController {
     @RequestMapping("/carregaUsuarios")
     public void lista(HttpServletResponse response, @PathParam("current") Integer current, @PathParam("rowCount") Integer rowCount) {
         try {
-
-            List<Usuario> usuarios = usuarioDao.busqueTodosLazy((current - 1) * rowCount, rowCount, "");
+            List<Usuario> usuarios = usuarioDao.busqueTodosLazy(((current - 1) * rowCount), rowCount, "");
             String jsonReturn = formatJsonList(response, usuarios, current, rowCount, String.valueOf(usuarioDao.busqueTodos().size()));
             response.getWriter().write(jsonReturn);
         } catch (IOException e) {
