@@ -19,12 +19,12 @@
             <div class="boxConteudo">
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
                 <img src="${pageContext.request.contextPath}/resources/images/icons/home.png">
-                    <a href="home"><spring:message code="label_home"/></a></span>
-				<span class=" menuBreadCrumb breadCrumbLinkValido">
-                    <a href="listarUsuario">Listagem de Usuários</a></span>
+                    <a href="home" ><spring:message code="label.home"/></a></span>
+				<%--<span class=" menuBreadCrumb breadCrumbLinkValido">--%>
+                    <%--<a href="listarUsuario">Listagem de Usuários</a></span>--%>
 				<span class=" menuBreadCrumb breadCrumbLinkInvalido breadCrumbAtual">
                     <img src="${pageContext.request.contextPath}/resources/images/icons/atual.png">
-                    Adicionar Usuário
+                    Listagem de Usuários
                 </span>
             </div>
         </div>
@@ -32,13 +32,13 @@
     <%@ include file="./../template/message.jsp" %>
     <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
     <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
-        <form id="form" role="form" action="salvarUsuario" >
-            <table id="grid-keep-selection" class="table table-condensed table-hover table-striped">
+        <form id="form" role="form" action="carregaUsuarios" >
+            <table id="grid-keep-selection" class="table table-condensed table-hover table-striped" action="carregaUsuarios" actionEdit="cadastroDeUsuario" actionRemove="">
                 <thead>
                 <tr>
-                    <th data-column-id="id" data-type="numeric" data-identifier="true">ID</th>
+                    <th data-column-id="id" data-type="numeric" data-identifier="true">Código</th>
                     <th data-column-id="nome" data-type="numeric" data-identifier="true">Nome</th>
-                    <th data-column-id="login">Login</th>
+                    <th data-column-id="login">E-mail</th>
                     <!--   <th data-column-id="received" data-order="desc">Received</th>-->
                     <!--<th data-column-id="link" data-formatter="link" data-sortable="false">Link</th>-->
                 </tr>

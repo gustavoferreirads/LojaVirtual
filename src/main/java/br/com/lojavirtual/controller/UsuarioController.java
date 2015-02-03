@@ -39,7 +39,8 @@ public class UsuarioController extends ControllerAction {
     }
 
     @RequestMapping("/cadastroDeUsuario")
-    public String executeCadastro() {
+    public String executeCadastro(Model model, @PathParam("id") Integer id) {
+        model.addAttribute("usuario", usuarioDao.carreguePorId(id));
         return "portal/usuario/cadastro";
     }
 
@@ -99,5 +100,4 @@ public class UsuarioController extends ControllerAction {
         session.invalidate();
         return "forward:login";
     }
-
 }

@@ -13,18 +13,21 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 
-
     <div class="breadCrumbs" >
         <div class="conteudoBreadCrumbs">
             <div class="boxConteudo">
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
                     <img src="${pageContext.request.contextPath}/resources/images/icons/home.png">
-                    <a href="home"><spring:message code="label_home"/></a></span>
+                    <a href="home">
+                        <spring:message code="label.home"/>
+                    </a></span>
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
-                    <a href="listarUsuario">Listagem de Usuários</a></span>
+                    <a href="listarUsuario">
+                        <spring:message code="label.listagem_usuarios"/>
+                    </a></span>
 				<span class=" menuBreadCrumb breadCrumbLinkInvalido breadCrumbAtual">
                     <img src="${pageContext.request.contextPath}/resources/images/icons/atual.png">
-                    Adicionar Usuário
+                    <spring:message code="label.adicionar_usuario"/>
                 </span>
             </div>
         </div>
@@ -40,10 +43,6 @@
                     <loja:input label="label.senha" type="password" name="senha" classe="form-control" classForm="margin-right-small" id="senha" required="required" placeholder="Senha..."/>
                     <loja:input label="label_confirma_senha" type="password" name="confirmSenha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
                 </div>
-            <div class="form-actions-button">
-                <button type="submit" class="btn btn-default" onclick="submitForm();">Salvar</button>
-                <button type="submit" class="btn btn-primary" onclick="submitNewForm();">Salvar e Novo</button>
-
-            </div>
+               <loja:botoesDeAcao disabledRemove="${usuario.id != null}"/>
         </form>
     </div>

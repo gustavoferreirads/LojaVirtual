@@ -187,7 +187,7 @@ span.breadCrumbAtual img {
 }
 
 .boxConteudo{
-    padding-top: 1%;
+    padding-top: 12px;
 }
 
 
@@ -200,7 +200,7 @@ span.breadCrumbAtual img {
 }
 
 .actions.btn-group > .btn.btn-default{
-    height: 34px;
+    height: 33px;
 }
 
 #main{
@@ -209,4 +209,31 @@ span.breadCrumbAtual img {
 
 .form-actions-button{
     margin-top: 20px;
+}
+
+.btn-new-form{
+    float: left;
+    margin-right: 10px;
+}
+
+.btn-edit-form{
+    float: left;
+    margin-right: 20px;
+}
+
+.search.form-group{
+    width: 49% !important;
+    float: inherit;
+}
+
+#grid-keep-selection-header{
+    margin-bottom: 20px;
+}
+
+.actions.btn-group{
+    float: right;
+}
+
+.btn-back{
+    float: right;
 }
