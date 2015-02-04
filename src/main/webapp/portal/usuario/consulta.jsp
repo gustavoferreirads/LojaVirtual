@@ -33,7 +33,7 @@
     <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
     <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
         <form id="form" role="form" action="" >
-            <table id="grid-keep-selection" class="table table-condensed table-hover table-striped" action="listaUsuarios" actionNew="cadastroDeUsuario" actionEdit="carregaUsuario" actionRemove="remo">
+            <table id="grid-keep-selection" class="table table-condensed table-hover table-striped" action="listarUsuarios" actionNew="cadastroDeUsuario" actionEdit="carregaUsuario" actionRemove="remo">
                 <thead>
                 <tr>
                     <th data-column-id="id" data-type="numeric" data-identifier="true">Código</th>

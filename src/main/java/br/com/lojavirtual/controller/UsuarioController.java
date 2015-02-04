@@ -88,7 +88,7 @@ public class UsuarioController extends ControllerAction {
         return "portal/usuario/consulta";
     }
 
-    @RequestMapping("/listaUsuarios")
+    @RequestMapping("/listarUsuarios")
     public void lista(HttpServletResponse response, @PathParam("current") Integer current, @PathParam("rowCount") Integer rowCount) {
         try {
             List<Usuario> usuarios = usuarioDao.busqueTodosLazy(((current - 1) * rowCount), rowCount, "");

@@ -22,7 +22,7 @@
                         <spring:message code="label.home"/>
                     </a></span>
 				<span class=" menuBreadCrumb breadCrumbLinkValido">
-                    <a href="listarUsuario">
+                    <a href="#" onclick="goBack('consultaUsuarios');">
                         <spring:message code="label.listagem_usuarios"/>
                     </a></span>
 				<span class=" menuBreadCrumb breadCrumbLinkInvalido breadCrumbAtual">
@@ -43,6 +43,6 @@
                     <loja:input label="label.senha" type="password" name="senha" classe="form-control" classForm="margin-right-small" id="senha" required="required" placeholder="Senha..."/>
                     <loja:input label="label.confirma_senha" type="password" name="confirmSenha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
                 </div>
-               <loja:botoesDeAcao disabledRemove="${usuario.id != null}"/>
+               <loja:botoesDeAcao disabledRemove="${usuario.id != null}" voltar="'consultaUsuarios'"/>
         </form>
     </div>

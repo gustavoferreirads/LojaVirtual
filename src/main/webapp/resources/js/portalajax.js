@@ -21,7 +21,6 @@ function goBack(action){
     });
 }
 
-
 function newForm() {
     var urlNew = $("#grid-keep-selection").attr("actionNew");
     $.get(urlNew, function (resposta) {
@@ -144,3 +143,14 @@ function submit(form, action) {
 //    }
 //});
 //});
+
+
+$(function(){
+    $("input[format='number']").bind("keyup blur focus", function(e) {
+        e.preventDefault();
+        var expre = /[^0-9]/g;
+        // REMOVE OS CARACTERES DA EXPRESSAO ACIMA
+        if ($(this).val().match(expre))
+            $(this).val($(this).val().replace(expre,''));
+    });
+});
