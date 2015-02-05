@@ -43,6 +43,7 @@
                     <loja:input label="label.senha" type="password" name="senha" classe="form-control" classForm="margin-right-small" id="senha" required="required" placeholder="Senha..."/>
                     <loja:input label="label.confirma_senha" type="password" name="confirmSenha" classe="form-control" id="senha" required="required" placeholder="Senha..."/>
                 </div>
-               <loja:botoesDeAcao disabledRemove="${usuario.id != null}" voltar="'consultaUsuarios'"/>
+               <loja:botoesDeAcao msg_dialog="msg_remocao_usuario" disabledRemove="${usuario.id != null}" voltar="'consultaUsuarios'"/>
         </form>
+
     </div>

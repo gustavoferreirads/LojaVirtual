@@ -6,6 +6,7 @@ $('a').each(function (index, item) {
         var action = item.getAttribute('action');
         if (action != null) {
             $.get(action, function (resposta) {
+                alert(resposta);
                 $(".content").html(resposta);
             });
         }
