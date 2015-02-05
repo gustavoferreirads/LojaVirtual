@@ -1,7 +1,6 @@
 package br.com.lojavirtual.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Gustavo Ferreira on 02/02/2015.
@@ -10,7 +9,7 @@ public abstract class ControllerAction {
     public final String ERROR = "error";
     public final String SUCESS = "sucess";
     public final String KEY_ERRO_DEFAULT = "msg_operacao_erro";
-    public final String KEY_SUCESS_DEFAULT = "msg_operacao_erro";
+    public final String KEY_SUCESS_DEFAULT = "msg_operacao_sucesso";
 
     public void addErrorMessage(HttpServletRequest request, String key) {
         request.setAttribute(ERROR, key);

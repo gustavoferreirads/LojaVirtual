@@ -24,7 +24,7 @@ function goBack(action) {
 function newForm() {
     var urlNew = $("#grid-keep-selection").attr("actionNew");
     $.get(urlNew, function (resposta) {
-        setContent(resposta,action);
+        setContent(resposta,urlNew);
     });
 }
 
@@ -53,9 +53,10 @@ function removeObject() {
 
 
 function submitForm() {
-    var form = $("#form");
-    var action = form.attr("action");
-    submitAjax(form, action)
+//    var form = $("#form");
+//    var action = form.attr("action");
+//    submitAjax(form, action)
+    sobrescreve();
 }
 
 function submitNewForm() {
@@ -65,25 +66,26 @@ function submitNewForm() {
     submitAjax(form, action)
 }
 
+function sobrescreve(){
 
-$("#form").submit(function(e) {
-    e.preventDefault();
-    var action = form.attr("action");
-    if (action != null) {
-        $.ajax({
-            type: "POST",
-            url: action,
-            data: $("#form").serialize(),
-            success: function (resposta) {
-                setContent(resposta,action);
-            },
-            error: function (resposta) {
-                setContent(resposta,action);
-            }
-        });
-    }
-});
-
+    $("#form").submit(function(e) {
+        e.preventDefault();
+        var action =   $("#form").attr("action");
+        if (action != null) {
+            $.ajax({
+                type: "POST",
+                url: action,
+                data: $("#form").serialize(),
+                success: function (resposta) {
+                    setContent(resposta,action);
+                },
+                error: function (resposta) {
+                    setContent(resposta,action);
+                }
+            });
+        }
+    });
+}
 function submitAjax(form, action) {
     if (action != null) {
         $.ajax({
