@@ -26,7 +26,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message key="label.nao"/></button>
-                <button type="submit" class="btn btn-default bt-remove" data-toggle="modal" onclick="removeObject();" data-target=".modalDialog" >
+                <button type="button" class="btn btn-default bt-remove" data-toggle="modal" onclick="removeObject();" data-target=".modalDialog" >
                     <fmt:message key="label.sim"/>
                 </button>
             </div>

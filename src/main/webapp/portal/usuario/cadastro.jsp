@@ -35,7 +35,7 @@
     <%@ include file="./../template/message.jsp" %>
         <div class="subTitulo timeLineAnchor">Dados do Usuário</div>
         <div class="boxInformacoesPrincipais boxConteudoBlocoPagina">
-        <form id="form" role="form" action="salvarUsuario" >
+        <form id="form" role="form" action="salvarUsuario"  actionRemove="removeUsuario">
                 <input type="hidden" name="id" value="${usuario.id}"/>
                 <loja:input label="label.nome" type="text" name="nome" value="${usuario.nome}"  classe="form-control" required="required" id="nome" placeholder="Insira o nome do usuário..." />
                 <div class="form-inline">

@@ -58,7 +58,6 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
     @Transactional
     @Override
     public void delete(T t) {
-        t = entityManager.merge(t);
         entityManager.remove(t);
     }
 

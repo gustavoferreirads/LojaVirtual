@@ -46,6 +46,7 @@ function removeForm() {
 }
 
 function removeObject() {
+    alert('aa');
     var form = $("#form");
     var action  = $("#form").attr("actionRemove");
     submitAjax(form, action)

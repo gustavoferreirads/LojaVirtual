@@ -101,15 +101,15 @@ public class UsuarioController extends ControllerAction {
 
     @RequestMapping("/removeUsuarioId")
     public String removeUsuarioId(Long id, HttpServletRequest request) {
-//        model.addAttribute("usuario", usuarioDao.carreguePorId(id));
+        usuarioDao.delete(usuarioDao.carreguePorId(id));
         addSucessMessage(request);
         return "portal/usuario/consulta";
     }
 
 
     @RequestMapping("/removeUsuario")
-    public String removeUsuario(Long id, Model model, HttpServletRequest request) {
-        model.addAttribute("usuario", usuarioDao.carreguePorId(id));
+    public String removeUsuario(Usuario usuario,  HttpServletRequest request) {
+        usuarioDao.delete(usuario);
         addSucessMessage(request);
         return "portal/usuario/consulta";
     }
