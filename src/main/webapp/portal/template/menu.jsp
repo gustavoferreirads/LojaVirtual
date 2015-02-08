@@ -4,16 +4,15 @@
 <div id="accordian">
     <ul>
         <li class="active">
-            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/catalago.png"/>Catálago</h3>
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/conteudo.png"/>Catálago</h3>
             <ul>
-                <li><a  href="#">Produtos</a></li>
+                <li><a  href="#" action="consultaProdutos">Produtos</a></li>
             </ul>
         </li>
         <li class="active">
-            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/catalaco.png"/>Conteúdo</h3>
+            <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/catalago.png"/>Conteúdo</h3>
             <ul>
-                <li><a href="#">Categoria</a></li>
-                <li><a href="#">Sub Categoria</a></li>
+                <li><a href="#" action="consultaCategorias">Categoria</a></li>
             </ul>
         </li>
         <li class="active">
@@ -38,7 +37,7 @@
             <ul>
                 <li><a href="#">Faturamento</a></li>
                 <li><a href="#">Estoque</a></li>
-                <li><a href="#">Cliente</a></li>
+                <li><a href="#" action="consultaClientes">Cliente</a></li>
                 <li><a href="#">Produtos</a></li>
             </ul>
         </li>

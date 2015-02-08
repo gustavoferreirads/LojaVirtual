@@ -106,13 +106,13 @@ public class UsuarioController extends ControllerAction {
         return "portal/usuario/consulta";
     }
 
-
     @RequestMapping("/removeUsuario")
     public String removeUsuario(Usuario usuario,  HttpServletRequest request) {
         usuarioDao.delete(usuario);
         addSucessMessage(request);
         return "portal/usuario/consulta";
     }
+
 
     @RequestMapping("logout")
     public String logout(HttpSession session) {

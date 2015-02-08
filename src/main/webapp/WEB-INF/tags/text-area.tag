@@ -8,12 +8,17 @@
 <%@ attribute name="sizeInputClass" required="false" %>
 <%@ attribute name="placeholder" required="false" %>
 <%@ attribute name="value" required="false" %>
-
+<%@ attribute name="row" required="true" %>
 <%@ attribute name="classForm" required="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div class="form-group ${classForm}">
     <label for="${id}" class="${classeLabel}"><fmt:message key="${label}"/>: </label>
     <div class="${sizeInputClass}">
-        <input class="${classe}" name="${name}" value="${value}" required="${required}" placeholder="${placeHolder}" type="${type}" id="${id}" />
+        <textarea id="text-editor" name="${name}"  class="${classe}" value="${value}" required="${required}"  placeholder="${placeHolder}" rows="${row}"/>
     </div>
+    <script>
+        CKEDITOR.replace( 'text-editor' , {
+            language: 'pt-br'
+        });
+    </script>
 </div>

@@ -34,6 +34,7 @@ function editForm() {
     $.get(action, function (resposta) {
         setContent(resposta,action);
     });
+    addMask();
 }
 
 function removeForm() {
@@ -46,19 +47,12 @@ function removeForm() {
 }
 
 function removeObject() {
-    alert('aa');
     var form = $("#form");
     var action  = $("#form").attr("actionRemove");
-    submitAjax(form, action)
+    submitAjax(form, action);
+    gridReload();
 }
 
-
-function submitForm() {
-//    var form = $("#form");
-//    var action = form.attr("action");
-//    submitAjax(form, action)
-    sobrescreve();
-}
 
 function submitNewForm() {
     var actionComplement = "Novo"
@@ -67,8 +61,7 @@ function submitNewForm() {
     submitAjax(form, action)
 }
 
-function sobrescreve(){
-
+function submitForm(){
     $("#form").submit(function(e) {
         e.preventDefault();
         var action =   $("#form").attr("action");
@@ -88,11 +81,12 @@ function sobrescreve(){
     });
 }
 function submitAjax(form, action) {
+    unMask();
     if (action != null) {
         $.ajax({
             type: "POST",
             url: action,
-            data: $("#form").serialize(),
+            data: form.serialize(),
             success: function (resposta) {
                 setContent(resposta,action);
             },
@@ -109,71 +103,9 @@ function setContent(resposta,action){
         gridReload();
     }
 }
-//if ($("#submit").length) {
-//    $("#submit").click(function () {
-//        $("#form").on('submit', function (ev) {
-//            var action = $("#form").attr("action");
-//            ev.preventDefault();
-//            if (action != null) {
-//                $.ajax({
-//                    type: "POST",
-//                    url: action,
-//                    data: $("#form").serialize(),
-//                    success: function (resposta) {
-//                        $(".content").html(resposta);
-//                    },
-//                    error: function (resposta) {
-//                        $(".content").html(resposta);
-//                    }
-//                });
-//            }
-//        });
-//        $("#form").submit();
-//    })
-//}
 
-
-//$(":button").each(function (index, item) {
-//    item.addEventListener("click", function (event) {
-//        var action = $("#form").getAttribute('action');
-//        if (action != null) {
-//            var dados = $("#form").serialize();
-//            alert("GABRIELLLAAA");
-//            $.ajax({
-//                type: "POST",
-//                url: action,
-//                data: dados,
-//                success: function( msg ){
-//                    alert( "OIIIIII sucesso" );
-//                }
-//            });
-//        }
-//    });
-//});
-
-//$.post(action, dados, function (resposta) {
-//    alert('alert');
-//});
-
-
-//$("form").submit(function(e){
-//    e.preventDefault();
-//    // do ajax submition
-//    $.ajax({
-//        url: "SomeURL",
-//        type: "POST",
-//        data: $(this).serializeArray(),
-//        success: function(data, status, xhr) {
-//            // do the success stuff
-//        },
-//        error: function(xhr, status err) {
-//        // do the error stuff
-//    }
-//});
-//});
 
 function  gridReload() {
-
     var action = $("#grid-keep-selection").attr("action");
     $("#grid-keep-selection").bootgrid({
         ajax: true,
@@ -233,3 +165,15 @@ $(function () {
             $(this).val($(this).val().replace(expre, ''));
     });
 });
+
+function addMask(){
+    $('.phone').mask('(00) 0000-0000');
+    $('.cpf').mask('000.000.000-00', {reverse: true});
+    $('.money').mask("#.##0,00", {reverse: true});
+}
+
+function unMask(){
+    $('.phone').unmask();
+    $('.cpf').unmask();
+    $('.money').unmask();
+}

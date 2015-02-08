@@ -25,9 +25,7 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
 
     private Instance<Cliente> clienteInstance;
 
-    protected EntidadeDao() {
-    }
-
+    protected EntidadeDao() {}
 
     public EntidadeDao(Class<?> clazz, Instance<Cliente> clienteInstance) {
         this.clienteInstance = clienteInstance;
@@ -85,7 +83,6 @@ public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>
                     .setFirstResult(first).setMaxResults(pageSize)
                     .getResultList();
         }
-
         return entityManager.createQuery(" from " + clazz.getSimpleName()).setFirstResult(first).setMaxResults(pageSize).getResultList();
     }
 

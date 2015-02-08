@@ -23,6 +23,7 @@
     </mvc:interceptors>
 
     <bean id="usuarioDAO" class="br.com.lojavirtual.impl.servico.UsuarioDao"/>
+    <bean id="produtoDAO" class="br.com.lojavirtual.impl.servico.ProdutoDao"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

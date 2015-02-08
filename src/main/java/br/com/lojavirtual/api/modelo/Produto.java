@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Produto")
-public class Produto implements Serializable {
+public class Produto extends Entidade implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -142,7 +142,7 @@ public class Produto implements Serializable {
         this.quantidadeAcesso = quantidadeAcesso;
     }
 
-    public Date getUltimaModificacao() {
+    public Timestamp getUltimaModificacao() {
         return this.ultimaModificacao;
     }
 

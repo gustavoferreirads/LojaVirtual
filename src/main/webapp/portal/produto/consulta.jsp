@@ -13,15 +13,14 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 
-    <loja:cabecalhoInterno titulo="label.listagem_usuarios" subTitulo="label.dados_usuario" />
+    <loja:cabecalhoInterno titulo="label.listagem_produtos" subTitulo="label.dados_produto" />
     <div class="boxConteudoBlocoPagina">
         <form id="form" role="form" action="" >
-            <table id="grid-keep-selection" class="table table-condensed table-hover table-striped" action="listarUsuarios" actionNew="cadastroDeUsuario" actionEdit="carregaUsuario" actionRemove="remo">
+            <table id="grid-keep-selection" class="table table-condensed table-hover table-striped" action="listarProdutos" actionNew="cadastroDeProduto" actionEdit="carregaProduto" actionRemove="remo">
                 <thead>
                 <tr>
                     <th data-column-id="id" data-type="numeric" data-identifier="true">Código</th>
                     <th data-column-id="nome" data-type="numeric" data-identifier="true">Nome</th>
-                    <th data-column-id="login">E-mail</th>
                     <!--   <th data-column-id="received" data-order="desc">Received</th>-->
                     <!--<th data-column-id="link" data-formatter="link" data-sortable="false">Link</th>-->
                 </tr>
