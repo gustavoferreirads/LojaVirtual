@@ -8,5 +8,6 @@
     <link href="${pageContext.request.contextPath}/resources/css/menu.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/portal.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/jquery.bootgrid.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 </head>
 <body>

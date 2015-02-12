@@ -9,16 +9,6 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-
-    <!--<jsp-config>
-        <jsp-property-group>
-            <description>Configuracao do header, menu e footer do template</description>
-            <url-pattern>/*.jsp</url-pattern>
-            <include-prelude>/portal/template/header.jsp</include-prelude>
-            <include-prelude>/portal/template/menu.jsp</include-prelude>
-            <include-coda>/portal/template/footer.jsp</include-coda>
-        </jsp-property-group>
-    </jsp-config>-->
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
@@ -38,5 +28,17 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
+
+    <!--<jsp-config>
+        <jsp-property-group>
+            <description>Configuracao do header, menu e footer do template</description>
+            <url-pattern>/*.jsp</url-pattern>
+            <include-prelude>/portal/template/header.jsp</include-prelude>
+            <include-prelude>/portal/template/menu.jsp</include-prelude>
+            <include-coda>/portal/template/footer.jsp</include-coda>
+        </jsp-property-group>
+    </jsp-config>-->
 
 </web-app>

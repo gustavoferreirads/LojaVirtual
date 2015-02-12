@@ -177,3 +177,4 @@ function unMask(){
     $('.cpf').unmask();
     $('.money').unmask();
 }
+

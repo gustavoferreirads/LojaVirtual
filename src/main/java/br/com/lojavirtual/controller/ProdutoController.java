@@ -1,18 +1,23 @@
 package br.com.lojavirtual.controller;
 
 import br.com.lojavirtual.api.exception.ValidationException;
+import br.com.lojavirtual.api.modelo.File;
 import br.com.lojavirtual.api.modelo.Produto;
 import br.com.lojavirtual.api.servico.IProdutoDao;
+import br.com.lojavirtual.impl.servico.FileValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -30,6 +35,9 @@ public class ProdutoController extends ControllerAction {
     @Qualifier("produtoDAO")
     private IProdutoDao produtoDao;
 
+    @Autowired
+    private FileValidator validator;
+
     public ProdutoController() {
     }
 
@@ -43,6 +51,7 @@ public class ProdutoController extends ControllerAction {
         model.addAttribute("produto", produtoDao.carreguePorId(id));
         return "portal/produto/cadastro";
     }
+
 
     @RequestMapping("/salvarProduto")
     public String salvarProduto(Produto produto, Model model, HttpServletRequest request) {
@@ -82,6 +91,25 @@ public class ProdutoController extends ControllerAction {
             e.printStackTrace();
         }
     }
+
+
+    @RequestMapping("/upload")
+    public void handleFileUpload(Model model, @Validated File file, BindingResult result){
+        if (file != null) {
+            try {
+                byte[] bytes = file.getFile().getBytes();
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new java.io.File(file.getFile().getName())));
+                stream.write(bytes);
+                stream.close();
+                System.out.print("You successfully uploaded " +  "!");
+            } catch (Exception e) {
+                System.out.print("You failed to upload " +  " => " + e.getMessage());
+            }
+        } else {
+            System.out.print("You failed to upload " +  " because the file was empty.");
+        }
+    }
+
 
     @RequestMapping("/removeProdutoId")
     public String removeProdutoId(Long id, HttpServletRequest request) {

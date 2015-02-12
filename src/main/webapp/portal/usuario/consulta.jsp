@@ -14,7 +14,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 
     <loja:cabecalhoInterno titulo="label.listagem_usuarios" subTitulo="label.dados_usuario" />
-    <div class="boxConteudoBlocoPagina">
+    <div class="boxConteudoBloco">
         <form id="form" role="form" action="" >
             <table id="grid-keep-selection" class="table table-condensed table-hover table-striped" action="listarUsuarios" actionNew="cadastroDeUsuario" actionEdit="carregaUsuario" actionRemove="remo">
                 <thead>

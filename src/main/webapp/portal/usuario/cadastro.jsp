@@ -15,7 +15,7 @@
 
     <loja:cabecalhoInterno tituloAnterior="label.listagem_usuarios" titulo="label.adicionar_usuario" subTitulo="label.dados_usuario" voltar="'consultaUsuarios'" />
 
-        <div class="boxConteudoBlocoPagina">
+        <div class="boxConteudoBloco">
         <form id="form" role="form" action="salvarUsuario"  actionRemove="removeUsuario">
                 <input type="hidden" name="id" value="${usuario.id}"/>
                 <loja:input label="label.nome" type="text" name="nome" value="${usuario.nome}"  classe="form-control" required="required" id="nome" placeholder="Insira o nome do usuário..." />

@@ -32,6 +32,7 @@ public class Usuario extends Entidade implements Serializable {
     @Setter
     private String confirmSenha;
 
+    //TODO: Problema com a Gson Lazy Inicialization Exception
 //    //bi-directional many-to-one association to Categoria
 //    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
 //    private List<Categoria> categorias;

@@ -21,6 +21,9 @@
 <script src="${pageContext.request.contextPath}/resources/js/ckeditor/ckeditor.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery.mask.min.js"></script>
+
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+
 <!-- prefix free to deal with vendor prefixes -->
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

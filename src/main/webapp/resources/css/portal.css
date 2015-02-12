@@ -1,21 +1,68 @@
-.input-mini       			    { width: 60px; }
-.input-mini-to-small       	    { width: 75px; }
-.input-small      			    { width: 90px; }
-.input-small-to-medium          { width: 120px;}
-.input-medium     			    { width: 150px;}
-.input-large      			    { width: 210px;}
-.input-xlarge     			    { width: 270px;}
-.input-xxlarge    			    { width: 530px;}
-.margin-right-mini{margin-right: 5%;}
-.margin-right-mini-to-small{margin-right: 10%;}
-.margin-right-small{margin-right: 15%;}
-.margin-right-small-to-medium{margin-right: 20%;}
-.margin-right-medium{margin-right: 25%}
-.margin-right-large{margin-right: 30%;}
-.margin-right-xlarge{margin-right: 40%;}
-.margin-right-xxlarge{margin-right: 50%;}
+.input-mini {
+    width: 60px;
+}
 
-body{
+.input-mini-to-small {
+    width: 75px;
+}
+
+.input-small {
+    width: 90px;
+}
+
+.input-small-to-medium {
+    width: 120px;
+}
+
+.input-medium {
+    width: 150px;
+}
+
+.input-large {
+    width: 210px;
+}
+
+.input-xlarge {
+    width: 270px;
+}
+
+.input-xxlarge {
+    width: 530px;
+}
+
+.margin-right-mini {
+    margin-right: 5%;
+}
+
+.margin-right-mini-to-small {
+    margin-right: 10%;
+}
+
+.margin-right-small {
+    margin-right: 15%;
+}
+
+.margin-right-small-to-medium {
+    margin-right: 20%;
+}
+
+.margin-right-medium {
+    margin-right: 25%
+}
+
+.margin-right-large {
+    margin-right: 30%;
+}
+
+.margin-right-xlarge {
+    margin-right: 40%;
+}
+
+.margin-right-xxlarge {
+    margin-right: 50%;
+}
+
+body {
     background-color: #fbfbfb;
 }
 
@@ -26,7 +73,8 @@ body{
 }
 
 .portal-color-white {
-    color: #ffffff; !important;
+    color: #ffffff;
+!important;
 }
 
 .portal-color-primary {
@@ -40,7 +88,6 @@ body{
 .a-menu-portal:hover {
     color: #BDF008 !important;
 }
-
 
 .portal-sair {
     margin-top: 15px
@@ -169,7 +216,6 @@ span.breadCrumbAtual img {
     max-width: 15px;
 }
 
-
 .menuBreadCrumb {
     background: url("../images/icons/divisor_min.png") no-repeat scroll right top rgba(0, 0, 0, 0);
     color: #7CB128;
@@ -186,12 +232,11 @@ span.breadCrumbAtual img {
     /*text-decoration: underline;*/
 }
 
-.boxConteudo{
+.boxConteudo {
     padding-top: 12px;
 }
 
-
-.boxConteudoBlocoPagina {
+.boxConteudoBloco {
     background: #fff;
     border: 1px solid #CDCDCD;
     border-top: none;
@@ -199,41 +244,101 @@ span.breadCrumbAtual img {
     padding: 15px 8px;
 }
 
-.actions.btn-group > .btn.btn-default{
+.actions.btn-group > .btn.btn-default {
     height: 33px;
 }
 
-#main{
+#main {
     display: flex;
 }
 
-.form-actions-button{
+.form-actions-button {
     margin-top: 20px;
 }
 
-.btn-new-form{
+.btn-new-form {
     float: left;
     margin-right: 10px;
 }
 
-.btn-edit-form{
+.btn-edit-form {
     float: left;
     margin-right: 20px;
 }
 
-.search.form-group{
+.search.form-group {
     width: 49% !important;
     float: inherit;
 }
 
-#grid-keep-selection-header{
+#grid-keep-selection-header {
     margin-bottom: 20px;
 }
 
-.actions.btn-group{
+.actions.btn-group {
     float: right;
 }
 
-.btn-back{
+.btn-back {
     float: right;
+}
+
+.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+
+#drop_zone {
+    border: 2px dashed #bbb;
+    text-align: center;
+    /*font: 20pt bold 'Vollkorn';*/
+    color: #bbb;
+    float: left;
+    width: 160px;
+    height: 100%;
+}
+
+.fileHidden {
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+}
+
+
+.empty {
+    background: #fafafa url(../../resources/images/icons/empty.png) center center no-repeat;
+}
+
+.boxPhotos div.photo:first-child {
+    height: 160px;
+    float: none;
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 0;
+    width: 160px;
+}
+
+.boxPhotos .photo {
+    border: 1px dashed #e5e6e3;
+    float: left;
+    height: 50px;
+    margin: 0 5px 5px 0;
+    position: relative;
+    text-align: center;
+    width: 50px;
+}
+
+.boxPhotos .foto {
+    float: left;
+    height: 50px;
+    margin: 2px;
+    position: relative;
+    text-align: center;
+    width: 50px;
+
+}
+.boxPhotos .foto img {
+    max-height: 50px;
+    max-width: 50px;
 }

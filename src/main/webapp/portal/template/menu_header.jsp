@@ -17,7 +17,7 @@
                     <a class="btn btn-danger btn-xs" role="button" href="logout">Sair</a>
                 </p>
                 <p class="navbar-text pull-right portal-color-white" >
-                    <span class="portal-color-secundary">Olá</span>  ${usuarioLogado.nome}!
+                    <span class="portal-color-secundary">Olá</span>  ${usuarioLogado.nome} <span>!</span>
                 </p>
             </div>
             <div class="navbar-collapse collapse " >
