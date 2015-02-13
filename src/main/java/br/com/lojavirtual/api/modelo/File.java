@@ -2,6 +2,8 @@ package br.com.lojavirtual.api.modelo;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: JoãoGustavo
@@ -10,14 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
  * To change this template use File | Settings | File Templates.
  */
 public class File {
-    private MultipartFile[] file;
+    private List<MultipartFile> files;
 
-    public MultipartFile[] getFile() {
-        return file;
+
+    public List<MultipartFile> getFiles() {
+        return files;
     }
 
-    public void setFile(MultipartFile[] file) {
-        this.file = file;
+    public void setFiles(List<MultipartFile> files) {
+        this.files = files;
     }
-
 }

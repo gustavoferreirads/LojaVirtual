@@ -1,7 +1,7 @@
 package br.com.lojavirtual.controller;
 
 import br.com.lojavirtual.api.exception.ValidationException;
-import br.com.lojavirtual.api.modelo.File;
+import br.com.lojavirtual.api.modelo.Imagem;
 import br.com.lojavirtual.api.modelo.Produto;
 import br.com.lojavirtual.api.servico.IProdutoDao;
 import br.com.lojavirtual.impl.servico.FileValidator;
@@ -9,17 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import static br.com.lojavirtual.business.ProdutoBusiness.validate;
@@ -39,7 +42,10 @@ public class ProdutoController extends ControllerAction {
     @Autowired
     private FileValidator validator;
 
+    private Produto produto;
+
     public ProdutoController() {
+        init();
     }
 
     @RequestMapping("/cadastroDeProduto")
@@ -49,17 +55,20 @@ public class ProdutoController extends ControllerAction {
 
     @RequestMapping("/carregaProduto")
     public String carregaProduto(Long id, Model model) {
-        model.addAttribute("produto", produtoDao.carreguePorId(id));
+        produto = produtoDao.carreguePorId(id);
+        model.addAttribute("produto", produto);
         return "portal/produto/cadastro";
     }
 
 
     @RequestMapping("/salvarProduto")
-    public String salvarProduto(Produto produto, Model model, HttpServletRequest request, @Validated MultipartFile[] file ) {
+    public String salvarProduto(Produto produto, Model model, HttpServletRequest request) {
         try {
+
             // TODO : posso implementar a classe org.springframework.validation.Validator
             validate(produto);
-            model.addAttribute("produto", produtoDao.salve(produto));
+            produto = produtoDao.salve(produto);
+            model.addAttribute("produto", produto);
             addSucessMessage(request);
         } catch (ValidationException e) {
             addErrorMessage(request, e.getMessage());
@@ -73,8 +82,9 @@ public class ProdutoController extends ControllerAction {
 
     @RequestMapping("/salvarProdutoNovo")
     public String salvarENovoProduto(Produto produto, Model model, HttpServletRequest request) {
-        String retorno = salvarProduto(produto, model, request,null);
-        model.addAttribute("produto", new Produto());
+        String retorno = salvarProduto(produto, model, request);
+        produto = new Produto();
+        model.addAttribute("produto", produto);
         return retorno;
     }
 
@@ -93,24 +103,33 @@ public class ProdutoController extends ControllerAction {
             e.printStackTrace();
         }
     }
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public @ResponseBody String handleFileUpload(MultipartHttpServletRequest request, HttpServletResponse response) {
+        Iterator<String> itr = request.getFileNames();
+        MultipartFile file = request.getFile(itr.next());
+        try {
+            Imagem imagem = new Imagem();
+            imagem.setLength(file.getBytes().length);
+            imagem.setBytes(file.getBytes());
+            imagem.setType(file.getContentType());
+            imagem.setDescricao(file.getOriginalFilename());
+            produto.getImagens().add(imagem);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String imgHtml = "<img class=\"thumb\" src='"+request.getRequestURL().toString().replace("upload","getLast")+"/"+new Date().getTime()+"'/>";
+        return imgHtml;
+    }
 
-
-    @RequestMapping("/upload")
-    public void handleFileUpload(Model model, @Validated File file, BindingResult result){
-        if (file != null) {
-            try {
-                byte[] bytes = file.getFile()[0].getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new java.io.File(file.getFile()[0].getName())));
-                stream.write(bytes);
-                stream.close();
-                System.out.print("You successfully uploaded " + "!");
-                model.addAttribute("file",file);
-            } catch (Exception e) {
-                System.out.print("You failed to upload " +  " => " + e.getMessage());
-            }
-
-        } else {
-            System.out.print("You failed to upload " +  " because the file was empty.");
+    @RequestMapping(value = "/getLast/{value}", method = RequestMethod.GET)
+    public void get(HttpServletResponse response, @PathVariable String value) {
+        try {
+            Integer last = produto.getImagens().size() - 1;
+            response.setContentType(produto.getImagens().get(last).getType());
+            response.setContentLength(produto.getImagens().get(last).getLength());
+            FileCopyUtils.copy(produto.getImagens().get(last).getBytes(), response.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -124,9 +143,14 @@ public class ProdutoController extends ControllerAction {
 
 
     @RequestMapping("/removeProduto")
-    public String removeProduto(Produto produto,  HttpServletRequest request) {
+    public String removeProduto(Produto produto, HttpServletRequest request) {
         produtoDao.delete(produto);
+        init();
         addSucessMessage(request);
         return "portal/produto/consulta";
+    }
+
+    public void init() {
+        produto = new Produto();
     }
 }

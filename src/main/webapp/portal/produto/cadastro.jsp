@@ -30,20 +30,25 @@
                     required="required"
                     placeholder="Insira o nome do usuário..."/>
 
+            <label class="">Fotos: </label>
+            <div id="drop_zone" class="empty" onclick="getFile();">
+                <div id="list">
+                    <div class="photo">
+                        <img src="${pageContext.request.contextPath}/resources/images/icons/empty.png">
+                    </div>
 
-        <label class="">Fotos: </label>
-        <div id="drop_zone" class="empty" onclick="getFile();">
-            <div id="list">
-                <div class="photo">
-                    <img src="${pageContext.request.contextPath}/resources/images/icons/empty.png">
+                    <c:forEach var="imagem" items="#{produto.imagens}" >
+                        <div class="photo">
+                            <img id="${imagem.idImagem}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />
+                        </div>
+                    </c:forEach>
+                </div>
+                <div class="fileHidden">
+                    <input id="files" type="file" name="files" multiple/>
                 </div>
             </div>
-            <div class="fileHidden">
-                <input id="files" type="file" name="files[]" multiple/>
-            </div>
-        </div>
 
-        <loja:text-area label="label.descricao"
+            <loja:text-area label="label.descricao"
                         type="text"
                         name="descricao"
                         value="${produto.descricao}"
@@ -53,8 +58,11 @@
                         row="3"/>
 
 
-           <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${produto.id != null}" voltar="'consultaProdutos'" />
     </form>
+
+
 </div>
+
+
 
 <script src="${pageContext.request.contextPath}/resources/js/file.upload.js"></script>

@@ -1,8 +1,7 @@
 package br.com.lojavirtual.api.modelo;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 
 /**
@@ -19,11 +18,20 @@ public class Imagem implements Serializable {
 
     private String caminho;
 
+    @Lob
+    private byte[] bytes;
+
+    @Transient
+    private String type;
+
+    @Transient
+    private Integer length;
+
     private String descricao;
 
-    //bi-directional many-to-one association to Produto
-    @OneToMany(mappedBy = "imagem")
-    private List<Produto> produtos;
+    @ManyToOne
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
 
     public Imagem() {
     }
@@ -52,26 +60,35 @@ public class Imagem implements Serializable {
         this.descricao = descricao;
     }
 
-    public List<Produto> getProdutos() {
-        return this.produtos;
+    public byte[] getBytes() {
+        return bytes;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setBytes(byte[] bytes) {
+        this.bytes = bytes;
     }
 
-    public Produto addProduto(Produto produto) {
-        getProdutos().add(produto);
-        produto.setImagem(this);
-
+    public Produto getProduto() {
         return produto;
     }
 
-    public Produto removeProduto(Produto produto) {
-        getProdutos().remove(produto);
-        produto.setImagem(null);
-
-        return produto;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

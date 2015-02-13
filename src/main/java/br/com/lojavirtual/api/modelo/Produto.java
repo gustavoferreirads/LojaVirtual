@@ -1,11 +1,9 @@
 package br.com.lojavirtual.api.modelo;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-
-import java.sql.Time;
+import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -65,9 +63,9 @@ public class Produto extends Entidade implements Serializable {
     @JoinColumn(name = "id_destaque")
     private Destaque destaque;
 
-    @ManyToOne
-    @JoinColumn(name = "id_imagem")
-    private Imagem imagem;
+    //bi-directional many-to-one association to Produto
+    @OneToMany(mappedBy = "produto")
+    private List<Imagem> imagens = new ArrayList<Imagem>();
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data_cadastro")
@@ -242,11 +240,11 @@ public class Produto extends Entidade implements Serializable {
         this.destaque = destaque;
     }
 
-    public Imagem getImagem() {
-        return imagem;
+    public List<Imagem> getImagens() {
+        return imagens;
     }
 
-    public void setImagem(Imagem imagem) {
-        this.imagem = imagem;
+    public void setImagens(List<Imagem> imagens) {
+        this.imagens = imagens;
     }
 }
