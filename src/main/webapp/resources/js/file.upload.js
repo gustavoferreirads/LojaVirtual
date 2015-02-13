@@ -12,7 +12,7 @@ function handleFileSelect(evt) {
             return function (e) {
                 // Render thumbnail.
                 var span = document.createElement('div');
-                span.addClass('photo')
+                span.className  = 'photo';
                 span.innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
                 document.getElementById("list").insertBefore(span, null);
             };

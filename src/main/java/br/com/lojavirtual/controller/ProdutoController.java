@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,8 +55,9 @@ public class ProdutoController extends ControllerAction {
 
 
     @RequestMapping("/salvarProduto")
-    public String salvarProduto(Produto produto, Model model, HttpServletRequest request) {
+    public String salvarProduto(Produto produto, Model model, HttpServletRequest request, @Validated MultipartFile[] file ) {
         try {
+            // TODO : posso implementar a classe org.springframework.validation.Validator
             validate(produto);
             model.addAttribute("produto", produtoDao.salve(produto));
             addSucessMessage(request);
@@ -71,7 +73,7 @@ public class ProdutoController extends ControllerAction {
 
     @RequestMapping("/salvarProdutoNovo")
     public String salvarENovoProduto(Produto produto, Model model, HttpServletRequest request) {
-        String retorno = salvarProduto(produto, model, request);
+        String retorno = salvarProduto(produto, model, request,null);
         model.addAttribute("produto", new Produto());
         return retorno;
     }
@@ -97,14 +99,16 @@ public class ProdutoController extends ControllerAction {
     public void handleFileUpload(Model model, @Validated File file, BindingResult result){
         if (file != null) {
             try {
-                byte[] bytes = file.getFile().getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new java.io.File(file.getFile().getName())));
+                byte[] bytes = file.getFile()[0].getBytes();
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new java.io.File(file.getFile()[0].getName())));
                 stream.write(bytes);
                 stream.close();
-                System.out.print("You successfully uploaded " +  "!");
+                System.out.print("You successfully uploaded " + "!");
+                model.addAttribute("file",file);
             } catch (Exception e) {
                 System.out.print("You failed to upload " +  " => " + e.getMessage());
             }
+
         } else {
             System.out.print("You failed to upload " +  " because the file was empty.");
         }

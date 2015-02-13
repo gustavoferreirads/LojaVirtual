@@ -10,13 +10,13 @@ import org.springframework.web.multipart.MultipartFile;
  * To change this template use File | Settings | File Templates.
  */
 public class File {
-    private MultipartFile file;
+    private MultipartFile[] file;
 
-    public MultipartFile getFile() {
+    public MultipartFile[] getFile() {
         return file;
     }
 
-    public void setFile(MultipartFile file) {
+    public void setFile(MultipartFile[] file) {
         this.file = file;
     }
 

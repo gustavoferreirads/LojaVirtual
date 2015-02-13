@@ -13,7 +13,7 @@ public class FileValidator implements Validator {
 
 	public void validate(Object obj, Errors errors) {
 		File file = (File) obj;
-		  if (file.getFile().getSize() == 0) {
+		  if (file.getFile()[0].getSize() == 0) {
 		   errors.rejectValue("file", "valid.file");
 		  }
 	}

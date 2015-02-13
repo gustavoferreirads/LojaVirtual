@@ -21,37 +21,39 @@
     <form id="form" role="form" action="salvarProduto" enctype="multipart/form-data" actionRemove="removeProduto">
         <input type="hidden" name="id" value="${produto.id}"/>
 
-        <div class="form-inline">
-            <div id="drop_zone" class="empty" onclick="getFile();">
-                <div class="fileHidden">
-                    <input id="files" type="file" name="files[]" multiple/>
-                </div>
-                <div id="list" class="boxPhotos"></div>
-            </div>
+        <loja:input id="nome"
+                    label="label.nome"
+                    type="text"
+                    name="nome"
+                    value="${produto.nome}"
+                    classe="form-control"
+                    required="required"
+                    placeholder="Insira o nome do usuário..."/>
 
-            <loja:input id="nome"
-                        label="label.nome"
-                        type="text"
-                        name="nome"
-                        value="${produto.nome}"
-                        classe="form-control"
-                        required="required"
-                        placeholder="Insira o nome do usuário..."/>
+
+        <label class="">Fotos: </label>
+        <div id="drop_zone" class="empty" onclick="getFile();">
+            <div id="list">
+                <div class="photo">
+                    <img src="${pageContext.request.contextPath}/resources/images/icons/empty.png">
+                </div>
+            </div>
+            <div class="fileHidden">
+                <input id="files" type="file" name="files[]" multiple/>
+            </div>
         </div>
 
         <loja:text-area label="label.descricao"
                         type="text"
-                        name="nome"
+                        name="descricao"
                         value="${produto.descricao}"
                         classe="form-control"
                         required="required"
-                        id="nome"
+                        id="descricao"
                         row="3"/>
 
 
-        <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${produto.id != null}"
-                           voltar="'consultaProdutos'"/>
-
+           <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${produto.id != null}" voltar="'consultaProdutos'" />
     </form>
 </div>
 

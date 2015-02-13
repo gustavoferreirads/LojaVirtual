@@ -285,39 +285,34 @@ span.breadCrumbAtual img {
 
 .thumb {
     height: 75px;
-    border: 1px solid #000;
     margin: 10px 5px 0 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #drop_zone {
     border: 2px dashed #bbb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 25px;
     text-align: center;
-    /*font: 20pt bold 'Vollkorn';*/
+    font: 20pt bold 'Vollkorn';
     color: #bbb;
-    float: left;
-    width: 160px;
-    height: 100%;
 }
 
 .fileHidden {
-    height: 0px;
+    height: 15px;
     width: 0px;
     overflow: hidden;
 }
 
-
 .empty {
-    background: #fafafa url(../../resources/images/icons/empty.png) center center no-repeat;
+    background: #fafafa;
+   /* url(../../resources/images/icons/empty.png) center center no-repeat;*/
 }
 
-.boxPhotos div.photo:first-child {
-    height: 160px;
-    float: none;
-    display: block;
-    margin-bottom: 5px;
-    margin-right: 0;
-    width: 160px;
-}
 
 .boxPhotos .photo {
     border: 1px dashed #e5e6e3;
@@ -336,9 +331,22 @@ span.breadCrumbAtual img {
     position: relative;
     text-align: center;
     width: 50px;
-
 }
+
 .boxPhotos .foto img {
     max-height: 50px;
     max-width: 50px;
+}
+
+.boxPhotos > .photo:first-child {
+    height: 160px;
+    float: none;
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 0;
+    width: 160px;
+}
+
+.photo {
+    display: -webkit-inline-box;
 }
