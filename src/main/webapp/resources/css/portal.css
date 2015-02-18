@@ -292,14 +292,16 @@ span.breadCrumbAtual img {
 }
 
 #drop_zone {
-    border: 2px dashed #bbb;
+    /*border: 2px dashed #bbb;*/
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    padding: 25px;
+    padding: 41px;
     text-align: center;
+    background: #fafafa url(../../resources/images/icons/empty.png) center center no-repeat;
     font: 20pt bold 'Vollkorn';
     color: #bbb;
+    margin-bottom: 20px;
 }
 
 .fileHidden {

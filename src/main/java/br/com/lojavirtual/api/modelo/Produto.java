@@ -12,10 +12,35 @@ import java.util.List;
 public class Produto extends Entidade implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+
+    public enum Situacao {
+        CORREIOS("Frete calculado pelos Correiros"), GRATIS("Frete Grátis"), FIXO("Frete Fixo");
+
+        private String nome;
+
+        Situacao(String nome) {
+            this.nome = nome;
+        }
+
+        @Override
+        public String toString() {
+            return nome;
+        }
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_produto")
     private Long id;
+
 
     @Column(name = "descricao")
     private String descricao;
@@ -30,22 +55,25 @@ public class Produto extends Entidade implements Serializable {
     private String parcelamento;
 
     @Column(name = "quantidade")
-    private Integer quantidade;
+    private Integer quantidade = 0;
 
     @Column(name = "quantidade_acesso")
-    private Integer quantidadeAcesso;
+    private Integer quantidadeAcesso = 0;
 
     @Column(name = "valor_liquido")
-    private Float valorLiquido;
+    private Float valorLiquido = 0.0f;
 
     @Column(name = "valor_venda")
-    private Float valorVenda;
+    private Float valorVenda = 0.0f;
 
     @OneToMany(mappedBy = "produto")
     private List<ItemVenda> itemVendas;
 
     @OneToMany(mappedBy = "produto")
     private List<LimiteEstoque> limiteEstoques;
+
+    @Transient
+    private String situacao;
 
     @ManyToOne
     @JoinColumn(name = "id_promocao")
@@ -247,4 +275,5 @@ public class Produto extends Entidade implements Serializable {
     public void setImagens(List<Imagem> imagens) {
         this.imagens = imagens;
     }
+
 }

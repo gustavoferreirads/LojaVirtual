@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="625401788">
-    <data-source source="LOCAL" name="MySQL - lojavirtual@localhost" product="MySQL" version="5.6.19" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )" uuid="1968d474-5cc0-4f11-8edb-aa99928af459">
-      <extra-name-characters>#@</extra-name-characters>
-      <identifier-quote-string>`</identifier-quote-string>
+  <component name="DataSourceManagerImpl" format="xml" hash="329052054">
+    <data-source source="LOCAL" name="MySQL - lojavirtual@localhost" uuid="1968d474-5cc0-4f11-8edb-aa99928af459">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/$project.name$</jdbc-url>
@@ -15,7 +14,7 @@
       </driver-properties>
       <libraries>
         <library>
-          <url>file://C:/Desenvolvimento/Workspaces/LaaS/LAAS/db/mysql-driver.jar</url>
+          <url>file://C:/Desenvolvimento/LaaS/db/mysql-driver.jar</url>
         </library>
       </libraries>
     </data-source>

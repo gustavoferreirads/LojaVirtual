@@ -13,7 +13,7 @@
 //        reader.onload = (function (theFile) {
 //            return function (e) {
 //                // Render thumbnail.
-//                var span = document.createElement('div');
+//        div     var span = document.createElement('div');
 //                span.className  = 'photo';
 //                span.innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
 //                document.getElementById("list").insertBefore(span, null);
@@ -26,7 +26,6 @@
 //}
 
 function handleFileSelect(evt) {
-    alert("aqui");
     var oMyForm = new FormData();
     oMyForm.append("file", evt.target.files[0]);
     $.ajax({

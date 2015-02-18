@@ -5,6 +5,7 @@ import br.com.lojavirtual.api.modelo.Imagem;
 import br.com.lojavirtual.api.modelo.Produto;
 import br.com.lojavirtual.api.servico.IProdutoDao;
 import br.com.lojavirtual.impl.servico.FileValidator;
+import br.com.lojavirtual.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -42,14 +43,18 @@ public class ProdutoController extends ControllerAction {
     @Autowired
     private FileValidator validator;
 
+    private Produto.Situacao[] situacoes = Utils.sort(Produto.Situacao.values());
+
     private Produto produto;
+
 
     public ProdutoController() {
         init();
     }
 
     @RequestMapping("/cadastroDeProduto")
-    public String abrirCadastro() {
+    public String abrirCadastro(Model model) {
+        model.addAttribute("situacoes", situacoes);
         return "portal/produto/cadastro";
     }
 
@@ -64,7 +69,6 @@ public class ProdutoController extends ControllerAction {
     @RequestMapping("/salvarProduto")
     public String salvarProduto(Produto produto, Model model, HttpServletRequest request) {
         try {
-
             // TODO : posso implementar a classe org.springframework.validation.Validator
             validate(produto);
             produto = produtoDao.salve(produto);
