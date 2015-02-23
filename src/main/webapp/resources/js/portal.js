@@ -159,5 +159,6 @@ function unMask(){
     $('.phone').unmask();
     $('.cpf').unmask();
     $('.money').unmask();
+    $('.weight').unmask();
 }
 

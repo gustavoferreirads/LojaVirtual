@@ -43,6 +43,7 @@ public class ProdutoController extends ControllerAction {
     @Autowired
     private FileValidator validator;
 
+    private Produto.TipoDeFrete[] fretes = Utils.sort(Produto.TipoDeFrete.values());
     private Produto.Situacao[] situacoes = Utils.sort(Produto.Situacao.values());
 
     private Produto produto;
@@ -54,6 +55,7 @@ public class ProdutoController extends ControllerAction {
 
     @RequestMapping("/cadastroDeProduto")
     public String abrirCadastro(Model model) {
+        model.addAttribute("fretes", fretes);
         model.addAttribute("situacoes", situacoes);
         return "portal/produto/cadastro";
     }

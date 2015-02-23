@@ -8,10 +8,10 @@
 #accordian {
     background: #222;
     width: 250px;
-    height: 100%;
     margin-right: 2%;
    /* margin: 100px auto 0 auto;*/
     float: left;
+    height: 100%;
     color: white;
     /*Some cool shadow and glow effect*/
     box-shadow:

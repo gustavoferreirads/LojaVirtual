@@ -1,5 +1,7 @@
 package br.com.lojavirtual.api.modelo;
 
+import br.com.lojavirtual.util.Utils;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -12,17 +14,23 @@ import java.util.List;
 public class Produto extends Entidade implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public String getSituacao() {
-        return situacao;
-    }
+    public enum TipoDeFrete {
+        CORREIOS("Frete calculado pelos Correiros"), GRATIS("Frete Grátis"), FIXO("Frete Fixo");
 
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
+        private String nome;
 
+        TipoDeFrete(String nome) {
+            this.nome = nome;
+        }
+
+        @Override
+        public String toString() {
+            return nome;
+        }
+    }
 
     public enum Situacao {
-        CORREIOS("Frete calculado pelos Correiros"), GRATIS("Frete Grátis"), FIXO("Frete Fixo");
+        DISPONIVEL("Disponível"), INDISPONIVEL("Indiponível");
 
         private String nome;
 
@@ -41,7 +49,6 @@ public class Produto extends Entidade implements Serializable {
     @Column(name = "id_produto")
     private Long id;
 
-
     @Column(name = "descricao")
     private String descricao;
 
@@ -55,25 +62,46 @@ public class Produto extends Entidade implements Serializable {
     private String parcelamento;
 
     @Column(name = "quantidade")
-    private Integer quantidade = 0;
+    private Integer quantidade;
 
     @Column(name = "quantidade_acesso")
-    private Integer quantidadeAcesso = 0;
+    private Integer quantidadeAcesso;
 
     @Column(name = "valor_liquido")
-    private Float valorLiquido = 0.0f;
+    private Float valorLiquido;
 
     @Column(name = "valor_venda")
-    private Float valorVenda = 0.0f;
+    private Float valorVenda;
+
+    @Column(name = "valor_frete_fixo")
+    private Float valorFreteFixo;
+
+    @Column(name = "exibir_pagina_inicial")
+    private Boolean paginaInicial = false;
+
+    @Column(name = "exibir_banner")
+    private Boolean banner = false;
+
+    @Column(name = "exibir_lancamento")
+    private Boolean lancamento = false;
+
+    private Integer peso;
+
+    private Integer altura;
+
+    private Integer largura;
+
+    private Integer profundidade;
+
+    private Situacao situacao = Situacao.DISPONIVEL;
+
+    private TipoDeFrete tipoDeFrete = TipoDeFrete.CORREIOS;
 
     @OneToMany(mappedBy = "produto")
     private List<ItemVenda> itemVendas;
 
     @OneToMany(mappedBy = "produto")
     private List<LimiteEstoque> limiteEstoques;
-
-    @Transient
-    private String situacao;
 
     @ManyToOne
     @JoinColumn(name = "id_promocao")
@@ -275,5 +303,87 @@ public class Produto extends Entidade implements Serializable {
     public void setImagens(List<Imagem> imagens) {
         this.imagens = imagens;
     }
+
+    public Integer getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Integer peso) {
+        this.peso = peso;
+    }
+
+    public Integer getAltura() {
+        return altura;
+    }
+
+    public void setAltura(Integer altura) {
+        this.altura = altura;
+    }
+
+    public Integer getLargura() {
+        return largura;
+    }
+
+    public void setLargura(Integer largura) {
+        this.largura = largura;
+    }
+
+    public Integer getProfundidade() {
+        return profundidade;
+    }
+
+    public void setProfundidade(Integer profundidade) {
+        this.profundidade = profundidade;
+    }
+
+    public Float getValorFreteFixo() {
+        return valorFreteFixo;
+    }
+
+    public void setValorFreteFixo(Float valorFreteFixo) {
+        this.valorFreteFixo = valorFreteFixo;
+    }
+
+
+    public Situacao getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
+    }
+
+    public TipoDeFrete getTipoDeFrete() {
+        return tipoDeFrete;
+    }
+
+    public void setTipoDeFrete(TipoDeFrete tipoDeFrete) {
+        this.tipoDeFrete = tipoDeFrete;
+    }
+
+    public Boolean getPaginaInicial() {
+        return paginaInicial;
+    }
+
+    public void setPaginaInicial(Boolean paginaInicial) {
+        this.paginaInicial = paginaInicial;
+    }
+
+    public Boolean getBanner() {
+        return banner;
+    }
+
+    public void setBanner(Boolean banner) {
+        this.banner = banner;
+    }
+
+    public Boolean getLancamento() {
+        return lancamento;
+    }
+
+    public void setLancamento(Boolean lancamento) {
+        this.lancamento = lancamento;
+    }
+
 
 }

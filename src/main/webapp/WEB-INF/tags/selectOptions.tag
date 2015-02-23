@@ -10,15 +10,16 @@
 <%@ attribute name="list" type="java.lang.Object"  required="true" %>
 <%@ attribute name="value" required="true" %>
 <%@ attribute name="classForm" required="false" %>
-
+<%@ attribute name="sizeInput" required="false" %>
 <div class="form-group  ${classForm}">
     <label for="${id}" class="${classeLabel}"><fmt:message key="${label}"/>: </label>
-    <select name="${name}" class="${classe}" id="${id}" required="${required}">
-        <option value=""></option>
-        <c:forEach items="${list}" var="item">
-            <option value="${item}" ${value == item ? 'selected' : ''}>
-                <c:out value="${item}"/>
-            </option>
-        </c:forEach>
-    </select>
+    <div class="${sizeInput}">
+        <select name="${name}" onchange="" class="${classe}" id="${id}" required="${required}">
+            <c:forEach items="${list}" var="item">
+                <option value="${item}" ${value == item ? 'selected' : ''}>
+                    <c:out value="${item}"/>
+                </option>
+            </c:forEach>
+        </select>
+    </div>
 </div>

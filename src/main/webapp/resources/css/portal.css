@@ -1,33 +1,41 @@
 .input-mini {
     width: 60px;
+    display: flex;
 }
 
 .input-mini-to-small {
     width: 75px;
+    display: flex;
 }
 
 .input-small {
     width: 90px;
+    display: flex;
 }
 
 .input-small-to-medium {
     width: 120px;
+    display: flex;
 }
 
 .input-medium {
     width: 150px;
+    display: flex;
 }
 
 .input-large {
     width: 210px;
+    display: flex;
 }
 
 .input-xlarge {
     width: 270px;
+    display: flex;
 }
 
 .input-xxlarge {
     width: 530px;
+    display: flex;
 }
 
 .margin-right-mini {
@@ -351,4 +359,8 @@ span.breadCrumbAtual img {
 
 .photo {
     display: -webkit-inline-box;
+}
+
+.radio-inline, .checkbox-inline{
+    font-weight: 700 !important;
 }
