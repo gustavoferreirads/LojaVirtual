@@ -8,7 +8,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/accordion.js"></script>
 
 <!-- Plugin for Menu -->
-<script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
 
 <!-- Bootstrap -->
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>

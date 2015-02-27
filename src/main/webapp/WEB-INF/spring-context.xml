@@ -24,6 +24,7 @@
 
     <bean id="usuarioDAO" class="br.com.lojavirtual.impl.servico.UsuarioDao"/>
     <bean id="produtoDAO" class="br.com.lojavirtual.impl.servico.ProdutoDao"/>
+    <bean id="categoriaDao" class="br.com.lojavirtual.impl.servico.CategoriaDao"/>
     <bean id="fileValidator" class="br.com.lojavirtual.impl.servico.FileValidator" />
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 

@@ -110,7 +110,7 @@
 }
 .bootgrid-table th:hover,
 .bootgrid-table th:active {
-  background: #fafafa;
+  background: rgba(137, 250, 97, 0.34);
 }
 .bootgrid-table td {
   overflow: hidden;

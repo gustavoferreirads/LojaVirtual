@@ -123,8 +123,7 @@ public class ProdutoController extends ControllerAction {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String imgHtml = "<img class=\"thumb\" src='"+request.getRequestURL().toString().replace("upload","getLast")+"/"+new Date().getTime()+"'/>";
-        return imgHtml;
+        return "<img class=\"thumb\" src='"+request.getRequestURL().toString().replace("upload","getLast")+"/"+new Date().getTime()+"'/>";
     }
 
     @RequestMapping(value = "/getLast/{value}", method = RequestMethod.GET)

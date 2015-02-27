@@ -4,9 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <div class="form-actions-button">
-    <button type="submit" class="btn btn-default" onclick="submitForm();"><fmt:message key="label.salvar"/></button>
+    <button type="submit" class="btn btn-success" onclick="submitForm();"><fmt:message key="label.salvar"/></button>
     <button type="submit" class="btn btn-default" onclick="submitNewForm();"><fmt:message key="label.salvar_novo"/></button>
-    <button type="button" class="btn btn-default bt-remove ${disabledRemove == false ? 'hidden' : ''}" data-toggle="modal" data-target=".modalDialog" ><fmt:message key="label.remover"/></button>
+    <button type="button" class="btn btn-btn-danger bt-remove ${disabledRemove == false ? 'hidden' : ''}" data-toggle="modal" data-target=".modalDialog" ><fmt:message key="label.remover"/></button>
     <button type="button" class="btn btn-primary btn-back ${voltar == null ? 'hidden' : ''}"  onclick="goBack(${voltar});" ><fmt:message key="label.voltar"/></button>
 </div>
 

@@ -19,7 +19,7 @@
                 <li><a href="#">Rastreio</a></li>
             </ul>
         </li>
-        <li class="active">
+        <li class="">
             <h3><img class="icon-menu" src="${pageContext.request.contextPath}/resources/images/icons/marketing2.png"/>Marketing</h3>
             <ul>
                 <li><a href="#">Promoção</a></li>

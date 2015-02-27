@@ -364,3 +364,24 @@ span.breadCrumbAtual img {
 .radio-inline, .checkbox-inline{
     font-weight: 700 !important;
 }
+
+.table > thead > tr > td:hover.active, .table > tbody > tr > td:hover.active, .table > tfoot > tr > td:hover.active,  .table > thead > tr:hover.active > td, .table > tbody > tr:hover.active > td, .table > tfoot > tr:hover.active > td {
+    background-color: rgba(66, 174, 14, 0.24);
+}
+
+.table > thead > tr > td.active, .table > tbody > tr > td.active, .table > tfoot > tr > td.active, .table > thead > tr.active > td, .table > tbody > tr.active > td, .table > tfoot > tr.active > td {
+    background-color: rgba(66, 174, 14, 0.24);
+}
+
+.table > thead > tr > td:hover, .table > tbody > tr > td:hover, .table > tfoot > tr > td:hover,  .table > thead > tr:hover> td, .table > tbody > tr:hover > td, .table > tfoot > tr:hover > td,
+ .table > tbody > tr:hover > th, .table > tfoot > tr:hover > th {
+    background-color: rgba(66, 174, 14, 0.24);
+}
+
+tbody{
+    border-bottom: rgb(221, 221, 221) 2px solid;
+}
+
+.form-control {
+    color: #000000;
+}
