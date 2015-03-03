@@ -2,6 +2,7 @@ package br.com.lojavirtual.api.modelo;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.UUID;
 
 
 /**
@@ -15,6 +16,8 @@ public class Imagem implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_imagem")
     private int idImagem;
+
+    private String uuid;
 
     private String caminho;
 
@@ -34,6 +37,7 @@ public class Imagem implements Serializable {
     private Produto produto;
 
     public Imagem() {
+        uuid = UUID.randomUUID().toString();
     }
 
     public int getIdImagem() {
@@ -90,5 +94,13 @@ public class Imagem implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

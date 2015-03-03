@@ -24,6 +24,9 @@
 //        files[i] = f;
 //    }
 //}
+function getFile() {
+    document.getElementById("files").click();
+}
 
 function handleFileSelect(evt) {
     var oMyForm = new FormData();
@@ -40,14 +43,33 @@ function handleFileSelect(evt) {
                 div.className  = 'photo';
                 div.innerHTML = data;
                 document.getElementById("list").insertBefore(div, null);
+                div.addEventListener("click", function (event) {
+                    document.getElementById("preview").innerHTML = data;
+                    $('.modalPreview').modal('show');
+                });
+            $('[data-toggle="tooltip"]').tooltip();
         }
     });
 }
 
 document.getElementById('files').addEventListener('change', handleFileSelect, false);
+document.getElementById('btRemoveImg').addEventListener('click',removeImg,false);
 
-function getFile() {
-    document.getElementById("files").click();
+function removeImg(evt) {
+    var oMyForm = new FormData();
+    var id = document.querySelector('.preview img').id;
+    oMyForm.append("id",id);
+    $.ajax({
+        url: 'removerImgProduto',
+        data: oMyForm,
+        dataType: 'text',
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function (data) {
+            document.getElementById(id).remove();
+        }
+    });
+
+    document.getElementById(id).remove();
 }
-
-

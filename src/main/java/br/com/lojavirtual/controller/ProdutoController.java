@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -46,8 +47,7 @@ public class ProdutoController extends ControllerAction {
     private Produto.TipoDeFrete[] fretes = Utils.sort(Produto.TipoDeFrete.values());
     private Produto.Situacao[] situacoes = Utils.sort(Produto.Situacao.values());
 
-    private Produto produto;
-
+    private List<Imagem> imagens = new ArrayList<>();
 
     public ProdutoController() {
         init();
@@ -62,8 +62,7 @@ public class ProdutoController extends ControllerAction {
 
     @RequestMapping("/carregaProduto")
     public String carregaProduto(Long id, Model model) {
-        produto = produtoDao.carreguePorId(id);
-        model.addAttribute("produto", produto);
+        model.addAttribute("produto", produtoDao.carreguePorId(id));
         return "portal/produto/cadastro";
     }
 
@@ -73,6 +72,7 @@ public class ProdutoController extends ControllerAction {
         try {
             // TODO : posso implementar a classe org.springframework.validation.Validator
             validate(produto);
+            produto.setImagens(imagens);
             produto = produtoDao.salve(produto);
             model.addAttribute("produto", produto);
             addSucessMessage(request);
@@ -119,20 +119,20 @@ public class ProdutoController extends ControllerAction {
             imagem.setBytes(file.getBytes());
             imagem.setType(file.getContentType());
             imagem.setDescricao(file.getOriginalFilename());
-            produto.getImagens().add(imagem);
+            imagens.add(imagem);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "<img class=\"thumb\" src='"+request.getRequestURL().toString().replace("upload","getLast")+"/"+new Date().getTime()+"'/>";
+        return "<img class=\"thumb\" data-placement=\"top\" data-toggle=\"tooltip\" title=\"Clique para editar\" src='"+request.getRequestURL().toString().replace("upload","getLast")+"/"+new Date().getTime()+"'/>";
     }
 
     @RequestMapping(value = "/getLast/{value}", method = RequestMethod.GET)
     public void get(HttpServletResponse response, @PathVariable String value) {
         try {
-            Integer last = produto.getImagens().size() - 1;
-            response.setContentType(produto.getImagens().get(last).getType());
-            response.setContentLength(produto.getImagens().get(last).getLength());
-            FileCopyUtils.copy(produto.getImagens().get(last).getBytes(), response.getOutputStream());
+            Integer last = imagens.size() - 1;
+            response.setContentType(imagens.get(last).getType());
+            response.setContentLength(imagens.get(last).getLength());
+            FileCopyUtils.copy(imagens.get(last).getBytes(), response.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -156,6 +156,6 @@ public class ProdutoController extends ControllerAction {
     }
 
     public void init() {
-        produto = new Produto();
+
     }
 }

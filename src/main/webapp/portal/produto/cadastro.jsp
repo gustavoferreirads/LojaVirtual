@@ -55,16 +55,16 @@
         <%--Todo: colocar em uma tag --%>
         <div class="form-group">
             <label class="">Fotos: </label>
-            <div id="drop_zone" class="empty" onclick="getFile();">
+            <div id="drop_zone" class="empty">
                 <div id="list">
                     <c:forEach var="imagem" items="#{produto.imagens}">
                         <div class="photo">
                             <img id="${imagem.idImagem}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />
                         </div>
                     </c:forEach>
-                </div>
-                <div class="fileHidden">
-                    <input id="files" type="file" name="files" />
+                    <div class="photo">
+                        <img id="empty" src="${pageContext.request.contextPath}/resources/images/icons/empty.png" data-toggle="tooltip" data-placement="top" title="Clique para adicionar uma imagem" onclick="getFile();" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,6 +80,32 @@
 
         <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${usuario.id != null}" voltar="'consultaProdutos'"/>
     </form>
+
+
+    <div class="fileHidden">
+        <input id="files" type="file" name="files" />
+    </div>
+
+    <div class="modal fade modalPreview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                    <h4 class="modal-title" id="myLargeModalLabel">
+                        <fmt:message key="label.pre_visualizacao"/>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="preview">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btRemoveImg" type="button" class="btn btn-danger" data-toggle="modal" data-target=".modalPreview" ><fmt:message key="label.excluir_foto"/></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message key="label.fechar"/></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="${pageContext.request.contextPath}/resources/js/file.upload.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/mask.js"></script>

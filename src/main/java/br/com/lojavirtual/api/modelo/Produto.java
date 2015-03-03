@@ -68,13 +68,13 @@ public class Produto extends Entidade implements Serializable {
     private Integer quantidadeAcesso;
 
     @Column(name = "valor_liquido")
-    private Float valorLiquido;
+    private Float valorLiquido = 0f;
 
     @Column(name = "valor_venda")
-    private Float valorVenda;
+    private Float valorVenda = 0f;
 
     @Column(name = "valor_frete_fixo")
-    private Float valorFreteFixo;
+    private Float valorFreteFixo = 0f;
 
     @Column(name = "exibir_pagina_inicial")
     private Boolean paginaInicial = false;

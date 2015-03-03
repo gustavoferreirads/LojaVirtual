@@ -17,3 +17,6 @@ $('.cpf').mask('000.000.000-00', {reverse: true});
 $('.money').mask("#.##0,00", {reverse: true});
 $('.weight').mask("####0,000", {reverse: true});
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+})

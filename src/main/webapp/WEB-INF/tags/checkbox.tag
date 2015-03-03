@@ -1,7 +1,7 @@
 <%@ attribute name="id" required="true" %>
 <%@ attribute name="label" required="true" %>
 <%@ attribute name="name" required="true" %>
-<%@ attribute name="required" required="false" %>
+<%@ attribute name="required" required="false"  %>
 <%@ attribute name="classeLabel" required="false" %>
 <%@ attribute name="value" required="true" %>
 <%@ attribute name="classForm" required="false" %>
