@@ -46,6 +46,7 @@ function handleFileSelect(evt) {
                 div.addEventListener("click", function (event) {
                     document.getElementById("preview").innerHTML = data;
                     $('.modalPreview').modal('show');
+                    document.getElementById('btRemoveImg').addEventListener('click',removeImg,false);
                 });
             $('[data-toggle="tooltip"]').tooltip();
         }
@@ -53,23 +54,11 @@ function handleFileSelect(evt) {
 }
 
 document.getElementById('files').addEventListener('change', handleFileSelect, false);
-document.getElementById('btRemoveImg').addEventListener('click',removeImg,false);
+
 
 function removeImg(evt) {
-    var oMyForm = new FormData();
-    var id = document.querySelector('.preview img').id;
-    oMyForm.append("id",id);
-    $.ajax({
-        url: 'removerImgProduto',
-        data: oMyForm,
-        dataType: 'text',
-        processData: false,
-        contentType: false,
-        type: 'POST',
-        success: function (data) {
-            document.getElementById(id).remove();
-        }
+    var id = document.querySelector('#preview img').id;
+    $.get("removeImg?id="+id, function (resposta) {
+        document.getElementById(id).remove();
     });
-
-    document.getElementById(id).remove();
 }

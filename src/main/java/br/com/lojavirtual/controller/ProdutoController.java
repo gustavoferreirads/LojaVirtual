@@ -113,8 +113,8 @@ public class ProdutoController extends ControllerAction {
     public @ResponseBody String handleFileUpload(MultipartHttpServletRequest request, HttpServletResponse response) {
         Iterator<String> itr = request.getFileNames();
         MultipartFile file = request.getFile(itr.next());
+        Imagem imagem = new Imagem();
         try {
-            Imagem imagem = new Imagem();
             imagem.setLength(file.getBytes().length);
             imagem.setBytes(file.getBytes());
             imagem.setType(file.getContentType());
@@ -123,7 +123,7 @@ public class ProdutoController extends ControllerAction {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "<img class=\"thumb\" data-placement=\"top\" data-toggle=\"tooltip\" title=\"Clique para editar\" src='"+request.getRequestURL().toString().replace("upload","getLast")+"/"+new Date().getTime()+"'/>";
+        return "<img id=\""+imagem.getUuid()+"\" class=\"thumb\" data-placement=\"top\" data-toggle=\"tooltip\" title=\"Clique para editar\" src='"+request.getRequestURL().toString().replace("upload","getLast")+"/"+new Date().getTime()+"'/>";
     }
 
     @RequestMapping(value = "/getLast/{value}", method = RequestMethod.GET)
@@ -136,6 +136,11 @@ public class ProdutoController extends ControllerAction {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @RequestMapping(value = "/removeImg", method = RequestMethod.GET)
+    public void removeImg(HttpServletResponse response, @PathParam( value = "id") String id) {
     }
 
 
