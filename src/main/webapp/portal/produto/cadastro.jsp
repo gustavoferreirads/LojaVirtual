@@ -47,10 +47,9 @@
             </div>
         </div>
 
-                <loja:checkbox id="paginaInicial" label="label.exibir_pagina_inicial" value="${produto.paginaInicial}" name="paginaInicial" classForm="margin-right-mini"  />
-                <loja:checkbox id="paginaInicial" label="label.exibir_pagina_banner" value="${produto.banner}" name="banner" classForm="margin-right-mini"/>
-                <loja:checkbox id="paginaInicial" label="label.exibir_lancamento" value="${produto.lancamento}" name="lancamento"/>
-
+        <loja:checkbox id="paginaInicial" label="label.exibir_pagina_inicial" value="${produto.paginaInicial}" name="paginaInicial" classForm="margin-right-mini" />
+        <loja:checkbox id="paginaInicial" label="label.exibir_pagina_banner" value="${produto.banner}" name="banner" classForm="margin-right-mini" />
+        <loja:checkbox id="paginaInicial" label="label.exibir_lancamento" value="${produto.lancamento}" name="lancamento" />
 
         <%--Todo: colocar em uma tag --%>
         <div class="form-group">
@@ -59,7 +58,7 @@
                 <div id="list">
                     <c:forEach var="imagem" items="#{produto.imagens}">
                         <div class="photo">
-                            <img id="${imagem.idImagem}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />
+                            <img id="${imagem.uuid}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />
                         </div>
                     </c:forEach>
                     <div class="photo">
@@ -68,7 +67,6 @@
                 </div>
             </div>
         </div>
-
         <loja:text-area label="label.descricao"
                         type="text"
                         name="descricao"

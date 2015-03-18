@@ -4,6 +4,7 @@ import br.com.lojavirtual.api.modelo.Produto;
 import br.com.lojavirtual.api.servico.IProdutoDao;
 import org.springframework.stereotype.Repository;
 
+import javax.enterprise.context.Dependent;
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,7 @@ import java.io.Serializable;
  */
 
 @Repository
+@Dependent
 public class ProdutoDao extends EntidadeDao<Produto> implements IProdutoDao, Serializable {
 
     public ProdutoDao() {

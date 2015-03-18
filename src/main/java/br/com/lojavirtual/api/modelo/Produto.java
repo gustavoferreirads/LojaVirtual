@@ -1,7 +1,5 @@
 package br.com.lojavirtual.api.modelo;
 
-import br.com.lojavirtual.util.Utils;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -97,10 +95,10 @@ public class Produto extends Entidade implements Serializable {
 
     private TipoDeFrete tipoDeFrete = TipoDeFrete.CORREIOS;
 
-    @OneToMany(mappedBy = "produto")
+    @Transient
     private List<ItemVenda> itemVendas;
 
-    @OneToMany(mappedBy = "produto")
+    @Transient
     private List<LimiteEstoque> limiteEstoques;
 
     @ManyToOne
@@ -120,13 +118,14 @@ public class Produto extends Entidade implements Serializable {
     private Destaque destaque;
 
     //bi-directional many-to-one association to Produto
-    @OneToMany(mappedBy = "produto")
+    @OneToMany(mappedBy = "produto", fetch = FetchType.EAGER)
     private List<Imagem> imagens = new ArrayList<Imagem>();
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data_cadastro")
     private Date dataCadastro;
 
+    @Version
     private Timestamp ultimaModificacao;
 
     public Produto() {
@@ -385,5 +384,9 @@ public class Produto extends Entidade implements Serializable {
         this.lancamento = lancamento;
     }
 
+    @PrePersist
+    public void prePersist() {
+        this.dataCadastro = new Timestamp(System.currentTimeMillis());
+    }
 
 }

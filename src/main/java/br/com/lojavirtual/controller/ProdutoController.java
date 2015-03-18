@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,32 +37,27 @@ import static br.com.lojavirtual.util.GridList.formatJsonList;
 @Controller
 public class ProdutoController extends ControllerAction {
 
-    @Autowired
-    @Qualifier("produtoDAO")
+    @Inject
     private IProdutoDao produtoDao;
 
     @Autowired
     private FileValidator validator;
-
     private Produto.TipoDeFrete[] fretes = Utils.sort(Produto.TipoDeFrete.values());
     private Produto.Situacao[] situacoes = Utils.sort(Produto.Situacao.values());
-
     private List<Imagem> imagens = new ArrayList<>();
 
-    public ProdutoController() {
-        init();
-    }
 
     @RequestMapping("/cadastroDeProduto")
     public String abrirCadastro(Model model) {
-        model.addAttribute("fretes", fretes);
-        model.addAttribute("situacoes", situacoes);
+        adicionaListas(model);
         return "portal/produto/cadastro";
     }
+
 
     @RequestMapping("/carregaProduto")
     public String carregaProduto(Long id, Model model) {
         model.addAttribute("produto", produtoDao.carreguePorId(id));
+        adicionaListas(model);
         return "portal/produto/cadastro";
     }
 
@@ -73,6 +68,7 @@ public class ProdutoController extends ControllerAction {
             // TODO : posso implementar a classe org.springframework.validation.Validator
             validate(produto);
             produto.setImagens(imagens);
+            produto.setUsuario((br.com.lojavirtual.api.modelo.Usuario) request.getSession().getAttribute("usuarioLogado"));
             produto = produtoDao.salve(produto);
             model.addAttribute("produto", produto);
             addSucessMessage(request);
@@ -109,8 +105,11 @@ public class ProdutoController extends ControllerAction {
             e.printStackTrace();
         }
     }
+
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public @ResponseBody String handleFileUpload(MultipartHttpServletRequest request, HttpServletResponse response) {
+    public
+    @ResponseBody
+    String handleFileUpload(MultipartHttpServletRequest request, HttpServletResponse response) {
         Iterator<String> itr = request.getFileNames();
         MultipartFile file = request.getFile(itr.next());
         Imagem imagem = new Imagem();
@@ -123,24 +122,24 @@ public class ProdutoController extends ControllerAction {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "<img id=\""+imagem.getUuid()+"\" class=\"thumb\" data-placement=\"top\" data-toggle=\"tooltip\" title=\"Clique para editar\" src='"+request.getRequestURL().toString().replace("upload","getLast")+"/"+new Date().getTime()+"'/>";
+        return "<img id=\"" + imagem.getUuid() + "\" class=\"thumb\" data-placement=\"top\" data-toggle=\"tooltip\" title=\"Clique para editar\" src='" + request.getRequestURL().toString().replace("upload", "getLast") + "/" + imagem.getUuid() + "'/>";
     }
 
     @RequestMapping(value = "/getLast/{value}", method = RequestMethod.GET)
     public void get(HttpServletResponse response, @PathVariable String value) {
         try {
-            Integer last = imagens.size() - 1;
-            response.setContentType(imagens.get(last).getType());
-            response.setContentLength(imagens.get(last).getLength());
-            FileCopyUtils.copy(imagens.get(last).getBytes(), response.getOutputStream());
+            Imagem imagem = getImage(value);
+            response.setContentType(imagem.getType());
+            response.setContentLength(imagem.getLength());
+            FileCopyUtils.copy(imagem.getBytes(), response.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
     @RequestMapping(value = "/removeImg", method = RequestMethod.GET)
-    public void removeImg(HttpServletResponse response, @PathParam( value = "id") String id) {
+    public void removeImg(HttpServletResponse response, @PathParam(value = "id") String uuId) {
+        imagens.remove(getImage(uuId));
     }
 
 
@@ -155,12 +154,21 @@ public class ProdutoController extends ControllerAction {
     @RequestMapping("/removeProduto")
     public String removeProduto(Produto produto, HttpServletRequest request) {
         produtoDao.delete(produto);
-        init();
         addSucessMessage(request);
         return "portal/produto/consulta";
     }
 
-    public void init() {
+    private Imagem getImage(String uuId) {
+        for (Imagem imagem : imagens) {
+            if (imagem.getUuid().equals(uuId)) {
+                return imagem;
+            }
+        }
+        return null;
+    }
 
+    private void adicionaListas(Model model) {
+        model.addAttribute("fretes", fretes);
+        model.addAttribute("situacoes", situacoes);
     }
 }
