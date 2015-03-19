@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <div class="form-inline">
-                <loja:input label="label.preco_de_venda" type="text" name="valorVenda" value="${produto.valorVenda}" classForm="margin-right-small" classe="form-control money" required="required" id="precoDeVenda"  placeHolder="0,00" />
+                <loja:input label="label.preco_de_venda" type="text" name="valorVenda" value="${produto.valorVenda}" classForm="margin-right-small" classe="form-control money" required="required" id="precoDeVenda"  placeHolder="0,00"  autoFocus="true"/>
                 <loja:input label="label.preco_de_custo" type="text" name="valorLiquido" value="${produto.valorLiquido}" classe="form-control money" classForm="margin-right-small" id="precoDeCusto" required="required" placeHolder="0,00" />
                 <loja:input label="label.estoque_inicial" format="number" type="number" name="quantidade" value="${produto.quantidade}" classe="form-control" id="estoqueInicial" required="required" placeHolder="0"/>
             </div>

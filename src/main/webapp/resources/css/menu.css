@@ -1,7 +1,7 @@
 /*custom font for text*/
 @import url(http://fonts.googleapis.com/css?family=Nunito);
 /*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
-@import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);
+/*@import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);*/
 
 /*Basic reset*/
 * {margin: 0; padding: 0;}
@@ -11,7 +11,7 @@
     margin-right: 2%;
    /* margin: 100px auto 0 auto;*/
     float: left;
-    height: 100%;
+    min-height: 100%;
     color: white;
     /*Some cool shadow and glow effect*/
     box-shadow:
@@ -70,5 +70,6 @@
 }
 
 #accordian >ul{
+    position: fixed;
 
 }
