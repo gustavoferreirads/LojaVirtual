@@ -20,5 +20,6 @@
         CKEDITOR.replace( 'text-editor' , {
             language: 'pt-br'
         });
+
     </script>
 </div>

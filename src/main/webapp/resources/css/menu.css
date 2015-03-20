@@ -12,6 +12,7 @@
    /* margin: 100px auto 0 auto;*/
     float: left;
     min-height: 100%;
+    position: fixed;
     color: white;
     /*Some cool shadow and glow effect*/
     box-shadow:
@@ -69,7 +70,3 @@
     display: block;
 }
 
-#accordian >ul{
-    position: fixed;
-
-}

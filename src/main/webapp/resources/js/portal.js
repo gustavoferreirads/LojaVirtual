@@ -25,6 +25,7 @@ function newForm() {
     var urlNew = $("#grid-keep-selection").attr("actionNew");
     $.get(urlNew, function (resposta) {
         setContent(resposta,urlNew);
+        $("html, body").animate({scrollTop:0}, 'fast');
     });
 }
 
@@ -33,6 +34,7 @@ function editForm() {
     var action = urlEdit + "?id=" + idObject;
     $.get(action, function (resposta) {
         setContent(resposta,action);
+        $("html, body").animate({scrollTop:0}, 'fast');
     });
     addMask();
 }

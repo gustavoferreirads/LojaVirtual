@@ -179,11 +179,11 @@ public class Produto extends Entidade implements Serializable {
         this.parcelamento = parcelamento;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return this.quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 
