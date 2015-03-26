@@ -49,10 +49,10 @@ public class ProdutoController extends ControllerAction {
 
     @RequestMapping("/cadastroDeProduto")
     public String abrirCadastro(Model model) {
+        model.addAttribute("produto", new Produto());
         adicionaListas(model);
         return "portal/produto/cadastro";
     }
-
 
     @RequestMapping("/carregaProduto")
     public String carregaProduto(Long id, Model model) {
@@ -71,6 +71,7 @@ public class ProdutoController extends ControllerAction {
             produto.setUsuario((br.com.lojavirtual.api.modelo.Usuario) request.getSession().getAttribute("usuarioLogado"));
             produto = produtoDao.salve(produto);
             model.addAttribute("produto", produto);
+            adicionaListas(model);
             addSucessMessage(request);
         } catch (ValidationException e) {
             addErrorMessage(request, e.getMessage());
@@ -87,6 +88,7 @@ public class ProdutoController extends ControllerAction {
         String retorno = salvarProduto(produto, model, request);
         produto = new Produto();
         model.addAttribute("produto", produto);
+        adicionaListas(model);
         return retorno;
     }
 

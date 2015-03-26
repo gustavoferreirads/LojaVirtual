@@ -1,5 +1,8 @@
 package br.com.lojavirtual.api.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
@@ -20,76 +23,31 @@ public class Destaque extends Entidade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_destaque")
+    @Getter
+    @Setter
     private Long id;
 
     @Column(name = "descricao")
+    @Getter
+    @Setter
     private String descricao;
 
     @OneToMany(mappedBy = "destaque")
+    @Getter
+    @Setter
     private List<Produto> produtos;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data_destaque")
+    @Getter
+    @Setter
     private Date dataDestaque;
 
     @Version
+    @Getter
     private Timestamp ultimaModificacao;
 
     public Destaque() {
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getDataDestaque() {
-        return this.dataDestaque;
-    }
-
-    public void setDataDestaque(Date dataDestaque) {
-        this.dataDestaque = dataDestaque;
-    }
-
-    public String getDescricao() {
-        return this.descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Timestamp getUltimaModificacao() {
-        return this.ultimaModificacao;
-    }
-
-    public void setUltimaModificacao(Timestamp ultimaModificacao) {
-        this.ultimaModificacao = ultimaModificacao;
-    }
-
-    public List<Produto> getProdutos() {
-        return this.produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
-    public Produto addProduto(Produto produto) {
-        getProdutos().add(produto);
-        produto.setDestaque(this);
-
-        return produto;
-    }
-
-    public Produto removeProduto(Produto produto) {
-        getProdutos().remove(produto);
-        produto.setDestaque(null);
-
-        return produto;
     }
 
 }

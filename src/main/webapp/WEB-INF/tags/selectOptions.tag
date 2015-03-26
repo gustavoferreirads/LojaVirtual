@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ attribute name="id" required="true" %>
 <%@ attribute name="label" required="true" %>
 <%@ attribute name="name" required="true" %>
@@ -14,12 +15,16 @@
 <div class="form-group  ${classForm}">
     <label for="${id}" class="${classeLabel}"><fmt:message key="${label}"/>: </label>
     <div class="${sizeInput}">
-        <select name="${name}" onchange="" class="${classe}" id="${id}" required="${required}">
-            <c:forEach items="${list}" var="item">
-                <option value="${item}" ${value == item ? 'selected' : ''}>
-                    <c:out value="${item}"/>
-                </option>
-            </c:forEach>
-        </select>
+        <form:select id="${id}" path="${name}"  cssClass="${classe}"  >
+            <form:options items="${list}" itemLabel="nome"  />
+        </form:select>
+        <%--<select name="${name}" onchange=""  class="${classe}" id="${id}" required="${required}">--%>
+            <%--<c:forEach items="${list}" var="item">--%>
+                <%--<option value="${item}" ${value == item ? 'selected' : ''}>--%>
+                    <%--<c:out value="${item}"/>--%>
+                <%--</option>--%>
+            <%--</c:forEach>--%>
+        <%--</select>--%>
     </div>
+
 </div>

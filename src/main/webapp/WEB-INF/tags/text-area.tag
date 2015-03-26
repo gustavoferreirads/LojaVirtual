@@ -20,6 +20,6 @@
         CKEDITOR.replace( 'text-editor' , {
             language: 'pt-br'
         });
-
+        $("html, body").animate({scrollTop:0}, 'fast');
     </script>
 </div>

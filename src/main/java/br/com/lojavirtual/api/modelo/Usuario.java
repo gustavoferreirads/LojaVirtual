@@ -1,6 +1,7 @@
 package br.com.lojavirtual.api.modelo;
 
 import br.com.lojavirtual.util.Strings;
+import com.google.gson.annotations.Expose;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -33,25 +35,30 @@ public class Usuario extends Entidade implements Serializable {
     private String confirmSenha;
 
     //TODO: Problema com a Gson Lazy Inicialization Exception
-//    //bi-directional many-to-one association to Categoria
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-//    private List<Categoria> categorias;
-//
-//    //bi-directional many-to-one association to Chamado
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-//    private List<Chamado> chamados;
-//
-//    //bi-directional many-to-one association to Permissao
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-//    private List<Permissao> permissaos;
-//
-//    //bi-directional many-to-one association to Produto
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-//    private List<Produto> produtos;
+    //bi-directional many-to-one association to Categoria
+//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @Transient
+    private List<Categoria> categorias;
+
+    //bi-directional many-to-one association to Chamado
+//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @Transient
+    private List<Chamado> chamados;
+
+    //bi-directional many-to-one association to Permissao
+//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @Transient
+    private List<Permissao> permissaos;
+
+    //bi-directional many-to-one association to Produto
+//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @Transient
+    private List<Produto> produtos;
 
     //bi-directional many-to-one association to Grupo
     @ManyToOne
     @JoinColumn(name = "id_grupo")
+    @Transient
     private Grupo grupo;
 
     @Version

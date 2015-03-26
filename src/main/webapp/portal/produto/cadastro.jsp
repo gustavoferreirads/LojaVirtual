@@ -16,7 +16,9 @@
 <loja:cabecalhoInterno tituloAnterior="label.listagem_produtos" titulo="label.adicionar_produto"
                        subTitulo="label.dados_produto" voltar="'consultaProdutos'"/>
 <div class="boxConteudoBloco">
-    <form id="form" role="form" action="salvarProduto" enctype="multipart/form-data" actionRemove="removeProduto">
+
+    <form:form id="form" modelAttribute="produto" action="salvarProduto" method="post"  actionRemove="removeProduto" enctype="multipart/form-data">
+
         <input type="hidden" name="id" value="${produto.id}"/>
 
         <loja:input id="nome"
@@ -77,7 +79,7 @@
                         row="3"/>
 
         <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${usuario.id != null}" voltar="'consultaProdutos'"/>
-    </form>
+    </form:form>
 
 
     <div class="fileHidden">

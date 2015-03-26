@@ -1,5 +1,8 @@
 package br.com.lojavirtual.api.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -7,14 +10,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity
 @Table(name = "Produto")
 public class Produto extends Entidade implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public enum TipoDeFrete {
-        CORREIOS("Frete calculado pelos Correiros"), GRATIS("Frete Grátis"), FIXO("Frete Fixo");
+        @SerializedName("Frete calculado pelos Correiros")
+        CORREIOS("Frete calculado pelos Correiros"),
 
+        @SerializedName("Frete Grátis")
+        GRATIS("Frete Grátis"),
+
+        @SerializedName("Frete Fixo")
+        FIXO("Frete Fixo");
+
+        @Getter
         private String nome;
 
         TipoDeFrete(String nome) {
@@ -28,8 +41,14 @@ public class Produto extends Entidade implements Serializable {
     }
 
     public enum Situacao {
-        DISPONIVEL("Disponível"), INDISPONIVEL("Indiponível");
 
+        @SerializedName("Disponível")
+        DISPONIVEL("Disponível"),
+
+        @SerializedName("Indiponível")
+        INDISPONIVEL("Indiponível");
+
+        @Getter
         private String nome;
 
         Situacao(String nome) {
@@ -45,54 +64,91 @@ public class Produto extends Entidade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_produto")
+    @Getter
     private Long id;
 
     @Column(name = "descricao")
+    @Getter
+    @Setter
     private String descricao;
 
     @Column(name = "lucro")
+    @Getter
+    @Setter
     private Integer lucro;
 
     @Column(name = "nome")
+    @Getter
+    @Setter
     private String nome;
 
     @Column(name = "parcelamento")
+    @Getter
+    @Setter
     private String parcelamento;
 
     @Column(name = "quantidade")
+    @Getter
+    @Setter
     private Integer quantidade;
 
     @Column(name = "quantidade_acesso")
+    @Getter
+    @Setter
     private Integer quantidadeAcesso;
 
-    @Column(name = "valor_liquido")
-    private Float valorLiquido = 0f;
+    @Column(name = "")
+    @Getter
+    @Setter
+    private Float valorLiquido;
 
     @Column(name = "valor_venda")
-    private Float valorVenda = 0f;
+    @Getter
+    @Setter
+    private Float valorVenda;
 
     @Column(name = "valor_frete_fixo")
-    private Float valorFreteFixo = 0f;
+    @Getter
+    @Setter
+    private Float valorFreteFixo;
 
     @Column(name = "exibir_pagina_inicial")
-    private Boolean paginaInicial = false;
+    @Getter
+    @Setter
+    private Boolean paginaInicial = true;
 
     @Column(name = "exibir_banner")
+    @Getter
+    @Setter
     private Boolean banner = false;
 
     @Column(name = "exibir_lancamento")
+    @Getter
+    @Setter
     private Boolean lancamento = false;
 
+    @Getter
+    @Setter
     private Integer peso;
 
+    @Getter
+    @Setter
     private Integer altura;
 
+    @Getter
+    @Setter
     private Integer largura;
 
+    @Getter
+    @Setter
     private Integer profundidade;
 
+    @Getter
+    @Setter
     private Situacao situacao = Situacao.DISPONIVEL;
 
+    @Getter
+    @Setter
     private TipoDeFrete tipoDeFrete = TipoDeFrete.CORREIOS;
 
     @Transient
@@ -103,286 +159,46 @@ public class Produto extends Entidade implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_promocao")
+    @Getter
+    @Setter
     private Promocao promocao;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
+    @Getter
+    @Setter
     private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "id_grupo")
+    @Getter
+    @Setter
     private Grupo grupo;
 
     @ManyToOne
     @JoinColumn(name = "id_destaque")
+    @Getter
+    @Setter
     private Destaque destaque;
 
     //bi-directional many-to-one association to Produto
     @OneToMany(mappedBy = "produto", fetch = FetchType.EAGER)
+    @Getter
+    @Setter
     private List<Imagem> imagens = new ArrayList<Imagem>();
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data_cadastro")
+    @Getter
     private Date dataCadastro;
 
     @Version
+    @Getter
     private Timestamp ultimaModificacao;
 
     public Produto() {
     }
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setIdProduto(Long id) {
-        this.id = id;
-    }
-
-    public Date getDataCadastro() {
-        return this.dataCadastro;
-    }
-
-    public void setDataCadastro(Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
-    public String getDescricao() {
-        return this.descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public int getLucro() {
-        return this.lucro;
-    }
-
-    public void setLucro(Integer lucro) {
-        this.lucro = lucro;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getParcelamento() {
-        return this.parcelamento;
-    }
-
-    public void setParcelamento(String parcelamento) {
-        this.parcelamento = parcelamento;
-    }
-
-    public Integer getQuantidade() {
-        return this.quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public int getQuantidadeAcesso() {
-        return this.quantidadeAcesso;
-    }
-
-    public void setQuantidadeAcesso(int quantidadeAcesso) {
-        this.quantidadeAcesso = quantidadeAcesso;
-    }
-
-    public Timestamp getUltimaModificacao() {
-        return this.ultimaModificacao;
-    }
-
-    public void setUltimaModificacao(Timestamp ultimaModificacao) {
-        this.ultimaModificacao = ultimaModificacao;
-    }
-
-    public float getValorLiquido() {
-        return this.valorLiquido;
-    }
-
-    public void setValorLiquido(Float valorLiquido) {
-        this.valorLiquido = valorLiquido;
-    }
-
-    public float getValorVenda() {
-        return this.valorVenda;
-    }
-
-    public void setValorVenda(Float valorVenda) {
-        this.valorVenda = valorVenda;
-    }
-
-    public List<ItemVenda> getItemVendas() {
-        return this.itemVendas;
-    }
-
-    public void setItemVendas(List<ItemVenda> itemVendas) {
-        this.itemVendas = itemVendas;
-    }
-
-    public ItemVenda addItemVenda(ItemVenda itemVenda) {
-        getItemVendas().add(itemVenda);
-        itemVenda.setProduto(this);
-
-        return itemVenda;
-    }
-
-    public ItemVenda removeItemVenda(ItemVenda itemVenda) {
-        getItemVendas().remove(itemVenda);
-        itemVenda.setProduto(null);
-
-        return itemVenda;
-    }
-
-    public List<LimiteEstoque> getLimiteEstoques() {
-        return this.limiteEstoques;
-    }
-
-    public void setLimiteEstoques(List<LimiteEstoque> limiteEstoques) {
-        this.limiteEstoques = limiteEstoques;
-    }
-
-    public LimiteEstoque addLimiteEstoque(LimiteEstoque limiteEstoque) {
-        getLimiteEstoques().add(limiteEstoque);
-        limiteEstoque.setProduto(this);
-
-        return limiteEstoque;
-    }
-
-    public LimiteEstoque removeLimiteEstoque(LimiteEstoque limiteEstoque) {
-        getLimiteEstoques().remove(limiteEstoque);
-        limiteEstoque.setProduto(null);
-
-        return limiteEstoque;
-    }
-
-    public Promocao getPromocao() {
-        return this.promocao;
-    }
-
-    public void setPromocao(Promocao promocao) {
-        this.promocao = promocao;
-    }
-
-    public Usuario getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Grupo getGrupo() {
-        return this.grupo;
-    }
-
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
-    }
-
-    public Destaque getDestaque() {
-        return this.destaque;
-    }
-
-    public void setDestaque(Destaque destaque) {
-        this.destaque = destaque;
-    }
-
-    public List<Imagem> getImagens() {
-        return imagens;
-    }
-
-    public void setImagens(List<Imagem> imagens) {
-        this.imagens = imagens;
-    }
-
-    public Integer getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Integer peso) {
-        this.peso = peso;
-    }
-
-    public Integer getAltura() {
-        return altura;
-    }
-
-    public void setAltura(Integer altura) {
-        this.altura = altura;
-    }
-
-    public Integer getLargura() {
-        return largura;
-    }
-
-    public void setLargura(Integer largura) {
-        this.largura = largura;
-    }
-
-    public Integer getProfundidade() {
-        return profundidade;
-    }
-
-    public void setProfundidade(Integer profundidade) {
-        this.profundidade = profundidade;
-    }
-
-    public Float getValorFreteFixo() {
-        return valorFreteFixo;
-    }
-
-    public void setValorFreteFixo(Float valorFreteFixo) {
-        this.valorFreteFixo = valorFreteFixo;
-    }
-
-
-    public Situacao getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Situacao situacao) {
-        this.situacao = situacao;
-    }
-
-    public TipoDeFrete getTipoDeFrete() {
-        return tipoDeFrete;
-    }
-
-    public void setTipoDeFrete(TipoDeFrete tipoDeFrete) {
-        this.tipoDeFrete = tipoDeFrete;
-    }
-
-    public Boolean getPaginaInicial() {
-        return paginaInicial;
-    }
-
-    public void setPaginaInicial(Boolean paginaInicial) {
-        this.paginaInicial = paginaInicial;
-    }
-
-    public Boolean getBanner() {
-        return banner;
-    }
-
-    public void setBanner(Boolean banner) {
-        this.banner = banner;
-    }
-
-    public Boolean getLancamento() {
-        return lancamento;
-    }
-
-    public void setLancamento(Boolean lancamento) {
-        this.lancamento = lancamento;
-    }
 
     @PrePersist
     public void prePersist() {
