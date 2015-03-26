@@ -78,6 +78,7 @@ function submitAjax(action) {
             data: $("#form").serialize(),
             success: function (resposta) {
                 setContent(resposta, action);
+                mask();
             },
             error: function (resposta) {
                 setContent(resposta, action);

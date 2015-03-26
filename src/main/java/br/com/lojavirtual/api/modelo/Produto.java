@@ -199,8 +199,7 @@ public class Produto extends Entidade implements Serializable {
 
     @Getter
     @Setter
-    @Version
-    private Timestamp ultimaModificacao;
+    private Timestamp ultimaModificacao = new Timestamp(System.currentTimeMillis());
 
     public Produto() {
     }
