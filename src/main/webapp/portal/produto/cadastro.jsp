@@ -20,6 +20,7 @@
     <form:form id="form" modelAttribute="produto" action="salvarProduto" method="post"  actionRemove="removeProduto" enctype="multipart/form-data">
 
         <input type="hidden" name="id" value="${produto.id}"/>
+        <input type="hidden" name="dataCadastro" value="${produto.dataCadastro}"/>
 
         <loja:input id="nome"
                     label="label.nome"

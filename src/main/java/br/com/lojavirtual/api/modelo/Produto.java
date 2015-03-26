@@ -1,7 +1,9 @@
 package br.com.lojavirtual.api.modelo;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,8 +11,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import com.google.gson.annotations.SerializedName;
 
 @Entity
 @Table(name = "Produto")
@@ -65,6 +65,7 @@ public class Produto extends Entidade implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_produto")
     @Getter
+    @Setter
     private Long id;
 
     @Column(name = "descricao")
@@ -97,7 +98,7 @@ public class Produto extends Entidade implements Serializable {
     @Setter
     private Integer quantidadeAcesso;
 
-    @Column(name = "")
+    @Column(name = "valor_liquido")
     @Getter
     @Setter
     private Float valorLiquido;
@@ -151,7 +152,9 @@ public class Produto extends Entidade implements Serializable {
     @Setter
     private TipoDeFrete tipoDeFrete = TipoDeFrete.CORREIOS;
 
-    @Transient
+    @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
+    @Getter
+    @Setter
     private List<ItemVenda> itemVendas;
 
     @Transient
@@ -190,15 +193,17 @@ public class Produto extends Entidade implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "data_cadastro")
     @Getter
+    @Setter
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataCadastro;
 
-    @Version
     @Getter
+    @Setter
+    @Version
     private Timestamp ultimaModificacao;
 
     public Produto() {
     }
-
 
     @PrePersist
     public void prePersist() {

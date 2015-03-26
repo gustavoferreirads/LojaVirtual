@@ -7,7 +7,6 @@ import br.com.lojavirtual.api.servico.IProdutoDao;
 import br.com.lojavirtual.impl.servico.FileValidator;
 import br.com.lojavirtual.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -46,6 +45,26 @@ public class ProdutoController extends ControllerAction {
     private Produto.Situacao[] situacoes = Utils.sort(Produto.Situacao.values());
     private List<Imagem> imagens = new ArrayList<>();
 
+    private void adicionaListas(Model model) {
+        model.addAttribute("fretes", fretes);
+        model.addAttribute("situacoes", situacoes);
+    }
+
+    @RequestMapping("/consultaProdutos")
+    public String lista() {
+        return "portal/produto/consulta";
+    }
+
+    @RequestMapping("/listarProdutos")
+    public void lista(HttpServletResponse response, @PathParam("current") Integer current, @PathParam("rowCount") Integer rowCount) {
+        try {
+            List<Produto> produtos = produtoDao.busqueTodosLazy(((current - 1) * rowCount), rowCount, "");
+            String jsonReturn = formatJsonList(response, produtos, current, rowCount, String.valueOf(produtoDao.busqueTodos().size()));
+            response.getWriter().write(jsonReturn);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @RequestMapping("/cadastroDeProduto")
     public String abrirCadastro(Model model) {
@@ -92,21 +111,6 @@ public class ProdutoController extends ControllerAction {
         return retorno;
     }
 
-    @RequestMapping("/consultaProdutos")
-    public String lista() {
-        return "portal/produto/consulta";
-    }
-
-    @RequestMapping("/listarProdutos")
-    public void lista(HttpServletResponse response, @PathParam("current") Integer current, @PathParam("rowCount") Integer rowCount) {
-        try {
-            List<Produto> produtos = produtoDao.busqueTodosLazy(((current - 1) * rowCount), rowCount, "");
-            String jsonReturn = formatJsonList(response, produtos, current, rowCount, String.valueOf(produtoDao.busqueTodos().size()));
-            response.getWriter().write(jsonReturn);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public
@@ -169,8 +173,5 @@ public class ProdutoController extends ControllerAction {
         return null;
     }
 
-    private void adicionaListas(Model model) {
-        model.addAttribute("fretes", fretes);
-        model.addAttribute("situacoes", situacoes);
-    }
+
 }

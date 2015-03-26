@@ -7,17 +7,14 @@ import br.com.lojavirtual.api.servico.IEntidadeDao;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.enterprise.inject.Instance;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 public abstract class EntidadeDao<T extends Entidade> implements IEntidadeDao<T>, Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @PersistenceContext
+    @PersistenceContext( type = PersistenceContextType.EXTENDED)
     protected EntityManager entityManager;
 
     private Class<?> clazz;

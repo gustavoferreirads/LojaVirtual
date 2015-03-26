@@ -1,7 +1,6 @@
 package br.com.lojavirtual.api.modelo;
 
 import br.com.lojavirtual.util.Strings;
-import com.google.gson.annotations.Expose;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,33 +35,32 @@ public class Usuario extends Entidade implements Serializable {
 
     //TODO: Problema com a Gson Lazy Inicialization Exception
     //bi-directional many-to-one association to Categoria
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     @Transient
     private List<Categoria> categorias;
 
     //bi-directional many-to-one association to Chamado
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     @Transient
     private List<Chamado> chamados;
 
     //bi-directional many-to-one association to Permissao
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     @Transient
     private List<Permissao> permissaos;
 
     //bi-directional many-to-one association to Produto
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     @Transient
     private List<Produto> produtos;
 
     //bi-directional many-to-one association to Grupo
     @ManyToOne
     @JoinColumn(name = "id_grupo")
-    @Transient
     private Grupo grupo;
 
-    @Version
-    private Timestamp ultimaModificacao;
+    @Getter
+    private Timestamp ultimaModificacao = new Timestamp(System.currentTimeMillis());
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data_cadastro")

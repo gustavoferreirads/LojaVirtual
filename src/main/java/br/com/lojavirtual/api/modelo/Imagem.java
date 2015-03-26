@@ -1,5 +1,7 @@
 package br.com.lojavirtual.api.modelo;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.UUID;
@@ -15,7 +17,8 @@ public class Imagem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_imagem")
-    private int idImagem;
+    @Getter
+    private Long idImagem;
 
     private String uuid;
 
@@ -40,13 +43,6 @@ public class Imagem implements Serializable {
         uuid = UUID.randomUUID().toString();
     }
 
-    public int getIdImagem() {
-        return this.idImagem;
-    }
-
-    public void setIdImagem(int idImagem) {
-        this.idImagem = idImagem;
-    }
 
     public String getCaminho() {
         return this.caminho;

@@ -6,7 +6,8 @@ $('a').each(function (index, item) {
         var action = item.getAttribute('action');
         if (action != null) {
             $.get(action, function (resposta) {
-                setContent(resposta,action);
+                setContent(resposta, action);
+                mask();
             });
         }
     });
@@ -17,14 +18,16 @@ function setIdObject(id) {
 }
 function goBack(action) {
     $.get(action, function (resposta) {
-        setContent(resposta,action);
+        setContent(resposta, action);
+        mask();
     });
 }
 
 function newForm() {
     var urlNew = $("#grid-keep-selection").attr("actionNew");
     $.get(urlNew, function (resposta) {
-        setContent(resposta,urlNew);
+        setContent(resposta, urlNew);
+        mask();
     });
 }
 
@@ -32,9 +35,10 @@ function editForm() {
     var urlEdit = $("#grid-keep-selection").attr("actionEdit");
     var action = urlEdit + "?id=" + idObject;
     $.get(action, function (resposta) {
-        setContent(resposta,action);
+        setContent(resposta, action);
+        mask();
     });
-    addMask();
+    mask()
 }
 
 function removeForm() {
@@ -42,62 +46,47 @@ function removeForm() {
     var urlRemove = $("#grid-keep-selection").attr("actionRemove");
     var action = urlRemove + "?id=" + idObject;
     $.get(action, function (resposta) {
-        setContent(resposta,action);
+        setContent(resposta, action);
     });
 }
 
 function removeObject() {
     var form = $("#form");
-    var action  = $("#form").attr("actionRemove");
+    var action = $("#form").attr("actionRemove");
     submitAjax(form, action);
     gridReload();
 }
 
 
 function submitNewForm() {
-    var actionComplement = "Novo"
-    var form = $("#form");
-    var action = form.attr("action") + actionComplement;
-    submitAjax(form, action)
+    submitAjax($("#form").attr("action") + "Novo")
 }
 
-function submitForm(){
-    $("#form").submit(function(e) {
+function submitForm() {
+    $("#form").submit(function (e) {
         e.preventDefault();
-        var action =   $("#form").attr("action");
-        if (action != null) {
-            $.ajax({
-                type: "POST",
-                url: action,
-                data: $("#form").serialize(),
-                success: function (resposta) {
-                    setContent(resposta,action);
-                },
-                error: function (resposta) {
-                    setContent(resposta,action);
-                }
-            });
-        }
+        submitAjax($("#form").attr("action"))
     });
 }
-function submitAjax(form, action) {
+
+function submitAjax(action) {
     unMask();
     if (action != null) {
         $.ajax({
             type: "POST",
             url: action,
-            data: form.serialize(),
+            data: $("#form").serialize(),
             success: function (resposta) {
-                setContent(resposta,action);
+                setContent(resposta, action);
             },
             error: function (resposta) {
-                setContent(resposta,action);
+                setContent(resposta, action);
             }
         });
     }
 }
 
-function setContent(resposta,action){
+function setContent(resposta, action) {
     $(".content").html(resposta);
     if (action.indexOf("consulta") != -1) {
         gridReload();
@@ -105,7 +94,7 @@ function setContent(resposta,action){
 }
 
 
-function  gridReload() {
+function gridReload() {
     var action = $("#grid-keep-selection").attr("action");
     $("#grid-keep-selection").bootgrid({
         ajax: true,
@@ -155,10 +144,18 @@ function  gridReload() {
 
 }
 
-function unMask(){
+function unMask() {
     $('.phone').unmask();
     $('.cpf').unmask();
     $('.money').unmask();
     $('.weight').unmask();
+}
+
+
+function mask() {
+    $('.phone').mask('(00) 0000-0000');
+    $('.cpf').mask('000.000.000-00', {reverse: true});
+    $('.money').mask("#.##0,00", {reverse: true});
+    $('.weight').mask("####0,000", {reverse: true});
 }
 
