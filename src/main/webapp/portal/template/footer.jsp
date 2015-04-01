@@ -22,7 +22,7 @@
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery.mask.min.js"></script>
 
-<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+<%--<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>--%>
 
 
 <!-- prefix free to deal with vendor prefixes -->

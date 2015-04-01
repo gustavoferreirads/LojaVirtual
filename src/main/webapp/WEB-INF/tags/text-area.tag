@@ -11,15 +11,18 @@
 <%@ attribute name="row" required="true" %>
 <%@ attribute name="classForm" required="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+
 <div class="form-group ${classForm}">
     <label for="${id}" class="${classeLabel}"><fmt:message key="${label}"/>: </label>
     <div class="${sizeInputClass}">
-        <textarea id="text-editor" name="${name}"  class="${classe}" value="${value}" required="${required}"  placeholder="${placeHolder}" rows="${row}"/>
+        <textarea id="${id}" name="${name}"  class="${classe}" value="${value}" required="${required}"  placeholder="${placeHolder}" rows="${row}"></textarea>
     </div>
-    <script>
-        CKEDITOR.replace( 'text-editor' , {
-            language: 'pt-br'
-        });
-        $("html, body").animate({scrollTop:0}, 'fast');
-    </script>
 </div>
+
+<script>
+    CKEDITOR.replace( 'text-editor' , {
+        language: 'pt-br'
+    });
+</script>
+

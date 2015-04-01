@@ -23,8 +23,7 @@
                     <th data-column-id="nome" data-type="text" data-identifier="true">Nome</th>
                     <th data-column-id="valorVenda" data-type="text" data-identifier="true">Valor</th>
                     <th data-column-id="quantidade" data-type="text" data-identifier="true">Estoque</th>
-                    <th data-column-id="situacao" data-type="text" data-identifier="true">Situaçao</th>
-
+                    <th data-column-id="situacao" data-type="text" data-identifier="true">Situação</th>
                     <!--   <th data-column-id="received" data-order="desc">Received</th>-->
                     <!--<th data-column-id="link" data-formatter="link" data-sortable="false">Link</th>-->
                 </tr>

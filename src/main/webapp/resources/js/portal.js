@@ -1,47 +1,55 @@
 var idObject = 0;
+$(document).ready(function () {
+
 
 // jQuery para o menu
-$('a').each(function (index, item) {
-    item.addEventListener("click", function (event) {
-        var action = item.getAttribute('action');
-        if (action != null) {
-            $.get(action, function (resposta) {
-                setContent(resposta, action);
-                mask();
-            });
-        }
+    $('a').each(function (index, item) {
+        item.addEventListener("click", function (event) {
+            var action = item.getAttribute('action');
+            if (action != null) {
+                $.get(action, function (resposta) {
+                    setContent(resposta, action);
+                    mask();
+                });
+            }
+        });
     });
+
 });
 
-function setIdObject(id) {
+
+setIdObject = function (id) {
     idObject = id;
 }
-function goBack(action) {
-    $.get(action, function (resposta) {
-        setContent(resposta, action);
-        mask();
-    });
+
+goBack = function (action) {
+    getAjax(action);
 }
 
-function newForm() {
-    var urlNew = $("#grid-keep-selection").attr("actionNew");
-    $.get(urlNew, function (resposta) {
-        setContent(resposta, urlNew);
-        mask();
-    });
+newForm = function () {
+    var url = $("#grid-keep-selection").attr("actionNew");
+    $(window.document.location).attr('href', url);
+    //getAjax(urlNew);
 }
 
-function editForm() {
+getAjax = function (url) {
+    $.get(url, function (resposta) {
+        setContent(resposta, url);
+        mask();
+    });
+
+}
+editForm = function () {
     var urlEdit = $("#grid-keep-selection").attr("actionEdit");
     var action = urlEdit + "?id=" + idObject;
-    $.get(action, function (resposta) {
-        setContent(resposta, action);
-        mask();
-    });
-    mask()
+//    $.get(action, function (resposta) {
+//        setContent(resposta, action);
+//        mask();
+//    });
+    $(window.document.location).attr('href', action);
 }
 
-function removeForm() {
+removeForm = function () {
     //Dialog de Confirmação
     var urlRemove = $("#grid-keep-selection").attr("actionRemove");
     var action = urlRemove + "?id=" + idObject;
@@ -50,7 +58,7 @@ function removeForm() {
     });
 }
 
-function removeObject() {
+removeObject = function () {
     var form = $("#form");
     var action = $("#form").attr("actionRemove");
     submitAjax(form, action);
@@ -58,18 +66,18 @@ function removeObject() {
 }
 
 
-function submitNewForm() {
+submitNewForm = function () {
     submitAjax($("#form").attr("action") + "Novo")
 }
 
-function submitForm() {
+submitForm = function () {
     $("#form").submit(function (e) {
         e.preventDefault();
         submitAjax($("#form").attr("action"))
     });
 }
 
-function submitAjax(action) {
+submitAjax = function (action) {
     unMask();
     if (action != null) {
         $.ajax({
@@ -87,7 +95,7 @@ function submitAjax(action) {
     }
 }
 
-function setContent(resposta, action) {
+setContent = function (resposta, action) {
     $(".content").html(resposta);
     if (action.indexOf("consulta") != -1) {
         gridReload();
@@ -118,45 +126,58 @@ function gridReload() {
                 return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
             }
         }
-    }).on("selected.rs.jquery.bootgrid",function (e, rows) {
-            var rowIds = [];
-            for (var i = 0; i < rows.length; i++) {
-                rowIds.push(rows[i].id);
-            }
-            setIdObject(rowIds[0]);
-            //alert("Select: " + rowIds.join(","));
-            $("#btn-edit-form").toggleDisabled();
-        }).on("deselected.rs.jquery.bootgrid", function (e, rows) {
-            var rowIds = [];
-            for (var i = 0; i < rows.length; i++) {
-                rowIds.push(rows[i].id);
-            }
-            //    alert("Deselect: " + rowIds.join(","));
-            $("#btn-edit-form").toggleDisabled();
-        });
+    }).on("selected.rs.jquery.bootgrid", function (e, rows) {
+        var rowIds = [];
+        for (var i = 0; i < rows.length; i++) {
+            rowIds.push(rows[i].id);
+        }
+        setIdObject(rowIds[0]);
+        //alert("Select: " + rowIds.join(","));
+        $("#btn-edit-form").toggleDisabled();
+    }).on("deselected.rs.jquery.bootgrid", function (e, rows) {
+        var rowIds = [];
+        for (var i = 0; i < rows.length; i++) {
+            rowIds.push(rows[i].id);
+        }
+        //    alert("Deselect: " + rowIds.join(","));
+        $("#btn-edit-form").toggleDisabled();
+    });
 
     (function ($) {
         $.fn.toggleDisabled = function () {
             return this.each(function () {
                 this.disabled = !this.disabled;
             });
-        };
-    })(jQuery);
+    };
+})(jQuery);
 
 }
 
-function unMask() {
+unMask = function () {
     $('.phone').unmask();
     $('.cpf').unmask();
     $('.money').unmask();
     $('.weight').unmask();
 }
 
-
-function mask() {
+mask = function () {
     $('.phone').mask('(00) 0000-0000');
     $('.cpf').mask('000.000.000-00', {reverse: true});
     $('.money').mask("#.##0,00", {reverse: true});
     $('.weight').mask("####0,000", {reverse: true});
 }
 
+
+$(function () {
+    $("input[format='number']").bind("keyup blur focus", function (e) {
+        e.preventDefault();
+        var expre = /[^0-9]/g;
+        // REMOVE OS CARACTERES DA EXPRESSAO ACIMA
+        if ($(this).val().match(expre))
+            $(this).val($(this).val().replace(expre, ''));
+    });
+});
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+})

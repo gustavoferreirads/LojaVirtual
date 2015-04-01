@@ -24,41 +24,47 @@
 //        files[i] = f;
 //    }
 //}
-function getFile() {
-    document.getElementById("files").click();
-}
 
-function handleFileSelect(evt) {
-    var oMyForm = new FormData();
-    oMyForm.append("file", evt.target.files[0]);
-    $.ajax({
-        url: 'upload',
-        data: oMyForm,
-        dataType: 'text',
-        processData: false,
-        contentType: false,
-        type: 'POST',
-        success: function (data) {
-            var div = document.createElement('div');
-                div.className  = 'photo';
+$(document).ready(function() {
+
+    $('#empty').click(getFile);
+
+    function getFile() {
+        document.getElementById("files").click();
+    }
+
+    function handleFileSelect(evt) {
+        var oMyForm = new FormData();
+        oMyForm.append("file", evt.target.files[0]);
+        $.ajax({
+            url: 'upload',
+            data: oMyForm,
+            dataType: 'text',
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (data) {
+                var div = document.createElement('div');
+                div.className = 'photo';
                 div.innerHTML = data;
                 document.getElementById("list").insertBefore(div, null);
                 div.addEventListener("click", function (event) {
                     document.getElementById("preview").innerHTML = data;
                     $('.modalPreview').modal('show');
-                    document.getElementById('btRemoveImg').addEventListener('click',removeImg,false);
+                    document.getElementById('btRemoveImg').addEventListener('click', removeImg, false);
                 });
-            $('[data-toggle="tooltip"]').tooltip();
-        }
-    });
-}
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+        });
+    }
 
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 
-function removeImg(evt) {
-    var id = document.querySelector('#preview img').id;
-    $.get("removeImg?id="+id, function (resposta) {
-        document.getElementById(id).remove();
-    });
-}
+    function removeImg(evt) {
+        var id = document.querySelector('#preview img').id;
+        $.get("removeImg?id=" + id, function (resposta) {
+            document.getElementById(id).remove();
+        });
+    }
+});
