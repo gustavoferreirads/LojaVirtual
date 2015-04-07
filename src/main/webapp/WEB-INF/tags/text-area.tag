@@ -16,13 +16,6 @@
 <div class="form-group ${classForm}">
     <label for="${id}" class="${classeLabel}"><fmt:message key="${label}"/>: </label>
     <div class="${sizeInputClass}">
-        <textarea id="${id}" name="${name}"  class="${classe}" value="${value}" required="${required}"  placeholder="${placeHolder}" rows="${row}"></textarea>
+        <textarea id="text-editor" name="${name}"  class="${classe}" value="${value}" required="${required}"  placeholder="${placeHolder}" rows="${row}"></textarea>
     </div>
 </div>
-
-<script>
-    CKEDITOR.replace( 'text-editor' , {
-        language: 'pt-br'
-    });
-</script>
-

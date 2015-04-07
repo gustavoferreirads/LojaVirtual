@@ -1,7 +1,6 @@
 var idObject = 0;
 $(document).ready(function () {
 
-
 // jQuery para o menu
     $('a').each(function (index, item) {
         item.addEventListener("click", function (event) {
@@ -61,7 +60,7 @@ removeForm = function () {
 removeObject = function () {
     var form = $("#form");
     var action = $("#form").attr("actionRemove");
-    submitAjax(form, action);
+    submitAjax(action);
     gridReload();
 }
 
@@ -73,7 +72,9 @@ submitNewForm = function () {
 submitForm = function () {
     $("#form").submit(function (e) {
         e.preventDefault();
-        submitAjax($("#form").attr("action"))
+        unMask();
+        $("#form").submit();
+      //  submitAjax($("#form").attr("action"))
     });
 }
 
@@ -180,4 +181,12 @@ $(function () {
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
-})
+});
+
+$(function () {
+    mask();
+});
+
+CKEDITOR.replace( 'text-editor' , {
+    language: 'pt-br'
+});

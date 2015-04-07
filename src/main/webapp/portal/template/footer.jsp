@@ -16,8 +16,6 @@
 <!--Plugin for Grid-->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.bootgrid.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/portal.js"></script>
-
 <script src="${pageContext.request.contextPath}/resources/js/ckeditor/ckeditor.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery.mask.min.js"></script>
@@ -36,6 +34,7 @@
 
 <![endif]-->
 
+<script src="${pageContext.request.contextPath}/resources/js/portal.js"></script>
 
 </body>
 </html>

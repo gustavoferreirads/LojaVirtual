@@ -78,7 +78,7 @@
                                 type="text"
                                 name="descricao"
                                 value="${produto.descricao}"
-                                classe="form-control"
+                                classe="form-control "
                                 required="required"
                                 id="descricao"
                                 row="3"/>
