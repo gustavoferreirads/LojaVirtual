@@ -181,12 +181,16 @@ $(function () {
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
+    mask();
+
 });
 
-$(function () {
-    mask();
+$('.navbar-toggle.lateral').click(function () {
+    $('#accordian').toggle();
 });
+
 
 CKEDITOR.replace( 'text-editor' , {
     language: 'pt-br'
 });
+

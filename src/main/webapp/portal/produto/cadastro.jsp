@@ -45,10 +45,10 @@
 
                     <div class="row">
                         <div class="col-md-3"><loja:selectOptions id="tipoDeFrete" label="label.tipo_de_frete" name="tipoDeFrete" list="${fretes}" value="${produto.tipoDeFrete}" classForm="" classe="form-control" /></div>
-                        <div class="col-md-2"><loja:input label="label.peso" simbol="label.kg" type="text" name="peso" value="${produto.peso}" classForm="" classe="form-control weight" sizeInput="input-small-to-medium" required="required" placeHolder="0,000" id="peso"/></div>
-                        <div class="col-md-2"><loja:input label="label.altura" simbol="label.cm" type="number" name="altura" value="${produto.altura}" classForm="" classe="form-control " sizeInput="input-small-to-medium" required="required" id="altura" placeHolder="0" /></div>
-                        <div class="col-md-2"><loja:input label="label.largura" simbol="label.cm" type="number" name="largura" value="${produto.largura}" classForm="" classe="form-control" sizeInput="input-small-to-medium" required="required" id="largura"  placeHolder="0" /></div>
-                        <div class="col-md-2"><loja:input label="label.profundidade"simbol="label.cm" type="number" name="profundidade" value="${produto.profundidade}"  classForm="" classe="form-control" sizeInput="input-small-to-medium" id="profundidade" required="required" placeHolder="0" /></div>
+                        <div class="col-md-2"><loja:input label="label.peso" simbol="label.kg" type="text" name="peso" value="${produto.peso}" classForm="" classe="form-control weight" sizeInput="input-small-to-medium" required="required" id="peso" placeHolder="0,000" iconLabel="peso.png" /></div>
+                        <div class="col-md-2"><loja:input label="label.altura" simbol="label.cm" type="number" name="altura" value="${produto.altura}" classForm="" classe="form-control " sizeInput="input-small-to-medium" required="required" id="altura" placeHolder="0" iconLabel="altura.png" /></div>
+                        <div class="col-md-2"><loja:input label="label.largura" simbol="label.cm" type="number" name="largura" value="${produto.largura}" classForm="" classe="form-control" sizeInput="input-small-to-medium" required="required" id="largura"  placeHolder="0" iconLabel="largura.png" /></div>
+                        <div class="col-md-2"><loja:input label="label.profundidade" simbol="label.cm" type="number" name="profundidade" value="${produto.profundidade}"  classForm="" classe="form-control" sizeInput="input-small-to-medium" id="profundidade" required="required" placeHolder="0" iconLabel="profundidade.png" /></div>
                     </div>
 
                 <loja:checkbox id="paginaInicial" label="label.exibir_pagina_inicial" value="${produto.paginaInicial}" name="paginaInicial" classForm="margin-right-mini" />

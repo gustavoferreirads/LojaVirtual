@@ -70,3 +70,53 @@
     display: block;
 }
 
+.lateral {
+    float: left;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+    #accordian{
+        display: none;
+        z-index: 12;
+        width: 175px;
+    }
+
+    .navbar-toggle-lateral {
+         display: inline !important;
+    }
+
+    .content{
+        margin-left: 15px !important;
+    }
+
+    .navbar-text {
+        margin-right: 15px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    #accordian{
+        display: inline !important;
+    }
+
+}
+
+@media (max-width: 525px) {
+   .boxConteudo{
+       font-size: 5px;
+   }
+
+    .menuBreadCrumb{
+        font-size: 13px;
+    }
+
+    .breadCrumbAtual{
+        font-size: 14px;
+    }
+
+}
+
+.vertical-align-text-bottom{
+    vertical-align: text-bottom;
+}

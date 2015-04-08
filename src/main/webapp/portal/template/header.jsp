@@ -10,4 +10,4 @@
     <link href="${pageContext.request.contextPath}/resources/css/jquery.bootgrid.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 </head>
-<body>
+<body class="portal">

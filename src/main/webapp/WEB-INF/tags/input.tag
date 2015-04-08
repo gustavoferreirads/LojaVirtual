@@ -12,10 +12,14 @@
 <%@ attribute name="autoFocus" required="false" %>
 <%@ attribute name="classForm" required="false" %>
 <%@ attribute name="simbol" required="false" %>
+<%@ attribute name="iconLabel" required="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="form-group ${classForm}">
+    <c:if test="${not empty iconLabel}"  >
+        <img class="vertical-align-text-bottom" src="${pageContext.request.contextPath}/resources/images/icons/${iconLabel}"/>
+    </c:if>
     <label for="${id}" class="${classeLabel}"><fmt:message key="${label}"/>: </label>
 
     <div class="${sizeInput}">

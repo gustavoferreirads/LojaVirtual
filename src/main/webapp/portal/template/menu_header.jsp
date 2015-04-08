@@ -9,6 +9,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+                <button type="button" class="navbar-toggle lateral collapsed" data-toggle="collapse" data-target="#accordian">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
                 <a class="navbar-brand brand portal-color-white"  href="#">
                     Minha Loja
                     <span class="portal-color-secundary">Virtual</span>
