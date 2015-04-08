@@ -35,24 +35,21 @@
                             required="required"
                             placeHolder="Insira o nome do Produto..."/>
 
-                <div class="form-group">
-                    <div class="form-inline">
-                        <loja:input label="label.preco_de_venda" type="text" name="valorVenda" value="${produto.valorVenda}" classForm="margin-right-small" classe="form-control money" required="required" id="precoDeVenda"  placeHolder="0,00"  autoFocus="true"/>
-                        <loja:input label="label.preco_de_custo" type="text" name="valorLiquido" value="${produto.valorLiquido}" classe="form-control money" classForm="margin-right-small" id="precoDeCusto" required="required" placeHolder="0,00" />
-                        <loja:input label="label.estoque_inicial" format="number" type="number" name="quantidade" value="${produto.quantidade}" classe="form-control" id="estoqueInicial" required="required" placeHolder="0"/>
-                    </div>
-                </div>
-                <loja:selectOptions id="situacao" label="label.situacao" name="situacao" list="${situacoes}" value="${produto.situacao}"  classForm="margin-right-mini" classe="form-control"/>
+                        <div class="row">
+                            <div class="col-md-3"><loja:input label="label.preco_de_venda" type="text" name="valorVenda" value="${produto.valorVenda}" sizeInput="input-medium" classe="form-control money" required="required" id="precoDeVenda"  placeHolder="0,00"  autoFocus="true" simbol="label.simbolo_dinheiro"/></div>
+                            <div class="col-md-3"><loja:input label="label.preco_de_custo" type="text" name="valorLiquido" value="${produto.valorLiquido}" sizeInput="input-medium" classe="form-control money"  id="precoDeCusto" required="required" placeHolder="0,00" simbol="label.simbolo_dinheiro" /></div>
+                            <div class="col-md-3"><loja:input label="label.estoque_inicial" format="number" type="number" name="quantidade" value="${produto.quantidade}" classe="form-control" sizeInput="input-medium" id="estoqueInicial" required="required" placeHolder="0" /></div>
+                            <div class="col-md-3"><loja:selectOptions id="situacao" label="label.situacao" name="situacao" list="${situacoes}" value="${produto.situacao}"  sizeInput="input-medium" classe="form-control"/></div>
+                        </div>
 
-                <div id="frete_correio" class="form-group">
-                    <div class="form-inline">
-                        <loja:selectOptions id="tipoDeFrete" label="label.tipo_de_frete" name="tipoDeFrete" list="${fretes}" value="${produto.tipoDeFrete}" classForm="margin-right-mini" classe="form-control"/>
-                        <loja:input label="label.peso" type="text" name="peso" value="${produto.peso}" classForm="margin-right-mini" classe="form-control weight" sizeInput="input-small-to-medium" required="required" id="peso"  placeHolder="0,000" />
-                        <loja:input label="label.altura" type="number" name="altura" value="${produto.altura}" classForm="margin-right-mini" classe="form-control " sizeInput="input-small-to-medium" required="required" id="altura" placeHolder="0" />
-                        <loja:input label="label.largura" type="number" name="largura" value="${produto.largura}" classForm="margin-right-mini" classe="form-control" sizeInput="input-small-to-medium" required="required" id="largura"  placeHolder="0" />
-                        <loja:input label="label.profundidade" type="number" name="profundidade" value="${produto.profundidade}"  classForm="" classe="form-control" sizeInput="input-small-to-medium" id="profundidade" required="required" placeHolder="0" />
+
+                    <div class="row">
+                        <div class="col-md-3"><loja:selectOptions id="tipoDeFrete" label="label.tipo_de_frete" name="tipoDeFrete" list="${fretes}" value="${produto.tipoDeFrete}" classForm="" classe="form-control" /></div>
+                        <div class="col-md-2"><loja:input label="label.peso" simbol="label.kg" type="text" name="peso" value="${produto.peso}" classForm="" classe="form-control weight" sizeInput="input-small-to-medium" required="required" placeHolder="0,000" id="peso"/></div>
+                        <div class="col-md-2"><loja:input label="label.altura" simbol="label.cm" type="number" name="altura" value="${produto.altura}" classForm="" classe="form-control " sizeInput="input-small-to-medium" required="required" id="altura" placeHolder="0" /></div>
+                        <div class="col-md-2"><loja:input label="label.largura" simbol="label.cm" type="number" name="largura" value="${produto.largura}" classForm="" classe="form-control" sizeInput="input-small-to-medium" required="required" id="largura"  placeHolder="0" /></div>
+                        <div class="col-md-2"><loja:input label="label.profundidade"simbol="label.cm" type="number" name="profundidade" value="${produto.profundidade}"  classForm="" classe="form-control" sizeInput="input-small-to-medium" id="profundidade" required="required" placeHolder="0" /></div>
                     </div>
-                </div>
 
                 <loja:checkbox id="paginaInicial" label="label.exibir_pagina_inicial" value="${produto.paginaInicial}" name="paginaInicial" classForm="margin-right-mini" />
                 <loja:checkbox id="paginaInicial" label="label.exibir_pagina_banner" value="${produto.banner}" name="banner" classForm="margin-right-mini" />

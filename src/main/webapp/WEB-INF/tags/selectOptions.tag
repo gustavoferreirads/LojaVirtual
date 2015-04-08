@@ -12,7 +12,7 @@
 <%@ attribute name="value" required="true" %>
 <%@ attribute name="classForm" required="false" %>
 <%@ attribute name="sizeInput" required="false" %>
-<div class="form-group  ${classForm}">
+<div class="${classForm}">
     <label for="${id}" class="${classeLabel}"><fmt:message key="${label}"/>: </label>
     <div class="${sizeInput}">
         <form:select id="${id}" path="${name}"  cssClass="${classe}"  >

@@ -133,7 +133,7 @@ body {
 }
 
 .conteudoBreadCrumbs {
-    height: 40px;
+    min-height: 40px;
 }
 
 .conteudoBreadCrumbs .btPrincipalFora {
@@ -256,7 +256,7 @@ span.breadCrumbAtual img {
     border: 1px solid #CDCDCD;
     border-top: none;
     margin-bottom: 20px;
-    padding: 15px 8px;
+    padding: 15px 12px;
 }
 
 .actions.btn-group > .btn.btn-default {
