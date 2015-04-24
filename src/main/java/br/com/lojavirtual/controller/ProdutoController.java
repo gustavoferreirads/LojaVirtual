@@ -36,6 +36,8 @@ import static br.com.lojavirtual.util.GridList.formatJsonList;
 @Controller
 public class ProdutoController extends ControllerAction {
 
+    private final String TAG_IMG = "<img id=\"%s\" class=\"thumb\" data-placement=\"top\" data-toggle=\"tooltip\" title=\"Clique para editar\" src='%s/%s'/>";
+
     @Inject
     private IProdutoDao produtoDao;
 
@@ -44,6 +46,7 @@ public class ProdutoController extends ControllerAction {
     private Produto.TipoDeFrete[] fretes = Utils.sort(Produto.TipoDeFrete.values());
     private Produto.Situacao[] situacoes = Utils.sort(Produto.Situacao.values());
     private List<Imagem> imagens = new ArrayList<>();
+
 
     private void adicionaListas(Model model) {
         model.addAttribute("fretes", fretes);
@@ -60,7 +63,7 @@ public class ProdutoController extends ControllerAction {
     public void lista(HttpServletResponse response, @PathParam("current") Integer current, @PathParam("rowCount") Integer rowCount) {
         try {
             List<Produto> produtos = produtoDao.busqueTodosLazy(((current - 1) * rowCount), rowCount, "");
-            String jsonReturn = formatJsonList(response, produtos, current, rowCount, String.valueOf(produtoDao.busqueTodos().size()));
+            String jsonReturn = formatJsonList(response, produtos, current, rowCount, String.valueOf(produtoDao.busqueTodos().size())); //TODO: Tem que implementar um count
             response.getWriter().write(jsonReturn);
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,12 +88,8 @@ public class ProdutoController extends ControllerAction {
     @RequestMapping("/salvarProduto")
     public String salvarProduto(Produto produto, Model model, HttpServletRequest request) {
         try {
-            // TODO : posso implementar a classe org.springframework.validation.Validator
             validate(produto);
             produto.setImagens(imagens);
-            for(Imagem img: imagens){
-                img.setProduto(produto);
-            }
             produto.setUsuario((br.com.lojavirtual.api.modelo.Usuario) request.getSession().getAttribute("usuarioLogado"));
             produto = produtoDao.salve(produto);
             model.addAttribute("produto", produto);
@@ -111,30 +110,30 @@ public class ProdutoController extends ControllerAction {
         produto = new Produto();
         model.addAttribute("produto", produto);
         adicionaListas(model);
-          return "portal/produto/cadastro";
+        return "portal/produto/cadastro";
     }
 
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    String handleFileUpload(MultipartHttpServletRequest request, HttpServletResponse response) {
-        Iterator<String> itr = request.getFileNames();
-        MultipartFile file = request.getFile(itr.next());
-        Imagem imagem = new Imagem();
+    public @ResponseBody String handleFileUpload(MultipartHttpServletRequest request, HttpServletResponse response) {
         try {
+            Imagem imagem = new Imagem();
+
+            Iterator<String> itr = request.getFileNames();
+            MultipartFile file = request.getFile(itr.next());
             imagem.setLength(file.getBytes().length);
             imagem.setBytes(file.getBytes());
             imagem.setType(file.getContentType());
             imagem.setDescricao(file.getOriginalFilename());
             imagens.add(imagem);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "<img id=\"" + imagem.getUuid() + "\" class=\"thumb\" data-placement=\"top\" data-toggle=\"tooltip\" title=\"Clique para editar\" src='" + request.getRequestURL().toString().replace("upload", "getLast") + "/" + imagem.getUuid() + "'/>";
+
+            return String.format(TAG_IMG, imagem.getUuid(), request.getRequestURL().toString().replace("upload", "getImg"), imagem.getUuid());
+        } catch (IOException e) {e.printStackTrace();}
+
+        return "";
     }
 
-    @RequestMapping(value = "/getLast/{value}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getImg/{value}", method = RequestMethod.GET)
     public void get(HttpServletResponse response, @PathVariable String value) {
         try {
             Imagem imagem = getImage(value);

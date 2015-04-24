@@ -14,7 +14,9 @@ import java.util.UUID;
 public class Imagem implements Serializable {
     private static final long serialVersionUID = 1L;
 
+
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_imagem")
     @Getter

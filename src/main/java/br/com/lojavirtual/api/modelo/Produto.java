@@ -16,7 +16,6 @@ import java.util.List;
 @Table(name = "Produto")
 public class Produto extends Entidade implements Serializable {
     private static final long serialVersionUID = 1L;
-
     public enum TipoDeFrete {
         @SerializedName("Frete calculado pelos Correiros")
         CORREIOS("Frete calculado pelos Correiros"),
@@ -182,7 +181,6 @@ public class Produto extends Entidade implements Serializable {
     //bi-directional many-to-one association to Produto
     @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Getter
-    @Setter
     private List<Imagem> imagens = new ArrayList<Imagem>();
 
     @Temporal(TemporalType.DATE)
@@ -196,12 +194,17 @@ public class Produto extends Entidade implements Serializable {
     @Setter
     private Timestamp ultimaModificacao = new Timestamp(System.currentTimeMillis());
 
-    public Produto() {
+    public Produto() {}
+
+    public void setImagens(List<Imagem> imagens) {
+        this.imagens = imagens;
+        for(Imagem img: imagens){
+            img.setProduto(this);
+        }
     }
 
     @PrePersist
     public void prePersist() {
         this.dataCadastro = new Timestamp(System.currentTimeMillis());
     }
-
 }

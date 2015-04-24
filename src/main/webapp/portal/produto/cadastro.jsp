@@ -62,7 +62,7 @@
                         <div id="list">
                             <c:forEach var="imagem" items="#{produto.imagens}">
                                 <div class="photo">
-                                    <img id="${imagem.uuid}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />
+                                    <img id="${imagem.uuid}" class="thumb" data-placement="top" data-toggle="tooltip" title="Clique para editar" src='${pageContext.request.contextPath}/getImg/${imagem.uuid}'/>
                                 </div>
                             </c:forEach>
                             <div class="photo">
@@ -114,3 +114,5 @@
 
 <script src="${pageContext.request.contextPath}/resources/js/file.upload.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/mask.js"></script>
+
+<img id="${imagem.uuid}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />
