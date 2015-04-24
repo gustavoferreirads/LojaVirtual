@@ -23,9 +23,9 @@ public class Grupo extends Entidade implements Serializable {
     private Long id;
 
     private String nome;
-
-    @OneToMany(mappedBy = "grupo")
-    private List<Usuario> usuarios;
+//
+//    @OneToMany(mappedBy = "grupo")
+//    private List<Usuario> usuarios;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data_cadastro")
@@ -69,25 +69,25 @@ public class Grupo extends Entidade implements Serializable {
         this.ultimaModificacao = ultimaModificacao;
     }
 
-
-    public List<Usuario> getUsuarios() {
-        return this.usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
+//
+//    public List<Usuario> getUsuarios() {
+//        return this.usuarios;
+//    }
+//
+//    public void setUsuarios(List<Usuario> usuarios) {
+//        this.usuarios = usuarios;
+//    }
 
     public Usuario addUsuario(Usuario usuario) {
-        getUsuarios().add(usuario);
-        usuario.setGrupo(this);
+//        getUsuarios().add(usuario);
+//        usuario.setGrupo(this);
 
         return usuario;
     }
 
     public Usuario removeUsuario(Usuario usuario) {
-        getUsuarios().remove(usuario);
-        usuario.setGrupo(null);
+//        getUsuarios().remove(usuario);
+//        usuario.setGrupo(null);
 
         return usuario;
     }

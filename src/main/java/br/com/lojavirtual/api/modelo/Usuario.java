@@ -54,11 +54,6 @@ public class Usuario extends Entidade implements Serializable {
     @Transient
     private List<Produto> produtos;
 
-    //bi-directional many-to-one association to Grupo
-    @ManyToOne
-    @JoinColumn(name = "id_grupo")
-    private Grupo grupo;
-
     @Getter
     private Timestamp ultimaModificacao = new Timestamp(System.currentTimeMillis());
 
@@ -196,13 +191,6 @@ public class Usuario extends Entidade implements Serializable {
 //        return produto;
 //    }
 
-    public Grupo getGrupo() {
-        return this.grupo;
-    }
-
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
-    }
 
     public Long getId() {
         return id;

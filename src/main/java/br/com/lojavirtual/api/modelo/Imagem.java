@@ -25,6 +25,7 @@ public class Imagem implements Serializable {
     private String caminho;
 
     @Lob
+    @Column(columnDefinition = "LONGBLOB")
     private byte[] bytes;
 
     @Transient

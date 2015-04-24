@@ -48,6 +48,7 @@ public class ProdutoController extends ControllerAction {
     private void adicionaListas(Model model) {
         model.addAttribute("fretes", fretes);
         model.addAttribute("situacoes", situacoes);
+        imagens = new ArrayList<>();
     }
 
     @RequestMapping("/consultaProdutos")
@@ -87,6 +88,9 @@ public class ProdutoController extends ControllerAction {
             // TODO : posso implementar a classe org.springframework.validation.Validator
             validate(produto);
             produto.setImagens(imagens);
+            for(Imagem img: imagens){
+                img.setProduto(produto);
+            }
             produto.setUsuario((br.com.lojavirtual.api.modelo.Usuario) request.getSession().getAttribute("usuarioLogado"));
             produto = produtoDao.salve(produto);
             model.addAttribute("produto", produto);
@@ -104,11 +108,10 @@ public class ProdutoController extends ControllerAction {
 
     @RequestMapping("/salvarProdutoNovo")
     public String salvarENovoProduto(Produto produto, Model model, HttpServletRequest request) {
-        String retorno = salvarProduto(produto, model, request);
         produto = new Produto();
         model.addAttribute("produto", produto);
         adicionaListas(model);
-        return retorno;
+          return "portal/produto/cadastro";
     }
 
 

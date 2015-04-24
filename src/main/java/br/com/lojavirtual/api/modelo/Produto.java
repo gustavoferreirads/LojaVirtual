@@ -150,6 +150,7 @@ public class Produto extends Entidade implements Serializable {
 
     @Getter
     @Setter
+    @Column(name = "tipo_de_frete")
     private TipoDeFrete tipoDeFrete = TipoDeFrete.CORREIOS;
 
     @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
@@ -173,19 +174,13 @@ public class Produto extends Entidade implements Serializable {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_grupo")
-    @Getter
-    @Setter
-    private Grupo grupo;
-
-    @ManyToOne
     @JoinColumn(name = "id_destaque")
     @Getter
     @Setter
     private Destaque destaque;
 
     //bi-directional many-to-one association to Produto
-    @OneToMany(mappedBy = "produto", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Getter
     @Setter
     private List<Imagem> imagens = new ArrayList<Imagem>();

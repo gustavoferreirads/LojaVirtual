@@ -70,7 +70,7 @@ submitNewForm = function () {
 }
 
 submitForm = function () {
-    $("#form").submit(function (e) {
+    $("#form").onSubmit(function (e) {
         e.preventDefault();
         unMask();
         $("#form").submit();
@@ -194,3 +194,11 @@ CKEDITOR.replace( 'text-editor' , {
     language: 'pt-br'
 });
 
+
+$(document).ready(function(){
+    $('#form').on('submit', function(e){
+        e.preventDefault();
+        unMask();
+           this.submit();
+    });
+});
