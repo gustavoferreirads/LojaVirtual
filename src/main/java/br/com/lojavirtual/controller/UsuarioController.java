@@ -92,7 +92,7 @@ public class UsuarioController extends ControllerAction {
     public void lista(HttpServletResponse response, @PathParam("current") Integer current, @PathParam("rowCount") Integer rowCount) {
         try {
             List<Usuario> usuarios = usuarioDao.busqueTodosLazy(((current - 1) * rowCount), rowCount, "");
-            String jsonReturn = formatJsonList(response, usuarios, current, rowCount, String.valueOf(usuarioDao.busqueTodos().size()));
+            String jsonReturn = formatJsonList(response, usuarios, current, rowCount, String.valueOf(usuarioDao.busqueTodos().size())); //TODO: implementar count
             response.getWriter().write(jsonReturn);
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,7 +110,7 @@ public class UsuarioController extends ControllerAction {
     public String removeUsuario(Usuario usuario,  HttpServletRequest request) {
         usuarioDao.delete(usuario);
         addSucessMessage(request);
-        return "portal/usuario/consulta";
+        return "listarUsuarios";
     }
 
 

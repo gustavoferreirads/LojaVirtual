@@ -1,13 +1,11 @@
 package br.com.lojavirtual.controller;
 
 import br.com.lojavirtual.api.exception.ValidationException;
-import br.com.lojavirtual.api.modelo.Endereco;
 import br.com.lojavirtual.api.modelo.Imagem;
 import br.com.lojavirtual.api.modelo.Produto;
 import br.com.lojavirtual.api.servico.IProdutoDao;
 import br.com.lojavirtual.impl.servico.FileValidator;
 import br.com.lojavirtual.util.Utils;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -123,7 +121,6 @@ public class ProdutoController extends ControllerAction {
     public @ResponseBody String handleFileUpload(MultipartHttpServletRequest request, HttpServletResponse response) {
         try {
             Imagem imagem = new Imagem();
-
             Iterator<String> itr = request.getFileNames();
             MultipartFile file = request.getFile(itr.next());
             imagem.setLength(file.getBytes().length);
@@ -131,10 +128,6 @@ public class ProdutoController extends ControllerAction {
             imagem.setType(file.getContentType());
             imagem.setDescricao(file.getOriginalFilename());
             imagens.add(imagem);
-
-
-            Endereco e = new Endereco();
-
 
             return String.format(TAG_IMG, imagem.getUuid(), request.getRequestURL().toString().replace("upload", "getImg"), imagem.getUuid());
         } catch (IOException e) {e.printStackTrace();}

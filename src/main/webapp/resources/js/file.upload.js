@@ -68,9 +68,13 @@ $(document).ready(function() {
         });
     }
 
-    $('.photo').addEventListener("click", function (event) {
-        document.getElementById("preview").innerHTML = data;
-        $('.modalPreview').modal('show');
-        document.getElementById('btRemoveImg').addEventListener('click', removeImg, false);
+
+    $('.photo').each(function (index, item) {
+        item.addEventListener("click", function (event) {
+            document.getElementById("preview").innerHTML = item.innerHTML;
+            document.getElementById('btRemoveImg').addEventListener('click', removeImg, false);
+            $('.modalPreview').modal('show');
+        });
     });
+
 });

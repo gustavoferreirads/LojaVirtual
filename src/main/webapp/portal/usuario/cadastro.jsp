@@ -12,10 +12,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
+<%@ include file="../../portal/template/header.jsp" %>
+<%@ include file="../../portal/template/menu_header.jsp" %>
+<%@ include file="../../portal/template/menu.jsp" %>
 
     <loja:cabecalhoInterno tituloAnterior="label.listagem_usuarios" titulo="label.adicionar_usuario" subTitulo="label.dados_usuario" voltar="'consultaUsuarios'" />
 
-        <div class="boxConteudoBloco">
+    <div class="boxConteudoBloco">
         <form id="form" role="form" action="salvarUsuario"  actionRemove="removeUsuario">
                 <input type="hidden" name="id" value="${usuario.id}"/>
                 <loja:input label="label.nome" type="text" name="nome" value="${usuario.nome}"  classe="form-control" required="required" id="nome" placeHolder="Insira o nome do usuário..." />
@@ -26,5 +29,6 @@
                 </div>
                <loja:botoesDeAcao msg_dialog="msg_remocao_usuario" disabledRemove="${usuario.id != null}" voltar="'consultaUsuarios'"/>
         </form>
-
     </div>
+<%@ include file="../../portal/template/footer.jsp" %>
+

@@ -13,9 +13,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="loja" %>
 <%@ include file="../../portal/template/header.jsp" %>
 <%@ include file="../../portal/template/menu_header.jsp" %>
-<div id="main">
-    <%@ include file="../../portal/template/menu.jsp" %>
-    <div id="content" class="content">
+<%@ include file="../../portal/template/menu.jsp" %>
 
         <loja:cabecalhoInterno tituloAnterior="label.listagem_produtos" titulo="label.adicionar_produto"
                                subTitulo="label.dados_produto" voltar="'consultaProdutos'"/>
@@ -65,7 +63,7 @@
                                     <img id="${imagem.uuid}" class="thumb" data-placement="top" data-toggle="tooltip" title="Clique para editar" src='${pageContext.request.contextPath}/getImg/${imagem.uuid}'/>
                                 </div>
                             </c:forEach>
-                            <div class="photo">
+                            <div class="photo_empty">
                                 <img id="empty" src="${pageContext.request.contextPath}/resources/images/icons/empty.png" data-toggle="tooltip" data-placement="top" title="Clique para adicionar uma imagem" />
                             </div>
                         </div>
@@ -108,10 +106,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 <%@ include file="../../portal/template/footer.jsp" %>
 
 <script src="${pageContext.request.contextPath}/resources/js/file.upload.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/mask.js"></script>
-<img id="${imagem.uuid}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />
+<%--<img id="${imagem.uuid}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />--%>

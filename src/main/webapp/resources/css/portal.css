@@ -368,6 +368,10 @@ span.breadCrumbAtual img {
     display: -webkit-inline-box;
 }
 
+.photo_empty {
+    display: -webkit-inline-box;
+}
+
 .radio-inline, .checkbox-inline{
     font-weight: 700 !important;
 }
@@ -460,4 +464,12 @@ form{
 .modal-header {
     background: rgba(53, 53, 53, 1);
     color: white;
+}
+
+.alert {
+    padding: 10px;
+    /* padding-right: 10px; */
+    margin-bottom: 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
