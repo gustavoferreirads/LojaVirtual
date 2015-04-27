@@ -67,4 +67,10 @@ $(document).ready(function() {
             document.getElementById(id).remove();
         });
     }
+
+    $('.photo').addEventListener("click", function (event) {
+        document.getElementById("preview").innerHTML = data;
+        $('.modalPreview').modal('show');
+        document.getElementById('btRemoveImg').addEventListener('click', removeImg, false);
+    });
 });

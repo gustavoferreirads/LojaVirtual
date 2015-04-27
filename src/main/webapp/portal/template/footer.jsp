@@ -33,8 +33,6 @@
 
 
 <![endif]-->
-
 <script src="${pageContext.request.contextPath}/resources/js/portal.js"></script>
-
 </body>
 </html>

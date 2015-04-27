@@ -16,6 +16,8 @@
 <div class="form-group ${classForm}">
     <label for="${id}" class="${classeLabel}"><fmt:message key="${label}"/>: </label>
     <div class="${sizeInputClass}">
-        <textarea id="text-editor" name="${name}"  class="${classe}" value="${value}" required="${required}"  placeholder="${placeHolder}" rows="${row}"></textarea>
+        <textarea id="text-editor" name="${name}"  class="${classe}" required="${required}"  placeholder="${placeHolder}" rows="${row}">
+            ${value}
+        </textarea>
     </div>
 </div>

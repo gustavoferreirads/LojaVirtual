@@ -30,10 +30,8 @@ public class Imagem implements Serializable {
     @Column(columnDefinition = "LONGBLOB")
     private byte[] bytes;
 
-    @Transient
     private String type;
 
-    @Transient
     private Integer length;
 
     private String descricao;

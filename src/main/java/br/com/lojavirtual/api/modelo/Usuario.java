@@ -1,6 +1,7 @@
 package br.com.lojavirtual.api.modelo;
 
 import br.com.lojavirtual.util.Strings;
+import com.google.gson.annotations.Expose;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,37 +22,32 @@ public class Usuario extends Entidade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
+    @Expose
     private Long id;
 
+    @Expose
     private String login;
 
+    @Expose
     private String nome;
 
+    @Expose
     private String senha;
 
     @Getter
     @Setter
     private String confirmSenha;
 
-    //TODO: Problema com a Gson Lazy Inicialization Exception
-    //bi-directional many-to-one association to Categoria
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
-    @Transient
     private List<Categoria> categorias;
 
-    //bi-directional many-to-one association to Chamado
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
-    @Transient
     private List<Chamado> chamados;
 
-    //bi-directional many-to-one association to Permissao
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
-    @Transient
     private List<Permissao> permissaos;
 
-    //bi-directional many-to-one association to Produto
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
-    @Transient
     private List<Produto> produtos;
 
     @Getter
@@ -104,92 +100,6 @@ public class Usuario extends Entidade implements Serializable {
     public void setUltimaModificacao(Timestamp ultimaModificacao) {
         this.ultimaModificacao = ultimaModificacao;
     }
-
-//    public List<Categoria> getCategorias() {
-//        return this.categorias;
-//    }
-//
-//    public void setCategorias(List<Categoria> categorias) {
-//        this.categorias = categorias;
-//    }
-//
-//    public Categoria addCategoria(Categoria categoria) {
-//        getCategorias().add(categoria);
-//        categoria.setUsuario(this);
-//
-//        return categoria;
-//    }
-//
-//    public Categoria removeCategoria(Categoria categoria) {
-//        getCategorias().remove(categoria);
-//        categoria.setUsuario(null);
-//
-//        return categoria;
-//    }
-
-//    public List<Chamado> getChamados() {
-//        return this.chamados;
-//    }
-//
-//    public void setChamados(List<Chamado> chamados) {
-//        this.chamados = chamados;
-//    }
-//
-//    public Chamado addChamado(Chamado chamado) {
-//        getChamados().add(chamado);
-//        chamado.setUsuario(this);
-//
-//        return chamado;
-//    }
-//
-//    public Chamado removeChamado(Chamado chamado) {
-//        getChamados().remove(chamado);
-//        chamado.setUsuario(null);
-//
-//        return chamado;
-//    }
-//
-//    public List<Permissao> getPermissaos() {
-//        return this.permissaos;
-//    }
-//
-//    public void setPermissaos(List<Permissao> permissaos) {
-//        this.permissaos = permissaos;
-//    }
-//
-//    public Permissao addPermissao(Permissao permissao) {
-//        getPermissaos().add(permissao);
-//
-//        return permissao;
-//    }
-//
-//    public Permissao removePermissao(Permissao permissao) {
-//        getPermissaos().remove(permissao);
-//
-//        return permissao;
-//    }
-//
-//    public List<Produto> getProdutos() {
-//        return this.produtos;
-//    }
-//
-//    public void setProdutos(List<Produto> produtos) {
-//        this.produtos = produtos;
-//    }
-//
-//    public Produto addProduto(Produto produto) {
-//        getProdutos().add(produto);
-//        produto.setUsuario(this);
-//
-//        return produto;
-//    }
-//
-//    public Produto removeProduto(Produto produto) {
-//        getProdutos().remove(produto);
-//        produto.setUsuario(null);
-//
-//        return produto;
-//    }
 
 
     public Long getId() {

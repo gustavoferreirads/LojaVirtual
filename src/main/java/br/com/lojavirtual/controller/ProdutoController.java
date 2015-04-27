@@ -1,11 +1,13 @@
 package br.com.lojavirtual.controller;
 
 import br.com.lojavirtual.api.exception.ValidationException;
+import br.com.lojavirtual.api.modelo.Endereco;
 import br.com.lojavirtual.api.modelo.Imagem;
 import br.com.lojavirtual.api.modelo.Produto;
 import br.com.lojavirtual.api.servico.IProdutoDao;
 import br.com.lojavirtual.impl.servico.FileValidator;
 import br.com.lojavirtual.util.Utils;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +53,6 @@ public class ProdutoController extends ControllerAction {
     private void adicionaListas(Model model) {
         model.addAttribute("fretes", fretes);
         model.addAttribute("situacoes", situacoes);
-        imagens = new ArrayList<>();
     }
 
     @RequestMapping("/consultaProdutos")
@@ -79,8 +80,10 @@ public class ProdutoController extends ControllerAction {
 
     @RequestMapping("/carregaProduto")
     public String carregaProduto(Long id, Model model) {
-        model.addAttribute("produto", produtoDao.carreguePorId(id));
+        Produto produto = produtoDao.carreguePorId(id);
+        model.addAttribute("produto", produto);
         adicionaListas(model);
+        imagens = produto.getImagens();
         return "portal/produto/cadastro";
     }
 
@@ -94,6 +97,7 @@ public class ProdutoController extends ControllerAction {
             produto = produtoDao.salve(produto);
             model.addAttribute("produto", produto);
             adicionaListas(model);
+            setImagens(produto.getImagens());
             addSucessMessage(request);
         } catch (ValidationException e) {
             addErrorMessage(request, e.getMessage());
@@ -110,6 +114,7 @@ public class ProdutoController extends ControllerAction {
         produto = new Produto();
         model.addAttribute("produto", produto);
         adicionaListas(model);
+        setImagens(produto.getImagens());
         return "portal/produto/cadastro";
     }
 
@@ -126,6 +131,10 @@ public class ProdutoController extends ControllerAction {
             imagem.setType(file.getContentType());
             imagem.setDescricao(file.getOriginalFilename());
             imagens.add(imagem);
+
+
+            Endereco e = new Endereco();
+
 
             return String.format(TAG_IMG, imagem.getUuid(), request.getRequestURL().toString().replace("upload", "getImg"), imagem.getUuid());
         } catch (IOException e) {e.printStackTrace();}
@@ -176,4 +185,7 @@ public class ProdutoController extends ControllerAction {
     }
 
 
+    public void setImagens(List<Imagem> imagens) {
+        this.imagens = imagens;
+    }
 }

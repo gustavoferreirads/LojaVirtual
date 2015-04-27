@@ -1,6 +1,5 @@
 var idObject = 0;
 $(document).ready(function () {
-
 // jQuery para o menu
     $('a').each(function (index, item) {
         item.addEventListener("click", function (event) {
@@ -12,6 +11,17 @@ $(document).ready(function () {
                 });
             }
         });
+    });
+
+    $('#form').on('submit', function(e){
+        e.preventDefault();
+        unMask();
+        this.submit();
+    });
+
+
+    CKEDITOR.replace( 'text-editor' , {
+        language: 'pt-br'
     });
 
 });
@@ -104,7 +114,7 @@ setContent = function (resposta, action) {
 }
 
 
-function gridReload() {
+gridReload= function () {
     var action = $("#grid-keep-selection").attr("action");
     $("#grid-keep-selection").bootgrid({
         ajax: true,
@@ -190,15 +200,3 @@ $('.navbar-toggle.lateral').click(function () {
 });
 
 
-CKEDITOR.replace( 'text-editor' , {
-    language: 'pt-br'
-});
-
-
-$(document).ready(function(){
-    $('#form').on('submit', function(e){
-        e.preventDefault();
-        unMask();
-           this.submit();
-    });
-});

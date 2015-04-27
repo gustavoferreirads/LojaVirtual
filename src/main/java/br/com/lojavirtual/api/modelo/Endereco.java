@@ -19,8 +19,8 @@ public class Endereco extends Entidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_entrega")
-    private Long id;
+    @Column(name = "id_endereco")
+    public Long id;
 
     @Column(name = "cep")
     private String cep;

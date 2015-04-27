@@ -1,5 +1,6 @@
 package br.com.lojavirtual.api.modelo;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
@@ -65,11 +66,13 @@ public class Produto extends Entidade implements Serializable {
     @Column(name = "id_produto")
     @Getter
     @Setter
+    @Expose
     private Long id;
 
     @Column(name = "descricao")
     @Getter
     @Setter
+    @Expose
     private String descricao;
 
     @Column(name = "lucro")
@@ -90,6 +93,7 @@ public class Produto extends Entidade implements Serializable {
     @Column(name = "quantidade")
     @Getter
     @Setter
+    @Expose
     private Integer quantidade;
 
     @Column(name = "quantidade_acesso")
@@ -105,6 +109,7 @@ public class Produto extends Entidade implements Serializable {
     @Column(name = "valor_venda")
     @Getter
     @Setter
+    @Expose
     private Float valorVenda;
 
     @Column(name = "valor_frete_fixo")
@@ -145,6 +150,7 @@ public class Produto extends Entidade implements Serializable {
 
     @Getter
     @Setter
+    @Expose
     private Situacao situacao = Situacao.DISPONIVEL;
 
     @Getter
@@ -156,9 +162,6 @@ public class Produto extends Entidade implements Serializable {
     @Getter
     @Setter
     private List<ItemVenda> itemVendas;
-
-    @Transient
-    private List<LimiteEstoque> limiteEstoques;
 
     @ManyToOne
     @JoinColumn(name = "id_promocao")
@@ -178,7 +181,6 @@ public class Produto extends Entidade implements Serializable {
     @Setter
     private Destaque destaque;
 
-    //bi-directional many-to-one association to Produto
     @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Getter
     private List<Imagem> imagens = new ArrayList<Imagem>();

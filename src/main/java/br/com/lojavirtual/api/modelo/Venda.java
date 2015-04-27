@@ -34,16 +34,13 @@ public class Venda implements Serializable {
     @Column(name = "valor_total")
     private float valorTotal;
 
-    //bi-directional many-to-one association to ItemVenda
     @OneToMany(mappedBy = "venda")
     private List<ItemVenda> itemVendas;
 
-    //bi-directional many-to-one association to Cliente
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    //bi-directional many-to-one association to Endereco
     @ManyToOne
     @JoinColumn(name = "id_entrega")
     private Endereco endereco;
