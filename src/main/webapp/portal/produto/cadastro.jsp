@@ -78,10 +78,14 @@
                                 id="descricao"
                                 row="3"/>
 
+                <textarea id="textarea"  name="tags" class="example" rows="1">
+                        ${produto.tags}
+                </textarea>
+
                 <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${usuario.id != null}" voltar="'consultaProdutos'"/>
             </form:form>
-        </div>
 
+        </div>
         <div class="fileHidden">
             <input id="files" type="file" name="files" />
         </div>
@@ -107,7 +111,6 @@
             </div>
         </div>
 <%@ include file="../../portal/template/footer.jsp" %>
-
 <script src="${pageContext.request.contextPath}/resources/js/file.upload.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/mask.js"></script>
 <%--<img id="${imagem.uuid}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />--%>

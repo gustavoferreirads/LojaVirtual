@@ -26,7 +26,6 @@ $(document).ready(function () {
 
 });
 
-
 setIdObject = function (id) {
     idObject = id;
 }
@@ -199,4 +198,4 @@ $('.navbar-toggle.lateral').click(function () {
     $('#accordian').toggle();
 });
 
-
+$("#textarea").textext({ plugins : 'tags' });

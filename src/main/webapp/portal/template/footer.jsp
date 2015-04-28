@@ -8,6 +8,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/accordion.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/textext.plugin.tags.js"></script>
 
 <!-- Plugin for Menu -->
 <script src="${pageContext.request.contextPath}/resources/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
