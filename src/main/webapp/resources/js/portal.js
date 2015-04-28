@@ -200,3 +200,5 @@ $('.navbar-toggle.lateral').click(function () {
 });
 
 
+
+$('#textarea').textext({  plugins : 'focus tags' });

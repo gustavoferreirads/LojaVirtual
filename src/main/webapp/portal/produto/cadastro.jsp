@@ -78,6 +78,14 @@
                                 id="descricao"
                                 row="3"/>
 
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10">
+                                <label class="">Tags: </label>
+                                <input id="textarea" class="form-control input-xxlarge" name="tags" type="text" > ${produto.tags} </input>
+                            </div>
+                </div>
+
                 <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${usuario.id != null}" voltar="'consultaProdutos'"/>
             </form:form>
         </div>

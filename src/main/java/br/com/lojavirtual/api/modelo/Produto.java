@@ -150,6 +150,11 @@ public class Produto extends Entidade implements Serializable {
 
     @Getter
     @Setter
+    @Transient
+    private String tags;
+
+    @Getter
+    @Setter
     @Expose
     private Situacao situacao = Situacao.DISPONIVEL;
 
