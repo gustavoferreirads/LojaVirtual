@@ -78,14 +78,18 @@
                                 id="descricao"
                                 row="3"/>
 
-                <textarea id="textarea"  name="tags" class="example" rows="1">
-                        ${produto.tags}
-                </textarea>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10">
+                                <label class="">Tags: </label>
+                                <input id="textarea" class="form-control input-xxlarge" name="tags" type="text" > ${produto.tags} </input>
+                            </div>
+                </div>
 
                 <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${usuario.id != null}" voltar="'consultaProdutos'"/>
             </form:form>
-
         </div>
+
         <div class="fileHidden">
             <input id="files" type="file" name="files" />
         </div>
@@ -111,6 +115,7 @@
             </div>
         </div>
 <%@ include file="../../portal/template/footer.jsp" %>
+
 <script src="${pageContext.request.contextPath}/resources/js/file.upload.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/mask.js"></script>
 <%--<img id="${imagem.uuid}" src="data:image/jpeg;base64,"<c:out value='${imagem.bytes}'/> />--%>
