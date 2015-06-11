@@ -14,11 +14,9 @@
 <%@ include file="../../portal/template/header.jsp" %>
 <%@ include file="../../portal/template/menu_header.jsp" %>
 <%@ include file="../../portal/template/menu.jsp" %>
+<loja:cabecalhoInterno tituloAnterior="label.listagem_produtos" titulo="label.adicionar_produto" subTitulo="label.dados_produto" voltar="'consultaProdutos'"/>
 
-        <loja:cabecalhoInterno tituloAnterior="label.listagem_produtos" titulo="label.adicionar_produto"
-                               subTitulo="label.dados_produto" voltar="'consultaProdutos'"/>
         <div class="boxConteudoBloco">
-
             <form:form id="form" modelAttribute="produto" action="salvarProduto" method="post"  actionRemove="removeProduto" enctype="multipart/form-data">
 
                 <input type="hidden" name="id" value="${produto.id}"/>
@@ -33,21 +31,20 @@
                             required="required"
                             placeHolder="Insira o nome do Produto..."/>
 
-                        <div class="row">
-                            <div class="col-md-3"><loja:input label="label.preco_de_venda" type="text" name="valorVenda" value="${produto.valorVenda}" sizeInput="input-medium" classe="form-control money" required="required" id="precoDeVenda"  placeHolder="0,00"  autoFocus="true" simbol="label.simbolo_dinheiro"/></div>
-                            <div class="col-md-3"><loja:input label="label.preco_de_custo" type="text" name="valorLiquido" value="${produto.valorLiquido}" sizeInput="input-medium" classe="form-control money"  id="precoDeCusto" required="required" placeHolder="0,00" simbol="label.simbolo_dinheiro" /></div>
-                            <div class="col-md-3"><loja:input label="label.estoque_inicial" format="number" type="number" name="quantidade" value="${produto.quantidade}" classe="form-control" sizeInput="input-medium" id="estoqueInicial" required="required" placeHolder="0" /></div>
-                            <div class="col-md-3"><loja:selectOptions id="situacao" label="label.situacao" name="situacao" list="${situacoes}" value="${produto.situacao}"  sizeInput="input-medium" classe="form-control"/></div>
-                        </div>
+                <div class="row">
+                    <div class="col-md-3"><loja:input label="label.preco_de_venda" type="text" name="valorVenda" value="${produto.valorVenda}" sizeInput="input-medium" classe="form-control money" required="required" id="precoDeVenda"  placeHolder="0,00"  autoFocus="true" simbol="label.simbolo_dinheiro"/></div>
+                    <div class="col-md-3"><loja:input label="label.preco_de_custo" type="text" name="valorLiquido" value="${produto.valorLiquido}" sizeInput="input-medium" classe="form-control money"  id="precoDeCusto" required="required" placeHolder="0,00" simbol="label.simbolo_dinheiro" /></div>
+                    <div class="col-md-3"><loja:input label="label.estoque_inicial" format="number" type="number" name="quantidade" value="${produto.quantidade}" classe="form-control" sizeInput="input-medium" id="estoqueInicial" required="required" placeHolder="0" /></div>
+                    <div class="col-md-3"><loja:selectOptions id="situacao" label="label.situacao" name="situacao" list="${situacoes}" value="${produto.situacao}"  sizeInput="input-medium" classe="form-control"/></div>
+                </div>
 
-
-                    <div class="row">
-                        <div class="col-md-3"><loja:selectOptions id="tipoDeFrete" label="label.tipo_de_frete" name="tipoDeFrete" list="${fretes}" value="${produto.tipoDeFrete}" classForm="" classe="form-control" /></div>
-                        <div class="col-md-2"><loja:input label="label.peso" simbol="label.kg" type="text" name="peso" value="${produto.peso}" classForm="" classe="form-control weight" sizeInput="input-small-to-medium" required="required" id="peso" placeHolder="0,000" iconLabel="peso.png" /></div>
-                        <div class="col-md-2"><loja:input label="label.altura" simbol="label.cm" type="number" name="altura" value="${produto.altura}" classForm="" classe="form-control " sizeInput="input-small-to-medium" required="required" id="altura" placeHolder="0" iconLabel="altura.png" /></div>
-                        <div class="col-md-2"><loja:input label="label.largura" simbol="label.cm" type="number" name="largura" value="${produto.largura}" classForm="" classe="form-control" sizeInput="input-small-to-medium" required="required" id="largura"  placeHolder="0" iconLabel="largura.png" /></div>
-                        <div class="col-md-2"><loja:input label="label.profundidade" simbol="label.cm" type="number" name="profundidade" value="${produto.profundidade}"  classForm="" classe="form-control" sizeInput="input-small-to-medium" id="profundidade" required="required" placeHolder="0" iconLabel="profundidade.png" /></div>
-                    </div>
+                <div class="row">
+                    <div class="col-md-3"><loja:selectOptions id="tipoDeFrete" label="label.tipo_de_frete" name="tipoDeFrete" list="${fretes}" value="${produto.tipoDeFrete}" classForm="" classe="form-control" /></div>
+                    <div class="col-md-2"><loja:input label="label.peso" simbol="label.kg" type="text" name="peso" value="${produto.peso}" classForm="" classe="form-control weight" sizeInput="input-small-to-medium" required="required" id="peso" placeHolder="0,000" iconLabel="peso.png" /></div>
+                    <div class="col-md-2"><loja:input label="label.altura" simbol="label.cm" type="number" name="altura" value="${produto.altura}" classForm="" classe="form-control " sizeInput="input-small-to-medium" required="required" id="altura" placeHolder="0" iconLabel="altura.png" /></div>
+                    <div class="col-md-2"><loja:input label="label.largura" simbol="label.cm" type="number" name="largura" value="${produto.largura}" classForm="" classe="form-control" sizeInput="input-small-to-medium" required="required" id="largura"  placeHolder="0" iconLabel="largura.png" /></div>
+                    <div class="col-md-2"><loja:input label="label.profundidade" simbol="label.cm" type="number" name="profundidade" value="${produto.profundidade}"  classForm="" classe="form-control" sizeInput="input-small-to-medium" id="profundidade" required="required" placeHolder="0" iconLabel="profundidade.png" /></div>
+                </div>
 
                 <loja:checkbox id="paginaInicial" label="label.exibir_pagina_inicial" value="${produto.paginaInicial}" name="paginaInicial" classForm="margin-right-mini" />
                 <loja:checkbox id="paginaInicial" label="label.exibir_pagina_banner" value="${produto.banner}" name="banner" classForm="margin-right-mini" />
@@ -81,10 +78,10 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-10">
-                                <label class="">Tags: </label>
-                                <input id="textarea" class="form-control input-xxlarge" name="tags" type="text" > ${produto.tags} </input>
-                            </div>
-                </div>
+                            <label><fmt:message key="label.tags"/></label>
+                            <input id="textarea" class="form-control input-xxlarge" name="tags" type="text" > ${produto.tags} </input>
+                        </div>
+                    </div>
 
                 <loja:botoesDeAcao msg_dialog="msg_remocao_produto" disabledRemove="${usuario.id != null}" voltar="'consultaProdutos'"/>
             </form:form>
